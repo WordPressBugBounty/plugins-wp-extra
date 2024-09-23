@@ -1,0 +1,835 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP EXtra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-07 11:33+0000\n"
+"PO-Revision-Date: 2024-09-21 12:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: Tiếng Việt\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.4.2\n"
+"X-Domain: wp-extra"
+
+#: src/Settings.php:351
+msgid "% (Default: 90%)"
+msgstr "% (Mặc định: 90%)"
+
+#: src/Modules/Posts.php:121
+msgid "(no title)"
+msgstr "(không tiêu đề)"
+
+#: src/Modules/Cookie.php:31
+msgid "Accept Cookies"
+msgstr "Đồng ý Cookies"
+
+#: src/Modules/Posts.php:125
+msgid "Add <code>rel=\"nofollow\"</code>"
+msgstr "Thêm <code>rel=\"nofollow\"</code>"
+
+#: src/Modules/Posts.php:126
+msgid "Add <code>rel=\"sponsored\"</code>"
+msgstr "Thêm <code>rel=\"sponsored\"</code>"
+
+#: src/Settings.php:237
+msgid "Add Any Extension to Pages"
+msgstr "Thêm .html vào Trang"
+
+#: src/Settings.php:1106
+msgid "Add custom CSS here"
+msgstr "Thêm tuỳ chỉnh CSS"
+
+#: src/Settings.php:1120
+msgid "Add custom CSS here for mobile view"
+msgstr "Thêm tuỳ chỉnh CSS hiển thị trên thiết bị di động"
+
+#: src/Settings.php:1113
+msgid "Add custom CSS here for tablets and mobile"
+msgstr "Thêm tuỳ chỉnh CSS hiển thị trên tablet"
+
+#: src/Settings.php:1085
+msgid ""
+"Add custom scripts inside HEAD tag. You need to have a SCRIPT tag around "
+"scripts."
+msgstr "Thêm script dưới thẻ HEAD. Bạn có thể chèn SCRIPT bên dưới."
+
+#: src/Settings.php:1091
+msgid ""
+"Add custom scripts just after the BODY tag opened. You need to have a SCRIPT "
+"tag around scripts."
+msgstr "Thêm script trong thẻ BODY. Bạn có thể chèn SCRIPT bên dưới."
+
+#: src/Settings.php:1097
+msgid ""
+"Add custom scripts you might want to be loaded in the footer of your website."
+" You need to have a SCRIPT tag around scripts."
+msgstr "Thêm script dưới Footer. Bạn có thể chèn SCRIPT bên dưới."
+
+#: src/Modules/Posts.php:120
+msgid "Add Link"
+msgstr "Thêm liên kết"
+
+#: src/Settings.php:140
+msgid "Add rel=nofollow & sponsored"
+msgstr "Thêm rel=nofollow & sponsored"
+
+#: src/Settings.php:180
+msgid "Adds a tinymce editor to the category description box"
+msgstr "Thêm tinymce vào trang chỉnh sửa mô tả danh mục"
+
+#: src/Settings.php:90
+msgid "Admin Notice"
+msgstr "Thông báo từ trang quản trị"
+
+#: src/Settings.php:1130
+msgid ""
+"Administrator role user can take dump of the mysql database by single click."
+msgstr ""
+"Quản trị viên mới có thể tải về cơ sở dữ liệu MySQL chỉ với một cú click."
+
+#: src/Settings.php:565
+msgid "All Core Updates"
+msgstr "Tất cả các bản cập nhật"
+
+#: src/Settings.php:85
+msgid "All Dashboard"
+msgstr "Tất cả bảng tin"
+
+#: src/Settings.php:1105
+msgid "All screens"
+msgstr "Tất cả thiết bị"
+
+#: src/Settings.php:238
+msgid "Allows you to specify an extension for pages"
+msgstr "Cho phép bạn tuỳ chỉnh riêng cho các trang."
+
+#: src/Settings.php:416
+msgid "Anti-Spam Comments"
+msgstr "Chặn Spam Comment"
+
+#: src/Settings.php:974
+msgid "Anti-spam forms"
+msgstr "Chặn spam"
+
+#: src/Settings.php:937
+msgid "Authenticate connection with username and password"
+msgstr "Xác thực kết nối bằng tên người dùng và mật khẩu"
+
+#: src/Settings.php:287
+msgid "Auto Crop"
+msgstr "Tự động Crop ảnh"
+
+#: src/Settings.php:281
+msgid "Auto Save Images"
+msgstr "Tự động lưu ảnh vào bài viết"
+
+#: src/Settings.php:276
+#| msgid "Set Featured Image"
+msgid "Auto Set Featured Image"
+msgstr "Tự động đặt ảnh đại diện"
+
+#: src/Settings.php:368
+msgid ""
+"Auto Set The Image Title, Alt-Text, Caption & Description. Default to using "
+"the post title."
+msgstr ""
+"Tự động thêm Tiêu đề, Chú thích & Mô tả khi upload ảnh vào bài viết. Mặc "
+"định sử dụng tiêu đề bài viết."
+
+#: src/Settings.php:464
+msgid "Auto-hide"
+msgstr "Tự động ẩn/hiện"
+
+#: src/Settings.php:417
+msgid ""
+"Automatically checks all comments and filters out the ones that look like "
+"spam."
+msgstr ""
+"Tự động kiểm tra tất cả bình luận và lọc ra những bình luận nhìn giống như "
+"spam."
+
+#: src/Settings.php:277
+msgid "Automatically find and set post images as featured images"
+msgstr "Tự động tìm và lấy ảnh bài viết làm ảnh đại diện"
+
+#: src/Settings.php:317
+msgid "Automatically resizes uploaded images (JPEG, GIF, and PNG)"
+msgstr ""
+"Tự động resize kích thước ảnh khi vượt quá ngưỡng cho phép (Hỗ trợ JPEG, GIF "
+"và PNG)"
+
+#: src/Settings.php:597
+msgid "Back To Top In WP Admin Area"
+msgstr "Chỉ hoạt động tại Trang Quản Trị"
+
+#: src/Settings.php:66 src/Settings.php:602
+msgid "Branding"
+msgstr "Cá nhân hoá"
+
+#: src/Settings.php:734
+msgid "Button Back"
+msgstr "Nút quay trở về"
+
+#: src/Settings.php:179
+msgid "Category Description"
+msgstr "Mô tả danh mục"
+
+#: src/Settings.php:608
+msgid "Change the title tag content used on the login page."
+msgstr "Thay đổi nội dung thẻ tiêu đề được sử dụng trên trang đăng nhập."
+
+#: src/Settings.php:438
+msgid ""
+"Choose the sidebar widgets you would like to disable. Note that developers "
+"can still display widgets using PHP."
+msgstr ""
+"Chọn các widget bên thanh mà bạn muốn tắt. Lưu ý rằng các nhà phát triển vẫn "
+"có thể hiển thị widget bằng cách sử dụng PHP."
+
+#: src/Settings.php:172
+msgid "Classic Widgets"
+msgstr "Widget cổ điển"
+
+#: src/Settings.php:141
+msgid "Clean HTML"
+msgstr "Xoá HTML"
+
+#: src/Settings.php:854
+msgid "Controls how often the WordPress Heartbeat API is allowed to run."
+msgstr "Kiểm soát tần suất mà API WordPress Heartbeat được phép chạy."
+
+#: src/Settings.php:311
+msgid "Convert PNG to JPG"
+msgstr "Chuyển ảnh PNG sang JPG"
+
+#: src/Settings.php:891
+msgid "Cookie expire time"
+msgstr "Thời gian hết hạn Cookie"
+
+#: src/Settings.php:723
+msgid "Copying Content"
+msgstr "Kèm theo nội dung"
+
+#: src/Settings.php:729
+msgid "Copyright WP EXtra"
+msgstr "Bản quyền WP EXtra"
+
+#: src/Settings.php:44
+msgid "Create new elements for Flatsome"
+msgstr "Giải pháp tối ưu cho Flatsome"
+
+#: src/Settings.php:1081
+msgid "Custom Scripts"
+msgstr "Tuỳ chỉnh Scripts"
+
+#: src/Settings.php:823
+msgid "Default (Enabled)"
+msgstr "Mặc định (Bật)"
+
+#: src/Settings.php:383
+msgid "Default featured image"
+msgstr "Ảnh đại diện"
+
+#: src/Settings.php:379
+msgid "Delete Attached Media"
+msgstr "Xoá ảnh khi xoá bài viết"
+
+#: src/Settings.php:990
+msgid "Disable admin email notification when a new user is registered"
+msgstr "Tắt thông báo email quản trị viên khi có người dùng mới đăng ký"
+
+#: src/Settings.php:989
+msgid "Disable auto update email notification"
+msgstr "Tắt thông báo email cập nhật tự động"
+
+#: src/Settings.php:991
+msgid "Disable email notification when users reset passwords"
+msgstr "Tắt thông báo email khi người dùng đặt lại mật khẩu"
+
+#: src/Settings.php:993
+msgid "Disable email notifications"
+msgstr "Tắt thông báo qua email"
+
+#: src/Settings.php:839
+msgid "Disable Everywhere"
+msgstr "Tắt tất cả mọi người"
+
+#: src/Settings.php:824
+msgid "Disable for Non-Admins"
+msgstr "Tắt trừ admin"
+
+#: src/Settings.php:818
+msgid ""
+"Disable Self Pingbacks (generated when linking to an article on your own "
+"blog)."
+msgstr ""
+"Vô hiệu hóa tự gửi pingback (xuất hiện khi liên kết đến một bài viết trên "
+"blog của bạn)."
+
+#: src/Settings.php:973
+msgid "Disable SSL Verification"
+msgstr "Tắt xác minh SSL"
+
+#: src/Settings.php:398
+msgid "Disable Threshold & EXIF"
+msgstr "Tắt Threshold & EXIF"
+
+#: src/Settings.php:393
+msgid ""
+"Disable thumbnail sizes, default WordPress sizes and theme/plugins image size"
+msgstr ""
+"Vô hiệu hóa kích thước hình thu nhỏ, kích thước mặc định của WordPress và "
+"kích thước hình ảnh của theme/plugins"
+
+#: src/Settings.php:392
+msgid "Disable Thumbnails"
+msgstr "Tắt tạo ảnh tự động"
+
+#: src/Settings.php:825
+msgid "Disable When Logged Out"
+msgstr "Tắt khi đăng xuất"
+
+#: src/Settings.php:813
+msgid "Disable WordPress generated RSS feed link tags."
+msgstr "Vô hiệu hóa thẻ liên kết luồng RSS do WordPress tạo ra."
+
+#: src/Settings.php:808
+msgid "Disable WordPress generated RSS feeds and 301 redirect URL to parent."
+msgstr ""
+"Vô hiệu hóa các luồng RSS do WordPress tạo ra và chuyển hướng URL sang URL "
+"cha."
+
+#: src/Settings.php:843
+msgid ""
+"Disable WordPress Heartbeat everywhere or in certain areas (used for auto "
+"saving and revision tracking)."
+msgstr ""
+"\"Vô hiệu hóa WordPress Heartbeat ở mọi nơi hoặc trong một số khu vực cụ thể "
+"(được sử dụng để tự động lưu và theo dõi bản sửa đổi)."
+
+#: src/Settings.php:1070
+msgid "Disables dashicons on the front end when not logged in."
+msgstr "Vô hiệu hóa Dashicons trên giao diện người dùng khi chưa đăng nhập."
+
+#: src/Settings.php:828
+msgid ""
+"Disables REST API requests and displays an error message if the requester "
+"does not have permission."
+msgstr ""
+"Vô hiệu hóa yêu cầu REST API và hiển thị thông báo lỗi nếu người yêu cầu "
+"không có quyền."
+
+#: src/Settings.php:173
+msgid "Display a legacy widget."
+msgstr "Hiển thị widget cũ."
+
+#: src/Settings.php:874
+msgid "Display Privacy Policy"
+msgstr "Hiển thị Trang Chính Sách"
+
+#: src/Settings.php:717
+msgid "Do Not Copy"
+msgstr "Cấm sao chép nội dung"
+
+#: src/Settings.php:282
+msgid "Downloading automatically image from a post to gallery"
+msgstr ""
+"Tự động download ảnh trong nội dung bài viết của website khác vào thư viện "
+"hình ảnh"
+
+#: src/Settings.php:63 src/Settings.php:249 src/Settings.php:250
+#: src/Modules/Duplicate.php:121 src/Modules/Duplicate.php:164
+msgid "Duplicate"
+msgstr "Nhân đôi"
+
+#: src/Settings.php:267
+msgid "Duplicate Category, Tags and Custom Taxonomy"
+msgstr "Nhân bản chuyên mục, bài viết và taxonomy"
+
+#: src/Settings.php:257
+msgid "Duplicate Post Type"
+msgstr "Nhân bản Post Type"
+
+#: src/Settings.php:258
+msgid "Duplicate Posts, Pages and Custom Post Type"
+msgstr "Nhân bản bài viết, trang và post type"
+
+#: src/Settings.php:266
+msgid "Duplicate Taxonomy"
+msgstr "Nhân bản Taxonomy"
+
+#: src/Settings.php:401
+msgid "Exif automatic rotation"
+msgstr "Tự động xoay hình ảnh dựa trên thông tin Exif"
+
+#: src/Settings.php:1129
+msgid "Export to SQL"
+msgstr "Xuất trang web ra SQL"
+
+#: src/Settings.php:243
+msgid "Extension"
+msgstr "Mở rộng"
+
+#: src/Settings.php:579
+msgid "Field Email"
+msgstr "Trường Email"
+
+#: src/Settings.php:585
+msgid "Field Password"
+msgstr "Trường mật khẩu"
+
+#: src/Settings.php:356
+msgid "File Renamer"
+msgstr "Tên tập tin ảnh"
+
+#: src/Settings.php:306
+msgid "Flip horizontal"
+msgstr "Lật ảnh"
+
+#: src/Settings.php:963
+msgid "Force from e-mail address"
+msgstr "Thay thế email gửi"
+
+#: src/Settings.php:968
+msgid "Force from e-mail sender name"
+msgstr "Thay thế tên người gửi"
+
+#: src/Settings.php:373
+msgid "From Image Filename"
+msgstr "Thiết lập từ tên hình ảnh"
+
+#: src/Settings.php:51
+msgid "Get WP EXtra PRO now"
+msgstr "Nhận WP EXtra PRO ngay bây giờ"
+
+#: src/Settings.php:670
+msgid "Hide Controls"
+msgstr "Tuỳ chọn ẩn"
+
+#: src/Settings.php:517
+msgid "Hide Menu"
+msgstr "Ẩn Menu"
+
+#: src/Settings.php:536
+msgid "Hide Plugin"
+msgstr "Ẩn Plugin"
+
+#: src/Settings.php:493
+msgid "Hide Toolbar"
+msgstr "Ẩn Toolbar"
+
+#: src/Settings.php:556
+msgid "Hide Users"
+msgstr "Ẩn user"
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/wp-extra/"
+msgstr "https://wordpress.org/plugins/wp-extra/"
+
+#. Author URI of the plugin
+msgid "https://wpvnteam.com"
+msgstr "https://wpvnteam.com"
+
+#: src/Settings.php:337
+msgid "Image Size in kilobytes"
+msgstr "Dung lượng ảnh cho phép"
+
+#: src/Modules/Posts.php:118
+msgid "Insert/edit link"
+msgstr "Thêm / sửa liên kết"
+
+#: src/Modules/Permission.php:169 src/Modules/Permission.php:180
+#: src/Modules/Posts.php:297 src/Modules/Posts.php:306
+#| msgid ""
+#| "WP_POST_REVISIONS is already enabled somewhere else on your site. We "
+#| "suggest only enabling this feature in one place."
+msgid ""
+"is already enabled somewhere else on your site. We suggest only enabling "
+"this feature in one place."
+msgstr "đã được sử dụng trong wp-config. Bạn nên xoá nó hoặc tắt cấu hình đi."
+
+#: src/Settings.php:350
+msgid "JPEG compression level"
+msgstr "Độ nén JPEG"
+
+#: src/Settings.php:400
+msgid "Large image threshold"
+msgstr "Ngưỡng hình ảnh lớn"
+
+#: src/Settings.php:44
+msgid "Like this plugin? Check out our other WordPress products:"
+msgstr ""
+"Bạn thích plugin này? Hãy xem các sản phẩm WordPress khác của chúng tôi:"
+
+#: src/Modules/Posts.php:124
+msgid "Link inserted."
+msgstr "Liên kết đã được chèn."
+
+#: src/Modules/Posts.php:123
+msgid "Link selected."
+msgstr "Liên kết đã được chọn."
+
+#: src/Modules/Posts.php:127
+msgid "Link Title"
+msgstr "Liên kết tiêu đề"
+
+#: src/Settings.php:77
+msgid "List Module"
+msgstr "Danh sách chức năng"
+
+#: src/Settings.php:1049
+msgid ""
+"List of JavaScript file IDs. Example: id=\"wp-extra-js\" should only use wp-"
+"extra. One data field per line."
+msgstr ""
+"Danh sách ID của tập tin Javascript. Ví dụ: id=\"wp-extra-js\" thì chỉ sử "
+"dụng wp-extra. Mỗi dòng 1 trường dữ liệu."
+
+#: src/Settings.php:607
+msgid "Login Title"
+msgstr "Tiêu đề Trang Đăng Nhập"
+
+#: src/Settings.php:625
+msgid "Logo URL"
+msgstr "Đường dẫn Logo"
+
+#: src/Settings.php:190
+msgid "Making it stick to the bottom of the page when scrolling down the page"
+msgstr "Xuất hiện phía dưới khi cuộn xuống trang"
+
+#: src/Settings.php:918
+msgid "Manual configuration. By default, automatically uses Gmail SMTP"
+msgstr "Cấu hình thủ công. Mặc định tự động sử dụng SMTP Gmail"
+
+#: src/Settings.php:864
+msgid "Message"
+msgstr "Lời nhắn"
+
+#: src/Settings.php:1054
+msgid "Minify HTML output for clean looking markup and faster downloading."
+msgstr "Tối ưu hoá mã HTML của bạn"
+
+#: src/Settings.php:1119
+msgid "Mobile only"
+msgstr "Điện thoại"
+
+#: src/Settings.php:571
+msgid "Nags & Notices"
+msgstr "Thông báo bản quyền & hệ thống"
+
+#: src/Settings.php:675
+msgid "New private window"
+msgstr "Mở chế độ ẩn danh"
+
+#: src/Settings.php:197
+msgid "No limit"
+msgstr "Không giới hạn"
+
+#: src/Modules/Posts.php:122
+msgid "No matches found."
+msgstr "Không tìm thấy kết quả phù hợp."
+
+#: src/Settings.php:840
+msgid "Only Allow When Editing Posts/Pages"
+msgstr "Chỉ cho phép khi đang chỉnh sửa bài viết/trang"
+
+#: src/Settings.php:72 src/Settings.php:1003
+msgid "Optimize"
+msgstr "Tăng tốc"
+
+#: src/Settings.php:367
+msgid "Optimize image SEO"
+msgstr "Tối ưu SEO hình ảnh"
+
+#: src/Settings.php:48
+msgid "Our WordPress Products"
+msgstr "Các sản phẩm của chúng tôi"
+
+#: src/Settings.php:65 src/Settings.php:443 src/Settings.php:539
+msgid "Permission"
+msgstr "Phân quyền"
+
+#: src/Settings.php:741
+msgid "Please backup before making any changes."
+msgstr "Vui lòng backup trước khi thực hiện thay đổi."
+
+#: src/Settings.php:51
+msgid "Please upgrade to the PRO plan to unlock more awesome features."
+msgstr "Vui lòng nâng cấp lên bản PRO để mở khoá các tính năng tuyệt vời hơn."
+
+#: src/Settings.php:1023
+msgid "Prevent Gutenberg Block Library CSS from Loading on the Frontend."
+msgstr "Xoá các CSS trong Gutenberg."
+
+#: src/Settings.php:189
+msgid "Publish Button"
+msgstr "Button đăng bài"
+
+#: src/Settings.php:1013
+msgid "Redirect 404 Error Page to Homepage/Single Post"
+msgstr "Chuyển hướng Trang Lỗi 404 đến Trang Chủ/Hoặc Bài Viết"
+
+#: src/Settings.php:226
+msgid "Redirect Single Post"
+msgstr "Chuyển hướng bài viết"
+
+#: src/Settings.php:423
+msgid "Redirect to link"
+msgstr "Chuyển hướng đến liên kết"
+
+#: src/Settings.php:227
+msgid "Redirect to the post if the search results return only one post."
+msgstr "Chuyển hướng đến bài viết nếu kết quả chỉ có một bài viết."
+
+#: src/Settings.php:988
+msgid "Remove admin email confirmation"
+msgstr "Xóa xác nhận email quản trị viên"
+
+#: src/Settings.php:1075
+msgid "Remove global-styles-inline-css & SVG Duotone Filter"
+msgstr "Gỡ bỏ global-styles-inline-css & bộ lọc SVG Duotone"
+
+#: src/Settings.php:233
+msgid "Remove link in the tags from all post"
+msgstr "Xoá các liên kết của thẻ tag"
+
+#: src/Settings.php:1018
+msgid "Remove query strings from static resources (CSS, JS)."
+msgstr "Xoá các version sau tên tập tin CSS, JS."
+
+#: src/Settings.php:798
+msgid "Remove RSD (Real Simple Discovery) link tag."
+msgstr "Loại bỏ thẻ liên kết RSD (Real Simple Discovery)."
+
+#: src/Settings.php:803
+msgid "Remove Shortlink link tag."
+msgstr "Loại bỏ thẻ liên kết Shortlink."
+
+#: src/Settings.php:793
+msgid "Remove wlwmanifest (Windows Live Writer) link tag."
+msgstr "Xóa thẻ liên kết wlwmanifest (Windows Live Writer)."
+
+#: src/Settings.php:783
+msgid "Removes jQuery Migrate JavaScript file (jquery-migrate.min.js)."
+msgstr "Xóa JavaScript nhúng của jQuery Migrate (jquery-migrate.min.js)."
+
+#: src/Settings.php:833
+msgid ""
+"Removes REST API link tag from the front end and the REST API header link "
+"from page requests."
+msgstr ""
+"Loại bỏ thẻ liên kết REST API từ phía trước và thẻ liên kết tiêu đề REST API "
+"từ các yêu cầu trang."
+
+#: src/Settings.php:773
+#| msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js)."
+msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js). "
+msgstr "Xóa JavaScript nhúng của WordPress (wp-embed.min.js). "
+
+#: src/Settings.php:1065
+msgid "Removes WordPress Emojis JavaScript file (wp-emoji-release.min.js)."
+msgstr ""
+"Xóa JavaScript biểu tượng cảm xúc của WordPress (wp-emoji-release.min.js)."
+
+#: src/Settings.php:788
+msgid "Removes WordPress version meta tag."
+msgstr "Loại bỏ thẻ meta phiên bản của WordPress."
+
+#: src/Settings.php:363
+msgid ""
+"Rename uploaded files available in wordpress media and change the postname "
+"or slug name."
+msgstr "Khi đăng tải ảnh sẽ tự động đặt tên tập tin theo cấu hình"
+
+#: src/Settings.php:620
+msgid "Replace the default WordPress logo. Max width: 320px."
+msgstr "Thay thế logo mặc định. Chiều rộng tối đa: 320px."
+
+#: src/Settings.php:316
+msgid "Resize Images"
+msgstr "Tự động resize kích thước ảnh"
+
+#: src/Settings.php:735
+msgid "Restrict user from clicking the back button."
+msgstr "Cấm khách truy cập quay trở về trang Web"
+
+#: src/Settings.php:718
+msgid "Restrict user to copy content & disable mouse right click."
+msgstr "Hạn chế người dùng sao chép nội dung và vô hiệu hóa chuột phải."
+
+#: src/Settings.php:542
+msgid "Restricted backend access for non-admins."
+msgstr "Cấm truy cập trang quản trị nếu không phải là admin"
+
+#: src/Settings.php:981
+msgid "Sends a simple test email to check your settings."
+msgstr "Gửi một email để kiểm tra cài đặt của bạn."
+
+#: src/Settings.php:147
+msgid "Signature"
+msgstr "Chữ ký"
+
+#: src/Modules/Security.php:188
+msgid "Sorry, you do not have permission to make REST API requests."
+msgstr "Xin lỗi, bạn không có quyền thực hiện các yêu cầu REST API."
+
+#: src/Settings.php:1112
+msgid "Tablets and down"
+msgstr "Máy tính bảng"
+
+#: src/Settings.php:232
+msgid "Tag links"
+msgstr "Liên kết thẻ tags"
+
+#: src/Settings.php:980
+msgid "Test Email"
+msgstr "Gửi thử Email"
+
+#: src/Settings.php:57
+msgid "The module operates independently. Please enable it as needed."
+msgstr ""
+"Module hoạt động độc lập, hãy bật chúng tuỳ theo nhu cầu sử dụng của bạn."
+
+#. 1. days; 2. link to donate; 3. link to review
+#: src/Settings.php:39
+#, php-format
+msgid ""
+"The plugin developer has dedicated <strong>%1$s</strong> days to this "
+"project. If you like it, you can support the author with <a href=\"%2$s\" "
+"target=\"_blank\">a beer 🍻 / coffee ☕️</a> ! Please <a href=\"%3$s\" "
+"target=\"_blank\">rate us on WordPress.org</a>"
+msgstr ""
+"Nhà phát triển plugin đã cống hiến <strong>%1$s</strong> ngày cho dự án này. "
+"Nếu bạn thích nó, bạn có thể <a href=\"%2$s\" target=\"_blank\">ủng hộ tác "
+"giả 1 ly bia 🍻 / cà phê ☕️</a> ! Hãy giúp chúng tôi <a href=\"%3$s\" "
+"target=\"_blank\">đánh giá plugin trên WordPress.org</a>"
+
+#: src/Settings.php:931
+msgid ""
+"The port which will be used when sending an email (587/465/25). If you "
+"choose TLS it should be set to 587. For SSL use port 465 instead."
+msgstr ""
+"Port sử dụng gửi email (587/465/25). Nếu bạn chọn TLS là 587. Đối với SSL là "
+"465."
+
+#: src/Settings.php:924
+#, php-format
+msgid "The SMTP server which will be used to send email. %s"
+msgstr "SMTP server sẽ được sử dụng để gửi email. %s"
+
+#: src/Settings.php:560
+msgid "Theme & Plugin Editors"
+msgstr "Chỉnh sửa Theme & Plugin"
+
+#: src/Settings.php:384
+msgid "This featured image will show up if no featured image is set"
+msgstr "Hiển thị hình ảnh này nếu không có ảnh đại diện nào được thiết lập."
+
+#: src/Modules/Cookie.php:30
+msgid ""
+"This site uses cookies to improve your online experience, allow you to share "
+"content on social media, measure traffic to this website and display "
+"customised ads based on your browsing activity."
+msgstr ""
+"Trang web này sử dụng cookies để cải thiện trải nghiệm trực tuyến của bạn, "
+"cho phép bạn chia sẻ nội dung trên mạng xã hội, đo lường lưu lượng truy cập "
+"vào trang web này và hiển thị quảng cáo tùy chỉnh dựa trên hoạt động duyệt "
+"web của bạn."
+
+#. Author of the plugin
+msgid "TienCOP"
+msgstr "Tiến CỌP"
+
+#: src/Settings.php:1134
+msgid "Transfer Plugin"
+msgstr "Chuyển cấu hình"
+
+#: src/Settings.php:244
+msgid ""
+"Type in the extension you would like to use e.g. .html, .htm, .jsp, .cop, or "
+"any other. (Default: .html)"
+msgstr ""
+"Nhập phần mở rộng bạn muốn sử dụng, ví dụ: .html, .htm, .jsp, .cop, hoặc bất "
+"kỳ phần mở rộng nào khác. (Mặc định: .html)"
+
+#: src/Modules/Posts.php:119
+msgid "Update"
+msgstr "Cập nhật"
+
+#: src/Settings.php:52
+msgid "Upgrade to WP EXtra PRO"
+msgstr "Nâng cấp lên WP EXtra PRO"
+
+#: src/Settings.php:126
+msgid "Use the classic WordPress editor."
+msgstr "Sử dụng công cụ soạn thảo cơ bản trước đây của WordPress."
+
+#: src/Settings.php:148
+#, php-format
+msgid "Used %1$s or %2$s"
+msgstr "Sử dụng %1$s hoặc %2$s"
+
+#: src/Settings.php:997
+msgid "Valid Email Domain"
+msgstr "Cho phép các đuôi tên miền"
+
+#: src/Settings.php:998
+msgid ""
+"Validates that the email domain of users registering is either gmail.com or "
+"yahoo.com"
+msgstr ""
+"Xác thực tên miền email của người dùng đăng ký phải là gmail.com hoặc yahoo."
+"com. Mỗi dòng 1 tên miền"
+
+#: src/Settings.php:675
+msgid ""
+"When configured, this feature modifies your WordPress login URL (slug) to "
+"the specified string and prevents direct access to the wp-admin and wp-login "
+"endpoints."
+msgstr ""
+"Tên đường dẫn định dạng slug (Vd: wp-extra). Khi cấu hình xong sẽ chặn đăng "
+"nhập wp-admin và wp-login."
+
+#: src/Settings.php:626
+msgid "When login logo is clicked, the user will be redirected to this url."
+msgstr "Khi click vào logo sẽ dẫn sang liên kết này."
+
+#. Name of the plugin
+msgid "WP EXtra"
+msgstr "WP EXtra"
+
+#: src/Settings.php:549
+msgid "WP EXtra Permission"
+msgstr "Ai có thể cấu hình WP EXtra"
+
+#: src/Settings.php:47
+msgid "Write a review for WP EXtra"
+msgstr "Viết một đánh giá cho WP EXtra"
+
+#: src/Settings.php:1126
+msgid ""
+"You can transfer the saved options data between different installs by "
+"copying the text inside the text box. To import data from another install, "
+"replace the data in the text box with the one from another install and click "
+"\"Import\"."
+msgstr ""
+"Bạn có thể chuyển dữ liệu tùy chọn đã lưu giữa các cài đặt khác nhau bằng "
+"cách sao chép văn bản bên trong hộp văn bản. Để nhập dữ liệu từ một cài đặt "
+"khác, hãy thay thế dữ liệu trong hộp văn bản bằng dữ liệu từ cài đặt khác và "
+"nhấp vào \"Nhập\"."
+
+#: src/Modules/Media.php:403
+msgid "Your picture is too large. It has to be smaller than "
+msgstr "Hình ảnh của bạn quá lớn. Nó phải nhỏ hơn "
+
+#. Description of the plugin
+msgid ""
+"❤ This is a simple and perfect tool to use as your website’s functionality "
+"plugin. Awesome !!!"
+msgstr ""
+"❤ Đây là bộ công cụ đơn giản và tốt nhất mà website nào cũng cần phải có. "
+"Thật tuyệt vời !!!"

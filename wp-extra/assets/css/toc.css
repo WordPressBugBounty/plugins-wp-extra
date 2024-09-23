@@ -1,0 +1,50 @@
+.mce-toc {
+    margin: 20px auto;
+    width: 99%;
+    position: relative;
+    background-color: var(--background-color);
+    padding: 1rem 1.5rem .5em;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, .2);
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, .2)
+}
+.mce-toc h3 {
+    cursor: pointer;
+    margin: 0
+}
+.mce-toc span {
+    cursor: pointer;
+    color: #fff;
+    width: 1.6rem;
+    height: 1.6rem;
+    float: right;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    font-weight: lighter;
+    background-color: var(--primary-color);
+}
+.mce-toc ul {
+    padding: 0
+}
+.mce-toc li>ul li {
+    list-style-type: disc
+}
+.mce-toc li {
+    list-style: auto;
+    margin: .3rem 0 0 20px;
+    transition: .2s ease all
+}
+.mce-toc li a {
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    color: var(--main-color)
+}
+.mce-toc li>ul {
+    padding-left: 1rem;
+    margin: 0
+}
+.mce-toc h3:before {
+    content: '📚';
+    margin-right:10px;
+}

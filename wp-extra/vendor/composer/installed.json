@@ -1,0 +1,119 @@
+{
+    "packages": [
+        {
+            "name": "adbario/php-dot-notation",
+            "version": "3.3.0",
+            "version_normalized": "3.3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adbario/php-dot-notation.git",
+                "reference": "a94ce4493d19ea430baa8d7d210a2c9bd7129fc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/a94ce4493d19ea430baa8d7d210a2c9bd7129fc2",
+                "reference": "a94ce4493d19ea430baa8d7d210a2c9bd7129fc2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.8",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "time": "2023-02-24T20:27:50+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Adbar\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Riku Särkinen",
+                    "email": "riku@adbar.io"
+                }
+            ],
+            "description": "PHP dot notation access to arrays",
+            "homepage": "https://github.com/adbario/php-dot-notation",
+            "keywords": [
+                "ArrayAccess",
+                "dotnotation"
+            ],
+            "support": {
+                "issues": "https://github.com/adbario/php-dot-notation/issues",
+                "source": "https://github.com/adbario/php-dot-notation/tree/3.3.0"
+            },
+            "install-path": "../adbario/php-dot-notation"
+        },
+        {
+            "name": "wordpressvn/wp-settings",
+            "version": "2.0.0",
+            "version_normalized": "2.0.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wordpressvn/wp-settings.git",
+                "reference": "b07102cec8102ec51ade0d52a64754832ca7c5b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wordpressvn/wp-settings/zipball/b07102cec8102ec51ade0d52a64754832ca7c5b2",
+                "reference": "b07102cec8102ec51ade0d52a64754832ca7c5b2",
+                "shasum": ""
+            },
+            "require": {
+                "adbario/php-dot-notation": "^3.3",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.4",
+                "phpcompatibility/php-compatibility": "*",
+                "spatie/ray": "^1.36"
+            },
+            "time": "2024-09-01T10:51:08+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "WPVNTeam\\WPSettings\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey van Rossum",
+                    "email": "jeffrey@vanrossum.dev"
+                },
+                {
+                    "name": "TienCOP",
+                    "email": "support@wordpressvn.com"
+                }
+            ],
+            "description": "Handy wrapper to make creating WordPress settings pages a breeze.",
+            "support": {
+                "issues": "https://github.com/wordpressvn/wp-settings/issues",
+                "source": "https://github.com/wordpressvn/wp-settings/tree/2.0.0"
+            },
+            "install-path": "../wordpressvn/wp-settings"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

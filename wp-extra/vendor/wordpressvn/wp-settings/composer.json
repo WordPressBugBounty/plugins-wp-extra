@@ -1,0 +1,31 @@
+{
+    "name": "wordpressvn/wp-settings",
+    "description": "Handy wrapper to make creating WordPress settings pages a breeze.",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "TienCOP",
+            "email": "support@wordpressvn.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "adbario/php-dot-notation": "^3.3"
+    },
+    "require-dev": {
+        "phpcompatibility/php-compatibility": "*",
+        "laravel/pint": "^1.17.3",
+        "spatie/ray": "^1.41.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "WPVNTeam\\WPSettings\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "scripts": {
+        "format": "./vendor/bin/pint ./src/"
+    }
+}

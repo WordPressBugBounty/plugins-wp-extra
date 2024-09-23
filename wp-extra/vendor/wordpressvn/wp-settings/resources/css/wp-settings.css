@@ -1,0 +1,203 @@
+header {
+    background: #fff;
+    margin-left: -20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
+}
+header > h2 > a {
+    text-decoration: none;
+    color: #000;
+}
+header > h2 > span {
+    margin-left: 5px;
+    padding: 0 5px;
+    background: rgba(122, 0, 223, .04);
+    border-radius: 2px;
+    font-size: 11px;
+    color: #7a00df;
+}
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.nav-menu .nav-item {
+    margin-bottom: 0;
+}
+.nav-menu .nav-link {
+    transition: all 0.3s ease 0s;
+    color: #555d66;
+    display: inline-block;
+    padding: 6px 10px;
+    text-decoration: none;
+    position: relative;
+}
+.nav-menu .nav-link span, .nav-menu .nav-link svg {
+    display: block;
+    margin: 0 auto;
+    width:24px;
+    height:24px;
+}
+.nav-menu .nav-link.active, .nav-menu li:hover>a, .nav-menu li>a:focus {
+    background: #F9F9F9;
+    color: #191e23;
+}
+.nav-menu .nav-link.active::before, .nav-menu li:hover>a::before, .nav-menu li>a:focus::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 2px;
+    width: 100%;
+    background-color: #5f3afc;
+    border-radius: 2px;
+    animation: slideIn 0.4s ease forwards;
+}
+@keyframes slideIn {
+    from {width: 0;} to {width: 100%;}
+}
+#poststuff #post-body #post-body-content, #poststuff #post-body .postbox {
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
+    border: 1px solid #fff;
+}
+.notice-success, .notice-warning, .notice-error, .notice-info {
+    border-radius: 3px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+}
+.nav-tab {
+    border-top-color: #fff;
+    border-right-color: #fff;
+    border-left-color: #fff;
+    background: #fff;
+}
+.nav-tab-wrapper {
+    border-bottom: 1px solid #EAECF0;
+    padding-left: 15px;
+    padding-top: 20px;
+}
+.nav-tab-active,
+.nav-tab-active:hover,
+.nav-tab-active:focus,
+.nav-tab-active:focus:active {
+    border: 1px solid #EAECF0 !important;
+    border-top: 1px solid #5f3afc !important;
+    border-bottom: 1px solid #FFF !important;
+    background: #FFF !important;
+    color: #000;
+}
+.nav-tab:hover,
+.nav-tab:focus {
+    background-color: #f6f6f6 !important;
+}
+.nav-tab {
+    padding: 5px 15px !important;
+}
+.nav-tab .dashicons {
+    color: #555d66;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 5px;
+    margin-left: -5px;
+}
+.components-tooltip {
+    display: inline-block;
+}
+.ui-tooltip-content::after, .ui-tooltip-content::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -4px;
+    border-color: #000 transparent;
+    border-width: 5px 5px 0;
+}
+.pro * {
+    pointer-events: none;
+    opacity: 0.8;
+}
+pro {
+    padding: 0 5px;
+    background: #ff3030;
+    border-radius: 100px;
+    font-size: 11px;
+    color: #fff;
+    font-weight: 600;
+}
+.pro > th {
+    position: relative;
+}
+.pro > th::after {
+    content: "PRO ";
+    position: absolute;
+    top: 23px;
+    right: 10px;
+    padding: 0 5px;
+    background: #ff3030;
+    border-radius: 100px;
+    font-size: 11px;
+    color: #fff;
+}
+.tab-content {
+    padding: 15px 20px 0 20px;
+}
+.form-table th a {
+    text-decoration:none; 
+    float: right;
+}
+.form-table th .dashicons {
+    color: #797979;
+}
+.form-table th svg {
+    fill: #797979;
+}
+.form-table > tbody > :nth-child(odd) {
+    background-color: #fff !important;
+}
+.form-table {
+    border: 1px solid #EEE;
+}
+.form-table td,
+.form-table th {
+    border-top: 1px solid #EEE;
+    padding-left: 15px !important;
+}
+.form-table th {
+    border-right: 1px solid #EEE;
+    background: #F9F9F9;
+}
+.components-panel__row {
+    margin-top: 10px;
+    padding: 0 20px 20px;
+}
+label{
+    cursor: pointer;
+}
+code {
+    color: #3858e9;
+    background:rgba(var(--wp-admin-theme-color--rgb), .04);
+    border-radius: 4px;
+}
+#wpfooter {
+    padding: 15px 20px;
+    border-top: 1px solid #EAECF0;
+    background: #fff;
+}
+#footer-thankyou {
+    font-style: normal;
+}
+#license-1, #cong-cu-1, #tools-1 {
+    padding-bottom:20px;
+}
+#modules-modules .form-table {
+    border: none !important;
+}

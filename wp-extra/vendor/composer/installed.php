@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'wordpressvn/wp-extra',
+        'pretty_version' => '1.0.0',
+        'version' => '1.0.0.0',
+        'reference' => null,
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'adbario/php-dot-notation' => array(
+            'pretty_version' => '3.3.0',
+            'version' => '3.3.0.0',
+            'reference' => 'a94ce4493d19ea430baa8d7d210a2c9bd7129fc2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../adbario/php-dot-notation',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wordpressvn/wp-extra' => array(
+            'pretty_version' => '1.0.0',
+            'version' => '1.0.0.0',
+            'reference' => null,
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'wordpressvn/wp-settings' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => 'b07102cec8102ec51ade0d52a64754832ca7c5b2',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../wordpressvn/wp-settings',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
