@@ -1,47 +1,27 @@
 <?php
-
 namespace WPEXtra\Modules;
 
-class Optimize {
+use WPEXtra\Settings;
+use WPEXtra\Base;
 
+class Optimize extends Base {
+    
     public function __construct() {
-        if (wp_extra_get_option('remove_global_styles')) {
-            add_action('init', [$this, 'removeGlobalStyles']);
-        }
-        if (wp_extra_get_option('disable_emojis')) {
-            add_action('init', [$this, 'disableEmojis']);
-        }
-        if (wp_extra_get_option('disable_dashicons')) {
-            add_action('wp_enqueue_scripts', [$this, 'disableDashicons']);
-        }
-        if (wp_extra_get_option('gutenberg')) {
-            add_action( 'wp_enqueue_scripts', [$this, 'remove_wp_block_library_css'], 100 );
-        }
-		if(wp_extra_get_option('to_home')) {
-			add_action('template_redirect', [$this, 'redirect_404_to'], 1);
-		}
-		if(wp_extra_get_option('minify_html')) {
-			add_action('init', [$this, 'clearWhitespace']);
-		}
-		if(wp_extra_get_option('defer_css')) {
-			add_filter('style_loader_tag', [$this, 'add_rel_preload'], 10, 4);
-		}
-		if(wp_extra_get_option('defer_js') && wp_extra_get_option('defer_js_type') == 'php') {
-			add_filter('script_loader_tag', [$this, 'deferScripts'], 10, 3);
-		} elseif (wp_extra_get_option('defer_js')) {
-			add_action('wp_enqueue_scripts', [$this, 'deferToScripts']);
-		}
-		if(wp_extra_get_option('query_strings')) {
-			add_filter( 'script_loader_src', [$this, 'remove_script_version'], 15, 1 );
-			add_filter( 'style_loader_src', [$this, 'remove_script_version'], 15, 1 );
-		}
+		parent::__construct();
     }
-
-    public function remove_wp_block_library_css() {
-        wp_dequeue_style( 'wp-block-library' );
-        wp_dequeue_style( 'wp-block-library-theme' );
-        wp_dequeue_style( 'wc-block-style' );
-        wp_dequeue_style( 'global-styles' );
+    
+	protected $features = [
+		'remove_global_styles',
+		'disable_emojis',
+		'disable_dashicons',
+		'gutenberg',
+		'defer_css',
+		'defer_js',
+		'query_strings',
+	];
+    
+    public function remove_global_styles() {
+        add_action('init', [$this, 'removeGlobalStyles']);
     }
 
     public function removeGlobalStyles() {
@@ -49,6 +29,10 @@ class Optimize {
         remove_action( 'wp_footer', 'wp_enqueue_global_styles' );
         remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
         remove_action( 'in_admin_header', 'wp_global_styles_render_svg_filters' );
+    }
+    
+    public function disable_emojis() {
+        add_action('init', [$this, 'disableEmojis']);
     }
 
     public function disableEmojis() {
@@ -81,6 +65,10 @@ class Optimize {
         }
         return $urls;
     }
+    
+    public function disable_dashicons() {
+        add_action('wp_enqueue_scripts', [$this, 'disableDashicons']);
+    }
 
     public function disableDashicons() {
         if (!is_user_logged_in()) {
@@ -89,37 +77,19 @@ class Optimize {
         }
     }
     
-	public function redirect_404_to() {
-        if (is_404()) {
-            $toHomeOption = wp_extra_get_option('to_home');
-
-            if ($toHomeOption == 'random') {
-                $randomPost = get_posts('numberposts=1&orderby=rand');
-
-                if ($randomPost) {
-                    $redirectUrl = get_permalink($randomPost[0]->ID);
-                    wp_redirect($redirectUrl, 301);
-                    exit;
-                }
-            } elseif ($toHomeOption == 'home') {
-                wp_redirect(home_url(), 301);
-                exit;
-            }
-        }
+    public function gutenberg() {
+        add_action( 'wp_enqueue_scripts', [$this, 'remove_wp_block_library_css'], 100 );
     }
 
-
-    public function minifyHTML($buffer){
-        $search = ['/\\n/', '/\\>[^\\S ]+/s', '/[^\\S ]+\\</s', '/(\\s)+/s', '~<!--//(.*?)-->~s'];
-        $replace = [' ', '>', '<', '\\1', ''];
-        $buffer = preg_replace($search, $replace, $buffer);
-        return $buffer;
+    public function remove_wp_block_library_css() {
+        wp_dequeue_style( 'wp-block-library' );
+        wp_dequeue_style( 'wp-block-library-theme' );
+        wp_dequeue_style( 'wc-block-style' );
+        wp_dequeue_style( 'global-styles' );
     }
-
-    public function clearWhitespace(){
-		if (!is_admin() && !is_user_logged_in()) {
-        	ob_start(array($this, 'minifyHTML'));
-		}
+    
+    public function defer_css() {
+        add_filter('style_loader_tag', [$this, 'add_rel_preload'], 10, 4);
     }
 
     public function add_rel_preload($html, $handle, $href, $media) {
@@ -133,10 +103,18 @@ class Optimize {
 		}
 		return $html;
 	}
+    
+    public function defer_js() {
+		if(Settings::get_option('defer_js_type') == 'php') {
+			add_filter('script_loader_tag', [$this, 'deferScripts'], 10, 3);
+		} else {
+			add_action('wp_enqueue_scripts', [$this, 'deferToScripts']);
+		}
+    }
 
     public function deferScripts($tag, $handle, $src) {
 		if (!is_admin() && !is_user_logged_in()) {
-			$defer_handles = explode(PHP_EOL, wp_extra_get_option('defer_js_list'));
+			$defer_handles = explode(PHP_EOL, Settings::get_option('defer_js_list'));
 			if (in_array($handle, $defer_handles)) {
 				$tag = str_replace(' src', ' defer src', $tag);
 			}
@@ -146,15 +124,21 @@ class Optimize {
 
 	public function deferToScripts() {
 		if (!is_admin() && !is_user_logged_in()) {
-			$defer_js_list = explode(PHP_EOL, wp_extra_get_option('defer_js_list'));
+			$defer_js_list = explode(PHP_EOL, Settings::get_option('defer_js_list'));
 			wp_enqueue_script('defer', plugins_url( '/assets/js/defer.js', WPEX_FILE ), array('jquery'), null, true);
 			wp_localize_script('defer', 'js_data_object', $defer_js_list);
 		}
 	}
 
-    public function remove_script_version($src) {
-        $parts = explode( '?', $src );
-        return $parts[0];
+	public function query_strings() {
+        add_filter( 'script_loader_src', [$this, 'remove_parameter'], 9999 );
+        add_filter( 'style_loader_src', [$this, 'remove_parameter'], 9999 );
     }
+    
+	public function remove_parameter( $src ) {
+		if( is_admin() )
+			return $src;
+		return strpos( $src, 'ver=' ) ? remove_query_arg( 'ver', $src ) : $src;
+	}
 
 }

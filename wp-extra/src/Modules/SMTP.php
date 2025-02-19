@@ -1,31 +1,14 @@
 <?php
-
 namespace WPEXtra\Modules;
 
-class SMTP {
+use WPEXtra\Settings;
+use WPEXtra\Base;
 
-	public function __construct() {
-		if (wp_extra_get_option('smtp_options') && in_array('antispam', wp_extra_get_option('smtp_options'))) {
-			add_action( 'wp_enqueue_scripts', [$this, 'smtpmail_scripts'], 99 );
-		}
-		if (wp_extra_get_option('no_emails') && in_array('remove_admin', wp_extra_get_option('no_emails'))) {
-            add_filter( 'admin_email_check_interval', '__return_false' );
-		}
-		if (wp_extra_get_option('no_emails') && in_array('auto_update', wp_extra_get_option('no_emails'))) {
-            add_filter( 'send_core_update_notification_email', '__return_false' );
-            add_filter( 'auto_plugin_update_send_email', '__return_false' );
-            add_filter( 'auto_theme_update_send_email', '__return_false' );
-		}
-		if (wp_extra_get_option('no_emails') && in_array('new_user', wp_extra_get_option('no_emails'))) {
-            add_filter( 'wp_send_new_user_notification_to_admin', '__return_false' );
-		}
-		if (wp_extra_get_option('no_emails') && in_array('password_reset', wp_extra_get_option('no_emails'))) {
-            remove_action( 'after_password_reset', 'wp_password_change_notification' );
-            add_filter( 'send_password_change_email', '__return_false' );
-            add_filter( 'woocommerce_disable_password_change_notification', '__return_false' );
-		}
-
-		$from_email = wp_extra_get_option('from_email');
+class SMTP extends Base {
+    
+    public function __construct() {
+		parent::__construct();
+		$from_email = Settings::get_option('from_email');
 		if ( ! empty( $from_email ) ) {
 			add_filter(
 				'wp_mail_from',
@@ -35,7 +18,7 @@ class SMTP {
 			);
 		}
 
-		$from_name = wp_extra_get_option('from_name');
+		$from_name = Settings::get_option('from_name');
 		if ( ! empty( $from_name ) ) {
 			add_filter(
 				'wp_mail_from_name',
@@ -44,36 +27,29 @@ class SMTP {
 				}
 			);
 		}
-        if (wp_extra_get_option('smtp_username') && wp_extra_get_option('smtp_password')) {
+        if (Settings::get_option('smtp_username') && Settings::get_option('smtp_password')) {
             add_action( 'phpmailer_init', [$this, 'process_mail' ] );
         }
-        if (wp_extra_get_option('email_domain')) {
+        if (Settings::get_option('email_domain')) {
             add_action('register_post', [$this, 'is_valid_email_domain'], 10, 3);
         }
-	}
-
-	public function smtpmail_scripts() 
-	{
-		$anti_spam_form = in_array('antispam', (array) wp_extra_get_option('smtp_options'), true) ? 1 : 0;
-		wp_enqueue_script( 'security', plugins_url('/assets/js/security.js', WPEX_FILE ),  array('jquery'), '1.2.13', true );
-		wp_localize_script( 'security', 'security_setting', array('anti_spam_form' => $anti_spam_form) );
-	}
-
+    }
+    
 	public function process_mail( $phpmailer ) {
-        if (wp_extra_get_option('smtp')) {
-            $phpmailer->Host     = wp_extra_get_option('smtp_host');
-            $phpmailer->Port = wp_extra_get_option('smtp_port');
-            $phpmailer->SMTPSecure = wp_extra_get_option('smtp_encryption');
-            $phpmailer->SMTPAuth = wp_extra_get_option('smtp_auth');
-        } else {
+        if (Settings::get_option('smtp')) {
             $phpmailer->Host       = "smtp.gmail.com";
             $phpmailer->Port       =  465;
             $phpmailer->SMTPSecure = "ssl";
             $phpmailer->SMTPAuth   = true;
+        } else {
+            $phpmailer->Host     = Settings::get_option('smtp_host');
+            $phpmailer->Port = Settings::get_option('smtp_port');
+            $phpmailer->SMTPSecure = Settings::get_option('smtp_encryption');
+            $phpmailer->SMTPAuth = Settings::get_option('smtp_auth');
         };
-        $phpmailer->Username = wp_extra_get_option('smtp_username');
-        $phpmailer->Password = base64_decode(wp_extra_get_option('smtp_password'));
-        if (in_array('noverifyssl', wp_extra_get_option('smtp_options'))) {
+        $phpmailer->Username = Settings::get_option('smtp_username');
+        $phpmailer->Password = base64_decode(Settings::get_option('smtp_password'));
+        if (in_array('noverifyssl', Settings::get_option('smtp_options'))) {
             $phpmailer->SMTPOptions = [
                 'ssl' => [
                     'verify_peer' => false,
@@ -87,12 +63,48 @@ class SMTP {
     }
     
     public function is_valid_email_domain($login, $email, $errors) {
-        $valid_email_domains_string = wp_extra_get_option('email_domain');
+        $valid_email_domains_string = Settings::get_option('email_domain');
         $valid_email_domains = array_filter(array_map('trim', explode("\n", $valid_email_domains_string)));
         $email_domain = substr(strrchr($email, "@"), 1);
         if (!in_array($email_domain, $valid_email_domains)) {
             $errors->add('domain_whitelist_error', __('<strong>ERROR</strong>: you can only register using allowed email domains'));
         }
+    }
+    
+	protected $features = [
+		'smtp_options',
+		'no_emails',
+	];
+    
+    public function smtp_options() {
+		if (in_array('antispam', Settings::get_option('smtp_options'))) {
+			add_action( 'wp_enqueue_scripts', [$this, 'smtpmail_scripts'], 99 );
+		}
+    }
+    
+	public function smtpmail_scripts() {
+		$anti_spam_form = in_array('antispam', (array) Settings::get_option('smtp_options'), true) ? 1 : 0;
+		wp_enqueue_script( 'security', plugins_url('/assets/js/security.js', WPEX_FILE ),  ['jquery'], null, true );
+		wp_localize_script( 'security', 'security_setting', array('anti_spam_form' => $anti_spam_form) );
+	}
+    
+    public function no_emails() {
+		if (in_array('remove_admin', Settings::get_option('no_emails'))) {
+            add_filter( 'admin_email_check_interval', '__return_false' );
+		}
+		if (in_array('auto_update', Settings::get_option('no_emails'))) {
+            add_filter( 'send_core_update_notification_email', '__return_false' );
+            add_filter( 'auto_plugin_update_send_email', '__return_false' );
+            add_filter( 'auto_theme_update_send_email', '__return_false' );
+		}
+		if (in_array('new_user', Settings::get_option('no_emails'))) {
+            add_filter( 'wp_send_new_user_notification_to_admin', '__return_false' );
+		}
+		if (in_array('password_reset', Settings::get_option('no_emails'))) {
+            remove_action( 'after_password_reset', 'wp_password_change_notification' );
+            add_filter( 'send_password_change_email', '__return_false' );
+            add_filter( 'woocommerce_disable_password_change_notification', '__return_false' );
+		}
     }
     
 }

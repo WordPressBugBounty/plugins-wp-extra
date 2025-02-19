@@ -46,8 +46,8 @@ class SMTP extends OptionAbstract
             </th>
             <td class="forminp forminp-text">
                 <input name="smtp_mailer_to_email" type="text" value="" class="regular-text">
-                <button type="submit" name="smtp_mailer_send_test_email" class="button wp-hide-pw">
-                    <span class="dashicons dashicons-email-alt tooltip" title="<?php _e('Send Request'); ?>"></span>
+                <button tooltip="<?php _e('Send Request'); ?>" type="submit" name="smtp_mailer_send_test_email" class="button wp-hide-pw">
+                    <span class="dashicons dashicons-email-alt"></span>
                 </button>
                 <?php if ($description = $this->get_arg('description')) { ?>
                     <p class="description"><?php echo $description; ?></p>

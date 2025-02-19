@@ -1,0 +1,15 @@
+{
+    "name": "wordpressvn/wp-setting",
+    "description": "Handy wrapper to make creating WordPress settings pages a breeze.",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "TienCOP",
+            "email": "support@wordpressvn.com"
+        }
+    ],
+    "require": {
+        "wordpressvn/wp-settings": "*"
+    }
+}

@@ -1,0 +1,1 @@
+!function(){function t(){window.history.pushState(null,"",window.location.href)}t(),window.addEventListener("pagehide",function(){t()}),window.addEventListener("visibilitychange",function(){document.visibilityState==="hidden"&&t()}),window.addEventListener("popstate",function(){t()})}();

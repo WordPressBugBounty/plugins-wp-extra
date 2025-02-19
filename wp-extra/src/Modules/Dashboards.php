@@ -1,60 +1,70 @@
 <?php
-
 namespace WPEXtra\Modules;
 
-class Dashboards {
+use WPEXtra\Settings;
+use WPEXtra\Base;
+
+class Dashboards extends Base {
+    
     public function __construct() {
-        add_action('wp_dashboard_setup', [$this, 'setupDashboard']);
-        if (wp_extra_get_option('dashboard')) {
-            add_filter( 'wpforms_admin_dashboardwidget', '__return_false' );
+		parent::__construct();
+    }
+    
+	protected $features = [
+		'dashboard',
+		'dashboard_welcome',
+		'tab_help',
+		'tab_screen',
+	];
+    
+    public function dashboard() {
+        add_action('wp_dashboard_setup', [$this, 'remove_dashboard']);
+        add_action('admin_enqueue_scripts', [$this, 'full_dashboard']);
+        if ( !function_exists( 'wpforms' ) ) {
+            add_filter('wpforms_admin_dashboardwidget', '__return_false' );
         }
-
-        add_action('admin_enqueue_scripts', [$this, 'enqueueCustomDashboardWidgetStyles']);
-        add_action('admin_enqueue_scripts', [$this, 'applyCustomAdminCss']);
     }
 
-    public function setupDashboard() {
-        if (wp_extra_get_option('dashboard')) {
-            $this->removeDashboardWidgets();
-        }
-
-        if (wp_extra_get_option('dashboard_welcome')) {
-            remove_action('welcome_panel', 'wp_welcome_panel');
-            $this->addCustomDashboardWidgets();
-        }
-    }
-
-    public function removeDashboardWidgets() {
+    public function remove_dashboard() {
         global $wp_meta_boxes;
         unset($wp_meta_boxes['dashboard']);
         remove_meta_box('wpseo-dashboard-overview', 'dashboard', 'side');
+        if (class_exists('WooCommerce')) {
+            remove_meta_box('woocommerce_dashboard_recent_reviews', 'dashboard', 'normal');
+            remove_meta_box('woocommerce_dashboard_status', 'dashboard', 'normal');
+        }
     }
 
-    public function enqueueCustomDashboardWidgetStyles($hook) {
-        if ($hook === 'index.php' && wp_extra_get_option('dashboard')) {
+    public function full_dashboard($hook) {
+        if ($hook === 'index.php') {
             echo '<style type="text/css">#dashboard-widgets-wrap {overflow: unset !important;}.postbox-container{min-width: 100% !important;}.meta-box-sortables.ui-sortable.empty-container,.wrap > h1{display: none;}</style>';
         }
     }
+    
+    public function dashboard_welcome() {
+        remove_action('welcome_panel', 'wp_welcome_panel');
+        add_action('wp_dashboard_setup', [$this, 'add_dashboard']);
+    }
 
-    public function addCustomDashboardWidgets() {
-        $dashboardTitle = wp_extra_get_option('dashboard_title');
-        if (empty($dashboardTitle)) {
-            // Translators: %s is a placeholder for the name of the plugin.
-            $dashboardTitle = sprintf(__('This notice was triggered by the %s handle.'), 'WP EXtra');
-        }
-        wp_add_dashboard_widget('notice_widget', $dashboardTitle, [$this, 'displayCustomDashboardWidgetContent']);
+    public function add_dashboard() {
+        $dashboardTitle = Settings::get_option('dashboard_title') ?: sprintf(__('This notice was triggered by the %s handle.'), 'WP EXtra');
+        wp_add_dashboard_widget('notice_widget', $dashboardTitle, [$this, 'add_dashboard_content']);
     }
     
-    public function displayCustomDashboardWidgetContent()
-    {
-        $rss_feed_url = wp_extra_get_option('dashboard_rss_feed');
-        $dashboard_content = apply_filters('the_content', wp_kses_post(wp_extra_get_option('dashboard_content')));
+    public function add_dashboard_content() {
+        $rss_feed_url = Settings::get_option('dashboard_rss_feed');
+        $dashboard_content = Settings::get_option('dashboard_content');
+        if ($dashboard_content === null) {
+            $dashboard_content = '';
+        }
+        $dashboard_content = apply_filters('the_content', wp_kses_post($dashboard_content));
         $content = "<div id='activity-widget'><div id='published-posts' class='activity-block'>";
         $content .= wp_kses_post($dashboard_content);
         if ($rss_feed_url) {
             $content .= "<ul>";
             libxml_use_internal_errors(true);
             $xml = simplexml_load_file($rss_feed_url);
+
             if ($xml !== false) {
                 $in = 1;
                 foreach ($xml->channel->item as $entry) {
@@ -73,26 +83,17 @@ class Dashboards {
         $content .= "</div></div>";
         echo wp_kses_post($content);
     }
-
-
-    public function applyCustomAdminCss() {
-        $tabhelp = wp_extra_get_option('tab_help');
-        $tabscreen = wp_extra_get_option('tab_screen');
     
-        if ($tabhelp || $tabscreen) {
-            $cssHelp = [];
+    public function tab_help() {
+        add_filter( 'admin_head', [$this, 'remove_help_tabs']);
+    }
     
-            if ($tabhelp) {
-                $cssHelp[] = '#contextual-help-link-wrap { display: none; }';
-            }
+    public function remove_help_tabs() {
+        $screen = get_current_screen();
+        $screen->remove_help_tabs();
+    }
     
-            if ($tabscreen) {
-                $cssHelp[] = '#screen-options-link-wrap { display: none; }';
-            }
-    
-            if (!empty($cssHelp)) {
-                echo '<style type="text/css">' . esc_attr(implode(' ', $cssHelp)) . '</style>';
-            }
-        }
+    public function tab_screen() {
+        add_filter( 'screen_options_show_screen', '__return_false' );
     }
 }

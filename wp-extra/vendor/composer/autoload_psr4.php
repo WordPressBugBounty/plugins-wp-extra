@@ -6,7 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'WPVNTeam\\WPSettings\\' => array($vendorDir . '/wordpressvn/wp-settings/src'),
     'WPEXtra\\' => array($baseDir . '/src'),
-    'Adbar\\' => array($vendorDir . '/adbario/php-dot-notation/src'),
 );

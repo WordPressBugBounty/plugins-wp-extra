@@ -1,59 +1,105 @@
 <?php
-
 namespace WPEXtra\Modules;
 
-use WPEXtra\Core\ClassEXtra;
+use WPEXtra\Settings;
+use WPEXtra\Base;
 
-class Code {
-
+class Code extends Base {
+    
     public function __construct() {
-        if(wp_extra_get_option('code_header')) {
-            add_action('wp_head', [$this, 'insertHeaderCode']);
-        }
-        if(function_exists('wp_body_open') && version_compare(get_bloginfo('version'), '5.2' , '>=') && wp_extra_get_option('code_body')) {
-            add_action('wp_body_open', [$this, 'insertBodyCode']);
-        }
-        if(wp_extra_get_option('code_footer')) {
-            add_action('wp_footer', [$this, 'insertFooterCode']);
-        }
-        if(wp_extra_get_option('css_all') || wp_extra_get_option('css_tablet') || wp_extra_get_option('css_mobile')) {
-            add_action('wp_head', [$this, 'insertCustomCSS'], 100 );
-        }
+		parent::__construct();
+    }
+    
+	protected $features = [
+		'code_header',
+		'code_body',
+		'code_footer',
+		'css_all',
+		'css_tablet',
+		'css_mobile',
+	];
+    
+    public function code_header() {
+        add_action('wp_head', [$this, 'insertHeaderCode']);
     }
 
     public function insertHeaderCode() {
-        echo wp_unslash(wp_extra_get_option('code_header')); // @codingStandardsIgnoreLine.
+        echo wp_unslash(Settings::get_option('code_header')); // @codingStandardsIgnoreLine.
+    }
+    
+    public function code_body() {
+        if(function_exists('wp_body_open') && version_compare(get_bloginfo('version'), '5.2' , '>=')) {
+            add_action('wp_body_open', [$this, 'insertBodyCode']);
+        }
     }
 
     public function insertBodyCode() {
-        echo wp_unslash(wp_extra_get_option('code_body')); // @codingStandardsIgnoreLine.
+        echo wp_unslash(Settings::get_option('code_body')); // @codingStandardsIgnoreLine.
+    }
+    
+    public function code_footer() {
+        add_action('wp_footer', [$this, 'insertFooterCode']);
     }
 
     public function insertFooterCode() {
-        echo wp_unslash(wp_extra_get_option('code_footer')); // @codingStandardsIgnoreLine.
+        echo wp_unslash(Settings::get_option('code_footer')); // @codingStandardsIgnoreLine.
     }
     
-    public function insertCustomCSS() {
+    public function css_all() {
+        add_action('wp_head', [$this, 'insertAllCSS'], 100 );
+    }
+    
+    public function css_tablet() {
+        add_action('wp_head', [$this, 'insertTabletCSS'], 100 );
+    }
+    
+    public function css_mobile() {
+        add_action('wp_head', [$this, 'insertMobileCSS'], 100 );
+    }
+    
+    public function insertAllCSS() {
         ob_start();
         ?>
-        <style id="extra-css" type="text/css">
+        <style id="all-css" type="text/css">
         <?php 
-        if(wp_extra_get_option('css_all')) {
-            echo wp_strip_all_tags(wp_extra_get_option('css_all')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-        }
-        if(wp_extra_get_option('css_tablet')) {
+        if(Settings::get_option('css_all')) {
+            echo wp_strip_all_tags(Settings::get_option('css_all')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        } ?>
+        </style>
+        <?php
+        $css = ob_get_clean();
+        echo Settings::minifyCSS($css);
+    }
+    
+    public function insertTabletCSS() {
+        ob_start();
+        ?>
+        <style id="tablet-css" type="text/css">
+        <?php 
+        if(Settings::get_option('css_tablet')) {
             echo '@media (max-width: 849px){';
-            echo wp_strip_all_tags(wp_extra_get_option('css_tablet')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            echo '}';
-        }
-        if(wp_extra_get_option('css_mobile')) {
-            echo '@media (max-width: 549px){';
-            echo wp_strip_all_tags(wp_extra_get_option('css_mobile')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo wp_strip_all_tags(Settings::get_option('css_tablet')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             echo '}';
         } ?>
         </style>
         <?php
         $css = ob_get_clean();
-        echo ClassEXtra::minifyCSS($css);
+        echo Settings::minifyCSS($css);
+    }
+    
+    public function insertMobileCSS() {
+        ob_start();
+        ?>
+        <style id="mobile-css" type="text/css">
+        <?php 
+        if(Settings::get_option('css_mobile')) {
+            echo '@media (max-width: 549px){';
+            echo wp_strip_all_tags(Settings::get_option('css_mobile')); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            echo '}';
+        } ?>
+        </style>
+        <?php
+        $css = ob_get_clean();
+        echo Settings::minifyCSS($css);
     }
 }

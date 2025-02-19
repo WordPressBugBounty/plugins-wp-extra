@@ -3,8 +3,8 @@ Contributors: wpvncom
 Donate link: https://www.paypal.me/copvn
 Tags: extra, functions, optimize, wpvnteam, security
 Requires at least: 6.2
-Tested up to: 6.6.2
-Stable tag: 8.5.5
+Tested up to: 6.7.2
+Stable tag: 8.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,15 @@ You can install the WP EXtra from your WordPress Dashboard or manually via FTP.
 2. Easily enable function with a single click.
 
 == Changelog ==
+
+= 8.6.0 =
+* [NEW] Turbo
+* [NEW] Quicklink
+* [NEW] Bottom AdminBar
+* [NEW] Remove Blocks
+* [NEW] MCE Excerpt
+* [FIX] SMTP
+* [FIX] 404 to Home
 
 = 8.5.5 =
 * [NEW] SSL Content Fixer

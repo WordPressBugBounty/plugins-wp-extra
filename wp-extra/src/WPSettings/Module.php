@@ -36,13 +36,14 @@ class Module extends OptionAbstract
                 .wps-module {
                     padding: 10px 0 0 20px !important;
                 }
-
                 .wps-module li {
                     border-radius: 4px; padding-top:10px;
                 }
-
                 .wps-module label svg {
                     float: right;
+                }
+                .wps-module label span {
+                    margin-right: 5px;
                 }
             </style>
             <?php

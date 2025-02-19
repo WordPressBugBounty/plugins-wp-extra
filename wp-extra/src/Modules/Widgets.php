@@ -1,6 +1,7 @@
 <?php
-
 namespace WPEXtra\Modules;
+
+use WPEXtra\Settings;
 
 class Widgets {
     
@@ -9,12 +10,10 @@ class Widgets {
     }
     
     public function disable_sidebar_widgets() {
-        if (isset($_GET['page']) && $_GET['page'] === 'wp-extra') {
+        if (!is_admin() || isset($_GET['page']) && $_GET['page'] === 'wp-extra') {
             return;
         }
-
-        $widgets = wp_extra_get_option('disable_widget');
-
+        $widgets = Settings::get_option('disable_widget');
         if (is_array($widgets) && !empty($widgets)) {
             foreach ($widgets as $widget_class) {
                 if (class_exists($widget_class)) {

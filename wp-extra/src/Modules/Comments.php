@@ -1,29 +1,39 @@
 <?php
-
 namespace WPEXtra\Modules;
 
-use WPEXtra\Core\ClassEXtra;
+use WPEXtra\Settings;
+use WPEXtra\Base;
 
-class Comments {
-
-	public function __construct() {
-        if (wp_extra_get_option('cm_antispam')) {
-            add_action('init', [$this, 'antispam_blacklist']);
-            if (!wp_extra_get_option('cm_traffic')) {
-                add_filter('preprocess_comment', [$this, 'antispam_comment']);
-            }
+class Comments extends Base {
+    
+    public function __construct() {
+		parent::__construct();
+    }
+    
+	protected $features = [
+		'cm_antispam',
+		'disable_comments',
+		'cm_media',
+	];
+    
+    public function cm_antispam() {
+        add_action('init', [$this, 'antispam_blacklist']);
+        if (!Settings::get_option('cm_traffic')) {
+            add_filter('preprocess_comment', [$this, 'antispam_comment']);
         }
-        if(wp_extra_get_option('disable_comments')) {
-			add_action('widgets_init', [$this, 'disableRecentComments']);
-			add_action('template_redirect', [$this, 'disableCommentsFeed'], 9);
-			add_action('template_redirect', [$this, 'removeCommentAdminBar']); 
-			add_action('admin_init', [$this, 'removeCommentAdminBar']);
-			add_action('wp_loaded', [$this, 'loadedDisableComments']);
-		}
-        if(wp_extra_get_option('cm_media')) {
-            add_filter('comments_open', array($this, 'filter_media_comment_status'), 10 , 2);
-            add_filter('manage_media_columns', array($this, 'hide_media_comments_column'));
-        }
+    }
+    
+    public function disable_comments() {
+        add_action('widgets_init', [$this, 'disableRecentComments']);
+        add_action('template_redirect', [$this, 'disableCommentsFeed'], 9);
+        add_action('template_redirect', [$this, 'removeCommentAdminBar']); 
+        add_action('admin_init', [$this, 'removeCommentAdminBar']);
+        add_action('wp_loaded', [$this, 'loadedDisableComments']);
+    }
+    
+    public function cm_media() {
+        add_filter('comments_open', array($this, 'filter_media_comment_status'), 10 , 2);
+        add_filter('manage_media_columns', array($this, 'hide_media_comments_column'));
     }
 
     public function antispam_blacklist()
@@ -126,6 +136,9 @@ class Comments {
 	}
     
     public function filter_media_comment_status( $open, $post_id ) {
+        if ( ! is_admin() ) {
+            return $open;
+        }
         $post = get_post( $post_id );
         if( $post->post_type == 'attachment' ) {
             return false;
@@ -134,6 +147,9 @@ class Comments {
     }
     
     public function hide_media_comments_column( $columns ) {
+        if ( ! is_admin() ) {
+            return $columns;
+        }
         if ( isset( $columns['comments'] ) ) {
             unset( $columns['comments'] );
         }
