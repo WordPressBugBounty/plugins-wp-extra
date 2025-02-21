@@ -3,7 +3,7 @@
  * Plugin name:         WP EXtra
  * Plugin URI:          https://wordpress.org/plugins/wp-extra/
  * Description:         ❤ This is a simple and perfect tool to use as your website’s functionality plugin. Awesome !!!
- * Version:             8.6.0
+ * Version:             8.6.1
  * Requires at least:   6.2
  * Requires PHP:        7.4
  * Author:              TienCOP
@@ -17,11 +17,9 @@ namespace WPEXtra;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-define( 'WPEX_VERSION', '8.6.0' );
+define( 'WPEX_VERSION', '8.6.1' );
 define( 'WPEX_FILE', __FILE__ );
 define( 'WPEX_DIR', __DIR__ );
-
 if (! class_exists('\WPVNTeam\WPSettings\WPSettings')) {
     include_once __DIR__ . '/wp-settings/wp-settings.php';
 }

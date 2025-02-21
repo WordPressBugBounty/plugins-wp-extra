@@ -9,7 +9,7 @@
     </th>
     <td>
         <?php
-        \wp_editor(html_entity_decode( $option->get_value_attribute(), ENT_QUOTES, 'UTF-8' ), $option->get_id_attribute(), [
+        \wp_editor(html_entity_decode($option->get_value_attribute() ?? '', ENT_QUOTES, 'UTF-8'), $option->get_id_attribute(), [
             'textarea_name' => $option->get_name_attribute(),
             'wpautop' => $option->get_arg('wpautop', true),
             'teeny' => $option->get_arg('teeny', false),

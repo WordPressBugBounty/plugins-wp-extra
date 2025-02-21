@@ -50,18 +50,8 @@ class Module extends OptionAbstract
         });
     }
     
-    public function handle_redirect()
-    {
-        if (isset($_POST['submit'])) {
-            $slug = str_replace('_', '-', $this->section->tab->settings->option_name);
-            wp_safe_redirect(admin_url('admin.php?page=' . $slug));
-            exit;
-        }
-    }
-    
     public function render()
     {
-        $this->handle_redirect();
         ?>
         <tr valign="top" class="<?php echo $this->get_hide_class_attribute(); ?>">
             <td colspan="2" class="wps-module">
