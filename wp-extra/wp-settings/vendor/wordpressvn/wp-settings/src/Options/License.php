@@ -52,9 +52,8 @@ class License extends OptionAbstract
         $lic['license_status'] = $license_data->license;
         $lic['license_expires'] = $license_data->expires ?: '';
         update_option($option_name, $lic);
-        $slug = strtolower(str_replace('_', '-', $option_name));
-        wp_redirect(admin_url('admin.php?page=' . $slug . '&tab=license'));
-		exit();
+        //wp_redirect($_SERVER['REQUEST_URI']);
+		//exit();
     }
     
     public function deactivate() {
@@ -77,10 +76,9 @@ class License extends OptionAbstract
         }
         $license_data = json_decode(wp_remote_retrieve_body($response));
         $lic['license_status'] = $license_data->license;
-        $lic['license_expires'] = $license_data->expires ?: '';
+        $lic['license_expires'] = isset($license_data->expires) ? $license_data->expires : '';
         update_option($option_name, $lic);
-        $slug = strtolower(str_replace('_', '-', $option_name));
-        wp_redirect(admin_url('admin.php?page=' . $slug . '&tab=license'));
-		exit();
+        //wp_redirect($_SERVER['REQUEST_URI']);
+		//exit();
     }
 }

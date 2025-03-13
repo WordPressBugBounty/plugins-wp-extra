@@ -52,6 +52,9 @@ class Restore extends OptionAbstract
             <td class="forminp forminp-text">
                 <textarea name="data" id="<?php echo $this->get_id_attribute(); ?>" rows="8" class="large-text code"><?php echo base64_encode(serialize(json_encode(get_option($this->section->tab->settings->option_name, [])))); ?></textarea>
                 <input type="hidden" name="_wpnonce_import" value="<?php echo wp_create_nonce($nonce); ?>" />
+                <button type="button" class="button components-button is-compact" onclick="copyToClipboard('<?php echo $this->get_id_attribute(); ?>')">
+                    <?php _e('Copy'); ?>
+                </button>
                 <input
                     name="restore"
                     id="<?php echo $this->get_id_attribute(); ?>"
@@ -59,10 +62,19 @@ class Restore extends OptionAbstract
                     value="<?php _e( 'Restore' ); ?>"
                     class="button components-button is-primary is-compact" 
                     onclick="return confirmImport();">
+
                 <script type="text/javascript">
-                function confirmImport() {
-                    return confirm("<?php _e( 'Are you sure you want to do this?' ); ?>");
-                }
+                    function confirmImport() {
+                        return confirm("<?php _e( 'Are you sure you want to do this?' ); ?>");
+                    }
+
+                    function copyToClipboard(elementId) {
+                        var textarea = document.getElementById(elementId);
+                        textarea.select();
+                        textarea.setSelectionRange(0, 99999);
+                        document.execCommand("copy");
+                        alert("<?php _e('Copied!'); ?>");
+                    }
                 </script>
                 <?php if($description = $this->get_arg('description')) { ?>
                     <p class="description"><?php echo $description; ?></p>

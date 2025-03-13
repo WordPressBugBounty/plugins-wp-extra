@@ -383,42 +383,52 @@ class Posts extends Base {
 	}
     
     public function media_default() {
-        add_filter( 'get_post_metadata', [$this, 'set_media_default'], 10, 4 );
+        add_filter('get_post_metadata', [$this, 'set_media_default'], 10, 4);
     }
-    
-    public function set_media_default( $null, $object_id, $meta_key, $single ) {
-        $allowed_post_types = array( 'post', 'product' );
-        if ( ! in_array( get_post_type( $object_id ), $allowed_post_types ) ) {
+
+    public function set_media_default($null, $object_id, $meta_key, $single) {
+        
+        if (is_admin() || (defined('DOING_AJAX') && DOING_AJAX) || (defined('REST_REQUEST') && REST_REQUEST)) {
             return $null;
         }
         
-        if ( is_single($object_id)) {
-            return null;
-        }
-        if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
+        if ($meta_key !== '_thumbnail_id') {
             return $null;
         }
-        if ( empty( $meta_key ) || $meta_key !== '_thumbnail_id' ) {
+
+        $post_type = get_post_type($object_id);
+        if (!$post_type) {
             return $null;
         }
-        if ( ! post_type_supports( get_post_type( $object_id ), 'thumbnail' ) ) {
+
+        if (!post_type_supports($post_type, 'thumbnail')) {
             return $null;
         }
-        $meta_cache = wp_cache_get( $object_id, 'post_meta' );
-        if ( ! $meta_cache ) {
-            $meta_cache = update_meta_cache( 'post', array( $object_id ) );
-            $meta_cache = $meta_cache[ $object_id ] ?? array();
+
+        $meta_cache = wp_cache_get($object_id, 'post_meta');
+        if (!$meta_cache) {
+            $meta_cache = update_meta_cache('post', [$object_id]);
+            $meta_cache = $meta_cache[$object_id] ?? [];
         }
-        if ( ! empty( $meta_cache['_thumbnail_id'][0] ) ) {
+
+        if (!empty($meta_cache['_thumbnail_id'][0])) {
             return $null;
         }
-        $meta_cache['_thumbnail_id'][0] = Settings::get_option('media_default');
-        wp_cache_set( $object_id, $meta_cache, 'post_meta' );
-        return $null;
+
+        $default_thumbnail_id = Settings::get_option('media_default');
+        if (empty($default_thumbnail_id)) {
+            return $null;
+        }
+
+        $meta_cache['_thumbnail_id'][0] = $default_thumbnail_id;
+        wp_cache_set($object_id, $meta_cache, 'post_meta');
+
+        return $default_thumbnail_id;
     }
 
     public function delete_attached() {
         add_action('before_delete_post', [$this, 'delete_attachments']);
+        add_action('deleted_post', [$this, 'delete_attachments']);
     }
     
     public function delete_attachments( $post_id ) {

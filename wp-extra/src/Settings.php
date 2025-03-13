@@ -380,6 +380,7 @@ class Settings {
         $section = $tab->add_section(__('Optional'));
         $section->add_option('checkbox-multiple', [
             'name' => 'media_thumbnails',
+            'del' => true,
             'options' => fn() => array_combine(
                 $sizes = get_intermediate_image_sizes(),
                 array_map(fn($size) => ucfirst(str_replace('_', ' ', $size)), $sizes)
@@ -575,7 +576,6 @@ class Settings {
         ]);
         $section->add_option('checkbox', [
             'name' => 'login_logo_hide',
-            'default' => 1,
             'label' => __('Logo'),
             'description' => __('Remove')
         ]);
@@ -625,6 +625,7 @@ class Settings {
         ]);
         $section->add_option('checkbox-multiple', [
             'name' => 'login_link_form',
+            'del' => true,
             'css' => ['hide_class' => 'pro'],
             'options' => [
 				'remember' => __('Remember Me'),
@@ -1147,19 +1148,21 @@ RewriteRule . /index.php [L]
             'name' => 'slug_post_type',
             'css' => ['hide_class' => 'pro'],
             'options'     => fn() => array_combine(
-                $ids = array_diff(get_post_types(['public' => true]), ['post', 'page', 'attachment', 'blocks']),
+                $ids = array_diff(get_post_types(['public' => true]), ['post', 'page', 'attachment', 'blocks', 'product']),
                 array_map(fn($id) => get_post_type_object($id)->label . " <code>$id</code>", $ids)
             ),
-            'label' => __('Remove Post Type Slug')
+            'label' => __('Remove Post Type Slug'),
+            'description' => __('Not compatible with WooCommerce', 'wp-extra')
         ]);
         $section->add_option('checkbox-multiple', [
             'name' => 'slug_taxonomy',
             'css' => ['hide_class' => 'pro'],
             'options'     => fn() => array_combine(
-                $ids = array_diff(get_taxonomies(['public' => true], 'names'), ['post_format', 'product_shipping_class']),
+                $ids = array_diff(get_taxonomies(['public' => true], 'names'), ['post_format', 'product_shipping_class', 'product_brand', 'product_cat', 'product_tag']),
                 array_map(fn($id) => get_taxonomy($id)->label . " <code>$id</code>", $ids)
             ),
-            'label' => __('Remove Taxonomy Slug')
+            'label' => __('Remove Taxonomy Slug'),
+            'description' => __('Not compatible with WooCommerce', 'wp-extra')
         ]);
     }
 
@@ -1202,7 +1205,7 @@ RewriteRule . /index.php [L]
             'name' => 'debugging',
             'css' => ['hide_class' => 'pro'],
             'label' => 'Debugging',
-            'description' => __('Enable WP_DEBUG mode', 'wp-extra')
+            'description' => __('Enable WP_DEBUG mode. Warning: Please DISABLE this feature after use.', 'wp-extra')
         ]);
         $section->add_option('textarea', [
             'name' => 'http_request',

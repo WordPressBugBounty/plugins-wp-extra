@@ -94,8 +94,6 @@ class Branding extends Base {
 	protected $features = [
 		'login_title',
 		'login_url',
-		'adminfooter_version',
-		'adminfooter_custom',
 		'donot_copy',
 	];
     
@@ -210,22 +208,6 @@ class Branding extends Base {
     private function disable_login_url() {
         wp_redirect(home_url());
         exit();
-    }
-    
-    public function adminfooter_version() {
-        add_filter( 'update_footer', '__return_empty_string', 11 );
-    }
-    
-    public function adminfooter_custom() {
-        add_filter( 'admin_footer_text', [$this, 'admin_footer_custom']);
-    }
-    
-    public function admin_footer_custom( $footer_text ) {
-        if(Settings::get_option('adminfooter_custom') && Settings::isPro()) {
-            return wp_kses_post(Settings::get_option('adminfooter_custom'));
-        } else {
-            return $footer_text;
-        }
     }
     
     public function donot_copy() {

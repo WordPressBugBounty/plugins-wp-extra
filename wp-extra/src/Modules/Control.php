@@ -11,11 +11,29 @@ class Control extends Base {
     }
     
 	protected $features = [
+		'adminfooter_version',
+		'adminfooter_custom',
 		'no_backend',
 		'application_passwords',
 		'themeplugin_edits',
 		'core_updates',
 	];
+    
+    public function adminfooter_version() {
+        add_filter( 'update_footer', '__return_empty_string', 11 );
+    }
+    
+    public function adminfooter_custom() {
+        add_filter( 'admin_footer_text', [$this, 'admin_footer_custom']);
+    }
+    
+    public function admin_footer_custom( $footer_text ) {
+        if(Settings::get_option('adminfooter_custom') && Settings::isPro()) {
+            return wp_kses_post(Settings::get_option('adminfooter_custom'));
+        } else {
+            return $footer_text;
+        }
+    }
     
     public function no_backend() {
         add_action( 'admin_init', [$this, 'redirect_non_admin_user']);

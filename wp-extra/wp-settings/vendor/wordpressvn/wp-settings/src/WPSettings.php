@@ -264,6 +264,9 @@ class WPSettings
     }
     
     private function license_expired($exp_date) {
+        if ($exp_date === 'lifetime') {
+            return false;
+        }
         $today = date('Y-m-d H:i:s');
         return $exp_date < $today;
     }

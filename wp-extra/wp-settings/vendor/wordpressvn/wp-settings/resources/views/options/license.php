@@ -12,7 +12,15 @@ $color = $is_valid ? 'background: rgba(18, 183, 106, 0.15); border: 1px solid rg
 $activate_btn_style = $is_valid ? 'display:none;' : '';
 $deactivate_btn_style = $is_valid ? '' : 'display:none;';
 $input_disabled = $is_valid ? ' disabled' : '';
-$expiration_date = isset($license['license_expires']) ? date('d/m/Y', strtotime($license['license_expires'])) : __('N/A');
+if (!empty($license['license_expires'])) {
+    if ($license['license_expires'] === 'lifetime') {
+        $expiration_date = __('Lifetime');
+    } else {
+        $expiration_date = date('d/m/Y', strtotime($license['license_expires']));
+    }
+} else {
+    $expiration_date = __('N/A');
+}
 ?>
 <tr valign="top">
     <th scope="row">

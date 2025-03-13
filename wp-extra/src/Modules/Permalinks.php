@@ -29,14 +29,18 @@ class Permalinks {
     }
     
     public function add_nofollow_external_links($content) {
-        return preg_replace_callback('/<a(.*?)href="(http[s]?:\/\/[^"]+)"(.*?)>(.*?)<\/a>/i', function ($matches) {
-            if (strpos($matches[2], home_url()) === false) {
+        return preg_replace_callback('/<a(.*?)href="(https?:\/\/[^"]+)"(.*?)>(.*?)<\/a>/i', function ($matches) {
+            $site_url = home_url();
+            if (strpos($matches[2], $site_url) === false) {
                 $link = $matches[0];
-                if (strpos($matches[0], 'rel=') === false) {
+                if (strpos($matches[1] . $matches[3], 'rel=') === false) {
                     $link = str_replace('<a', '<a rel="nofollow"', $matches[0]);
-                } elseif (!preg_match('/rel="[^"]*nofollow[^"]*"/i', $matches[0])) {
-                    $link = str_replace('rel="', 'rel="nofollow ', $matches[0]);
+                } 
+                elseif (!preg_match('/rel="[^"]*nofollow[^"]*"/i', $matches[1] . $matches[3])) {
+                    $link = preg_replace('/rel="([^"]*)"/i', 'rel="nofollow $1"', $matches[0]);
                 }
+
+                return $link;
             }
             return $matches[0];
         }, $content);
