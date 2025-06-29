@@ -18,6 +18,7 @@ class Media extends Base {
 		'media_functions',
 		'save_images',
 		'autoset',
+		'allow_filetype',
 	];
     
     public function meta_images() {
@@ -51,6 +52,12 @@ class Media extends Base {
     
     public function autoset() {
         add_action( 'save_post', [$this, 'auto_featured_image'] );
+    }
+    
+    public function allow_filetype() {
+        add_filter('wp_check_filetype_and_ext', [$this, 'ignore_upload_ext'], 10, 4);
+        add_filter('mime_types', [$this, 'webp_upload_mimes']);
+        add_filter('file_is_displayable_image', [$this, 'webp_is_displayable'], 10, 2);
     }
     
     public function save_post_images($post_id, $post, $update) {
@@ -356,6 +363,40 @@ class Media extends Base {
                 wp_update_post($post_data);
             }
         }
+    }
+    
+    function ignore_upload_ext($checked, $file, $filename, $mimes){
+		if(!$checked['type']){
+			$wp_filetype = wp_check_filetype( $filename, $mimes );
+			$ext = $wp_filetype['ext'];
+			$type = $wp_filetype['type'];
+			$proper_filename = $filename;
+			if($type && 0 === strpos($type, 'image/') && $ext !== 'svg'){
+				$ext = $type = false;
+			}
+			$checked = compact('ext','type','proper_filename');
+		}
+		return $checked;
+	}
+    
+    function webp_upload_mimes($existing_mimes) {
+        $existing_mimes['webp'] = 'image/webp';
+        return $existing_mimes;
+    }
+    
+    function webp_is_displayable($result, $path) {
+        if ($result === false) {
+            $displayable_image_types = array( IMAGETYPE_WEBP );
+            $info = @getimagesize( $path );
+            if (empty($info)) {
+                $result = false;
+            } elseif (!in_array($info[2], $displayable_image_types)) {
+                $result = false;
+            } else {
+                $result = true;
+            }
+        }
+        return $result;
     }
     
 }

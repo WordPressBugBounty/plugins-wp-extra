@@ -378,6 +378,10 @@ class Settings {
         ]);
         
         $section = $tab->add_section(__('Optional'));
+        $section->add_option('checkbox', [
+            'name' => 'allow_filetype',
+            'label' => __('Allow').' SVG & Webp'
+        ]);
         $section->add_option('checkbox-multiple', [
             'name' => 'media_thumbnails',
             'del' => true,
