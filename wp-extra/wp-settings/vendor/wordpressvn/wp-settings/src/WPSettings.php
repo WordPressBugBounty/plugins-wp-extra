@@ -439,8 +439,8 @@ class WPSettings
             wp_die(__('You need a higher level of permission.'));
         }
         
-        if (isset($_POST['reset'])) {
-            return $this->reset();
+        if (isset($_POST['do_reset'])) {
+            return $this->set_reset();
         }
 
         $current_options = $this->get_options();
@@ -469,7 +469,7 @@ class WPSettings
         $this->flash->set('success', __('Changes saved.'));
     }
     
-    public function reset()
+    public function set_reset()
     {
         if (! isset($_POST['_wpnonce']) || ! wp_verify_nonce($_POST['_wpnonce'], 'wp_settings_save_' . $this->option_name)) {
             return;

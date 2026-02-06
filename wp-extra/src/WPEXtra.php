@@ -16,25 +16,25 @@ class WPEXtra {
 
         $moduleMap = [
             'backend' => [
-                'dashboard' => Modules\Dashboards::class,
-                'duplicate' => Modules\Duplicate::class,
-                'widget' => Modules\Widgets::class,
-                'media' => Modules\Media::class,
-                'control' => Modules\Control::class,
+                'dashboard' => Modules\Backend\Dashboards::class,
+                'duplicate' => Modules\Backend\Duplicate::class,
+                'widget' => Modules\Backend\Widgets::class,
+                'media' => Modules\Backend\Media::class,
+                'control' => Modules\Backend\Control::class,
             ],
             'frontend' => [
-                'logins' => Modules\Branding::class,
-                'optimize' => Modules\Optimize::class,
-                'code' => Modules\Code::class,
-                'cookie' => Modules\Cookie::class,
+                'logins' => Modules\Frontend\Branding::class,
+                'optimize' => Modules\Frontend\Optimize::class,
+                'code' => Modules\Frontend\Code::class,
+                'cookie' => Modules\Frontend\Cookie::class,
             ],
             'common' => [
-                'admins' => Modules\Permission::class,
-                'posts' => Modules\Posts::class,
-                'comments' => Modules\Comments::class,
-                'security' => Modules\Security::class,
-                'smtp' => Modules\SMTP::class,
-                'permalinks' => Modules\Permalinks::class,
+                'admins' => Modules\Common\Permission::class,
+                'posts' => Modules\Common\Posts::class,
+                'comments' => Modules\Common\Comments::class,
+                'security' => Modules\Common\Security::class,
+                'smtp' => Modules\Common\SMTP::class,
+                'permalinks' => Modules\Common\Permalinks::class,
             ],
         ];
 

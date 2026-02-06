@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP EXtra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 01:55+0000\n"
+"POT-Creation-Date: 2025-10-31 15:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,211 +16,211 @@ msgstr ""
 "X-Loco-Version: 2.6.6; wp-6.3.1\n"
 "X-Domain: wp-extra"
 
-#: src/Modules/Cookie.php:30
+#: src/Modules/Frontend/Cookie.php:30
 msgid "Accept Cookies"
 msgstr ""
 
-#: src/Settings.php:1127
+#. 1. link to plugin site; 2. link to plugin name
+#: wp-settings/vendor/wordpressvn/wp-settings/src/WPSettings.php:286
+#, php-format
+msgid ""
+"Activate <a href=\"%1$s\">your license</a> to enable access to updates, "
+"support & PRO features for <strong>%2$s</strong>."
+msgstr ""
+
+#: src/Settings.php:1120
 msgid "Add Any Extension to Pages"
 msgstr ""
 
-#: src/Settings.php:1099
+#: src/Settings.php:1092
 msgid "Add custom CSS here"
 msgstr ""
 
-#: src/Settings.php:1113
+#: src/Settings.php:1106
 msgid "Add custom CSS here for mobile view"
 msgstr ""
 
-#: src/Settings.php:1106
+#: src/Settings.php:1099
 msgid "Add custom CSS here for tablets and mobile"
 msgstr ""
 
-#: src/Settings.php:1078
+#: src/Settings.php:1071
 msgid ""
 "Add custom scripts inside HEAD tag. You need to have a SCRIPT tag around "
 "scripts."
 msgstr ""
 
-#: src/Settings.php:1084
+#: src/Settings.php:1077
 msgid ""
 "Add custom scripts just after the BODY tag opened. You need to have a SCRIPT "
 "tag around scripts."
 msgstr ""
 
-#: src/Settings.php:1090
+#: src/Settings.php:1083
 msgid ""
 "Add custom scripts you might want to be loaded in the footer of your website."
 " You need to have a SCRIPT tag around scripts."
 msgstr ""
 
-#: src/Settings.php:1138
+#: src/Settings.php:1131
 msgid "Add nofollow to external links"
 msgstr ""
 
-#: src/Settings.php:138
+#: src/Settings.php:137
 msgid "Add rel=nofollow & sponsored"
 msgstr ""
 
-#: src/Settings.php:191
+#: src/Settings.php:182
 msgid "Add tinymce editor to the excerpt"
 msgstr ""
 
-#: src/Settings.php:178
-msgid "Adds a tinymce editor to the category description box"
-msgstr ""
-
-#: src/Settings.php:88
+#: src/Settings.php:87
 msgid "Admin Notice"
 msgstr ""
 
-#: src/Settings.php:1228
+#: src/Settings.php:1218
 msgid ""
 "Administrator role user can take dump of the mysql database by single click."
 msgstr ""
 
-#: src/Settings.php:1198
+#: src/Settings.php:1193
 msgid "All Core Updates"
 msgstr ""
 
-#: src/Settings.php:83
+#: src/Settings.php:82
 msgid "All Dashboard"
 msgstr ""
 
-#: src/Settings.php:1098
+#: src/Settings.php:1091
 msgid "All screens"
 msgstr ""
 
-#: src/Settings.php:1128
+#: src/Settings.php:1121
 msgid "Allows you to specify an extension for pages"
 msgstr ""
 
-#: src/Settings.php:664
+#: src/Settings.php:657
 msgid "Answer"
 msgstr ""
 
-#: src/Settings.php:411
+#: src/Settings.php:404
 msgid "Anti-Spam Comments"
 msgstr ""
 
-#: src/Settings.php:970
+#: src/Settings.php:963
 msgid "Anti-spam forms"
 msgstr ""
 
-#: src/Settings.php:933
+#: src/Settings.php:926
 msgid "Authenticate connection with username and password"
 msgstr ""
 
-#: src/Settings.php:659 src/Pro/Modules/Branding.php:208
+#: src/Settings.php:652
 msgid "Authentication Code"
 msgstr ""
 
-#: src/Settings.php:291
+#: src/Settings.php:279
 msgid "Auto Crop"
 msgstr ""
 
-#: src/Settings.php:285
+#: src/Settings.php:273
 msgid "Auto Save Images"
 msgstr ""
 
-#: src/Settings.php:280
+#: src/Settings.php:268
 msgid "Auto Set Featured Image"
 msgstr ""
 
-#: src/Settings.php:372
+#: src/Settings.php:360
 msgid ""
 "Auto Set The Image Title, Alt-Text, Caption & Description. Default to using "
 "the post title."
 msgstr ""
 
-#: src/Settings.php:482
+#: src/Settings.php:475
 msgid "Auto-hide"
 msgstr ""
 
-#: src/Settings.php:412
+#: src/Settings.php:405
 msgid ""
 "Automatically checks all comments and filters out the ones that look like "
 "spam."
 msgstr ""
 
-#: src/Settings.php:281
+#: src/Settings.php:269
 msgid "Automatically find and set post images as featured images"
 msgstr ""
 
-#: src/Settings.php:321
+#: src/Settings.php:309
 msgid "Automatically resizes uploaded images (JPEG, GIF, and PNG)"
 msgstr ""
 
-#: src/Settings.php:914
+#: src/Settings.php:907
 msgid "Automatically uses Gmail SMTP"
 msgstr ""
 
-#: src/Settings.php:206
+#: src/Settings.php:194
 msgid "Back To Top In WP Admin Area"
 msgstr ""
 
-#: src/Settings.php:1211
+#: src/Settings.php:1206
 msgid ""
 "Block all requests from this domain, one domain per line. E.g: domain. com"
 msgstr ""
 
-#: src/Settings.php:648
+#: src/Settings.php:641
 msgid ""
 "Block excessive login attempts and protect your site against brute force "
 "attacks."
 msgstr ""
 
-#: src/Settings.php:63 src/Settings.php:568
+#: src/Settings.php:63 src/Settings.php:561
 msgid "Branding"
 msgstr ""
 
-#: src/Settings.php:724
+#: src/Settings.php:717
 msgid "Button Back"
 msgstr ""
 
-#: src/Settings.php:177
-msgid "Category Description"
-msgstr ""
-
-#: src/Settings.php:574
+#: src/Settings.php:567
 msgid "Change the title tag content used on the login page."
 msgstr ""
 
-#: src/Settings.php:433
+#: src/Settings.php:426
 msgid ""
 "Choose the sidebar widgets you would like to disable. Note that developers "
 "can still display widgets using PHP."
 msgstr ""
 
-#: src/Settings.php:170
+#: src/Settings.php:168
 msgid "Classic Widgets"
 msgstr ""
 
-#: src/Settings.php:139
+#: src/Settings.php:138
 msgid "Clean HTML"
 msgstr ""
 
-#: src/Settings.php:845
+#: src/Settings.php:838
 msgid "Controls how often the WordPress Heartbeat API is allowed to run."
 msgstr ""
 
-#: src/Settings.php:315
+#: src/Settings.php:303
 msgid "Convert PNG to JPG"
 msgstr ""
 
-#: src/Settings.php:887
+#: src/Settings.php:880
 msgid "Cookie expire time"
 msgstr ""
 
-#: src/Settings.php:271
+#: src/Settings.php:259
 msgid "Copy Category, Tags and Custom Taxonomy"
 msgstr ""
 
-#: src/Settings.php:713
+#: src/Settings.php:706
 msgid "Copying Content"
 msgstr ""
 
-#: src/Settings.php:719
+#: src/Settings.php:712
 msgid "Copyright WP EXtra"
 msgstr ""
 
@@ -228,168 +228,172 @@ msgstr ""
 msgid "Create new elements for Flatsome"
 msgstr ""
 
-#: src/Settings.php:1074
+#: src/Settings.php:1067
 msgid "Custom Scripts"
 msgstr ""
 
-#: src/Settings.php:813
+#: src/Settings.php:806
 msgid "Default (Enabled)"
 msgstr ""
 
-#: src/Settings.php:216
+#: src/Settings.php:204
 msgid "Default featured image"
 msgstr ""
 
-#: src/Settings.php:212
+#: src/Settings.php:200
 msgid "Delete Attached Media"
 msgstr ""
 
-#: src/Settings.php:986
+#: src/Settings.php:979
 msgid "Disable admin email notification when a new user is registered"
 msgstr ""
 
-#: src/Settings.php:985
+#: src/Settings.php:978
 msgid "Disable auto update email notification"
 msgstr ""
 
-#: src/Settings.php:987
+#: src/Settings.php:980
 msgid "Disable email notification when users reset passwords"
 msgstr ""
 
-#: src/Settings.php:989
+#: src/Settings.php:982
 msgid "Disable email notifications"
 msgstr ""
 
-#: src/Settings.php:830
+#: src/Settings.php:823
 msgid "Disable Everywhere"
 msgstr ""
 
-#: src/Settings.php:814
+#: src/Settings.php:807
 msgid "Disable for Non-Admins"
 msgstr ""
 
-#: src/Settings.php:808
+#: src/Settings.php:801
 msgid ""
 "Disable Self Pingbacks (generated when linking to an article on your own "
 "blog)."
 msgstr ""
 
-#: src/Settings.php:969
+#: src/Settings.php:962
 msgid "Disable SSL Verification"
 msgstr ""
 
-#: src/Settings.php:393
+#: src/Settings.php:386
 msgid "Disable Threshold & EXIF"
 msgstr ""
 
-#: src/Settings.php:388
+#: src/Settings.php:381
 msgid ""
 "Disable thumbnail sizes, default WordPress sizes and theme/plugins image size"
 msgstr ""
 
-#: src/Settings.php:387
+#: src/Settings.php:380
 msgid "Disable Thumbnails"
 msgstr ""
 
-#: src/Settings.php:815
+#: src/Settings.php:808
 msgid "Disable When Logged Out"
 msgstr ""
 
-#: src/Settings.php:803
+#: src/Settings.php:796
 msgid "Disable WordPress generated RSS feed link tags."
 msgstr ""
 
-#: src/Settings.php:798
+#: src/Settings.php:791
 msgid "Disable WordPress generated RSS feeds and 301 redirect URL to parent."
 msgstr ""
 
-#: src/Settings.php:834
+#: src/Settings.php:827
 msgid ""
 "Disable WordPress Heartbeat everywhere or in certain areas (used for auto "
 "saving and revision tracking)."
 msgstr ""
 
-#: src/Settings.php:1063
+#: src/Settings.php:1056
 msgid "Disables dashicons on the front end when not logged in."
 msgstr ""
 
-#: src/Settings.php:819
+#: src/Settings.php:812
 msgid ""
 "Disables REST API requests and displays an error message if the requester "
 "does not have permission."
 msgstr ""
 
-#: src/Settings.php:171
+#: src/Settings.php:169
 msgid "Display a legacy widget."
 msgstr ""
 
-#: src/Settings.php:870
+#: src/Settings.php:863
 msgid "Display Privacy Policy"
 msgstr ""
 
-#: src/Settings.php:707
+#: src/Settings.php:700
 msgid "Do Not Copy"
+msgstr ""
+
+#: wp-settings/vendor/wordpressvn/wp-settings/resources/views/options/license.php:52
+msgid "Don't have a license? Click here to purchase."
 msgstr ""
 
 #: src/Core.php:29
 msgid "Donate"
 msgstr ""
 
-#: src/Settings.php:286
+#: src/Settings.php:274
 msgid "Downloading automatically image from a post to gallery"
 msgstr ""
 
-#: src/Settings.php:262
+#: src/Settings.php:250
 msgid "Duplicate Posts, Pages and Custom Post Type"
 msgstr ""
 
-#: src/Settings.php:1205
-msgid "Enable WP_DEBUG mode"
+#: src/Settings.php:1200
+msgid "Enable WP_DEBUG mode. Warning: Please DISABLE this feature after use."
 msgstr ""
 
-#: src/Settings.php:396
+#: src/Settings.php:389
 msgid "Exif automatic rotation"
 msgstr ""
 
-#: src/Settings.php:1226
+#: src/Settings.php:1216
 msgid "Export to SQL"
 msgstr ""
 
-#: src/Settings.php:1133
+#: src/Settings.php:1126
 msgid "Extension"
 msgstr ""
 
-#: src/Settings.php:1053
+#: src/Settings.php:1046
 msgid ""
 "Faster subsequent page-loads by prefetching in-viewport links during idle "
 "time."
 msgstr ""
 
-#: src/Settings.php:541
+#: src/Settings.php:534
 msgid "Field Email"
 msgstr ""
 
-#: src/Settings.php:547
+#: src/Settings.php:540
 msgid "Field Password"
 msgstr ""
 
-#: src/Settings.php:360
+#: src/Settings.php:348
 msgid "File Renamer"
 msgstr ""
 
-#: src/Settings.php:310
+#: src/Settings.php:298
 msgid "Flip horizontal"
 msgstr ""
 
-#: src/Settings.php:959
+#: src/Settings.php:952
 msgid "Force from e-mail address"
 msgstr ""
 
-#: src/Settings.php:964
+#: src/Settings.php:957
 msgid "Force from e-mail sender name"
 msgstr ""
 
-#: src/Settings.php:377
+#: src/Settings.php:365
 msgid "From Image Filename"
 msgstr ""
 
@@ -397,23 +401,23 @@ msgstr ""
 msgid "Get WP EXtra PRO now"
 msgstr ""
 
-#: src/Settings.php:636
+#: src/Settings.php:629
 msgid "Hide Controls"
 msgstr ""
 
-#: src/Settings.php:515
+#: src/Settings.php:508
 msgid "Hide Menu"
 msgstr ""
 
-#: src/Settings.php:534
+#: src/Settings.php:527
 msgid "Hide Plugin"
 msgstr ""
 
-#: src/Settings.php:442
+#: src/Settings.php:435
 msgid "Hide Toolbar"
 msgstr ""
 
-#: src/Settings.php:1189
+#: src/Settings.php:1184
 msgid "Hide Users"
 msgstr ""
 
@@ -425,25 +429,21 @@ msgstr ""
 msgid "https://wpvnteam.com"
 msgstr ""
 
-#: src/Settings.php:341
+#: src/Settings.php:329
 msgid "Image Size in kilobytes"
 msgstr ""
 
-#: src/Pro/Modules/Branding.php:218
-msgid "Invalid two-factor authentication code"
-msgstr ""
-
-#: src/Modules/Control.php:56 src/Modules/Control.php:74
+#: src/Modules/Backend/Control.php:74 src/Modules/Backend/Control.php:92
 msgid ""
 "is already enabled somewhere else on your site. We suggest only enabling "
 "this feature in one place."
 msgstr ""
 
-#: src/Settings.php:354
+#: src/Settings.php:342
 msgid "JPEG compression level"
 msgstr ""
 
-#: src/Settings.php:395
+#: src/Settings.php:388
 msgid "Large image threshold"
 msgstr ""
 
@@ -451,67 +451,71 @@ msgstr ""
 msgid "Like this plugin? Check out our other WordPress products:"
 msgstr ""
 
-#: src/Settings.php:647
+#: src/Settings.php:640
 msgid "Limit Login Attempts"
 msgstr ""
 
-#: src/Settings.php:75
+#: src/Settings.php:74
 msgid "List Module"
 msgstr ""
 
-#: src/Settings.php:1035
+#: src/Settings.php:1028
 msgid ""
 "List of JavaScript file IDs. Example: id=\"wp-extra-js\" should only use wp-"
 "extra. One data field per line."
 msgstr ""
 
-#: src/Settings.php:573
+#: src/Settings.php:566
 msgid "Login Title"
 msgstr ""
 
-#: src/Settings.php:591
+#: src/Settings.php:583
 msgid "Logo URL"
 msgstr ""
 
-#: src/Settings.php:200
+#: src/Settings.php:188
 msgid "Making it stick to the bottom of the page when scrolling down the page"
 msgstr ""
 
-#: src/Settings.php:860
+#: src/Settings.php:853
 msgid "Message"
 msgstr ""
 
-#: src/Settings.php:1041
+#: src/Settings.php:1034
 msgid "Minify HTML output for clean looking markup and faster downloading."
 msgstr ""
 
-#: src/Settings.php:1112
+#: src/Settings.php:1105
 msgid "Mobile only"
 msgstr ""
 
-#: src/Settings.php:1216
+#: src/Settings.php:1211
 msgid "Nags & Notices"
 msgstr ""
 
-#: src/Settings.php:641
+#: src/Settings.php:634
 msgid "New private window"
 msgstr ""
 
-#: src/Settings.php:1000
+#: src/Settings.php:1147 src/Settings.php:1157
+msgid "Not compatible with WooCommerce"
+msgstr ""
+
+#: src/Settings.php:993
 msgid ""
 "Note: Please combine with any Cache plugin for faster performance. Only "
 "works for visitors."
 msgstr ""
 
-#: src/Settings.php:831
+#: src/Settings.php:824
 msgid "Only Allow When Editing Posts/Pages"
 msgstr ""
 
-#: src/Settings.php:69 src/Settings.php:999 src/Settings.php:1000
+#: src/Settings.php:69 src/Settings.php:992 src/Settings.php:993
 msgid "Optimize"
 msgstr ""
 
-#: src/Settings.php:371
+#: src/Settings.php:359
 msgid "Optimize image SEO"
 msgstr ""
 
@@ -519,31 +523,27 @@ msgstr ""
 msgid "Our WordPress Products"
 msgstr ""
 
-#: src/Settings.php:62 src/Settings.php:438
+#: src/Settings.php:62 src/Settings.php:431
 msgid "Permission"
 msgstr ""
 
-#: src/Settings.php:731
+#: src/Settings.php:724
 msgid "Please backup before making any changes."
-msgstr ""
-
-#: src/Pro/Modules/Branding.php:221
-msgid "Please enter the two-factor authentication code"
 msgstr ""
 
 #: src/Settings.php:48
 msgid "Please upgrade to the PRO plan to unlock more awesome features."
 msgstr ""
 
-#: src/Settings.php:1009
+#: src/Settings.php:1002
 msgid "Prevent Gutenberg Block Library CSS from Loading on the Frontend."
 msgstr ""
 
-#: src/Settings.php:199
+#: src/Settings.php:186
 msgid "Publish Button"
 msgstr ""
 
-#: src/Settings.php:658
+#: src/Settings.php:651
 msgid "Question"
 msgstr ""
 
@@ -551,127 +551,127 @@ msgstr ""
 msgid "Rate WP EXtra on WordPress.org"
 msgstr ""
 
-#: src/Settings.php:236
+#: src/Settings.php:224
 msgid "Redirect 404 to Home"
 msgstr ""
 
-#: src/Settings.php:241
+#: src/Settings.php:229
 msgid "Redirect Single Post"
 msgstr ""
 
-#: src/Settings.php:418
+#: src/Settings.php:411
 msgid "Redirect to link"
 msgstr ""
 
-#: src/Settings.php:242
+#: src/Settings.php:230
 msgid "Redirect to the post if the search results return only one post."
 msgstr ""
 
-#: src/Settings.php:1143
+#: src/Settings.php:1136
 msgid "Redirecting Attachment Pages"
 msgstr ""
 
-#: src/Settings.php:984
+#: src/Settings.php:977
 msgid "Remove admin email confirmation"
 msgstr ""
 
-#: src/Settings.php:850
+#: src/Settings.php:843
 msgid "Remove all core blocks"
 msgstr ""
 
-#: src/Settings.php:1068
+#: src/Settings.php:1061
 msgid "Remove global-styles-inline-css & SVG Duotone Filter"
 msgstr ""
 
-#: src/Settings.php:248
+#: src/Settings.php:236
 msgid "Remove link in the tags from all post"
 msgstr ""
 
-#: src/Settings.php:1004
+#: src/Settings.php:997
 msgid "Remove query strings from static resources (CSS, JS)."
 msgstr ""
 
-#: src/Settings.php:788
+#: src/Settings.php:781
 msgid "Remove RSD (Real Simple Discovery) link tag."
 msgstr ""
 
-#: src/Settings.php:793
+#: src/Settings.php:786
 msgid "Remove Shortlink link tag."
 msgstr ""
 
-#: src/Settings.php:783
+#: src/Settings.php:776
 msgid "Remove wlwmanifest (Windows Live Writer) link tag."
 msgstr ""
 
-#: src/Settings.php:773
+#: src/Settings.php:766
 msgid "Removes jQuery Migrate JavaScript file (jquery-migrate.min.js)."
 msgstr ""
 
-#: src/Settings.php:824
+#: src/Settings.php:817
 msgid ""
 "Removes REST API link tag from the front end and the REST API header link "
 "from page requests."
 msgstr ""
 
-#: src/Settings.php:763
+#: src/Settings.php:756
 msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js). "
 msgstr ""
 
-#: src/Settings.php:1058
+#: src/Settings.php:1051
 msgid "Removes WordPress Emojis JavaScript file (wp-emoji-release.min.js)."
 msgstr ""
 
-#: src/Settings.php:778
+#: src/Settings.php:771
 msgid "Removes WordPress version meta tag."
 msgstr ""
 
-#: src/Settings.php:367
+#: src/Settings.php:355
 msgid ""
 "Rename uploaded files available in wordpress media and change the postname "
 "or slug name."
 msgstr ""
 
-#: src/Settings.php:586
+#: src/Settings.php:578
 msgid "Replace the default WordPress logo. Max width: 320px."
 msgstr ""
 
-#: src/Settings.php:320
+#: src/Settings.php:308
 msgid "Resize Images"
 msgstr ""
 
-#: src/Settings.php:725
+#: src/Settings.php:718
 msgid "Restrict user from clicking the back button."
 msgstr ""
 
-#: src/Settings.php:708
+#: src/Settings.php:701
 msgid "Restrict user to copy content & disable mouse right click."
 msgstr ""
 
-#: src/Settings.php:1176
+#: src/Settings.php:1171
 msgid "Restricted backend access for non-admins."
 msgstr ""
 
-#: src/Settings.php:977
+#: src/Settings.php:970
 msgid "Sends a simple test email to check your settings."
 msgstr ""
 
-#: src/Settings.php:145
+#: src/Settings.php:143
 msgid "Signature"
 msgstr ""
 
-#: src/Modules/Security.php:194
+#: src/Modules/Common/Security.php:194
 msgid "Sorry, you do not have permission to make REST API requests."
 msgstr ""
 
-#: src/Settings.php:1105
+#: src/Settings.php:1098
 msgid "Tablets and down"
 msgstr ""
 
-#: src/Settings.php:247
+#: src/Settings.php:235
 msgid "Tag links"
 msgstr ""
 
-#: src/Settings.php:976
+#: src/Settings.php:969
 msgid "Test Email"
 msgstr ""
 
@@ -689,32 +689,38 @@ msgid ""
 "target=\"_blank\">rate us on WordPress.org</a>"
 msgstr ""
 
-#: src/Settings.php:927
+#: src/Settings.php:920
 msgid ""
 "The port which will be used when sending an email (587/465/25). If you "
 "choose TLS it should be set to 587. For SSL use port 465 instead."
 msgstr ""
 
-#: src/Settings.php:920
+#: src/Settings.php:913
 #, php-format
 msgid "The SMTP server which will be used to send email. %s"
 msgstr ""
 
-#: src/Settings.php:1047
+#: src/Settings.php:1040
 msgid ""
 "The speed of a single-page web application without having to write any "
 "JavaScript"
 msgstr ""
 
-#: src/Settings.php:1193
+#: src/Settings.php:1188
 msgid "Theme & Plugin Editors"
 msgstr ""
 
-#: src/Settings.php:217
+#: src/Settings.php:205
 msgid "This featured image will show up if no featured image is set"
 msgstr ""
 
-#: src/Modules/Cookie.php:29
+#. Description of the plugin
+msgid ""
+"This is a simple and perfect tool to use as your website’s functionality "
+"plugin. Awesome !!!"
+msgstr ""
+
+#: src/Modules/Frontend/Cookie.php:29
 msgid ""
 "This site uses cookies to improve your online experience, allow you to share "
 "content on social media, measure traffic to this website and display "
@@ -725,11 +731,11 @@ msgstr ""
 msgid "TienCOP"
 msgstr ""
 
-#: src/Settings.php:1232
+#: src/Settings.php:1226
 msgid "Transfer Plugin"
 msgstr ""
 
-#: src/Settings.php:1134
+#: src/Settings.php:1127
 msgid ""
 "Type in the extension you would like to use e.g. .html, .htm, .jsp, .cop, or "
 "any other. (Default: .html)"
@@ -743,48 +749,48 @@ msgstr ""
 msgid "Upgrade to WP EXtra PRO"
 msgstr ""
 
-#: src/Settings.php:124
+#: src/Settings.php:123
 msgid "Use the classic WordPress editor."
 msgstr ""
 
-#: src/Settings.php:237
+#: src/Settings.php:225
 msgid ""
 "Use the shortcode: <code>[redirect]</code>. If you are using the Flatsome "
 "Theme, it will be configured automatically."
 msgstr ""
 
-#: src/Settings.php:146
+#: src/Settings.php:144
 #, php-format
 msgid "Used %1$s or %2$s"
 msgstr ""
 
-#: src/Settings.php:993
+#: src/Settings.php:986
 msgid "Valid Email Domain"
 msgstr ""
 
-#: src/Settings.php:994
+#: src/Settings.php:987
 msgid ""
 "Validates that the email domain of users registering is either gmail.com or "
 "yahoo.com"
 msgstr ""
 
-#: src/Settings.php:641
+#: src/Settings.php:634
 msgid ""
 "When configured, this feature modifies your WordPress login URL (slug) to "
 "the specified string and prevents direct access to the wp-admin and wp-login "
 "endpoints."
 msgstr ""
 
-#: src/Settings.php:592
+#: src/Settings.php:584
 msgid "When login logo is clicked, the user will be redirected to this url."
 msgstr ""
 
-#: src/Settings.php:1182
-msgid "WP EXtra Permission"
+#. Name of the plugin
+msgid "WP EXtra"
 msgstr ""
 
-#. Name of the plugin
-msgid "WP EXtra Pro"
+#: src/Settings.php:1177
+msgid "WP EXtra Permission"
 msgstr ""
 
 #: src/Settings.php:44
@@ -799,17 +805,15 @@ msgid ""
 "\"Import\"."
 msgstr ""
 
-#: src/Modules/Posts.php:285
+#: src/Modules/Common/Posts.php:268
 #, php-format
 msgid "You will be redirected in %s seconds"
 msgstr ""
 
-#: src/Modules/Media.php:326
-msgid "Your picture is too large. It has to be smaller than "
+#: wp-settings/vendor/wordpressvn/wp-settings/src/WPSettings.php:279
+msgid "Your license key has expired."
 msgstr ""
 
-#. Description of the plugin
-msgid ""
-"❤ This is a simple and perfect tool to use as your website’s functionality "
-"plugin. Awesome !!!"
+#: src/Modules/Backend/Media.php:333
+msgid "Your picture is too large. It has to be smaller than "
 msgstr ""

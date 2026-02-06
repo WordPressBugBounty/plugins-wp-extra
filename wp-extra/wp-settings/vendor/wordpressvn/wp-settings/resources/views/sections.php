@@ -13,7 +13,7 @@
             <div class="components-panel__row">
                 <?php
                 submit_button(__('Save'), 'components-button is-primary is-compact', 'submit', false);
-                submit_button(__('Restore'), 'components-button is-compact is-tertiary', 'reset', false, [
+                submit_button(__('Restore'), 'components-button is-compact is-tertiary', 'do_reset', false, [
                     'onclick' => 'return confirmReset();'
                 ]);
                 ?>

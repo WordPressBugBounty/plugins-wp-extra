@@ -69,7 +69,6 @@ class Settings {
 				'optimize'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M3.445 16.505a.75.75 0 001.06.05l5.005-4.55 4.024 3.521 4.716-4.715V14h1.5V8.25H14v1.5h3.19l-3.724 3.723L9.49 9.995l-5.995 5.45a.75.75 0 00-.05 1.06z"></path></svg>'.__( 'Optimize', 'wp-extra' ),
 				'code'	=> '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4.8 11.4H2.1V9H1v6h1.1v-2.6h2.7V15h1.1V9H4.8v2.4zm1.9-1.3h1.7V15h1.1v-4.9h1.7V9H6.7v1.1zM16.2 9l-1.5 2.7L13.3 9h-.9l-.8 6h1.1l.5-4 1.5 2.8 1.5-2.8.5 4h1.1L17 9h-.8zm3.8 5V9h-1.1v6h3.6v-1H20z"></path></svg>'.__( 'Code' ),
 				'permalinks'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M12.5 14.5h-1V16h1c2.2 0 4-1.8 4-4s-1.8-4-4-4h-1v1.5h1c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5zm-4 1.5v-1.5h-1C6.1 14.5 5 13.4 5 12s1.1-2.5 2.5-2.5h1V8h-1c-2.2 0-4 1.8-4 4s1.8 4 4 4h1zm-1-3.2h5v-1.5h-5v1.5zM18 4H9c-1.1 0-2 .9-2 2v.5h1.5V6c0-.3.2-.5.5-.5h9c.3 0 .5.2.5.5v12c0 .3-.2.5-.5.5H9c-.3 0-.5-.2-.5-.5v-.5H7v.5c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"></path></svg>'.__( 'Permalinks' ),
-				'tools'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M17.3 10.1C17.3 7.60001 15.2 5.70001 12.5 5.70001C10.3 5.70001 8.4 7.10001 7.9 9.00001H7.7C5.7 9.00001 4 10.7 4 12.8C4 14.9 5.7 16.6 7.7 16.6H9.5V15.2H7.7C6.5 15.2 5.5 14.1 5.5 12.9C5.5 11.7 6.5 10.5 7.7 10.5H9L9.3 9.40001C9.7 8.10001 11 7.20001 12.5 7.20001C14.3 7.20001 15.8 8.50001 15.8 10.1V11.4L17.1 11.6C17.9 11.7 18.5 12.5 18.5 13.4C18.5 14.4 17.7 15.2 16.8 15.2H14.5V16.6H16.7C18.5 16.6 19.9 15.1 19.9 13.3C20 11.7 18.8 10.4 17.3 10.1Z M14.1245 14.2426L15.1852 13.182L12.0032 10L8.82007 13.1831L9.88072 14.2438L11.25 12.8745V18H12.75V12.8681L14.1245 14.2426Z"></path></svg>'.__( 'Tools' ),
 				'control'	=> '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12.5 2.2a10.3 10.3 0 1 0 10.3 10.3A10.3 10.3 0 0 0 12.5 2.2m0 19.6a9.3 9.3 0 1 1 9.3-9.3 9.31 9.31 0 0 1-9.3 9.3m5.386-11.26-3.468-.293-1.365-3.262a.619.619 0 0 0-1.155-.001l-1.366 3.263-3.467.293a.606.606 0 0 0-.358 1.097l2.635 2.283-.796 3.405a.607.607 0 0 0 .935.676l2.994-1.82L15.469 18a.73.73 0 0 0 .374.112.57.57 0 0 0 .34-.11.63.63 0 0 0 .221-.68l-.796-3.403 2.635-2.283a.606.606 0 0 0-.357-1.097zm-3.389 3.02.73 3.124-2.752-1.673-2.752 1.673.73-3.124-2.422-2.099 3.189-.269 1.255-2.997 1.255 2.997 3.189.27z"/><path fill="none" d="M0 0h24v24H0z"/></svg>'.__( 'EXtra' ),
             ],
             'label' => __('List Module', 'wp-extra')
@@ -137,7 +136,6 @@ class Settings {
 				'searchreplace'	=> '<span class="dashicons dashicons-code-standards"></span> '.__('Search Replace'),
 				'nofollow'	=> '<span class="dashicons dashicons-admin-links"></span> '.__('Add rel=nofollow & sponsored', 'wp-extra'),
 				'cleanhtml'	=> '<span class="dashicons dashicons-editor-spellcheck"></span> '.__('Clean HTML', 'wp-extra').' <pro>PRO</pro>',
-				'toc'	=> '<span class="dashicons dashicons-list-view"></span> '.__('Table of Contents').' <pro>PRO</pro>',
             ]
         ]);
         $section->add_option('checkbox', [
@@ -171,13 +169,6 @@ class Settings {
                 'description' => __('Display a legacy widget.', 'wp-extra')
             ]);
         }
-        if ( !class_exists( 'RankMath' ) ) {
-            $section->add_option('checkbox', [
-                'name' => 'mce_category',
-                'label' => __('Category Description', 'wp-extra'),
-                'description' => __('Adds a tinymce editor to the category description box', 'wp-extra')
-            ]);
-        }
         $section->add_option('checkbox-multiple', [
             'name' => 'mce_excerpt',
             'options' => fn() => array_combine(
@@ -190,13 +181,10 @@ class Settings {
             'label' => __('Excerpt'),
             'description' => __('Add tinymce editor to the excerpt', 'wp-extra')
         ]);
-        $section->add_option('checkbox-multiple', [
+        $section->add_option('checkbox', [
             'name' => 'publish_btn',
-            'options'     => fn() => array_combine(
-                $ids = array_diff(get_post_types(['public' => true]), ['attachment', 'revision', 'blocks']),
-                array_map(fn($id) => get_post_type_object($id)->label . " <code>$id</code>", $ids)
-            ),
             'label' => __('Publish Button', 'wp-extra'),
+            'default' => 1,
             'description' => __('Making it stick to the bottom of the page when scrolling down the page', 'wp-extra')
         ]);
         $section->add_option('checkbox', [
@@ -1223,23 +1211,21 @@ RewriteRule . /index.php [L]
             'label' => __('Nags & Notices', 'wp-extra'),
             'description' => __('Hide')
         ]);
-    }
-        
-    if (self::get_option('modules') && in_array('tools',  self::get_option('modules'))) {
-        $tab = $settings->add_tab('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M17.3 10.1C17.3 7.60001 15.2 5.70001 12.5 5.70001C10.3 5.70001 8.4 7.10001 7.9 9.00001H7.7C5.7 9.00001 4 10.7 4 12.8C4 14.9 5.7 16.6 7.7 16.6H9.5V15.2H7.7C6.5 15.2 5.5 14.1 5.5 12.9C5.5 11.7 6.5 10.5 7.7 10.5H9L9.3 9.40001C9.7 8.10001 11 7.20001 12.5 7.20001C14.3 7.20001 15.8 8.50001 15.8 10.1V11.4L17.1 11.6C17.9 11.7 18.5 12.5 18.5 13.4C18.5 14.4 17.7 15.2 16.8 15.2H14.5V16.6H16.7C18.5 16.6 19.9 15.1 19.9 13.3C20 11.7 18.8 10.4 17.3 10.1Z M14.1245 14.2426L15.1852 13.182L12.0032 10L8.82007 13.1831L9.88072 14.2438L11.25 12.8745V18H12.75V12.8681L14.1245 14.2426Z"></path></svg>'.__('Tools'));
-        $section = $tab->add_section(__('Tools'), ['slug' => true, 'description' => __('You can transfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import".', 'wp-extra')]);
         $section->add_option('export', [
             'name' => 'wpdb_download',
             'label' => __('Export to SQL', 'wp-extra'),
             'css' => ['hide_class' => 'pro'],
             'description' => __('Administrator role user can take dump of the mysql database by single click.', 'wp-extra')
         ]);
+    }
+        
+        $tab = $settings->add_tab('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M17.3 10.1C17.3 7.60001 15.2 5.70001 12.5 5.70001C10.3 5.70001 8.4 7.10001 7.9 9.00001H7.7C5.7 9.00001 4 10.7 4 12.8C4 14.9 5.7 16.6 7.7 16.6H9.5V15.2H7.7C6.5 15.2 5.5 14.1 5.5 12.9C5.5 11.7 6.5 10.5 7.7 10.5H9L9.3 9.40001C9.7 8.10001 11 7.20001 12.5 7.20001C14.3 7.20001 15.8 8.50001 15.8 10.1V11.4L17.1 11.6C17.9 11.7 18.5 12.5 18.5 13.4C18.5 14.4 17.7 15.2 16.8 15.2H14.5V16.6H16.7C18.5 16.6 19.9 15.1 19.9 13.3C20 11.7 18.8 10.4 17.3 10.1Z M14.1245 14.2426L15.1852 13.182L12.0032 10L8.82007 13.1831L9.88072 14.2438L11.25 12.8745V18H12.75V12.8681L14.1245 14.2426Z"></path></svg>'.__('Tools'));
+        $section = $tab->add_section(__('Tools'), ['slug' => true, 'description' => __('You can transfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import".', 'wp-extra')]);
         $section->add_option('restore', [
             'name' => 'restore',
-            'label' => __('Transfer Plugin', 'wp-extra'),
-            'css' => ['hide_class' => 'pro']
+            'label' => __('Transfer Plugin', 'wp-extra')
         ]);
-    }
+        
         if (self::isPro()) {
             $tab = $settings->add_tab('<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false"><path d="M9 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM9 16a4.002 4.002 0 003.8-2.75H15V16h2.5v-2.75H19v-2.5h-6.2A4.002 4.002 0 005 12a4 4 0 004 4z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>'.__('License'));
             $section = $tab->add_section(__('License'), ['slug' => true, 'description' => __('The plugin activation status.')]);
@@ -1260,7 +1246,12 @@ RewriteRule . /index.php [L]
     
     public static function get_option($key, $fallback = null) {
         $options = get_option('wp_extra', []);
-        return array_key_exists($key, $options) && !empty($options[$key]) ? $options[$key] : $fallback;
+        $value = array_key_exists($key, $options) ? $options[$key] : $fallback;
+        $array_keys = ['smtp_options', 'no_emails'];
+        if (is_array($fallback) || in_array($key, $array_keys, true)) {
+            return (array) $value;
+        }
+        return $value;
     }
 
     public static function is_valid() {
