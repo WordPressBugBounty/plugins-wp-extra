@@ -2,9 +2,9 @@
 Contributors: wpvncom
 Donate link: https://www.paypal.me/copvn
 Tags: extra, functions, security, tweaks, optimizations
-Requires at least: 6.5
-Tested up to: 6.8.3
-Stable tag: 8.6.5
+Requires at least: 6.8
+Tested up to: 7.0.0
+Stable tag: 8.6.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -50,7 +50,7 @@ It makes it very easy to add, remove or change all TinyMCE settings for the clas
 * Search Replace
 * Add rel=nofollow & sponsored
 * Clean HTML
-* Table of Contents
+* Download Image
 
 ### 🌟 Module Media
 
@@ -176,6 +176,15 @@ You can install the WP EXtra from your WordPress Dashboard or manually via FTP.
 2. Easily enable function with a single click.
 
 == Changelog ==
+
+= 8.6.8 =
+* [NEW] Last Modified
+
+= 8.6.7 =
+* [NEW] TinyMCE Plugins
+
+= 8.6.6 =
+* [NEW] UL to Table Switcher
 
 = 8.6.5 =
 * [NEW] WordPress 6.8.3 compatibility

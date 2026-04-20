@@ -5,6 +5,8 @@ namespace WPVNTeam\WPSettings\Options;
 class CodeEditor extends OptionAbstract
 {
     public $view = 'code-editor';
+    
+    private static $scripts_loaded = false;
 
     public function __construct($section, $args = [])
     {
@@ -15,18 +17,32 @@ class CodeEditor extends OptionAbstract
 
     public function enqueue()
     {
-        wp_enqueue_script('wp-theme-plugin-editor');
-        wp_enqueue_style('wp-codemirror');
+        if (!self::$scripts_loaded) {
+            self::$scripts_loaded = true;
+            wp_enqueue_style('wp-codemirror');
+            wp_enqueue_script('wp-theme-plugin-editor');
 
-        $settings_name = str_replace('-', '_', $this->get_id_attribute());
+            wp_enqueue_script(
+                'wp-settings-code-editor',
+                plugin_dir_url(__FILE__) . '../../resources/js/wp-settings-code-editor.js',
+                ['wp-theme-plugin-editor'],
+                false,
+                true
+            );
+        }
+    }
 
-        wp_localize_script('jquery', $settings_name, wp_enqueue_code_editor(['type' => $this->get_arg('editor_type', 'text/html')]));
-
-        wp_add_inline_script('wp-theme-plugin-editor', 'jQuery(function($){
-            if($("#'.$this->get_id_attribute().'").length > 0) {
-                wp.codeEditor.initialize($("#'.$this->get_id_attribute().'"), '.$settings_name.');
-            }
-        });');
+    public function get_editor_config()
+    {
+        return wp_enqueue_code_editor([
+            'type' => $this->get_arg('editor_type', 'text/html'),
+            'codemirror' => [
+                'autoRefresh'   => true,
+                'mode'          => 'htmlmixed',
+                'indentWithTabs'=> false,
+                'tabSize'       => 2,
+            ]
+        ]);
     }
 
     public function sanitize($value)

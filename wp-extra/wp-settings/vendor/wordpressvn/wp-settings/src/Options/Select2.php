@@ -31,8 +31,8 @@ class Select2 extends OptionAbstract
     {
         Enqueuer::add('wps-select2', function () {
             $select2_assets = apply_filters('wps_select2_assets', [
-                'js' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js',
-                'css' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css'
+                'js' => '//cdn.jsdelivr.net/npm/select2@latest/dist/js/select2.min.js',
+                'css' => '//cdn.jsdelivr.net/npm/select2@latest/dist/css/select2.min.css'
             ]);
 
             wp_enqueue_style('wp-select2', $select2_assets['css']);

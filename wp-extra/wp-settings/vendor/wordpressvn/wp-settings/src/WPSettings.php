@@ -1,6 +1,6 @@
 <?php
 
-/** v2.6.0 **/
+/** v2.7.0 **/
 
 namespace WPVNTeam\WPSettings;
 
@@ -202,8 +202,8 @@ class WPSettings
         if ($this->is_on_toplevel_page() || $this->is_on_settings_page() || $this->is_on_parent_page()) {
             wp_enqueue_script('clipboard');
             wp_enqueue_style('wp-components');
-            wp_enqueue_style('wp-settings', plugin_dir_url(__FILE__) . '../resources/css/wp-settings.min.css');
-            wp_enqueue_script('wp-settings', plugin_dir_url(__FILE__) . '../resources/js/wp-settings.min.js', [], null, true);
+            wp_enqueue_style('wp-settings', plugin_dir_url(__FILE__) . '../resources/css/wp-settings.css');
+            wp_enqueue_script('wp-settings', plugin_dir_url(__FILE__) . '../resources/js/wp-settings.js', [], null, true);
         }
 
         $this->styling_loaded = true;

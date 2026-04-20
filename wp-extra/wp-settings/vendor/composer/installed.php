@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'name' => 'wordpressvn/wp-setting',
-        'pretty_version' => '1.0.0',
+        'name' => '__root__',
+        'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => null,
         'type' => 'library',
@@ -10,6 +10,15 @@
         'dev' => true,
     ),
     'versions' => array(
+        '__root__' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => null,
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'adbario/php-dot-notation' => array(
             'pretty_version' => '3.3.0',
             'version' => '3.3.0.0',
@@ -19,19 +28,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'wordpressvn/wp-setting' => array(
-            'pretty_version' => '1.0.0',
-            'version' => '1.0.0.0',
-            'reference' => null,
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'wordpressvn/wp-settings' => array(
-            'pretty_version' => '2.3.0',
-            'version' => '2.3.0.0',
-            'reference' => '46c5a09c98845dc9688f73907546bbe5bfc9701c',
+            'pretty_version' => '2.6.0',
+            'version' => '2.6.0.0',
+            'reference' => '2b688e9f199f0ed38088776be510fd99b1a3010b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../wordpressvn/wp-settings',
             'aliases' => array(),

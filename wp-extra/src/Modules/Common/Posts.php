@@ -12,18 +12,19 @@ class Posts extends Base {
     
 	protected $features = [
 		'mce_classic',
-		'mce_plugin',
+		'mce_plugins',
 		'signature',
 		'classic_widget',
 		'publish_btn',
 		'post_revisions',
 		'autosave_interval',
-		'to_home',
 		'redirect_single_post',
 		'mce_excerpt',
 		'media_default',
 		'delete_attached',
 		'scrolltotop',
+		'lock_modified',
+		'show_modified',
 	];
     
     public function mce_classic() {
@@ -32,8 +33,81 @@ class Posts extends Base {
         add_filter( 'post_row_actions', [$this, 'classic_editor_add_edit_links'], 15, 2 );
         if ( isset( $_GET['classic-editor'] )) {
             add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
+            add_filter( 'tiny_mce_before_init', [$this, 'disable_wpautop_for_page_classic'] );
         }
         add_filter( 'redirect_post_location', [$this, 'classic_editor_redirect' ]);
+        add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+        add_action('wp_ajax_getimage_image', [$this, 'ajax_download_image']);
+        
+    }
+    
+    public function enqueue_scripts($hook) {
+        if ($hook === 'post.php' || $hook === 'post-new.php') {
+            wp_localize_script('jquery', 'EXTRA_DL', [
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('extra_dl_nonce'),
+                'i18n' => [
+                    'no_image'      => __('Please select an image in the editor.', 'wp-extra'),
+                    'already_local' => __('This image is already in your Media Library.', 'wp-extra'),
+                    'success'       => __('✅ Image successfully downloaded and replaced.', 'wp-extra'),
+                    'error'         => __('❌ Failed to download the image.', 'wp-extra'),
+                    'connection'    => __('❌ Connection error.', 'wp-extra'),
+                ],
+            ]);
+        }
+    }
+
+    public function ajax_download_image() {
+        check_ajax_referer('extra_dl_nonce', 'nonce');
+
+        $url     = esc_url_raw($_POST['url']);
+        $post_id = intval($_POST['post_id']);
+        $alt     = sanitize_text_field($_POST['alt'] ?? '');
+        $title   = sanitize_text_field($_POST['title'] ?? '');
+
+        if (empty($url) || !$post_id) {
+            wp_send_json_error(['message' => __('Missing data.', 'wp-extra')]);
+        }
+
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+        $tmp = download_url($url);
+        if (is_wp_error($tmp)) {
+            wp_send_json_error(['message' => sprintf(__('Download failed: %s', 'wp-extra'), $tmp->get_error_message())]);
+        }
+
+        $post = get_post($post_id);
+        $slug = sanitize_title($post->post_name ?: $post->post_title);
+        $ext  = pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION) ?: 'jpg';
+
+        if (empty($slug)) {
+            $filename = basename(parse_url($url, PHP_URL_PATH));
+        } else {
+            $filename = "{$slug}.{$ext}";
+        }
+
+        $file = [
+            'name'     => $filename,
+            'type'     => mime_content_type($tmp),
+            'tmp_name' => $tmp,
+            'size'     => filesize($tmp),
+        ];
+
+        $attachment_id = media_handle_sideload($file, $post_id);
+
+        if (is_wp_error($attachment_id)) {
+            @unlink($tmp);
+            wp_send_json_error(['message' => __('Could not import image.', 'wp-extra')]);
+        }
+
+        if ($alt) update_post_meta($attachment_id, '_wp_attachment_image_alt', $alt);
+        if ($title) wp_update_post(['ID' => $attachment_id, 'post_title' => $title]);
+
+        $new_url = wp_get_attachment_url($attachment_id);
+
+        wp_send_json_success(['new_url' => $new_url]);
     }
     
 	public function remove_gutenberg() {
@@ -66,10 +140,26 @@ class Posts extends Base {
                 ),
             );
 			$edit_offset = array_search( 'edit', array_keys( $actions ), true );
-			array_splice( $actions, $edit_offset + 1, 0, $edit_action );
+			array_splice( $actions, $edit_offset, 0, $edit_action );
 		}
 		return $actions;
 	}
+    
+    public function disable_wpautop_for_page_classic( $init ) {
+        if ( ! is_admin() ) {
+            return $init;
+        }
+        if ( ! function_exists( 'get_current_screen' ) ) {
+            return $init;
+        }
+        $screen = get_current_screen();
+        if ( $screen->post_type !== 'page' ) {
+            return $init;
+        }
+        $init['wpautop'] = false;
+        $init['forced_root_block'] = false;
+        return $init;
+    }
 
 	public function classic_editor_redirect ( $location ) {
 		if ( isset( $_REQUEST['classic-editor'] ) || ( isset( $_POST['_wp_http_referer'] ) && strpos( $_POST['_wp_http_referer'], '&classic-editor' ) !== false ) ) {
@@ -78,11 +168,11 @@ class Posts extends Base {
 		return $location;
 	}
     
-    public function mce_plugin() {
+    public function mce_plugins() {
 		if ( 'flatsome' === wp_get_theme()->template )  {
 			add_action( 'admin_head', [$this, 'remove_ux_mce'], 1 );
 		}
-        add_filter( 'mce_external_plugins', [$this, 'mce_plugins' ]);
+        add_filter( 'mce_external_plugins', [$this, 'mce_plugin' ]);
         add_filter( 'mce_buttons', [$this, 'mce_buttons' ]);
         add_filter( 'mce_buttons_2', [$this, 'mce_buttons_2']);
         add_filter( 'mce_buttons_2', [$this, 'remove_mce_buttons_2'], 2020 );
@@ -95,42 +185,36 @@ class Posts extends Base {
 				add_filter('the_content', [$this, 'add_signature_bottom']);
 			}
 		}
-		if (in_array('nofollow', Settings::get_option('mce_plugin')) && !class_exists( 'RankMath' )) {
+		if (Settings::get_option('mce_plugins') && !class_exists( 'RankMath' )) {
             add_action( 'admin_enqueue_scripts',  [$this, 'overwrite_wplink'], 999 );
 		}
     }
 
-	public function mce_plugins( $initArray ) {
-		$mceplugins = array();
-        if (in_array('table', Settings::get_option('mce_plugin'))) {
-            $mceplugins[] = 'table';
+	public function mce_plugin( $init ) {
+        $plugins = [];
+        if ( Settings::get_option( 'mce_plugins' ) ) {
+            $plugins = [
+                'table',
+                'visualblocks',
+                'searchreplace',
+                'letterspacing',
+                'changecase',
+                'cleanhtml',
+                'ultable',
+                'getimage',
+            ];
         }
-        if (in_array('visualblocks', Settings::get_option('mce_plugin'))) {
-            $mceplugins[] = 'visualblocks';
+        if ( Settings::get_option( 'signature' ) ) {
+            $plugins[] = 'signature';
         }
-        if (in_array('searchreplace', Settings::get_option('mce_plugin'))) {
-            $mceplugins[] = 'searchreplace';
-        }
-        if (in_array('letterspacing', Settings::get_option('mce_plugin'))) {
-            $mceplugins[] = 'letterspacing';
-        }
-        if (in_array('changecase', Settings::get_option('mce_plugin'))) {
-            $mceplugins[] = 'changecase';
-        }
-        if (in_array('cleanhtml', Settings::get_option('mce_plugin')) && Settings::isPro()) {
-            $mceplugins[] = 'cleanhtml';
-        }
-		if (Settings::get_option('signature')) {
-			$mceplugins[] = 'signature';
+		foreach ($plugins as $item) {
+			$init[$item] = plugins_url('/assets/tinymce/' . $item . '/plugin.min.js', WPEX_FILE);
 		}
-		foreach ($mceplugins as $item) {
-			$initArray[$item] = plugins_url('/assets/tinymce/' . $item . '/plugin.min.js', WPEX_FILE);
-		}
-		return $initArray;
+		return $init;
 	}
 
 	public function remove_ux_mce() {
-		//remove_filter('mce_buttons', 'flatsome_mce_buttons_2');
+		remove_filter('mce_buttons', 'flatsome_mce_buttons_2');
 		remove_filter('mce_buttons_2', 'flatsome_font_buttons');
 	}
 
@@ -139,10 +223,10 @@ class Posts extends Base {
 		array_splice( $buttons, 4, 0, 'strikethrough' );
 		//array_splice( $buttons, 5, 0, 'hr' );
 		array_splice( $buttons, 11, 0, 'alignjustify' );
-        if (in_array('unlink', Settings::get_option('mce_plugin'))) {
-            array_splice( $buttons, 13, 0, 'unlink' );
-        }
-		//array_splice( $buttons, 18, 0, 'fullscreen' );
+        array_splice( $buttons, 13, 0, 'unlink' );
+		array_splice( $buttons, 14, 0, 'visualblocks' );
+		array_splice( $buttons, 15, 0, 'searchreplace' );
+		array_splice( $buttons, 16, 0, 'wp_code' );
 		return $buttons;
 	}
 
@@ -150,18 +234,15 @@ class Posts extends Base {
 		if(Settings::get_option('signature')) {
 			array_splice( $buttons, 6, 0, 'signature' );
 		}
-		if(Settings::isPro()) {
-			array_splice( $buttons, 6, 0, 'cleanhtml' );
-		}
 		array_splice( $buttons, 1, 0, 'fontselect' );
 		array_splice( $buttons, 2, 0, 'fontsizeselect' );
-        array_splice( $buttons, 3, 0,  'letterspacing' );
-        array_splice( $buttons, 4, 0,  'changecase' );
-		array_splice( $buttons, 5, 0, 'backcolor' );
-		array_splice( $buttons, 7, 0, 'table' );
-		array_splice( $buttons, 8, 0, 'visualblocks' );
-		array_splice( $buttons, 19, 0, 'searchreplace' );
-		array_splice( $buttons, 20, 0, 'wp_code' );
+        array_splice( $buttons, 3, 0, 'letterspacing' );
+        array_splice( $buttons, 4, 0, 'changecase' );
+		array_splice( $buttons, 7, 0, 'backcolor' );
+		array_splice( $buttons, 9, 0, 'table' );
+		array_splice( $buttons, 10, 0, 'cleanhtml' );
+		array_splice( $buttons, 12, 0, 'getimage' );
+		array_splice( $buttons, 20, 0, 'ultable' );
 		return $buttons;
 	}
 
@@ -252,37 +333,6 @@ class Posts extends Base {
         foreach ( $post_types as $post_type ) {
             remove_post_type_support( $post_type, 'revisions' );
         }
-    }
-    
-    public function to_home() {
-        add_shortcode('redirect', [$this, 'redirect_shortcode']);
-        if ( 'flatsome' === wp_get_theme()->template )  {
-            add_action('flatsome_after_404', [$this, 'add_redirect_shortcode_to_404']);
-		}
-    }
-    
-    public function redirect_shortcode($atts) {
-        $atts = shortcode_atts(['url' => home_url(), 'time' => 10], $atts, 'redirect');
-        $url = esc_url($atts['url']);
-        $time = absint($atts['time']);
-        $output = '<p class="is-xlarge" align="center">' . sprintf(__("You will be redirected in %s seconds", 'wp-extra' ), '<span id="count-rc">'.$time.'</span>') . '</p>';
-        $output .= "
-        <script>
-            var countdown = {$time}; 
-            var cdElement = document.getElementById('count-rc');
-            var interval = setInterval(function() {
-                cdElement.textContent = --countdown;
-                if (countdown < 0) {
-                    clearInterval(interval);
-                    window.location.href = '{$url}';
-                }
-            }, 1000);
-        </script>";
-        return $output;
-    }
-
-    public function add_redirect_shortcode_to_404() {
-        echo do_shortcode('[redirect]');
     }
 
 	public function redirect_single_post() {
@@ -457,7 +507,7 @@ class Posts extends Base {
         if ($screen && $screen->is_block_editor) {
             return;
         }
-        echo '<a id="backtotop" class="button button-primary components-button is-primary is-compact" href="#" style="position: fixed; right: 10px; bottom: 15px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px; padding: 6px; height:32px;"><span class="dashicons dashicons-arrow-up-alt"></span></a>';
+        echo '<a id="backtotop" class="button button-primary components-button is-primary is-compact" href="#" style="position: fixed; right: 10px; bottom: 15px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px; max-width: 40px; display: flex; justify-content: center;"><span class="dashicons dashicons-arrow-up" style="line-height: normal !important; vertical-align: top;"></span></a>';
         ?>
         <script>
             jQuery(window).on('scroll', function() {
@@ -475,4 +525,152 @@ class Posts extends Base {
         </script>
         <?php
     }
+    
+    public function show_modified() {
+        add_filter('manage_posts_columns', [$this, 'modified_column_register']);
+        add_filter('manage_pages_columns', [$this, 'modified_column_register']);
+
+        add_action('manage_posts_custom_column', [$this, 'modified_column_display'], 10, 2);
+        add_action('manage_pages_custom_column', [$this, 'modified_column_display'], 10, 2);
+
+        add_filter('manage_edit-post_sortable_columns', [$this, 'modified_column_register_sortable']);
+        add_filter('manage_edit-page_sortable_columns', [$this, 'modified_column_register_sortable']);
+
+        add_action('admin_footer', [$this, 'script_modified']);
+        add_action('wp_ajax_convert_post_date', [$this, 'convert_post_date']);
+    }
+
+    public function modified_column_register($columns) {
+        $columns['modified'] = __('Last Modified');
+        return $columns;
+    }
+
+    public function modified_column_display($column_name, $post_id) {
+        if ($column_name !== 'modified') return;
+
+        $author_id = get_post_field('post_modified_by', $post_id);
+        if ($author_id) {
+            echo '<small>' . esc_html(get_the_author_meta('display_name', $author_id)) . '</small><br>';
+        }
+
+        echo '<button class="button-link convert-date-btn" data-id="' . esc_attr($post_id) . '">
+                <span class="dashicons dashicons-backup"></span>
+              </button> ';
+
+        echo sprintf(
+            esc_html__('%1$s at %2$s'),
+            esc_html(get_the_modified_date('d/m/Y', $post_id)),
+            esc_html(get_the_modified_time('', $post_id))
+        );
+    }
+
+    public function modified_column_register_sortable($columns) {
+        $columns['modified'] = 'modified';
+        return $columns;
+    }
+
+    public function script_modified() {
+        $screen = get_current_screen();
+
+        if ($screen->base !== 'edit') return;
+        if (!in_array($screen->post_type, ['post', 'page'])) return;
+
+        $nonce = wp_create_nonce('convert_post_date_nonce');
+        ?>
+        <script>
+        jQuery(function($){
+
+            const confirmText = "<?php echo esc_js(sprintf('%s → %s?', __('Last Modified'), __('Published'))); ?>";
+            const done  = "<?php echo esc_js(__('Done')); ?>";
+            const error = "<?php echo esc_js(__('An error occurred.')); ?>";
+
+            $(document).on('click', '.convert-date-btn', function(){
+                if (!confirm(confirmText)) return;
+
+                $.post(ajaxurl, {
+                    action: 'convert_post_date',
+                    post_id: $(this).data('id'),
+                    nonce: '<?php echo $nonce; ?>'
+                }, function(res){
+                    if(res.success){
+                        alert(done);
+                        location.reload();
+                    } else {
+                        alert(error);
+                    }
+                });
+            });
+
+        });
+        </script>
+        <?php
+    }
+
+    public function convert_post_date() {
+        if (
+            !isset($_POST['nonce']) ||
+            !wp_verify_nonce($_POST['nonce'], 'convert_post_date_nonce')
+        ) {
+            wp_send_json_error();
+        }
+
+        $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+        if (!$post_id) {
+            wp_send_json_error();
+        }
+
+        if (!current_user_can('edit_post', $post_id)) {
+            wp_send_json_error();
+        }
+
+        $post = get_post($post_id);
+        if (!$post) {
+            wp_send_json_error();
+        }
+
+        global $wpdb;
+
+        $publish_date = $post->post_date;
+        $gmt = get_gmt_from_date($publish_date);
+
+        $result = $wpdb->update(
+            $wpdb->posts,
+            [
+                'post_modified'     => $publish_date,
+                'post_modified_gmt' => $gmt
+            ],
+            ['ID' => $post_id],
+            ['%s', '%s'],
+            ['%d']
+        );
+
+        if ($result === false) {
+            wp_send_json_error();
+        }
+
+        clean_post_cache($post_id);
+
+        wp_send_json_success();
+    }
+    
+    public function lock_modified() {
+        add_filter('wp_insert_post_data', [$this, 'disable_post_modified'], 99, 2);
+    }
+
+    public function disable_post_modified($data, $postarr) {
+        if (empty($postarr['ID'])) return $data;
+
+        $post = get_post($postarr['ID']);
+        if (!$post) return $data;
+
+        if ($post->post_status !== 'publish') return $data;
+
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return $data;
+
+        $data['post_modified']     = $post->post_modified;
+        $data['post_modified_gmt'] = $post->post_modified_gmt;
+
+        return $data;
+    }
+        
 }

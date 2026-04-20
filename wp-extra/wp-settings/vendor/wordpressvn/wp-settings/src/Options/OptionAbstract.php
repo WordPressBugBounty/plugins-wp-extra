@@ -74,7 +74,7 @@ abstract class OptionAbstract
 
     public function get_input_class_attribute()
     {
-        $class = $this->get_css()['input_class'] ?? null;
+        $class = $this->get_css()['input_class'] ?? 'regular-text';
 
         return ! empty($class) ? esc_attr($class) : null;
     }

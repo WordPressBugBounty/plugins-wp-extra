@@ -8,7 +8,14 @@
         <?php } ?>
     </th>
     <td>
-        <textarea name="<?php echo esc_attr($option->get_name_attribute()); ?>" id="<?php echo $option->get_id_attribute(); ?>" class="wp-settings-code-editor <?php echo $option->get_input_class_attribute(); ?>"><?php echo wp_unslash($option->get_value_attribute()); ?></textarea>
+        <div class="wps-code-editor">
+            <textarea  name="<?php echo esc_attr($option->get_name_attribute()); ?>"
+            id="<?php echo esc_attr($option->get_id_attribute()); ?>"
+            class="<?php echo esc_attr($option->get_input_class_attribute()); ?>"
+            wps-code-editor='<?php echo wp_json_encode(
+                $option->get_editor_config()
+            ); ?>'><?php echo wp_unslash($option->get_value_attribute()); ?></textarea>
+        </div>
         
         <?php if ($description = $option->get_arg('description')) { ?>
             <p class="description"><?php echo $description; ?></p>

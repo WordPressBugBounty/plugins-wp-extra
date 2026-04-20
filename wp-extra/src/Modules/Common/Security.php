@@ -97,12 +97,8 @@ class Security extends Base {
     
 	public function remove_wp_version() {
         remove_action('wp_head', 'wp_generator');
-        add_filter('the_generator', 'hide_version');
+        add_filter('the_generator', '__return_empty_string');
     }
-
-	public function hide_version() {
-		return '';
-	}
 
 	public function remove_wlwmanifest_link() {
         remove_action('wp_head', 'wlwmanifest_link');

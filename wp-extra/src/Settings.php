@@ -16,7 +16,6 @@ class Settings {
             $options['import'] = Import::class;
             $options['widget'] = Widget::class;
             $options['restore'] = Restore::class;
-            $options['export'] = Export::class;
             return $options;
         });
         add_action('admin_menu', [$this, 'register'], 10);
@@ -57,7 +56,7 @@ class Settings {
             'options' => [
                 'dashboard'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 5.5H6a.5.5 0 00-.5.5v3h13V6a.5.5 0 00-.5-.5zm.5 5H10v8h8a.5.5 0 00.5-.5v-7.5zm-10 0h-3V18a.5.5 0 00.5.5h2.5v-8zM6 4h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2z"></path></svg>'.__('Dashboard'),
 				'posts'	=> '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" aria-hidden="true" focusable="false"><path d="M18 5.5H6a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h12a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-.5-.5ZM6 4h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm1 5h1.5v1.5H7V9Zm1.5 4.5H7V15h1.5v-1.5ZM10 9h7v1.5h-7V9Zm7 4.5h-7V15h7v-1.5Z"></path></svg>'.__( 'Posts' ),
-				'duplicate'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg>'.__( 'Copy' ),
+				'duplicate'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 4.5h11a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5ZM3 5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5Zm17 3v10.75c0 .69-.56 1.25-1.25 1.25H6v1.5h12.75a2.75 2.75 0 0 0 2.75-2.75V8H20Z"></path></svg>'.__( 'Clone' ),
 				'media'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 6.5 4 2.5-4 2.5z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="m5 3c-1.10457 0-2 .89543-2 2v14c0 1.1046.89543 2 2 2h14c1.1046 0 2-.8954 2-2v-14c0-1.10457-.8954-2-2-2zm14 1.5h-14c-.27614 0-.5.22386-.5.5v10.7072l3.62953-2.6465c.25108-.1831.58905-.1924.84981-.0234l2.92666 1.8969 3.5712-3.4719c.2911-.2831.7545-.2831 1.0456 0l2.9772 2.8945v-9.3568c0-.27614-.2239-.5-.5-.5zm-14.5 14.5v-1.4364l4.09643-2.987 2.99567 1.9417c.2936.1903.6798.1523.9307-.0917l3.4772-3.3806 3.4772 3.3806.0228-.0234v2.5968c0 .2761-.2239.5-.5.5h-14c-.27614 0-.5-.2239-.5-.5z"></path></svg>'.__( 'Media' ),
 				'admins'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M15.5 9.5a1 1 0 100-2 1 1 0 000 2zm0 1.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm-2.25 6v-2a2.75 2.75 0 00-2.75-2.75h-4A2.75 2.75 0 003.75 15v2h1.5v-2c0-.69.56-1.25 1.25-1.25h4c.69 0 1.25.56 1.25 1.25v2h1.5zm7-2v2h-1.5v-2c0-.69-.56-1.25-1.25-1.25H15v-1.5h2.5A2.75 2.75 0 0120.25 15zM9.5 8.5a1 1 0 11-2 0 1 1 0 012 0zm1.5 0a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" fill-rule="evenodd"></path></svg>'.__('Permission', 'wp-extra'),
 				'logins'	=> '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M4 20h8v-1.5H4V20zM18.9 3.5c-.6-.6-1.5-.6-2.1 0l-7.2 7.2c-.4-.1-.7 0-1.1.1-.5.2-1.5.7-1.9 2.2-.4 1.7-.8 2.2-1.1 2.7-.1.1-.2.3-.3.4l-.6 1.1H6c2 0 3.4-.4 4.7-1.4.8-.6 1.2-1.4 1.3-2.3 0-.3 0-.5-.1-.7L19 5.7c.5-.6.5-1.6-.1-2.2zM9.7 14.7c-.7.5-1.5.8-2.4 1 .2-.5.5-1.2.8-2.3.2-.6.4-1 .8-1.1.5-.1 1 .1 1.3.3.2.2.3.5.2.8 0 .3-.1.9-.7 1.3z"></path></svg>'.__('Branding', 'wp-extra'),
@@ -122,21 +121,11 @@ class Settings {
             'label' => __('Classic Editor'),
             'description' => __('Use the classic WordPress editor.', 'wp-extra')
         ]);
-        $section->add_option('checkbox-multiple', [
-            'name' => 'mce_plugin',
-            'select' => true,
+        $section->add_option('checkbox', [
+            'name' => 'mce_plugins',
             'label' => __('TinyMCE Plugins'),
-            'options' => [
-                'justify'	=> '<span class="dashicons dashicons-editor-justify"></span> '.__('Justify'),
-				'unlink'	=> '<span class="dashicons dashicons-editor-unlink"></span> '.__( 'Unlinks' ),
-				'letterspacing'	=> '<strong>[VA]</strong> '.__( 'Letter Spacing' ),
-				'changecase'	=> '<strong>[Aa]</strong> '.__('Change Case'),
-				'table'	=> '<span class="dashicons dashicons-editor-table"></span> '.__('Table'),
-				'visualblocks'	=> '<span class="dashicons dashicons-editor-paragraph"></span> '.__('Visual Blocks'),
-				'searchreplace'	=> '<span class="dashicons dashicons-code-standards"></span> '.__('Search Replace'),
-				'nofollow'	=> '<span class="dashicons dashicons-admin-links"></span> '.__('Add rel=nofollow & sponsored', 'wp-extra'),
-				'cleanhtml'	=> '<span class="dashicons dashicons-editor-spellcheck"></span> '.__('Clean HTML', 'wp-extra').' <pro>PRO</pro>',
-            ]
+            'description' => __('Including justify, unlinks, letter spacing, change case, table, visual blocks, search replace, add rel=nofollow & sponsored, clean HTML, convert UL to table, get image ...', 'wp-extra'),
+            'css' => ['hide_class' => 'mce_classic hidden']
         ]);
         $section->add_option('checkbox', [
             'name' => 'signature',
@@ -220,9 +209,13 @@ class Settings {
             'description' => __('Posts list')
         ]);
         $section->add_option('checkbox', [
-            'name' => 'to_home',
-            'label' => __('Redirect 404 to Home', 'wp-extra'),
-            'description' => __('Use the shortcode: <code>[redirect]</code>. If you are using the Flatsome Theme, it will be configured automatically.', 'wp-extra')
+            'name' => 'lock_modified',
+            'label' => __('Lock Last Modified Date', 'wp-extra')
+        ]);
+        $section->add_option('checkbox', [
+            'name' => 'show_modified',
+            'label' => __('Modified Date In Admin Lists', 'wp-extra'),
+            'description' => __('Shows a new, sortable, column with the modified date in the lists', 'wp-extra')
         ]);
         $section->add_option('checkbox', [
             'name' => 'redirect_single_post',
@@ -264,6 +257,10 @@ class Settings {
         $tab = $settings->add_tab('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="m7 6.5 4 2.5-4 2.5z"></path><path fill-rule="evenodd" clip-rule="evenodd" d="m5 3c-1.10457 0-2 .89543-2 2v14c0 1.1046.89543 2 2 2h14c1.1046 0 2-.8954 2-2v-14c0-1.10457-.8954-2-2-2zm14 1.5h-14c-.27614 0-.5.22386-.5.5v10.7072l3.62953-2.6465c.25108-.1831.58905-.1924.84981-.0234l2.92666 1.8969 3.5712-3.4719c.2911-.2831.7545-.2831 1.0456 0l2.9772 2.8945v-9.3568c0-.27614-.2239-.5-.5-.5zm-14.5 14.5v-1.4364l4.09643-2.987 2.99567 1.9417c.2936.1903.6798.1523.9307-.0917l3.4772-3.3806 3.4772 3.3806.0228-.0234v2.5968c0 .2761-.2239.5-.5.5h-14c-.27614 0-.5-.2239-.5-.5z"></path></svg>'.__('Media'));
         $section = $tab->add_section(__('Auto-update'));
         $section->add_option('checkbox', [
+            'name' => 'allow_filetype',
+            'label' => __('Allow').' SVG & Webp'
+        ]);
+        $section->add_option('checkbox', [
             'name' => 'autoset',
             'label' => __('Auto Set Featured Image', 'wp-extra'),
             'description' => __('Automatically find and set post images as featured images', 'wp-extra')
@@ -298,27 +295,31 @@ class Settings {
             'label' => '➡️ ' . __('Flip horizontal', 'wp-extra')
         ]);
         $section->add_option('checkbox', [
-            'name' => 'image_convert',
-            'css' => ['hide_class' => 'save_images hidden pro'],
-            'label' => '➡️ ' . __('Convert PNG to JPG', 'wp-extra')
+            'name' => 'autoupload',
+            'label' => __('Auto Uploads'),
+            'description' => __('Automatically resizes, speed up your website using our ease image optimizer by serving JPG / WebP', 'wp-extra')
         ]);
-        
-        $section->add_option('checkbox', [
-            'name' => 'resize_images',
-            'label' => __('Resize Images', 'wp-extra'),
-            'description' => __('Automatically resizes uploaded images (JPEG, GIF, and PNG)', 'wp-extra')
+        $section->add_option('select', [
+            'name' => 'autoconverter',
+            'css' => ['hide_class' => 'autoupload hidden'], //pro
+            'label' => __('Upload Converter', 'wp-extra'),
+            'options' => [
+				''	=> __( 'No' ),
+				'jpg'	=>  __('JPG'),
+				'webp'=> __('Webp')
+            ]
         ]);
         $section->add_option('text', [
             'type' => 'number',
             'name' => 'image_max_width',
-            'css' => ['input_class' => 'small-text', 'hide_class' => 'resize_images hidden'],
+            'css' => ['input_class' => 'small-text', 'hide_class' => 'autoupload hidden'],
             'label' => '➡️ ' . __('Max Width'),
             'description' => __('px (E.g: 1000px). ').__('Max size of an uploaded file')
         ]);
         $section->add_option('text', [
             'type' => 'number',
             'name' => 'image_max_height',
-            'css' => ['input_class' => 'small-text', 'hide_class' => 'resize_images hidden'],
+            'css' => ['input_class' => 'small-text', 'hide_class' => 'autoupload hidden'],
             'label' => '➡️ ' . __('Max Height'),
             'description' => __('px (E.g: 1000px). ').__('Max size of an uploaded file')
         ]);
@@ -366,10 +367,6 @@ class Settings {
         ]);
         
         $section = $tab->add_section(__('Optional'));
-        $section->add_option('checkbox', [
-            'name' => 'allow_filetype',
-            'label' => __('Allow').' SVG & Webp'
-        ]);
         $section->add_option('checkbox-multiple', [
             'name' => 'media_thumbnails',
             'del' => true,
@@ -440,17 +437,20 @@ class Settings {
             'css' => ['hide_class' => 'wp_adminbar visible' ],
             'name' => 'wp_toolbar',
             'options' => [
-				'wp-logo'	=> __( 'Logo' ),
-				'site-name'	=> __( 'Site Title' ),
-				'new-content'	=> __( 'New Menu' ),
-				'comments'	=> __( 'Comments' ),
-				'updates'	=> __( 'Update' ),
-				'flatsome_panel'	=> __( 'Flatsome' ),
-				'wp-extra'	=> __( 'WP EXtra' ),
-				'wpseo-menu'	=> __( 'Yoast SEO' ),
-				'rank-math'	=> __( 'Rank Math' ),
-				'wp-rocket'	=> __( 'WP Rocket' ),
-				'my-account'	=> __( 'Profile' )
+                'wp-logo'       => __('Logo'),
+                'site-name'     => __('Site Title'),
+                'customize'     => __('Customize'),
+                'comments'      => __('Comments'),
+                'new-content'   => __('New Menu'),
+                'updates'       => __('Updates'),
+                'edit'          => __('Edit'),
+                'search'        => __('Search'),
+                'my-account'    => __('Profile'),
+                'flatsome_panel' => __('Flatsome'),
+                'wp-extra'       => __('WP Extra'),
+                'wpseo-menu'     => __('Yoast SEO'),
+                'rank-math'      => __('Rank Math'),
+                'wp-rocket'      => __('WP Rocket'),
             ],
         ]);
         $section->add_option('select2', [
@@ -673,13 +673,18 @@ class Settings {
         ]);
         $section->add_option('choices', [
             'name' => 'admincolor_scheme',
-            'css' => ['hide_class' => 'pro' ],
             'options' => [
-                '' => __('Default'),
-                'blue' => __('Blue'),
-                'light' => __('Light')
+                'modern' => __('Default'),
+                'fresh' => __('Fresh', 'wp-extra'),
+                'light' => __('Light', 'wp-extra'),
+                'blue' => __('Blue', 'wp-extra'),
+                'coffee' => __('Coffee', 'wp-extra'),
+                'ectoplasm' => __('Ectoplasm', 'wp-extra'),
+                'midnight' => __('Midnight', 'wp-extra'),
+                'ocean' => __('Ocean', 'wp-extra'),
+                'sunrise' => __('Sunrise', 'wp-extra')
             ],
-            'label' => __('Admin Color Scheme'),
+            'label' => __('Administration Color Scheme'),
             'description' => __('Custom Colors')
         ]);
         $section->add_option('checkbox', [
@@ -900,7 +905,11 @@ RewriteRule . /index.php [L]
         
     if (self::get_option('modules') && in_array('smtp',  self::get_option('modules'))) {
         $tab = $settings->add_tab('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.293 5.293A1 1 0 0 1 4 5h16c.276 0 .526.112.707.293m-17.414 0A1 1 0 0 0 3 6v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-.293-.707m-17.414 0 7.293 7.293a2 2 0 0 0 2.828 0l7.293-7.293"/></svg>'.__('SMTP'));
-        $section = $tab->add_section(__('Configure'));
+        $section = $tab->add_section(__('Configure'), ['description' => sprintf(
+                __('If you want to check email logs, please install the <a class="thickbox open-plugin-details-modal" href="%1$s">WP Mail Logging</a> or <a class="thickbox open-plugin-details-modal" href="%2$s">WP Email Log – PostBox</a>', 'wp-extra'),
+                esc_url(admin_url('plugin-install.php?tab=plugin-information&plugin=wp-mail-logging&from=import&TB_iframe=true&width=800&height=550')),
+                esc_url(admin_url('plugin-install.php?tab=plugin-information&plugin=postbox-email-logs&from=import&TB_iframe=true&width=800&height=550'))
+            )]);
         $section->add_option('checkbox', [
             'name' => 'smtp',
             'label' => __('Server settings'),
@@ -1084,24 +1093,18 @@ RewriteRule . /index.php [L]
         ]);
 
         $section = $tab->add_section(__('Custom CSS'));
-        $section->add_option('textarea', [
+        $section->add_option('code-editor', [
             'name' => 'css_all',
-            'css' => ['input_class' => 'large-text code'],
-            'rows' => 10,
             'label' => __('All screens', 'wp-extra'),
             'description' => __('Add custom CSS here', 'wp-extra')
         ]);
-        $section->add_option('textarea', [
+        $section->add_option('code-editor', [
             'name' => 'css_tablet',
-            'css' => ['input_class' => 'large-text code'],
-            'rows' => 10,
             'label' => __('Tablets and down', 'wp-extra'),
             'description' => __('Add custom CSS here for tablets and mobile', 'wp-extra')
         ]);
-        $section->add_option('textarea', [
+        $section->add_option('code-editor', [
             'name' => 'css_mobile',
-            'css' => ['input_class' => 'large-text code'],
-            'rows' => 10,
             'label' => __('Mobile only', 'wp-extra'),
             'description' => __('Add custom CSS here for mobile view', 'wp-extra')
         ]);
@@ -1211,16 +1214,10 @@ RewriteRule . /index.php [L]
             'label' => __('Nags & Notices', 'wp-extra'),
             'description' => __('Hide')
         ]);
-        $section->add_option('export', [
-            'name' => 'wpdb_download',
-            'label' => __('Export to SQL', 'wp-extra'),
-            'css' => ['hide_class' => 'pro'],
-            'description' => __('Administrator role user can take dump of the mysql database by single click.', 'wp-extra')
-        ]);
     }
         
         $tab = $settings->add_tab('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path d="M17.3 10.1C17.3 7.60001 15.2 5.70001 12.5 5.70001C10.3 5.70001 8.4 7.10001 7.9 9.00001H7.7C5.7 9.00001 4 10.7 4 12.8C4 14.9 5.7 16.6 7.7 16.6H9.5V15.2H7.7C6.5 15.2 5.5 14.1 5.5 12.9C5.5 11.7 6.5 10.5 7.7 10.5H9L9.3 9.40001C9.7 8.10001 11 7.20001 12.5 7.20001C14.3 7.20001 15.8 8.50001 15.8 10.1V11.4L17.1 11.6C17.9 11.7 18.5 12.5 18.5 13.4C18.5 14.4 17.7 15.2 16.8 15.2H14.5V16.6H16.7C18.5 16.6 19.9 15.1 19.9 13.3C20 11.7 18.8 10.4 17.3 10.1Z M14.1245 14.2426L15.1852 13.182L12.0032 10L8.82007 13.1831L9.88072 14.2438L11.25 12.8745V18H12.75V12.8681L14.1245 14.2426Z"></path></svg>'.__('Tools'));
-        $section = $tab->add_section(__('Tools'), ['slug' => true, 'description' => __('You can transfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import".', 'wp-extra')]);
+        $section = $tab->add_section(__('Tools'), ['slug' => true, 'description' => '<p>' . esc_html__('You can transfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import".', 'wp-extra') . '</p><p>' . sprintf(__('If you need to create a backup, please install the <a class="thickbox open-plugin-details-modal" href="%s">All-in-One WP Migration and Backup</a>. It allows you to migrate your entire WordPress site by exporting or importing your database, media, plugins, and themes in just a few clicks.', 'wp-extra'), esc_url(admin_url('plugin-install.php?tab=plugin-information&plugin=all-in-one-wp-migration&from=import&TB_iframe=true&width=800&height=550'))) . '</p>']);
         $section->add_option('restore', [
             'name' => 'restore',
             'label' => __('Transfer Plugin', 'wp-extra')
