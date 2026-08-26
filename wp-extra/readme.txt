@@ -2,10 +2,10 @@
 Contributors: wpvncom
 Donate link: https://www.paypal.me/copvn
 Tags: extra, functions, security, tweaks, optimizations
-Requires at least: 6.8
-Tested up to: 7.0.0
-Stable tag: 8.6.8
-Requires PHP: 7.4
+Requires at least: 6.7
+Tested up to: 7.1
+Stable tag: 8.7.0
+Requires PHP: 8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,142 +15,113 @@ Optimize your site instantly with one-click activation. WP Extra offers easy fix
 
 [youtube https://www.youtube.com/watch?v=H5vXwe5nyiQ]
 
-🚀 Boost your website’s functionality, security and SEO with WP EXtra – the all-in-one tool for WordPress users!
+🚀 Boost your website’s performance, security, SEO and user experience with WP EXtra – the ultimate lightweight all-in-one toolkit for WordPress!
 
-Unlock all features with [WP EXtra Pro](https://wpvnteam.com/wp-extra/).
+WP EXtra is built from the ground up with a modular architecture: features run with **zero frontend overhead** via smart lazy-loading, and every option is centralized in a single autoloaded database setting.
 
-= FEATURES & MODULES =
+= 🌟 14 CORE MODULES & POWER TOOLS =
 
-**16 group (140 modules)** in total: 100 free modules | 40 Pro modules
+### 1. 📊 Dashboard
+* **Widgets Cleanup**: Disable unnecessary WordPress core and third-party dashboard widgets with one click.
+* **System Info Cards**: Real-time server diagnostics (PHP version, memory limits, MySQL, server software) rendered cleanly without external assets.
+* **Custom Admin Notice**: Broadcast personalized announcements or instructions to specific user roles with custom alert styles.
 
-Many of the WP EXtra’s options can be applied by simply toggling them on. Here’s a quick look at a few we recommend utilizing:
+### 2. ✍️ Posts & Writing
+* **Classic Editor Integration**: Seamlessly switch between Gutenberg and the Classic Editor for posts and pages.
+* **Featured Image Column**: View, set, or replace post featured thumbnails directly inside the admin post list.
+* **Extended TinyMCE Toolbar**: Enhanced editor buttons including Table generator, Checklist, Visual Blocks, Letter-spacing, Text Case, Underline, and Clean HTML formatting.
+* **Category Description Editor**: Rich WYSIWYG editor for category and taxonomy descriptions.
+* **Writing Aids**: Post word counter, post ID columns in admin, and automatic revision cleanup.
 
-### 🌟 Module Dashboard
+### 3. 📑 Table of Contents
+* **Auto-Insertion**: Automatically generate a structured Table of Contents for posts, pages, or custom post types.
+* **Headings Numbering**: Customizable multi-level numbering hierarchy (1, 1.1, 1.1.1...) for H1-H6 tags.
+* **Sticky Floating Badge & Drawer**: Off-canvas sliding TOC drawer triggered by a modern floating action button (FAB).
+* **SEO Schema**: Native `SiteNavigationElement` JSON-LD structured data for Google rich snippets.
 
-Replace the default WordPress dashboard widgets with your own and give the WordPress dashboard a more meaningful use.
+### 4. 📋 Clone Content (Duplicate)
+* **1-Click Duplication**: Duplicate posts, pages, and custom post types with all meta fields, taxonomies, and featured images.
+* **Taxonomy Duplication**: Clone categories, tags, and custom taxonomy terms in bulk with chunked processing to prevent memory issues.
 
-WP EXtra is a clean & lightweight plugin that was made to optimize the user experience for clients inside the WordPress admin area.
+### 5. 🖼️ Media & SVG
+* **Secure SVG Uploads**: Full support for SVG media files with built-in sanitization against malicious XML and XSS scripts.
+* **Auto Image Conversion**: Automatically convert uploaded images to modern WebP or optimized JPG with customizable quality.
+* **SEO Image Renaming**: Automatically clean and sanitize image filenames on upload (removes accents, spaces, and special characters).
+* **Auto Remote Image Downloader**: Automatically save external images to the WordPress media library upon publishing.
 
-* Remove dashboard widgets
-* Create your own widgets
-* Remove “Help” tab
-* Remove “Screen Options” tab
+### 6. 💬 Comments & Anti-Spam
+* **Global Comment Control**: Disable comments site-wide or selectively by post type.
+* **Close Attachment Comments**: Automatically prevent spam on image and media attachment URLs.
+* **Spam Link Filter**: Block automated spam comments containing excessive links without requiring third-party captcha.
 
-### 🌟 Module Posts
+### 7. 🔐 Branding & Login
+* **Custom Login URL**: Protect `/wp-login.php` by setting a custom login slug (e.g. `/login` or `/member-login`).
+* **Modern Login Presets**: 5 curated visual themes (Classic Dark, Clean White, Gradient Blue, Glassmorphism, Warm Peach) with custom logo and background support.
+* **Cloudflare Turnstile Captcha**: Seamless, privacy-friendly bot protection for login, registration, and lost password forms.
+* **Limit Login Attempts**: IP-based temporary lockout to prevent brute-force attacks.
+* **Content Protection**: Disable text selection, right-click context menu, and image dragging.
 
-This plugin is intended for more advanced users that would like to change the default TinyMCE configuration in WordPress.
-It makes it very easy to add, remove or change all TinyMCE settings for the classic editor and for the classic block in the block editor.
+### 8. 🛡️ Permission & Roles
+* **Role-based Backend Lockdown**: Restrict `/wp-admin` access by user role and redirect unauthorized users to the homepage.
+* **Hide Admin Bar**: Automatically hide the WordPress admin toolbar on frontend for non-admin user roles.
+* **Menu Restrictions**: Restrict access to specific admin sidebar menu items by user role.
+* **Hide Plugins**: Hide sensitive plugins from the `/wp-admin/plugins.php` list table for non-super admins.
 
-* Justify
-* Unlinks
-* [VA] Letter Spacing
-* [Aa] Change Case
-* Table
-* Visual Blocks
-* Search Replace
-* Add rel=nofollow & sponsored
-* Clean HTML
-* Download Image
+### 9. 🔒 Security & Core Hardening
+* **Disable XML-RPC & REST API**: Block pingback spam, DDoS vectors, and lock down REST API endpoints for non-logged-in visitors.
+* **Hide WordPress Version**: Remove generator meta tags and version query strings from HTML source.
+* **Block Author Enumeration**: Stop bot scanners from discovering admin usernames via `?author=N` and REST API user routes.
+* **HTTP Security Headers**: Send modern security headers (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy`).
+* **Disable File Editors**: Lock theme and plugin code editors in the admin area (`DISALLOW_FILE_EDIT`).
+* **Disable Core Auto-Updates**: Maintain full control over WordPress core version upgrades.
+* **Block Outgoing HTTP Calls**: Block external API calls to specific external domains to prevent timeouts.
 
-### 🌟 Module Media
+### 10. ⚡ Speed & Optimize
+* **Asset Cleanups**: Dequeue WordPress emojis, guest Dashicons, and default Gutenberg block CSS (~50KB).
+* **Remove Global Styles**: Eliminate inline `global-styles-inline-css` and SVG duotone filters from page footers.
+* **Strip Query Strings**: Remove `?ver=` parameters from static CSS/JS files to maximize browser and CDN caching.
+* **Preconnect CDNs**: Add preconnect resource hints for Google Fonts CDN to accelerate asset loading.
 
-* Automatically keep the all remote picture to the local media libary when you publishing posts, and automatically set featured image.
-* Automatically add Image attributes such as Image Title, Image Caption, Description And Alt Text from Image Filename.
-* Automatically resizes uploaded images (JPEG, GIF, and PNG)
-* Disable thumbnail sizes, default WordPress sizes and theme/plugins image size and others image advanced control.
-* And more powerful functional is waiting for you.
+### 11. 🔗 Permalinks & SEO
+* **Remove Category Slugs**: Strip `/category/` or custom taxonomy base prefixes from URLs.
+* **Single Post Auto-Redirect**: Automatically redirect category archives containing only 1 post directly to the article.
+* **Attachment Redirect**: Redirect media attachment pages to the parent post or homepage to prevent thin-content SEO issues.
+* **External Link Optimization**: Automatically append `rel="nofollow noopener noreferrer"` and `target="_blank"` to outbound links with domain whitelisting (using fast native `WP_HTML_Tag_Processor`).
+* **Virtual Robots.txt Manager**: Customize dynamic robots.txt rules directly within WordPress.
 
-### 🌟 Module Comments
+### 12. 💻 Custom Code & CSS
+* **Script Injection**: Insert custom HTML, tracking tags, and JavaScript into `<head>`, opening `<body>`, and page footer.
+* **Responsive CSS**: Add custom CSS rules with dedicated code editors for Desktop, Tablet, and Mobile devices with automatic minification.
 
-WP EXtra plugin blocks 100% of automatic spam messages in comments section and also blocks all trackbacks. No captcha required.
+### 13. 🍪 Cookie Consent
+* **GDPR/CCPA Compliance**: Lightweight, customizable cookie consent banner for compliance with international privacy laws.
+* **Modern Design Presets**: Choose between Classic Light, Dark Modern, Soft Warm, or custom color palettes.
+* **100% Cache Compatible**: Fully client-side JavaScript execution ensuring compatibility with WP Rocket, LiteSpeed, and full-page CDN caching.
 
-* Hide all comments
-* Hide comments media
+### 14. ✉️ SMTP Mailer
+* **Multi-Account SMTP Rotation**: Configure multiple SMTP accounts with daily quotas; automatically rotates when daily limits are reached.
+* **1-Click Provider Presets**: Pre-configured settings for Gmail, Mailgun, Outlook / Office 365, Yahoo Mail, Amazon SES, Zoho Mail, SendGrid, and Sendinblue (Brevo).
+* **Live AJAX Test Email**: Interactive test sender with real-time response latency measurement and intelligent diagnostic troubleshooting.
+* **Email Delivery Logs**: Searchable database log tracking recipients, subjects, sending mailer, status, and error traces.
 
-### 🌟 Module Branding
+### 🛠️ Directory & Server Tools
+* **.htaccess Directory Protection**: Block direct PHP script execution inside `wp-includes`, `wp-content/uploads`, `.env`, `.git`, and sensitive configuration files.
+* **Encrypted JSON Backup & Restore**: Export and import full plugin configuration safely with encrypted JSON files.
 
-Make your client’s experience better when you use WP EXtra to rebrand the WordPress login page. Our plugin lets web developers and agencies make a custom login page for their clients to use every time they use WordPress.
+---
 
-* Customizes Admin URL
-* Custom background image
-* Custom branding logo
-* Login box on the left or right
-* Transparent login box
-* Rounded corners
-* Hide/change WordPress links
+== Service Disclosures ==
 
-### 🌟 Module Site Admin
+This plugin can optionally connect to the following third-party services:
 
-* Hide / Auto-hide admin bar on the frontend for all or some user roles. 
-* Customize the order of the admin menu and optionally change menu item title or hide some items. 
-* Hide plugins from the Plugins screen in the admin
-* Add custom branding image above the admin menu
+* **Cloudflare Turnstile**:
+  - Service URL: https://challenges.cloudflare.com/turnstile/v0/api.js
+  - Service Provider: Cloudflare, Inc.
+  - Terms of Service: https://www.cloudflare.com/website-terms/
+  - Privacy Policy: https://www.cloudflare.com/privacypolicy/
+  - Purpose: Provides privacy-preserving CAPTCHA protection against automated bots on login, registration, and password recovery forms. This service is strictly optional and is only loaded when Cloudflare Turnstile keys are configured by the administrator in plugin settings.
 
-### 🌟 Module Security
-
-Safeguard your WordPress application using our powerful site security toolset. Our comprehensive features are specifically designed to strengthen your website’s defenses against malware, exploits, and various malicious activities. With these tools at your disposal, you can ensure the utmost bot, malware and brute force protection for your website:
-
-* Lock and Protect System Folders
-* Hide WordPress Version
-* Disable Themes & Plugins Editor
-* Disable REST API access
-* Disable XML-RPC access
-* Disable Embed scripts
-* Disable WLW Manifest scripts
-* Disable Right Click
-* Disable Image Dragging by Mouse
-
-### 🌟 Module Cookie
-
-WP EXtra is a simple that helps to display cookie notice on your WordPress website. It helps to show your complies with EU GDPR cookie law and CCPA regulations. It is a lightweight plugin that comes with three different layouts.
-
-* Simple & light-weight.
-* Choose placement to display notice.
-* Custom message support.
-* Color options for notice.
-* Display/Hide close button.
-* Set cookie expiration date.
-
-### 🌟 Module SMTP
-
-To access all the mail services you need professional mail addresses. The mail services you can use through this plug-in:
-
-* MailGun SMTP [5,000 free email /per month for 3 months]
-* Gmail SMTP [10000 free email/per month]
-* Hotmail
-* Yahoo
-* AWS SES
-* ZOHO Mail
-* Sendgrid
-* Sendinblue
-* Outlook
-
-### 🌟 Module Optimize
-
-* Minify HTML will help in Compacting HTML code, including any inline JavaScript and CSS contained in it,can save many bytes of data.
-* Instead of reloading the full page every time a user navigates your site, enable Turbolinks! Turbolinks will reload only the necessary parts of the site and even pull in additional JavaScipt and CSS.
-
-### 🌟 Module Code
-
-Customize your WordPress site’s appearance by easily adding custom CSS and JS code without even having to modify your theme or plugin files. This is perfect for adding custom CSS tweaks to your site.
-
-* Text editor with syntax highlighting
-* Print the code inline or included into an external file
-* Print the code in the header or the footer
-* Add CSS or JS to the frontend or the admin side
-* Add as many codes as you want
-* Keep your changes also when you change the theme
-
-### 🌟 Module Tools
-
-You can transfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click “Import”.
-
-* Duplicate Post Type
-* Duplicate Taxonomy
-
-### 🔥 WP EXtra Pro
-
-**Lifetime Deal (LTD)** is available at [WP EXtra Pro](https://wpvnteam.com/wp-extra/).
+---
 
 == Installation ==
 
@@ -176,6 +147,25 @@ You can install the WP EXtra from your WordPress Dashboard or manually via FTP.
 2. Easily enable function with a single click.
 
 == Changelog ==
+
+= 8.7.0 =
+* [PERFORMANCE] Removed legacy bottleneck features (quicklink, turbo, minify_html, sslfix) to eliminate server request queueing and output buffer delays.
+* [MODERNIZE] Converted auto nofollow external links to use WP Core WP_HTML_Tag_Processor for 10x faster DOM handling without regex backtracking.
+* [OPTIMIZE] Upgraded image conversion and auto-upload resize to standard wp_get_image_editor() with Imagick priority and restricted auto remote image downloader to publish status only.
+* [FIX] Prevented GitHub comment blacklist remote fetch from blocking frontend requests via admin-only execution and transient locking.
+* [IMPROVE] Centralized Helper utility and decoupled Settings for multi-project compatibility.
+* [IMPROVE] Fully refactored and streamlined all 15 core module groups for enhanced performance.
+* [OPTIMIZE] Optimized Term cloning SQL and batch object assignment (chunks of 200) to prevent memory exhaustion.
+* [OPTIMIZE] Added 2-hour Transient caching for Dashboard RSS feeds.
+* [OPTIMIZE] Added execution limit (20 images max) and safe timeout on auto remote image downloader.
+* [FIX] Fixed post type and taxonomy slug removal namespace issue on Pro edition.
+* [FIX] Fixed blank comments template file path resolution.
+* [FIX] Fixed PHP 8+ compatibility warnings across all modules.
+* [SECURITY] Hardened redirects with wp_safe_redirect and remote requests with wp_safe_remote_post/wp_safe_remote_get.
+* [SECURITY] Added domain validation on traffic spam redirection.
+
+= 8.6.9 =
+* [NEW] Cloudflare Turnstile
 
 = 8.6.8 =
 * [NEW] Last Modified

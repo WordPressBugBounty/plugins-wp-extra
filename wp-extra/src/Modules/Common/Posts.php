@@ -1,7 +1,12 @@
 <?php
 namespace WPEXtra\Modules\Common;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WPEXtra\Settings;
+use WPEXtra\Helper;
 use WPEXtra\Base;
 
 class Posts extends Base {
@@ -15,17 +20,33 @@ class Posts extends Base {
 		'mce_plugins',
 		'signature',
 		'classic_widget',
+		'disable_widget',
 		'publish_btn',
 		'post_revisions',
-		'autosave_interval',
-		'redirect_single_post',
-		'mce_excerpt',
-		'media_default',
 		'delete_attached',
-		'scrolltotop',
 		'lock_modified',
 		'show_modified',
+		'img_column',
+		'disable_tags',
 	];
+
+    public function disable_widget() {
+        add_action('widgets_init', [$this, 'disable_sidebar_widgets'], 100);
+    }
+    
+    public function disable_sidebar_widgets() {
+        if (!is_admin() || (isset($_GET['page']) && $_GET['page'] === 'wp-extra')) {
+            return;
+        }
+        $widgets = (array) Helper::get_option('disable_widget', []);
+        if (!empty($widgets)) {
+            foreach ($widgets as $widget_class) {
+                if (class_exists($widget_class)) {
+                    unregister_widget($widget_class);
+                }
+            }
+        }
+    }
     
     public function mce_classic() {
         add_action( 'current_screen', [$this, 'remove_gutenberg'] );
@@ -60,13 +81,22 @@ class Posts extends Base {
     public function ajax_download_image() {
         check_ajax_referer('extra_dl_nonce', 'nonce');
 
-        $url     = esc_url_raw($_POST['url']);
-        $post_id = intval($_POST['post_id']);
+        $url     = esc_url_raw($_POST['url'] ?? '');
+        $post_id = intval($_POST['post_id'] ?? 0);
         $alt     = sanitize_text_field($_POST['alt'] ?? '');
         $title   = sanitize_text_field($_POST['title'] ?? '');
 
-        if (empty($url) || !$post_id) {
-            wp_send_json_error(['message' => __('Missing data.', 'wp-extra')]);
+        if (empty($url) || !$post_id || !wp_http_validate_url($url)) {
+            wp_send_json_error(['message' => __('Missing or invalid data.', 'wp-extra')]);
+        }
+
+        if (!current_user_can('edit_post', $post_id)) {
+            wp_send_json_error(['message' => __('You do not have permission to edit this post.', 'wp-extra')]);
+        }
+
+        $post = get_post($post_id);
+        if (!$post) {
+            wp_send_json_error(['message' => __('Post not found.', 'wp-extra')]);
         }
 
         require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -78,7 +108,6 @@ class Posts extends Base {
             wp_send_json_error(['message' => sprintf(__('Download failed: %s', 'wp-extra'), $tmp->get_error_message())]);
         }
 
-        $post = get_post($post_id);
         $slug = sanitize_title($post->post_name ?: $post->post_title);
         $ext  = pathinfo(parse_url($url, PHP_URL_PATH), PATHINFO_EXTENSION) ?: 'jpg';
 
@@ -175,7 +204,8 @@ class Posts extends Base {
         add_filter( 'mce_external_plugins', [$this, 'mce_plugin' ]);
         add_filter( 'mce_buttons', [$this, 'mce_buttons' ]);
         add_filter( 'mce_buttons_2', [$this, 'mce_buttons_2']);
-        add_filter( 'mce_buttons_2', [$this, 'remove_mce_buttons_2'], 2020 );
+        add_action( 'wp_enqueue_scripts', [$this, 'enqueue_frontend_styles'] );
+        add_filter( 'mce_css', [$this, 'add_editor_styles'] );
 		if(Settings::get_option('signature')) {
 			add_shortcode('signature', [$this, 'shortcode_signature']);
 			if(Settings::get_option('signature_pos') == 'top') {
@@ -190,6 +220,20 @@ class Posts extends Base {
 		}
     }
 
+    public function enqueue_frontend_styles() {
+        wp_enqueue_style( 'wpex-checklist', plugins_url('/assets/css/checklist.min.css', WPEX_FILE), [], defined('WPEX_VERSION') ? WPEX_VERSION : null );
+    }
+
+    public function add_editor_styles( $mce_css ) {
+        $checklist_css = plugins_url('/assets/css/checklist.min.css', WPEX_FILE);
+        if ( ! empty( $mce_css ) ) {
+            $mce_css .= ',' . $checklist_css;
+        } else {
+            $mce_css = $checklist_css;
+        }
+        return $mce_css;
+    }
+
 	public function mce_plugin( $init ) {
         $plugins = [];
         if ( Settings::get_option( 'mce_plugins' ) ) {
@@ -202,6 +246,7 @@ class Posts extends Base {
                 'cleanhtml',
                 'ultable',
                 'getimage',
+                'checklist',
             ];
         }
         if ( Settings::get_option( 'signature' ) ) {
@@ -227,6 +272,20 @@ class Posts extends Base {
 		array_splice( $buttons, 14, 0, 'visualblocks' );
 		array_splice( $buttons, 15, 0, 'searchreplace' );
 		array_splice( $buttons, 16, 0, 'wp_code' );
+
+        // Place checklist dropdown right next to list buttons (numlist / bullist)
+        $pos = array_search( 'numlist', $buttons, true );
+        if ( false !== $pos ) {
+            array_splice( $buttons, $pos + 1, 0, 'checklist' );
+        } else {
+            $pos = array_search( 'bullist', $buttons, true );
+            if ( false !== $pos ) {
+                array_splice( $buttons, $pos + 1, 0, 'checklist' );
+            } else {
+                $buttons[] = 'checklist';
+            }
+        }
+
 		return $buttons;
 	}
 
@@ -253,7 +312,7 @@ class Posts extends Base {
     
 	public function overwrite_wplink() {
 		wp_deregister_script( 'wplink' );
-		wp_register_script( 'wplink', plugins_url('/assets/js/wplink.js', WPEX_FILE ), [ 'jquery', 'wp-a11y' ], '1.0', true );
+		wp_register_script( 'wplink', plugins_url('/assets/js/wplink.min.js', WPEX_FILE ), [ 'jquery', 'wp-a11y' ], '1.0', true );
 		wp_localize_script(
 			'wplink',
 			'wpLinkL10n',
@@ -317,224 +376,60 @@ class Posts extends Base {
 	public function publish_button_enqueue() {
 		global $pagenow;
 		if ( is_admin() && ($pagenow == 'post.php' || $pagenow == 'post-new.php') ) {
-            wp_enqueue_script('publish-button', plugins_url('/assets/js/publish-button.js', WPEX_FILE ), array('jquery'), '1.0', true );
+            wp_enqueue_script('publish-button', plugins_url('/assets/js/publish-button.min.js', WPEX_FILE ), array('jquery'), '1.0', true );
 		} 
 	}
             
     public function post_revisions() {
-        add_action( 'admin_init', [$this, 'disable_revisions'] );
-    }
-    
-    public function disable_revisions() {
-        $post_types = Settings::get_option('post_revisions');
-        if ( !is_array( $post_types ) || empty( $post_types ) ) {
-            return;
-        }
-        foreach ( $post_types as $post_type ) {
-            remove_post_type_support( $post_type, 'revisions' );
-        }
+        add_filter('wp_revisions_to_keep', [$this, 'limit_revisions'], 10, 2);
     }
 
-	public function redirect_single_post() {
-        add_action('template_redirect', [$this, 'search_results_return_one_post']);
-    }
-
-    public function search_results_return_one_post() {
-        if (is_search()) {
-            global $wp_query;
-            if ($wp_query->post_count == 1 && $wp_query->max_num_pages == 1) {
-                wp_redirect(get_permalink($wp_query->posts[0]->ID));
-                exit;
-            }
+    public function limit_revisions($num, $post) {
+        $limit = Settings::get_option('post_revisions');
+        if ($limit === '' || $limit === null || !is_numeric($limit)) {
+            return $num;
         }
-    }
-    
-    public function mce_excerpt() {
-        add_action('add_meta_boxes', [$this, 'replace_metabox']);
-        add_action('enqueue_block_editor_assets', [$this, 'remove_panel_from_block_editor']);
-    }
-    
-    public function replace_metabox() {
-        $allowed_post_types = Settings::get_option('mce_excerpt');
-        $current_post_type = get_post_type();
-        if (in_array($current_post_type, $allowed_post_types)) {
-            remove_meta_box('postexcerpt', $current_post_type, 'normal');
-            add_meta_box(
-                'postexcerpt',
-                __('Excerpt'),
-                [$this, 'render_metabox'],
-                $current_post_type,
-                'normal',
-                'high',
-                [ '__back_compat_meta_box' => false ]
-            );
-        }
-    }
-
-    public function render_metabox($post) {
-        $settings = [
-            'media_buttons' => false,
-        ];
-        wp_editor(html_entity_decode($post->post_excerpt), 'excerpt', $settings);
-    }
-
-    public function remove_panel_from_block_editor() {
-        wp_add_inline_script(
-            'wp-edit-post',
-            'wp.data.dispatch("core/edit-post").removeEditorPanel("post-excerpt");'
-        );
-    }
-    
-    public function media_default() {
-        add_filter('get_post_metadata', [$this, 'set_media_default'], 10, 4);
-    }
-
-    public function set_media_default($null, $object_id, $meta_key, $single) {
-        
-        if (is_admin() || (defined('DOING_AJAX') && DOING_AJAX) || (defined('REST_REQUEST') && REST_REQUEST)) {
-            return $null;
-        }
-        
-        if ($meta_key !== '_thumbnail_id') {
-            return $null;
-        }
-
-        $post_type = get_post_type($object_id);
-        if (!$post_type) {
-            return $null;
-        }
-
-        if (!post_type_supports($post_type, 'thumbnail')) {
-            return $null;
-        }
-
-        $meta_cache = wp_cache_get($object_id, 'post_meta');
-        if (!$meta_cache) {
-            $meta_cache = update_meta_cache('post', [$object_id]);
-            $meta_cache = $meta_cache[$object_id] ?? [];
-        }
-
-        if (!empty($meta_cache['_thumbnail_id'][0])) {
-            return $null;
-        }
-
-        $default_thumbnail_id = Settings::get_option('media_default');
-        if (empty($default_thumbnail_id)) {
-            return $null;
-        }
-
-        $meta_cache['_thumbnail_id'][0] = $default_thumbnail_id;
-        wp_cache_set($object_id, $meta_cache, 'post_meta');
-
-        return $default_thumbnail_id;
+        return max(0, (int) $limit);
     }
 
     public function delete_attached() {
         add_action('before_delete_post', [$this, 'delete_attachments']);
-        add_action('deleted_post', [$this, 'delete_attachments']);
     }
     
-    public function delete_attachments( $post_id ) {
-        $attachments = get_attached_media( '', $post_id );
-        foreach ($attachments as $attachment) {
-            $attachment_used_in = $this->get_posts_by_attachment_id($attachment->ID);
-            $is_parent = $attachment->post_parent === $post_id;
-            if( $is_parent ) {
-                $other_posts_exits_content = array_diff( $attachment_used_in['content'],[$post_id]);
-                $other_posts_exits_thumb = array_diff( $attachment_used_in['thumbnail'],[$post_id]);
-                $other_posts_exits = array_merge($other_posts_exits_content, $other_posts_exits_thumb);
-                if( !empty($other_posts_exits) ) {
-                    wp_update_post([
-                        'ID' => $attachment->ID,
-                        'post_parent' => $other_posts_exits[0]
-                    ]);
-                } else {
-                    wp_delete_attachment( $attachment->ID, true );
-                }
-            }
-        }
-    }
-    
-    private function get_posts_by_attachment_id( $attachment_id ) {
-        $used_as_thumbnail = array();
-        if ( wp_attachment_is_image( $attachment_id ) ) {
-            $thumbnail_query = new \WP_Query( array(
-                'meta_key'       => '_thumbnail_id',
-                'meta_value'     => $attachment_id,
-                'post_type'      => 'any',
-                'fields'         => 'ids',
-                'no_found_rows'  => true,
-                'posts_per_page' => - 1,
-                'post_status' => array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash')
-            ) );
-
-            $used_as_thumbnail = $thumbnail_query->posts;
-        }
-        $attachment_urls = array( wp_get_attachment_url( $attachment_id ) );
-        if ( wp_attachment_is_image( $attachment_id ) ) {
-            foreach ( get_intermediate_image_sizes() as $size ) {
-                $intermediate = image_get_intermediate_size( $attachment_id, $size );
-                if ( $intermediate ) {
-                    $attachment_urls[] = $intermediate['url'];
-                }
-            }
-        }
-        $used_in_content = array();
-        foreach ( $attachment_urls as $attachment_url ) {
-            $content_query = new \WP_Query( array(
-                's'              => $attachment_url,
-                'post_type'      => 'any',
-                'fields'         => 'ids',
-                'no_found_rows'  => true,
-                'posts_per_page' => - 1,
-                'post_status' => array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', 'trash')
-            ) );
-            $used_in_content = array_merge( $used_in_content, $content_query->posts );
-        }
-        $used_in_content = array_unique( $used_in_content );
-        return array(
-            'thumbnail' => $used_as_thumbnail,
-            'content'   => $used_in_content,
-        );
-    }
-    
-    public function scrolltotop() {
-        add_action('admin_footer', [$this, 'scroll_to_top']);
-    }
-    
-    public function scroll_to_top() { 
-        $screen = get_current_screen();
-        if ($screen && $screen->is_block_editor) {
+    public function delete_attachments($post_id) {
+        if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
             return;
         }
-        echo '<a id="backtotop" class="button button-primary components-button is-primary is-compact" href="#" style="position: fixed; right: 10px; bottom: 15px; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px; max-width: 40px; display: flex; justify-content: center;"><span class="dashicons dashicons-arrow-up" style="line-height: normal !important; vertical-align: top;"></span></a>';
-        ?>
-        <script>
-            jQuery(window).on('scroll', function() {
-                var scrollPosition = jQuery(window).scrollTop();
-                if (scrollPosition > 200) {
-                    jQuery('#backtotop').fadeIn('slow');
-                } else {
-                    jQuery('#backtotop').fadeOut('slow');
-                }
-            });
-            jQuery('#backtotop').on('click', function(e) {
-                e.preventDefault();
-                jQuery('html, body').animate({ scrollTop: 0 }, 'slow');
-            });
-        </script>
-        <?php
+        $attachments = get_attached_media('', $post_id);
+        if (empty($attachments)) {
+            return;
+        }
+        global $wpdb;
+        foreach ($attachments as $attachment) {
+            if ($attachment->post_parent !== (int)$post_id) {
+                continue;
+            }
+            $other_thumb = $wpdb->get_var($wpdb->prepare(
+                "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_thumbnail_id' AND meta_value = %d AND post_id != %d LIMIT 1",
+                $attachment->ID,
+                $post_id
+            ));
+
+            if ($other_thumb) {
+                wp_update_post([
+                    'ID'          => $attachment->ID,
+                    'post_parent' => (int)$other_thumb,
+                ]);
+            } else {
+                wp_delete_attachment($attachment->ID, true);
+            }
+        }
     }
     
     public function show_modified() {
-        add_filter('manage_posts_columns', [$this, 'modified_column_register']);
-        add_filter('manage_pages_columns', [$this, 'modified_column_register']);
-
-        add_action('manage_posts_custom_column', [$this, 'modified_column_display'], 10, 2);
-        add_action('manage_pages_custom_column', [$this, 'modified_column_display'], 10, 2);
-
+        add_filter('manage_post_posts_columns', [$this, 'modified_column_register']);
+        add_action('manage_post_posts_custom_column', [$this, 'modified_column_display'], 10, 2);
         add_filter('manage_edit-post_sortable_columns', [$this, 'modified_column_register_sortable']);
-        add_filter('manage_edit-page_sortable_columns', [$this, 'modified_column_register_sortable']);
 
         add_action('admin_footer', [$this, 'script_modified']);
         add_action('wp_ajax_convert_post_date', [$this, 'convert_post_date']);
@@ -572,8 +467,7 @@ class Posts extends Base {
     public function script_modified() {
         $screen = get_current_screen();
 
-        if ($screen->base !== 'edit') return;
-        if (!in_array($screen->post_type, ['post', 'page'])) return;
+        if (!$screen || $screen->base !== 'edit' || $screen->post_type !== 'post') return;
 
         $nonce = wp_create_nonce('convert_post_date_nonce');
         ?>
@@ -624,7 +518,7 @@ class Posts extends Base {
         }
 
         $post = get_post($post_id);
-        if (!$post) {
+        if (!$post || $post->post_type !== 'post') {
             wp_send_json_error();
         }
 
@@ -661,7 +555,7 @@ class Posts extends Base {
         if (empty($postarr['ID'])) return $data;
 
         $post = get_post($postarr['ID']);
-        if (!$post) return $data;
+        if (!$post || $post->post_type !== 'post') return $data;
 
         if ($post->post_status !== 'publish') return $data;
 
@@ -671,6 +565,78 @@ class Posts extends Base {
         $data['post_modified_gmt'] = $post->post_modified_gmt;
 
         return $data;
+    }
+
+    public function img_column() {
+        add_filter('manage_post_posts_columns', [$this, 'add_img_column']);
+        add_action('manage_post_posts_custom_column', [$this, 'manage_img_column'], 10, 2);
+        add_action('admin_head-edit.php', [$this, 'img_column_css']);
+    }
+
+    public function img_column_css() {
+        $screen = get_current_screen();
+        if (!$screen || $screen->post_type !== 'post') {
+            return;
+        }
+
+        echo '<style>
+            .wp-list-table th.column-thumbnail,.wp-list-table td.column-thumbnail{width:52px!important;text-align:center!important;vertical-align:top!important;padding:10px 4px!important;box-sizing:border-box!important}
+            .wp-list-table th.check-column,.wp-list-table td.check-column{vertical-align:top!important;padding-top:14px!important}
+            .wp-list-table td.column-title{vertical-align:top!important}
+            .wpex-thumb-box{width:40px;height:40px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:4px;overflow:hidden;box-sizing:border-box}
+            .wpex-thumb-box a{display:flex;align-items:center;justify-content:center;width:100%;height:100%;text-decoration:none}
+            .wpex-thumb-box img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important}
+            .wpex-thumb-box .dashicons{color:#94a3b8;font-size:18px;width:18px;height:18px;line-height:18px;display:block}
+        </style>';
+    }
+
+    public function add_img_column($columns) {
+        $new_columns = [];
+        foreach ($columns as $key => $title) {
+            if ($key === 'title') {
+                $new_columns['thumbnail'] = '<span class="screen-reader-text">' . esc_html__('Thumbnail', 'wp-extra') . '</span>';
+            }
+            $new_columns[$key] = $title;
+        }
+        return $new_columns;
+    }
+
+    public function manage_img_column($column_name, $post_id) {
+        if ('thumbnail' === $column_name) {
+            $edit_link = get_edit_post_link($post_id);
+            echo '<div class="wpex-thumb-box">';
+            if (has_post_thumbnail($post_id)) {
+                $img_html = get_the_post_thumbnail($post_id, [80, 80], ['loading' => 'lazy']);
+                echo $edit_link ? '<a href="' . esc_url($edit_link) . '">' . $img_html . '</a>' : $img_html;
+            } else {
+                $placeholder = '<span class="dashicons dashicons-format-image"></span>';
+                echo $edit_link ? '<a href="' . esc_url($edit_link) . '">' . $placeholder . '</a>' : $placeholder;
+            }
+            echo '</div>';
+        }
+    }
+
+    public function disable_tags() {
+        add_action('init', [$this, 'unregister_post_tags']);
+        add_action('admin_menu', [$this, 'remove_tags_admin_menu']);
+        add_action('template_redirect', [$this, 'block_tag_archives']);
+    }
+
+    public function unregister_post_tags() {
+        unregister_taxonomy_for_object_type('post_tag', 'post');
+    }
+
+    public function remove_tags_admin_menu() {
+        remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
+    }
+
+    public function block_tag_archives() {
+        if (is_tag()) {
+            global $wp_query;
+            $wp_query->set_404();
+            status_header(404);
+            nocache_headers();
+        }
     }
         
 }

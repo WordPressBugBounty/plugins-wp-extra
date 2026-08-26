@@ -1,14 +1,16 @@
 <?php
 namespace WPEXtra;
 
-use WPEXtra\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 class Base {
 	protected $features = [];
 
 	public function __construct() {
 		foreach ( $this->features as $feature ) {
-			if ( Settings::is_feature_active( $feature ) ) {
+			if ( Helper::is_feature_active( $feature ) && method_exists( $this, $feature ) ) {
 				$this->$feature();
 			}
 		}

@@ -1,4 +1,4 @@
-<tr valign="top" class="<?php echo $option->get_hide_class_attribute(); ?>">
+<tr valign="top" class="<?php echo $option->get_hide_class_attribute(); ?>" <?php echo $option->get_show_if_attribute(); ?>>
     <th scope="row">
         <label class="<?php echo $option->get_label_class_attribute(); ?>"><?php echo $option->get_label(); ?></label>
     </th>

@@ -86,15 +86,31 @@ abstract class OptionAbstract
         return ! empty($class) ? esc_attr($class) : null;
     }
 
+    public function get_row_class_attribute()
+    {
+        $classes = [];
+        $css = $this->get_css();
+        if (!empty($css['class'])) {
+            $classes[] = $css['class'];
+        }
+        if ($this->get_arg('pro') || !empty($css['pro']) || (isset($css['hide_class']) && strpos((string)$css['hide_class'], 'pro') !== false)) {
+            $classes[] = 'pro';
+        }
+        return !empty($classes) ? esc_attr(implode(' ', array_unique($classes))) : null;
+    }
+
     public function get_hide_class_attribute()
     {
-        $class = $this->get_css()['hide_class'] ?? null;
-        
-        if ($class === 'pro') {
-            return ! empty($class) ? esc_attr($class) : null;
+        return $this->get_row_class_attribute();
+    }
+
+    public function get_show_if_attribute()
+    {
+        $show_if = $this->get_arg('show_if');
+        if (!empty($show_if) && is_array($show_if)) {
+            return 'data-show-if="' . esc_attr(wp_json_encode($show_if)) . '"';
         }
-        
-        return ! empty($class) ? $this->section->tab->settings->option_name.esc_attr($class) : null;
+        return '';
     }
 
     public function get_name_attribute()

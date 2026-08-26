@@ -1,6 +1,10 @@
 <?php
 namespace WPEXtra;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Core {
     
     public function __construct() {
@@ -9,11 +13,7 @@ class Core {
     }
     
 	public function add_plugin_action_links( $links ) {
-		$links[]     = '<a href="' . esc_url( admin_url( 'admin.php?page=wp-extra' ) ) . '">' . __( 'Settings' ) . '</a>';
-		$upgradeable = apply_filters( 'wpextra_upgradeable', true );
-		if ( $upgradeable ) {
-			$links[] = '<a href="https://wpvnteam.com/wp-extra/pricing/" style="color: #39b54a; font-weight: bold" target="_blank">' . __( 'Upgrade', 'wp-extra' ) . '</a>';
-		}
+		$links[] = '<a href="' . esc_url( admin_url( 'admin.php?page=wp-extra' ) ) . '">' . __( 'Settings' ) . '</a>';
 		return $links;
 	}
         

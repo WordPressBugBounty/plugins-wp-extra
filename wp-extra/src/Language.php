@@ -1,6 +1,10 @@
 <?php
 namespace WPEXtra;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class Language {
     
     public function __construct() {

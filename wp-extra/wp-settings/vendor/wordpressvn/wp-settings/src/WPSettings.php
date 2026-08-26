@@ -1,6 +1,6 @@
 <?php
 
-/** v2.7.0 **/
+/** v2.8.2 **/
 
 namespace WPVNTeam\WPSettings;
 
@@ -37,6 +37,15 @@ class WPSettings
     public $plugin_data;
     
     public $styling_loaded = false;
+
+    public $ajax_save = false;
+
+    public function enable_ajax_save($enabled = true)
+    {
+        $this->ajax_save = $enabled;
+
+        return $this;
+    }
 
     public function __construct($title, $slug = null)
     {
@@ -141,6 +150,7 @@ class WPSettings
         $this->errors = new Error($this);
         $this->flash = new Flash($this);
         add_action('admin_init', [$this, 'save'], 20);
+        add_action('wp_ajax_wps_save_' . $this->option_name, [$this, 'ajax_save']);
         add_action('admin_menu', [$this, 'add_to_menu'], 20);
         add_action('admin_head', [$this, 'styling'], 20);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_styling']);
@@ -202,8 +212,9 @@ class WPSettings
         if ($this->is_on_toplevel_page() || $this->is_on_settings_page() || $this->is_on_parent_page()) {
             wp_enqueue_script('clipboard');
             wp_enqueue_style('wp-components');
-            wp_enqueue_style('wp-settings', plugin_dir_url(__FILE__) . '../resources/css/wp-settings.css');
-            wp_enqueue_script('wp-settings', plugin_dir_url(__FILE__) . '../resources/js/wp-settings.js', [], null, true);
+            $css_ver = file_exists(plugin_dir_path(__FILE__) . '../resources/css/wp-settings.css') ? filemtime(plugin_dir_path(__FILE__) . '../resources/css/wp-settings.css') : '1.0';
+            wp_enqueue_style('wp-settings', plugin_dir_url(__FILE__) . '../resources/css/wp-settings.css', [], $css_ver);
+            wp_enqueue_script('wp-settings', plugin_dir_url(__FILE__) . '../resources/js/wp-settings.js', [], $css_ver, true);
         }
 
         $this->styling_loaded = true;
@@ -213,83 +224,29 @@ class WPSettings
     {
         if ($this->is_on_toplevel_page() || $this->is_on_settings_page() || $this->is_on_parent_page()) {
             add_thickbox();
-        ?><script>
-                (function($){
-                    $('[class^="<?php echo $this->option_name; ?>"]').each(function(){
-                        var classList = this.className.split(" "),
-                            parentId = classList.find(function(cls) { return cls.startsWith("<?php echo $this->option_name; ?>"); }),
-                            parent = $('#' + parentId),
-                            children = $(this),
-                            childrens = children.find(':input');
-                        parent.on('change', function(){
-                            if (classList.includes('hidden')) {
-                                children.toggleClass('hidden', !this.checked);
-                            } else if (classList.includes('visible')) {
-                                children.toggleClass('hidden', this.checked);
-                            } else {
-                                childrens.prop('disabled', !this.checked);
-                            }
-                        });
-                        if (classList.includes('hidden')) {
-                            children.toggleClass('hidden', !parent.is(':checked'));
-                        } else if (classList.includes('visible')) {
-                            children.toggleClass('hidden', parent.is(':checked'));
-                        } else {
-                            childrens.prop('disabled', !parent.is(':checked'));
-                        }
-                    });
-                })(jQuery);
-            </script>
-        <?php
         }
     }
     
     public function admin_rate_us( $footer_text ) {
         if ( isset($_GET['page']) && $_GET['page'] === $this->slug && $this->plugin_data ) {
-            if( ! function_exists('get_plugin_data') ){
-                require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+            if ( ! function_exists('get_plugin_data') ) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
             }
             $plugin_data = get_plugin_data( $this->plugin_data );
             $thank_text = sprintf(
                 /* translators: 1. link to plugin uri; 2. link to plugin name; 3. link to author name */
-                __( 'Thank you for using <a href="%1$s" target="_blank">%2$s</a>. Made with ♥ by <strong>%3$s</strong>' ),
-                $plugin_data['PluginURI'],
-                $plugin_data['Name'],
-                $plugin_data['AuthorName']
+                __( 'Thank you for using <a href="%1$s" target="_blank">%2$s</a>. Made with <span class="wps-heart" style="color:#e11d48;">♥</span> by <strong>%3$s</strong>', 'wp-settings' ),
+                esc_url($plugin_data['PluginURI']),
+                esc_html($plugin_data['Name']),
+                esc_html($plugin_data['AuthorName'])
             );
-            return str_replace( '</span>', '', $footer_text ) . ' | ' . $thank_text . '</span>';
-        } else {
-            return $footer_text;
+            return '<span id="footer-thankyou">' . $thank_text . '</span>';
         }
+        return $footer_text;
     }
     
-    private function license_expired($exp_date) {
-        if ($exp_date === 'lifetime') {
-            return false;
-        }
-        $today = date('Y-m-d H:i:s');
-        return $exp_date < $today;
-    }
-
     public function admin_notice() {
-        $lic = get_option($this->option_name);
-        if (isset($_GET['page']) && $_GET['page'] === $this->slug) {
-            if (isset($lic['license_expires']) && $this->license_expired($lic['license_expires'])) {
-                echo '<div class="notice notice-error is-dismissible">';
-                echo '<p>' . esc_html__('Your license key has expired.', 'wp-extra') . '</p>';
-                echo '</div>';
-            } elseif (isset($lic['license_status']) && $lic['license_status'] !== 'valid') {
-                $url = esc_url(admin_url('admin.php?page=' . $this->slug . '&tab=license'));
-                echo '<div class="notice notice-warning is-dismissible">';
-                echo '<p>' . sprintf(
-                    /* translators: 1. link to plugin site; 2. link to plugin name */
-                    __('Activate <a href="%1$s">your license</a> to enable access to updates, support & PRO features for <strong>%2$s</strong>.', 'wp-extra'),
-                    esc_url($url),
-                    esc_html($this->title)
-                ) . '</p>';
-                echo '</div>';
-            }
-        }
+        // No license notices
     }
 
     public function get_tab_by_slug($slug)
@@ -306,11 +263,12 @@ class WPSettings
     public function get_active_tab()
     {
         $default = $this->tabs[0] ?? false;
+        $tab_slug = $_REQUEST['tab'] ?? ($_POST['tab'] ?? ($_GET['tab'] ?? null));
 
-        if (isset($_GET['tab'])) {
-            return in_array($_GET['tab'], array_map(function ($tab) {
+        if ($tab_slug) {
+            return in_array($tab_slug, array_map(function ($tab) {
                 return $tab->slug;
-            }, $this->tabs)) ? $this->get_tab_by_slug($_GET['tab']) : $default;
+            }, $this->tabs)) ? $this->get_tab_by_slug($tab_slug) : $default;
         }
 
         return $default;
@@ -466,7 +424,54 @@ class WPSettings
 
         update_option($this->option_name, $new_options->pull());
 
-        $this->flash->set('success', __('Changes saved.'));
+        $this->flash->set('success', __('Settings saved.'));
+    }
+
+    public function ajax_save()
+    {
+        if (! isset($_POST['_wpnonce']) || ! wp_verify_nonce($_POST['_wpnonce'], 'wp_settings_save_' . $this->option_name)) {
+            wp_send_json_error(['message' => __('Something went wrong.')]);
+        }
+
+        if (! current_user_can($this->capability)) {
+            wp_send_json_error(['message' => __('You need a higher level of permission.')]);
+        }
+
+        $current_options = $this->get_options();
+        $submitted_options = apply_filters('wp_settings_new_options', $_POST[$this->option_name] ?? [], $current_options);
+        $new_options = new Dot($current_options);
+
+        $active_tab = $this->get_active_tab();
+        if ($active_tab) {
+            foreach ($active_tab->get_active_sections() as $section) {
+                foreach ($section->options as $option) {
+                    $value = (new Dot($submitted_options))
+                        ->get($option->implementation->get_option_key_path());
+
+                    $valid = $option->validate($value);
+                    if (! $valid) {
+                        continue;
+                    }
+
+                    $value = apply_filters('wp_settings_new_options_' . $option->implementation->get_name(), $option->implementation->sanitize($value), $option->implementation);
+                    $new_options->set($option->implementation->get_option_key_path(), $value);
+                }
+            }
+        }
+
+        update_option($this->option_name, $new_options->pull());
+
+        ob_start();
+        $this->render_tab_menu();
+        $tab_menu_html = ob_get_clean();
+
+        $is_module_tab = ($active_tab && isset($this->tabs[0]) && $active_tab->slug === $this->tabs[0]->slug);
+
+        wp_send_json_success([
+            'message' => __('Settings saved.'),
+            'tab_menu_html' => $tab_menu_html,
+            'is_module_tab' => $is_module_tab,
+        ]);
     }
     
     public function set_reset()
@@ -483,7 +488,7 @@ class WPSettings
         
         update_option($this->option_name, $default_options);
 
-        $this->flash->set('success', __('Confirmation request initiated successfully.'));
+        $this->flash->set('success', __('Changes saved.'));
     }
     
     public function get_default_options()

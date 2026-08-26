@@ -1,7 +1,12 @@
 <?php
 namespace WPEXtra\Modules\Common;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use WPEXtra\Settings;
+use WPEXtra\Helper;
 use WPEXtra\Base;
 
 class Security extends Base {
@@ -15,18 +20,30 @@ class Security extends Base {
 		'disable_xmlrpc',
 		'remove_jquery_migrate',
 		'remove_wp_version',
+		'clean_head_links',
 		'remove_wlwmanifest_link',
 		'remove_rsd_link',
 		'remove_shortlink',
 		'disable_rss_feeds',
-		'remove_feed_links',
 		'disable_self_pingbacks',
+		'block_user_enumeration',
+		'security_headers',
+		'themeplugin_edits',
+		'core_updates',
+		'http_request',
 		'disable_rest_api',
 		'remove_rest_api_links',
 		'disable_heartbeat',
 		'heartbeat_frequency',
 		'remove_blocks',
 	];
+
+	public function clean_head_links() {
+		$this->remove_wlwmanifest_link();
+		$this->remove_rsd_link();
+		$this->remove_shortlink();
+		$this->disable_self_pingbacks();
+	}
     
     public function disable_embeds() {
         add_action('init', [$this, 'disable_embed'], 9999);
@@ -34,7 +51,9 @@ class Security extends Base {
 
 	public function disable_embed() {
 		global $wp;
-		$wp->public_query_vars = array_diff($wp->public_query_vars, array('embed'));
+		if (isset($wp->public_query_vars) && is_array($wp->public_query_vars)) {
+			$wp->public_query_vars = array_diff($wp->public_query_vars, ['embed']);
+		}
 		add_filter('embed_oembed_discover', '__return_false');
 		remove_action('wp_head', 'wp_oembed_add_discovery_links');
 		remove_action('wp_head', 'wp_oembed_add_host_js');
@@ -45,13 +64,15 @@ class Security extends Base {
 	}
 
 	public function disableEmbedsTinyMCE($plugins) {
-		return array_diff($plugins, array('wpembed'));
+		return is_array($plugins) ? array_diff($plugins, ['wpembed']) : $plugins;
 	}
 
 	public function disableEmbedsRewrites($rules) {
-		foreach($rules as $rule => $rewrite) {
-			if(false !== strpos($rewrite, 'embed=true')) {
-				unset($rules[$rule]);
+		if (is_array($rules)) {
+			foreach ($rules as $rule => $rewrite) {
+				if (false !== strpos($rewrite, 'embed=true')) {
+					unset($rules[$rule]);
+				}
 			}
 		}
 		return $rules;
@@ -72,16 +93,16 @@ class Security extends Base {
 	}
 
 	public function intercept_xmlrpc_header() {
-		if(!isset($_SERVER['SCRIPT_FILENAME'])) {
+		if (!isset($_SERVER['SCRIPT_FILENAME'])) {
 			return;
 		}
-		if('xmlrpc.php' !== basename($_SERVER['SCRIPT_FILENAME'])) {
+		if ('xmlrpc.php' !== basename($_SERVER['SCRIPT_FILENAME'])) {
 			return;
 		}
 		$header = 'HTTP/1.1 403 Forbidden';
 		header($header);
 		echo esc_html($header);
-		die();
+		exit;
 	}
     
 	public function remove_jquery_migrate() {
@@ -89,9 +110,9 @@ class Security extends Base {
     }
 
 	public function jquery_migrate(&$scripts) {
-		if(!is_admin()) {
+		if (!is_admin()) {
 			$scripts->remove('jquery');
-			$scripts->add('jquery', false, array( 'jquery-core' ), '1.12.4');
+			$scripts->add('jquery', false, ['jquery-core']);
 		}
 	}
     
@@ -115,30 +136,24 @@ class Security extends Base {
 
 	public function disable_rss_feeds() {
         add_action('template_redirect', [$this, 'rss_feed'], 1);
+        remove_action('wp_head', 'feed_links', 2);
+        remove_action('wp_head', 'feed_links_extra', 3);
 	}
 
 	public function rss_feed() {
-		if(!is_feed() || is_404()) {
+		if (!is_feed() || is_404()) {
 			return;
 		}
-		global $wp_rewrite;
-		global $wp_query;
-		if(isset($_GET['feed'])) {
-			wp_redirect(esc_url_raw(remove_query_arg('feed')), 301);
+		if (isset($_GET['feed'])) {
+			wp_safe_redirect(esc_url_raw(remove_query_arg('feed')), 301);
 			exit;
 		}
-		if(get_query_var('feed') !== 'old') {
+		if (get_query_var('feed') !== 'old') {
 			set_query_var('feed', '');
 		}
 		redirect_canonical();
-        // Translators: %s is a placeholder for the homepage URL.
-		wp_die(sprintf(esc_html__("No feed available, please visit the <a href='%s'>homepage</a>!"), esc_url(home_url('/'))));
+		wp_die(sprintf(esc_html__("No feed available, please visit the <a href='%s'>homepage</a>!", 'wp-extra'), esc_url(home_url('/'))));
 	}
-    
-	public function remove_feed_links() {
-        remove_action('wp_head', 'feed_links', 2);
-        remove_action('wp_head', 'feed_links_extra', 3);
-    }
     
 	public function disable_self_pingbacks() {
         add_action('pre_ping', [$this, 'self_pingbacks']);
@@ -146,13 +161,86 @@ class Security extends Base {
 
 	public function self_pingbacks(&$links) {
 		$home = get_option('home');
-		foreach($links as $l => $link) {
-			if(strpos($link, $home) === 0) {
+		foreach ($links as $l => $link) {
+			if (strpos($link, $home) === 0) {
 				unset($links[$l]);
 			}
 		}
 	}
+
+	public function block_user_enumeration() {
+		if (!is_admin()) {
+			// Block query string ?author=N for non-logged-in visitors
+			if (isset($_REQUEST['author']) && (is_numeric($_REQUEST['author']) || '' !== $_REQUEST['author'])) {
+				wp_safe_redirect(home_url(), 301);
+				exit;
+			}
+			// Hide REST API user list from unauthorized visitors
+			add_filter('rest_endpoints', [$this, 'filter_rest_user_endpoints']);
+		}
+	}
+
+	public function filter_rest_user_endpoints($endpoints) {
+		if (!is_user_logged_in()) {
+			if (isset($endpoints['/wp/v2/users'])) {
+				unset($endpoints['/wp/v2/users']);
+			}
+			if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
+				unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+			}
+		}
+		return $endpoints;
+	}
+
+	public function security_headers() {
+		add_filter('wp_headers', [$this, 'send_security_headers']);
+	}
+
+	public function send_security_headers($headers) {
+		if (!is_admin()) {
+			$headers['X-Frame-Options'] = 'SAMEORIGIN';
+			$headers['X-Content-Type-Options'] = 'nosniff';
+			$headers['Referrer-Policy'] = 'strict-origin-when-cross-origin';
+			$headers['Permissions-Policy'] = 'camera=(), microphone=(), geolocation=()';
+		}
+		return $headers;
+	}
+
     
+	public function themeplugin_edits() {
+		add_filter('map_meta_cap', [$this, 'disable_file_editor_caps'], 10, 2);
+		if (!defined('DISALLOW_FILE_EDIT')) {
+			define('DISALLOW_FILE_EDIT', true);
+		}
+	}
+
+	public function disable_file_editor_caps($caps, $cap) {
+		if (in_array($cap, ['edit_themes', 'edit_plugins', 'edit_files'], true)) {
+			$caps[] = 'do_not_allow';
+		}
+		return $caps;
+	}
+
+	public function core_updates() {
+		add_filter('auto_update_core', '__return_false');
+		add_filter('automatic_updater_disabled', '__return_true');
+	}
+
+	public function http_request() {
+		add_filter('pre_http_request', [$this, 'pass_reject_request'], 10, 3);
+	}
+
+	public function pass_reject_request($preempt, $parsed_args, $url) {
+		$value = Helper::get_option('http_request', '');
+		$blocked_domains = array_filter(array_map('trim', explode("\n", $value)));
+		foreach ($blocked_domains as $domain) {
+			if (strpos($url, $domain) !== false) {
+				return new \WP_Error('http_request_block', esc_html__('Blocked by WP EXtra', 'wp-extra'));
+			}
+		}
+		return $preempt;
+	}
+
 	public function disable_rest_api() {
         add_filter('rest_authentication_errors', [$this, 'restAuthenticationErrors'], 20);
 	}
@@ -160,34 +248,38 @@ class Security extends Base {
 	public function restAuthenticationErrors($result) {
         if (!empty($result)) {
             return $result;
-        } else {
-            $disabled = false;
-            $rest_route = $GLOBALS['wp']->query_vars['rest_route'];
-            $exceptions = apply_filters('wpex_rest_api_exceptions', array(
-                'contact-form-7',
-                'wordfence',
-                'elementor'
-            ));
+        }
 
-            foreach ($exceptions as $exception) {
-                if (is_array($rest_route) && in_array($exception, $rest_route)) {
-                    return;
-                }
-            }
-            $disableOptions = Settings::get_option('disable_rest_api');
-            if (!is_array($disableOptions)) {
-                $disableOptions = array();
-            }
-            if (in_array('all', $disableOptions)) {
-                $disabled = true;
-            } elseif (in_array('non_admins', $disableOptions) && !current_user_can('manage_options')) {
-                $disabled = true;
-            } elseif (in_array('logged_out', $disableOptions) && !is_user_logged_in()) {
-                $disabled = true;
+        $rest_route = isset($GLOBALS['wp']->query_vars['rest_route']) ? $GLOBALS['wp']->query_vars['rest_route'] : '';
+        $exceptions = apply_filters('wpex_rest_api_exceptions', [
+            'contact-form-7',
+            'wordfence',
+            'elementor',
+            'woocommerce',
+            'fluentform',
+            'wpforms'
+        ]);
+
+        foreach ($exceptions as $exception) {
+            if (!empty($rest_route) && strpos($rest_route, $exception) !== false) {
+                return $result;
             }
         }
+
+        $disabled = false;
+        $disableOption  = Helper::get_option('disable_rest_api', '');
+        $disableOptions = is_array($disableOption) ? $disableOption : [$disableOption];
+
+        if (in_array('all', $disableOptions, true)) {
+            $disabled = true;
+        } elseif (in_array('non_admins', $disableOptions, true) && !current_user_can('manage_options')) {
+            $disabled = true;
+        } elseif (in_array('logged_out', $disableOptions, true) && !is_user_logged_in()) {
+            $disabled = true;
+        }
+
         if ($disabled) {
-            return new WP_Error('rest_authentication_error', __('Sorry, you do not have permission to make REST API requests.', 'wp-extra'), array('status' => 401));
+            return new \WP_Error('rest_authentication_error', __('Sorry, you do not have permission to make REST API requests.', 'wp-extra'), ['status' => 401]);
         }
         return $result;
     }
@@ -203,33 +295,31 @@ class Security extends Base {
     }
 
 	public function disableHeartbeat() {
-		if(is_admin()) {
+		if (is_admin()) {
 			global $pagenow;
-			if(!empty($pagenow)) {
-				if($pagenow == 'admin.php') {
-					if(!empty($_GET['page'])) {
-						$exceptions = array(
-							'gf_edit_forms',
-							'gf_entries',
-							'gf_settings'
-						);
-						if(in_array($_GET['page'], $exceptions)) {
-							return;
-						}
+			if (!empty($pagenow)) {
+				if ($pagenow === 'admin.php' && !empty($_GET['page'])) {
+					$exceptions = [
+						'gf_edit_forms',
+						'gf_entries',
+						'gf_settings'
+					];
+					if (in_array($_GET['page'], $exceptions, true)) {
+						return;
 					}
 				}
-				if($pagenow == 'site-health.php') {
+				if ($pagenow === 'site-health.php') {
 					return;
 				}
 			}
 		}
-		if(Settings::get_option('disable_heartbeat')) {
-			if(Settings::get_option('disable_heartbeat') == 'everywhere') {
+        $setting = Helper::get_option('disable_heartbeat');
+		if ($setting) {
+			if ($setting === 'everywhere') {
 				$this->replaceHearbeat();
-			}
-			elseif(Settings::get_option('disable_heartbeat') == 'allow_posts') {
+			} elseif ($setting === 'allow_posts') {
 				global $pagenow;
-				if($pagenow != 'post.php' && $pagenow != 'post-new.php') {
+				if ($pagenow !== 'post.php' && $pagenow !== 'post-new.php') {
 					$this->replaceHearbeat();
 				}
 			}
@@ -238,9 +328,9 @@ class Security extends Base {
 
 	private function replaceHearbeat() {
 		wp_deregister_script('heartbeat');
-		if(is_admin() && Settings::get_option('disable_heartbeat')) {
-			wp_register_script('hearbeat', plugins_url('/assets/js/heartbeat.js', WPEX_FILE ));
-			wp_enqueue_script('hearbeat', plugins_url('/assets/js/heartbeat.js', WPEX_FILE ));
+		if (is_admin() && Helper::get_option('disable_heartbeat')) {
+			wp_register_script('heartbeat', plugins_url('/assets/js/heartbeat.min.js', WPEX_FILE));
+			wp_enqueue_script('heartbeat', plugins_url('/assets/js/heartbeat.min.js', WPEX_FILE));
 		}
 	}
     
@@ -249,24 +339,29 @@ class Security extends Base {
     }
 
 	public function heartbeatFrequency($settings) {
-		if(Settings::get_option('heartbeat_frequency')) {
-			$settings['interval'] = Settings::get_option('heartbeat_frequency');
+        $freq = Helper::get_option('heartbeat_frequency');
+		if ($freq) {
+			$settings['interval'] = intval($freq);
 		}
 		return $settings;
 	}
     
     public function remove_blocks() {
+        add_filter('allowed_block_types_all', [$this, 'remove_default_blocks']);
         add_filter('allowed_block_types', [$this, 'remove_default_blocks']);
     }
     
     public function remove_default_blocks($allowed_blocks) {
+        if (!class_exists('\WP_Block_Type_Registry')) {
+            return $allowed_blocks;
+        }
         $registered_blocks = \WP_Block_Type_Registry::get_instance()->get_all_registered();
-        $filtered_blocks = array();
+        $filtered_blocks = [];
         
         foreach ($registered_blocks as $block) {
             if (strpos($block->name, 'core/') === false) {
                 if (!class_exists('WooCommerce') || strpos($block->name, 'woocommerce/') === false) {
-                    array_push($filtered_blocks, $block->name);
+                    $filtered_blocks[] = $block->name;
                 }
             }
         }

@@ -1,6 +1,10 @@
 <?php
 namespace WPEXtra;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class WPEXtra {
     
 	public function __construct() {
@@ -8,7 +12,7 @@ class WPEXtra {
     }
 
     public function boot() {
-        $ismodules = Settings::get_option('modules') ?: [];
+        $ismodules = Helper::get_option('modules') ?: [];
 
         if (empty($ismodules)) {
             return;
@@ -18,23 +22,22 @@ class WPEXtra {
             'backend' => [
                 'dashboard' => Modules\Backend\Dashboards::class,
                 'duplicate' => Modules\Backend\Duplicate::class,
-                'widget' => Modules\Backend\Widgets::class,
-                'media' => Modules\Backend\Media::class,
-                'control' => Modules\Backend\Control::class,
             ],
             'frontend' => [
-                'logins' => Modules\Frontend\Branding::class,
                 'optimize' => Modules\Frontend\Optimize::class,
                 'code' => Modules\Frontend\Code::class,
                 'cookie' => Modules\Frontend\Cookie::class,
             ],
             'common' => [
+                'media' => Modules\Backend\Media::class,
+                'logins' => Modules\Frontend\Branding::class,
                 'admins' => Modules\Common\Permission::class,
                 'posts' => Modules\Common\Posts::class,
                 'comments' => Modules\Common\Comments::class,
                 'security' => Modules\Common\Security::class,
                 'smtp' => Modules\Common\SMTP::class,
                 'permalinks' => Modules\Common\Permalinks::class,
+                'toc' => Modules\Common\TOC::class,
             ],
         ];
 

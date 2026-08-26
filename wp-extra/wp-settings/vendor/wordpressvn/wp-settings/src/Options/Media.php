@@ -15,6 +15,41 @@ class Media extends OptionAbstract
         parent::__construct($section, $args);
     }
 
+    public function sanitize($value)
+    {
+        $value = parent::sanitize($value);
+        if (empty($value)) {
+            return '';
+        }
+
+        if (is_numeric($value)) {
+            return (int) $value;
+        }
+
+        if (is_string($value)) {
+            $site_url = site_url();
+            $home_url = home_url();
+
+            // Try to resolve to Attachment ID if it is a local upload
+            if (function_exists('attachment_url_to_postid')) {
+                $att_id = attachment_url_to_postid($value);
+                if ($att_id) {
+                    return (int) $att_id;
+                }
+            }
+
+            // Convert local domain absolute URL to relative path to prevent migration breakage
+            if (strpos($value, $site_url) === 0) {
+                return substr($value, strlen($site_url));
+            }
+            if (strpos($value, $home_url) === 0) {
+                return substr($value, strlen($home_url));
+            }
+        }
+
+        return $value;
+    }
+
     public function get_preview_url()
     {
         $value = $this->get_value_attribute();
@@ -23,30 +58,25 @@ class Media extends OptionAbstract
             return '';
         }
 
-        $attachment = wp_get_attachment_metadata($value);
-        $fallback = '/wp-includes/images/media/document.png';
+        if (is_numeric($value)) {
+            $src = wp_get_attachment_image_src((int) $value, 'thumbnail');
+            if (!empty($src[0])) {
+                return $src[0];
+            }
+            $url = wp_get_attachment_url((int) $value);
+            if ($url) {
+                return $url;
+            }
+        }
 
-        if (! $attachment && $value) {
+        if (is_string($value)) {
+            if (strpos($value, '/') === 0) {
+                return home_url($value);
+            }
             return $value;
-        } elseif (! $attachment) {
-            return $fallback;
         }
 
-        if (isset($attachment['image_meta'])) {
-            return wp_get_attachment_image_src($value, 'thumbnail')[0];
-        }
-
-        if (isset($attachment['mime_type'])) {
-            if (strpos($attachment['mime_type'], 'video') !== false) {
-                return '/wp-includes/images/media/video.png';
-            }
-
-            if (strpos($attachment['mime_type'], 'audio') !== false) {
-                return '/wp-includes/images/media/audio.png';
-            }
-        }
-
-        return $fallback;
+        return '/wp-includes/images/media/document.png';
     }
 
     public function get_media_library_config()

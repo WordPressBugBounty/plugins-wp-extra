@@ -21,8 +21,11 @@ class Tab
         $this->title = $title;
         $this->settings = $settings;
 
-        if ($this->slug === null) {
-            $this->slug = sanitize_title($title);
+        if ($slug !== null) {
+            $this->slug = sanitize_title($slug);
+        } else {
+            $clean_title = wp_strip_all_tags($title);
+            $this->slug = sanitize_title($clean_title ?: $title);
         }
     }
 

@@ -2,987 +2,2195 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP EXtra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-07 11:33+0000\n"
-"PO-Revision-Date: 2026-04-19 13:23+0000\n"
-"Last-Translator: \n"
-"Language-Team: Tiếng Việt\n"
+"POT-Creation-Date: 2026-08-26 23:25+0700\n"
+"PO-Revision-Date: 2026-08-26 16:25+0000\n"
+"Last-Translator: TienCOP <support@wpvnteam.com>\n"
+"Language-Team: Tiếng Việt <support@wpvnteam.com>\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4.2\n"
-"X-Domain: wp-extra"
+"X-Domain: wp-extra\n"
 
-#: src/Modules/Frontend/Cookie.php:30
+msgid "% (e.g. 90 for 90%, leave blank for 100%)"
+msgstr "% (ví dụ: 90 cho 90%, để trống để dùng 100%)"
+
+msgid "%1$s (%2$d)"
+msgstr "%1$s (%2$d)"
+
+msgid "%s ago"
+msgstr "%s trước"
+
+msgid "(Copy)"
+msgstr "(Bản sao)"
+
+msgid "(No Subject)"
+msgstr "(Không có tiêu đề)"
+
+msgid "+ Add SMTP Account"
+msgstr "+ Thêm tài khoản SMTP"
+
+msgid "1-click duplicate posts, pages & taxonomies"
+msgstr "Nhân bản bài viết, trang & danh mục 1-click"
+
+msgid "1. Open First Item Only (Default)"
+msgstr "1. Chỉ mở mục đầu (Mặc định)"
+
+msgid "2. Open All"
+msgstr "2. Mở toàn bộ mục con"
+
+msgid "3. Collapse All"
+msgstr "3. Thu gọn toàn bộ"
+
+msgid "<strong>ERROR</strong>: Captcha verification failed."
+msgstr "<strong>LỖI</strong>: Xác thực captcha thất bại."
+
+msgid "<strong>ERROR</strong>: Please complete the security captcha."
+msgstr "<strong>LỖI</strong>: Vui lòng hoàn thành mã captcha bảo mật."
+
+msgid "<strong>ERROR</strong>: Unable to verify captcha."
+msgstr "<strong>LỖI</strong>: Không thể xác thực captcha."
+
+msgid "<strong>ERROR</strong>: you can only register using allowed email domains"
+msgstr "<strong>LỖI</strong>: Bạn chỉ có thể đăng ký bằng các tên miền email được cho phép."
+
+msgid "Accent Color"
+msgstr "Màu sắc chủ đạo"
+
+msgid "Accent color when hovering or active scrollspy heading."
+msgstr "Màu nổi bật khi rê chuột hoặc cuộn tới tiêu đề."
+
+msgid "Accept Button Text"
+msgstr "Chữ nút Chấp thuận"
+
 msgid "Accept Cookies"
-msgstr "Đồng ý Cookies"
+msgstr "Chấp nhận Cookie"
 
-#. 1. link to plugin site; 2. link to plugin name
-#: wp-settings/vendor/wordpressvn/wp-settings/src/WPSettings.php:286
-#, php-format
-msgid ""
-"Activate <a href=\"%1$s\">your license</a> to enable access to updates, "
-"support & PRO features for <strong>%2$s</strong>."
-msgstr ""
-"Kích hoạt <a href=\"%1$s\">giấy phép của bạn</a> để bật quyền truy cập cập "
-"nhật, hỗ trợ & các tính năng PRO cho <strong>%2$s</strong>."
+msgid "Access & Security Restrictions"
+msgstr "Kiểm soát truy cập & Phân quyền"
 
-#: src/Settings.php:1124
-msgid "Add Any Extension to Pages"
-msgstr "Thêm .html vào Trang"
+msgid "Accordion expandable + / −"
+msgstr "Dấu thu phóng + / −"
 
-#: src/Settings.php:1100
-msgid "Add custom CSS here"
-msgstr "Thêm tuỳ chỉnh CSS"
+msgid "Account Label"
+msgstr "Tên nhãn tài khoản"
 
-#: src/Settings.php:1110
-msgid "Add custom CSS here for mobile view"
-msgstr "Thêm tuỳ chỉnh CSS hiển thị trên thiết bị di động"
+msgid "Actions"
+msgstr "Hành động"
 
-#: src/Settings.php:1105
-msgid "Add custom CSS here for tablets and mobile"
-msgstr "Thêm tuỳ chỉnh CSS hiển thị trên tablet"
+msgid "Active Background Color"
+msgstr "Màu nền Active"
 
-#: src/Settings.php:1081
-msgid ""
-"Add custom scripts inside HEAD tag. You need to have a SCRIPT tag around "
-"scripts."
-msgstr "Thêm script dưới thẻ HEAD. Bạn có thể chèn SCRIPT bên dưới."
+msgid "Active Plugins"
+msgstr "Plugin đang kích hoạt"
 
-#: src/Settings.php:1087
-msgid ""
-"Add custom scripts just after the BODY tag opened. You need to have a SCRIPT "
-"tag around scripts."
-msgstr "Thêm script trong thẻ BODY. Bạn có thể chèn SCRIPT bên dưới."
+msgid "Active Text Color"
+msgstr "Màu chữ Active"
 
-#: src/Settings.php:1093
-msgid ""
-"Add custom scripts you might want to be loaded in the footer of your website."
-" You need to have a SCRIPT tag around scripts."
-msgstr "Thêm script dưới Footer. Bạn có thể chèn SCRIPT bên dưới."
+msgid "Add Google Analytics, Tag Manager, or tracking scripts inside the HEAD tag."
+msgstr "Chèn mã Google Analytics, Google Tag Manager hoặc mã xác minh tên miền vào thẻ HEAD."
 
-#: src/Settings.php:1135
-msgid "Add nofollow to external links"
-msgstr "Thêm nofollow vào các liên kết bên ngoài"
+msgid "Add Input Placeholders"
+msgstr "Hiện chữ mờ gợi ý (Placeholder)"
 
-#: src/Settings.php:171
-msgid "Add tinymce editor to the excerpt"
-msgstr "Thêm trình chỉnh sửa tinymce vào phần trích dẫn"
+msgid "Add New Widget"
+msgstr "Thêm Widget mới"
 
-#: src/Settings.php:86
-msgid "Admin Notice"
-msgstr "Thông báo từ trang quản trị"
+msgid "Add a 1-click Clone action to Posts, Pages, and Custom Post Types."
+msgstr "Thêm nút Sao chép nhanh cho Bài viết, Trang và các Custom Post Types."
 
-#: src/Settings.php:1197
-msgid "All Core Updates"
-msgstr "Tất cả các bản cập nhật"
+msgid "Add a Clone action to Categories, Tags, and Custom Taxonomies."
+msgstr "Thêm nút Sao chép nhanh cho Chuyên mục, Thẻ và Taxonomies."
 
-#: src/Settings.php:81
-msgid "All Dashboard"
-msgstr "Tất cả bảng tin"
+msgid "Add custom notice widgets to the dashboard screen."
+msgstr "Thêm các widget thông báo và hướng dẫn lên màn hình Bảng tin."
 
-#: src/Settings.php:1099
-msgid "All screens"
-msgstr "Tất cả thiết bị"
+msgid "Add preconnect link hints for Google Fonts and common CDNs to speed up font loading."
+msgstr "Thêm gợi ý preconnect cho Google Fonts và các CDN phổ biến giúp tăng tốc tải font."
 
-#: src/Settings.php:1125
-msgid "Allows you to specify an extension for pages"
-msgstr "Cho phép bạn tuỳ chỉnh riêng cho các trang."
+msgid "Add scripts immediately following opening BODY tag."
+msgstr "Chèn mã theo dõi ngay sau khi mở thẻ BODY (như Google Tag Manager no-script)."
 
-#: src/Settings.php:657
-msgid "Answer"
-msgstr "Câu trả lời"
+msgid "Add tracking pixels or chat widgets loaded at page footer."
+msgstr "Chèn mã Facebook Pixel, Zalo Chat, LiveChat ở chân trang website."
 
-#: src/Settings.php:401
-msgid "Anti-Spam Comments"
-msgstr "Chặn Spam Comment"
+msgid "Admin Menu & Plugin Management"
+msgstr "Quản lý Menu Admin & Danh sách Plugin"
 
-#: src/Settings.php:973
-msgid "Anti-spam forms"
-msgstr "Chặn spam"
+msgid "Admin Panel Branding"
+msgstr "Thương hiệu Trang Quản trị"
 
-#: src/Settings.php:936
-msgid "Authenticate connection with username and password"
-msgstr "Xác thực kết nối bằng tên người dùng và mật khẩu"
+msgid "Advanced"
+msgstr "Nâng cao"
 
-#: src/Settings.php:652 src/Pro/Modules/Common/Branding.php:209
-msgid "Authentication Code"
-msgstr "Mã xác nhận"
+msgid "Advanced & Performance"
+msgstr "Nâng cao"
 
-#: src/Settings.php:276
-msgid "Auto Crop"
-msgstr "Tự động Crop ảnh"
+msgid "Advanced Control"
+msgstr "Nâng cao"
 
-#: src/Settings.php:270
-msgid "Auto Save Images"
-msgstr "Tự động lưu ảnh vào bài viết"
+msgid "After first heading"
+msgstr "Sau thẻ tiêu đề đầu"
 
-#: src/Settings.php:265
-#| msgid "Set Featured Image"
+msgid "After first image"
+msgstr "Sau hình ảnh đầu"
+
+msgid "After first paragraph"
+msgstr "Sau đoạn văn đầu"
+
+msgid "All"
+msgstr "Tất cả"
+
+msgid "All %d configured SMTP accounts have reached their daily sending limit for today (%s). Outgoing WordPress emails may fail or be delayed."
+msgstr "Tất cả %d tài khoản SMTP cấu hình đã đạt hạn mức gửi trong ngày (%s). Email gửi đi từ WordPress có thể bị gián đoạn hoặc trễ."
+
+msgid "All User Roles"
+msgstr "Tất cả các nhóm người dùng"
+
+msgid "All email logs have been cleared."
+msgstr "Đã xóa toàn bộ nhật ký gửi thư."
+
+msgid "Allow SVG Uploads"
+msgstr "Cho phép tải lên tệp SVG"
+
+msgid "Allow Text Selection"
+msgstr "Cho phép bôi đen nhưng tự gắn bản quyền"
+
+msgid "Allow readers to toggle table of contents visibility."
+msgstr "Cho phép thu gọn hoặc mở rộng khung mục lục."
+
+msgid "Allow text selection but append copyright notice on copy."
+msgstr "Cho phép sao chép văn bản nhưng tự động đính kèm liên kết nguồn bản quyền."
+
+msgid "Allowed Registration Email Domains"
+msgstr "Danh sách tên miền Email được phép đăng ký"
+
+msgid "An error occurred."
+msgstr "Đã xảy ra lỗi."
+
+msgid "Anti-spam contact form filtering"
+msgstr "Lọc chống spam biểu mẫu"
+
+msgid "Appearance & Customization"
+msgstr "Giao diện"
+
+msgid "Applies to Apache, LiteSpeed, and OpenLiteSpeed web servers. Please backup your server configuration before editing."
+msgstr "Áp dụng cho web server Apache, LiteSpeed và OpenLiteSpeed. Vui lòng sao lưu cấu hình trước khi chỉnh sửa."
+
+msgid "Are you sure you want to delete ALL email log records? This cannot be undone."
+msgstr "Bạn có chắc chắn muốn xóa TOÀN BỘ nhật ký gửi thư? Thao tác này không thể hoàn tác."
+
+msgid "Are you sure you want to load the previous backup into the editor?"
+msgstr "Bạn có chắc chắn muốn nạp bản sao lưu trước đó vào trình chỉnh sửa?"
+
+msgid "Are you sure you want to remove the .htaccess protection file?"
+msgstr "Bạn có chắc chắn muốn gỡ bỏ file .htaccess bảo vệ?"
+
+msgid "Are you sure you want to resend this email?"
+msgstr "Bạn có chắc muốn gửi lại email này?"
+
+msgid "Auto Crop Downloaded Images"
+msgstr "Tự động cắt ảnh tải về"
+
+msgid "Auto Image Alt & Titles"
+msgstr "Tự động điền Alt & Tiêu đề ảnh"
+
+msgid "Auto Insert"
+msgstr "Tự động chèn"
+
+msgid "Auto Insert & Positioning"
+msgstr "Tự động chèn & Vị trí"
+
+msgid "Auto Insert Position"
+msgstr "Vị trí tự động chèn"
+
+msgid "Auto Nofollow & Open External Links in New Tab"
+msgstr "Tự động thêm Nofollow & Mở tab mới cho link ngoài"
+
+msgid "Auto Optimize Uploads"
+msgstr "Tự động tối ưu khi tải ảnh lên"
+
+msgid "Auto Redirect Single Search Result"
+msgstr "Tự động mở bài viết khi tìm thấy 1 kết quả"
+
+msgid "Auto Save External Images"
+msgstr "Tự động lưu hình ảnh ngoài"
+
 msgid "Auto Set Featured Image"
 msgstr "Tự động đặt ảnh đại diện"
 
-#: src/Settings.php:361
-msgid ""
-"Auto Set The Image Title, Alt-Text, Caption & Description. Default to using "
-"the post title."
-msgstr ""
-"Tự động thêm Tiêu đề, Chú thích & Mô tả khi upload ảnh vào bài viết. Mặc "
-"định sử dụng tiêu đề bài viết."
+msgid "Auto Table of Contents, headings numbering & sticky badge"
+msgstr "Tự động chèn mục lục, đánh số & nút nổi"
 
-#: src/Settings.php:475
-msgid "Auto-hide"
-msgstr "Tự động ẩn/hiện"
+msgid "Auto-Check Remember Me"
+msgstr "Tự động tích chọn Tự động đăng nhập"
 
-#: src/Settings.php:402
-msgid ""
-"Automatically checks all comments and filters out the ones that look like "
-"spam."
-msgstr ""
-"Tự động kiểm tra tất cả bình luận và lọc ra những bình luận nhìn giống như "
-"spam."
+msgid "Auto-Hide Admin Bar"
+msgstr "Tự động ẩn Admin Bar (Hiện khi rê chuột)"
 
-#: src/Settings.php:266
-msgid "Automatically find and set post images as featured images"
-msgstr "Tự động tìm và lấy ảnh bài viết làm ảnh đại diện"
+msgid "Automatically add rel=\"nofollow noopener noreferrer\" and target=\"_blank\" to all external links."
+msgstr "Tự động thêm thuộc tính rel=\\"
 
-#: src/Settings.php:300
-msgid ""
-"Automatically resizes, speed up your website using our ease image optimizer "
-"by serving JPG / WebP"
-msgstr ""
-"Tự động thay đổi kích thước, tăng tốc website của bạn bằng trình tối ưu hình "
-"ảnh dễ dùng của chúng tôi thông qua việc phân phối ảnh JPG / WebP."
+msgid "Automatically create .htaccess inside wp-content to block direct execution of PHP files."
+msgstr "Tự động tạo file .htaccess trong wp-content để chặn chạy file PHP độc hại."
 
-#: src/Settings.php:917
-msgid "Automatically uses Gmail SMTP"
-msgstr "Tự động cấu hình Gmail SMTP"
+msgid "Automatically create .htaccess inside wp-includes to block direct execution of PHP scripts."
+msgstr "Tự động tạo file .htaccess trong wp-includes để chặn thực thi file PHP trực tiếp."
 
-#: src/Settings.php:183
-msgid "Back To Top In WP Admin Area"
-msgstr "Chỉ hoạt động tại Trang Quản Trị"
+msgid "Automatically delete logs older than this number of days (e.g. 30)."
+msgstr "Tự động xóa nhật ký cũ hơn số ngày này (ví dụ: 30)."
 
-#: src/Settings.php:1210
-msgid ""
-"Block all requests from this domain, one domain per line. E.g: domain. com"
-msgstr "Chặn tất cả các truy vấn từ tên miền này. Ví dụ: domain. com"
+msgid "Automatically download remote images in post content to local Media Library upon publishing."
+msgstr "Tự động tải các hình ảnh từ nguồn bên ngoài về máy chủ khi xuất bản bài viết."
 
-#: src/Settings.php:641
-msgid ""
-"Block excessive login attempts and protect your site against brute force "
-"attacks."
-msgstr ""
-"Chặn các đăng nhập sai và bảo vệ trang web của bạn khỏi các cuộc tấn công "
-"brute force."
+msgid "Automatically filter out spam comments containing malicious keywords or links."
+msgstr "Tự động kiểm tra và chặn các bình luận chứa từ khóa rác hoặc link độc hại."
 
-#: src/Settings.php:681
-msgid "Blue"
-msgstr "Xanh dương"
+msgid "Automatically insert table of contents without manual shortcode."
+msgstr "Tự động chèn mục lục vào bài viết không cần shortcode."
 
-#: src/Settings.php:62 src/Settings.php:561
+msgid "Automatically populate Title, Alt-Text, and Caption for images from post title."
+msgstr "Tự động điền Title, Alt-Text và Chú thích ảnh dựa theo tiêu đề bài viết."
+
+msgid "Automatically remove images attached to a post when the post is permanently deleted."
+msgstr "Tự động dọn dẹp các hình ảnh đính kèm trong thư viện khi xóa vĩnh viễn bài viết."
+
+msgid "Automatically rename uploaded media files based on post slug for better Google Image SEO."
+msgstr "Tự động đổi tên tệp ảnh tải lên theo slug bài viết để tăng thứ hạng SEO Google Images."
+
+msgid "Automatically resize and convert uploaded images to modern formats (WebP/JPG)."
+msgstr "Tự động giảm kích thước và chuyển đổi định dạng ảnh (WebP/JPG) khi tải lên."
+
+msgid "Automatically set the first post image as the featured image if none is selected."
+msgstr "Tự động lấy hình ảnh đầu tiên trong bài làm ảnh đại diện nếu chưa chọn."
+
+msgid "Automatically slide up admin bar until hovered."
+msgstr "Tự động thu gọn thanh Admin Bar và chỉ xuất hiện khi rê chuột vào."
+
+msgid "Autoptimize"
+msgstr "Autoptimize"
+
+msgid "Back to Main Settings"
+msgstr "Quay lại Cài đặt Chính"
+
+msgid "Backend role restrictions, debug switch & HTTP blocker"
+msgstr "Chặn truy cập admin theo Role, gỡ lỗi & chặn HTTP"
+
+msgid "Background Color"
+msgstr "Màu nền trang đăng nhập"
+
+msgid "Background Image"
+msgstr "Ảnh nền trang đăng nhập"
+
+msgid "Background color for toggle buttons (transparent by default)."
+msgstr "Màu nền nút đóng/mở (mặc định trong suốt)."
+
+msgid "Background color of the entire container (leave blank for default)."
+msgstr "Màu nền của toàn bộ khối mục lục (để trống để dùng mặc định)."
+
+msgid "Background color of the header bar (leave blank for default)."
+msgstr "Màu nền thanh tiêu đề mục lục."
+
+msgid "Background color when hovering over buttons."
+msgstr "Màu nền khi rê chuột vào nút đóng/mở."
+
+msgid "Backup & Transfer Settings"
+msgstr "Sao lưu & Chuyển cài đặt"
+
+msgid "Banner Background Color"
+msgstr "Màu nền banner"
+
+msgid "Banner Position"
+msgstr "Vị trí Banner"
+
+msgid "Banner Text Color"
+msgstr "Màu chữ banner"
+
+msgid "Before first heading (Recommended)"
+msgstr "Trước thẻ tiêu đề đầu (Khuyên dùng)"
+
+msgid "Block Backend Access by Role"
+msgstr "Chặn vào admin theo Role"
+
+msgid "Block External HTTP API Calls"
+msgstr "Chặn gọi HTTP ngoại vi"
+
+msgid "Block URL scanner (?author=N) and REST API user queries to protect admin usernames from bots."
+msgstr "Chặn bot quét URL tác giả (?author=N) và REST API user endpoint để bảo vệ username quản trị."
+
+msgid "Block User / Author Enumeration"
+msgstr "Chặn quét tên tác giả"
+
+msgid "Block XML-RPC pingbacks and brute-force attacks."
+msgstr "Chặn XML-RPC pingback và các cuộc tấn công dò mật khẩu."
+
+msgid "Block outgoing remote HTTP requests to specified domains (one per line)."
+msgstr "Chặn các yêu cầu HTTP hướng ngoại tới các tên miền chỉ định (mỗi dòng một tên miền)."
+
+msgid "Blocked by WP EXtra"
+msgstr "Đã bị chặn bởi WP EXtra"
+
+msgid "Body Scripts (<body>)"
+msgstr "Mã chèn ngay sau thẻ Body (<body>)"
+
+msgid "Bookmark"
+msgstr "Dải ruy băng"
+
+msgid "Border Color"
+msgstr "Màu viền"
+
+msgid "Border Radius"
+msgstr "Bo góc khung"
+
+msgid "Border Style"
+msgstr "Kiểu viền"
+
+msgid "Border Width"
+msgstr "Độ dày viền"
+
+msgid "Border color of the container (leave blank for default)."
+msgstr "Màu viền khung mục lục."
+
+msgid "Bottom Center Badge (Edge attached)"
+msgstr "Chính giữa cạnh dưới"
+
+msgid "Bottom Left (Default)"
+msgstr "Góc dưới Trái (Mặc định)"
+
+msgid "Bottom Right"
+msgstr "Góc dưới Phải"
+
+msgid "Bottom of content"
+msgstr "Cuối bài viết"
+
 msgid "Branding"
 msgstr "Cá nhân hoá"
 
-#: src/Settings.php:723
-msgid "Button Back"
-msgstr "Nút quay trở về"
+msgid "Branding & Login"
+msgstr "Cá nhân hóa & Đăng nhập"
 
-#: src/Settings.php:567
-msgid "Change the title tag content used on the login page."
-msgstr "Thay đổi nội dung thẻ tiêu đề được sử dụng trên trang đăng nhập."
+msgid "Bullet"
+msgstr "Chấm tròn đặc"
 
-#: src/Settings.php:423
-msgid ""
-"Choose the sidebar widgets you would like to disable. Note that developers "
-"can still display widgets using PHP."
-msgstr ""
-"Chọn các widget bên thanh mà bạn muốn tắt. Lưu ý rằng các nhà phát triển vẫn "
-"có thể hiển thị widget bằng cách sử dụng PHP."
+msgid "Bullet dot • with guide line"
+msgstr "Chấm tròn • có đường gióng"
 
-#: src/Settings.php:157
+msgid "Button Background"
+msgstr "Màu nền nút đóng/mở"
+
+msgid "Button Background Color"
+msgstr "Màu nền nút"
+
+msgid "Button Hover Background"
+msgstr "Màu nền nút khi hover"
+
+msgid "Button Icon Color"
+msgstr "Màu biểu tượng nút"
+
+msgid "Button Text Color"
+msgstr "Màu chữ nút"
+
+msgid "Buy Us a Coffee / Beer"
+msgstr "Mời tác giả ly Cà phê / Ly bia ☕️🍺"
+
+msgid "Caret (▼ / ▲)"
+msgstr "Mũi tên tam giác (▼ / ▲)"
+
+msgid "Change your login URL slug to block brute-force bots from finding wp-login.php."
+msgstr "Đổi đường dẫn đăng nhập wp-login.php sang slug bí mật để chặn bot dò mật khẩu."
+
+msgid "Checkmark"
+msgstr "Dấu tích xanh ✔"
+
+msgid "Chevron (⌄ / ⌃)"
+msgstr "Mũi tên gấp (⌄ / ⌃)"
+
+msgid "Choose a pre-built login style or select \"Custom\" to reveal custom colors, background, and logo options."
+msgstr "Chọn giao diện có sẵn hoặc chọn \\"
+
+msgid "Choose a pre-styled color scheme or select \"Custom\" to customize colors."
+msgstr "Chọn giao diện màu có sẵn hoặc chọn \\"
+
+msgid "Circle checkmark ✔ badge"
+msgstr "Huy hiệu dấu tích xanh ✔"
+
+msgid "Classic Editor, featured image column & cleanup"
+msgstr "Trình soạn thảo cổ điển, ảnh đại diện & dọn dẹp"
+
+msgid "Classic Light"
+msgstr "Sáng cổ điển"
+
 msgid "Classic Widgets"
-msgstr "Widget cổ điển"
+msgstr "Widget cổ điển (Classic Widgets)"
 
-#: src/Settings.php:682
-msgid "Coffee"
-msgstr "Cà phê"
+msgid "Classic hamburger menu icon"
+msgstr "Icon menu 3 gạch"
 
-#: src/Settings.php:844
-msgid "Controls how often the WordPress Heartbeat API is allowed to run."
-msgstr "Kiểm soát tần suất mà API WordPress Heartbeat được phép chạy."
+msgid "Classic index ☰ list icon"
+msgstr "Icon danh mục ☰"
 
-#: src/Settings.php:886
-msgid "Cookie expire time"
-msgstr "Thời gian hết hạn Cookie"
+msgid "Clean All Default Widgets & Welcome Panel"
+msgstr "Dọn sạch toàn bộ Widget mặc định & Bảng chào mừng"
 
-#: src/Settings.php:252
-#| msgid "Duplicate Category, Tags and Custom Taxonomy"
-msgid "Copy Category, Tags and Custom Taxonomy"
-msgstr "Sao chép chuyên mục, bài viết và taxonomy"
+msgid "Clean Head & Pingbacks"
+msgstr "Dọn dẹp Header & Pingback"
 
-#: src/Settings.php:712
-msgid "Copying Content"
-msgstr "Kèm theo nội dung"
+msgid "Clear All Logs"
+msgstr "Xóa toàn bộ nhật ký"
 
-#: src/Settings.php:718
-msgid "Copyright WP EXtra"
-msgstr "Bản quyền WP EXtra"
+msgid "Clone"
+msgstr "Sao chép"
 
-#: src/Modules/Common/Posts.php:102
+msgid "Clone Content"
+msgstr "Nhân bản bài viết & Danh mục"
+
+msgid "Close comments on media attachment pages."
+msgstr "Tắt bình luận trên các trang đính kèm đa phương tiện."
+
+msgid "Close table of contents"
+msgstr "Đóng mục lục"
+
+msgid "Cloudflare Turnstile Captcha"
+msgstr "Bảo mật Cloudflare Turnstile Captcha"
+
+msgid "Color of the icon before table of contents title."
+msgstr "Màu biểu tượng trước chữ tiêu đề."
+
+msgid "Comment Blocked"
+msgstr "Bình luận bị chặn"
+
+msgid "Comments"
+msgstr "Bình luận"
+
+msgid "Comments & Anti-Spam Control"
+msgstr "Kiểm soát bình luận & Chống Spam"
+
+msgid "Comments & Spam"
+msgstr "Bình luận & Chống Spam"
+
+msgid "Comments are closed."
+msgstr "Bình luận đã đóng."
+
+msgid "Comments containing links or URLs are not allowed."
+msgstr "Không được phép gửi bình luận chứa liên kết hoặc đường dẫn URL."
+
+msgid "Completely close comments across all posts, pages, and post types."
+msgstr "Đóng tính năng bình luận trên toàn bộ bài viết, trang và post types."
+
+msgid "Completely disable post tags, remove tag admin menus & metaboxes, and block tag archives."
+msgstr "Tắt hoàn toàn thẻ Tags bài viết, ẩn menu quản lý tag và chặn trang lưu trữ tag."
+
+msgid "Compression Quality"
+msgstr "Chất lượng nén ảnh"
+
+msgid "Configure one or multiple SMTP accounts with daily send limits and automatic rotation."
+msgstr "Cấu hình một hoặc nhiều tài khoản SMTP với hạn mức gửi trong ngày và tự động luân chuyển khi hết quota."
+
+msgid "Congratulations! This test message confirms that %s is properly connected to your configured SMTP mail service and is ready to deliver notifications, order confirmations, and passwords directly to customer inboxes."
+msgstr "Chúc mừng! Thư thử nghiệm này xác nhận rằng %s đã kết nối chính xác tới dịch vụ gửi thư SMTP và sẵn sàng gửi thông báo, xác nhận đơn hàng tới hộp thư khách hàng."
+
+msgid "Connecting & Sending..."
+msgstr "Đang kết nối & Gửi thư..."
+
+msgid "Container Background"
+msgstr "Màu nền khung"
+
+msgid "Container Padding"
+msgstr "Khoảng đệm ngoài"
+
+msgid "Content"
+msgstr "Nội dung"
+
+msgid "Content Protection"
+msgstr "Bảo vệ nội dung bài viết"
+
+msgid "Control WordPress Heartbeat API execution to reduce server CPU load."
+msgstr "Điều chỉnh tần suất gửi yêu cầu nền của Heartbeat để giảm tải CPU cho máy chủ."
+
+msgid "Cookie"
+msgstr "Thông báo Cookie"
+
+msgid "Cookie Banner"
+msgstr "Banner thông báo Cookie"
+
+msgid "Cookie Consent"
+msgstr "Thông báo Cookie"
+
+msgid "Cookie Expiry (Days)"
+msgstr "Thời hạn Cookie (ngày)"
+
+msgid "Copy"
+msgstr "Bản sao"
+
+msgid "Copy and paste the configuration code below to backup or transfer settings to another site."
+msgstr "Sao chép mã cấu hình bên dưới để sao lưu hoặc chuyển cài đặt sang website khác."
+
+msgid "Copyright Notice Text"
+msgstr "Nội dung thông báo bản quyền"
+
+msgid "Core Hardening"
+msgstr "Gia cố bảo mật WordPress Core"
+
+msgid "Could not delete .htaccess file. Please check file permissions."
+msgstr "Không thể xóa file .htaccess. Vui lòng kiểm tra quyền file trên máy chủ."
+
 msgid "Could not import image."
 msgstr "Không thể nhập hình ảnh."
 
-#: src/Settings.php:40
+msgid "Could not write .htaccess file. Please check server permissions."
+msgstr "Không thể ghi file .htaccess. Vui lòng kiểm tra quyền ghi trên máy chủ."
+
+msgid "Could not write to file. Please check server permissions."
+msgstr "Không thể ghi tệp. Vui lòng kiểm tra quyền ghi trên máy chủ."
+
+msgid "Counter & Bullet Color"
+msgstr "Màu số thứ tự & chấm tròn"
+
+msgid "Counter Style"
+msgstr "Đánh số thứ tự"
+
+msgid "Create Protection File"
+msgstr "Tạo file bảo vệ"
+
 msgid "Create new elements for Flatsome"
-msgstr "Giải pháp tối ưu cho Flatsome"
+msgstr "Thêm các thành phần giao diện mới cho theme Flatsome"
 
-#: src/Settings.php:1077
-msgid "Custom Scripts"
-msgstr "Tuỳ chỉnh Scripts"
+msgid "Creates .htaccess inside wp-content to block direct execution of PHP files."
+msgstr "Tạo file .htaccess trong thư mục wp-content để chặn thực thi file PHP trực tiếp."
 
-#: src/Settings.php:812
+msgid "Creates .htaccess inside wp-includes to block direct execution of PHP scripts."
+msgstr "Tạo file .htaccess trong thư mục wp-includes để chặn thực thi file PHP trực tiếp."
+
+msgid "Crop Height"
+msgstr "Chiều cao cắt"
+
+msgid "Crop Width"
+msgstr "Chiều rộng cắt"
+
+msgid "Custom"
+msgstr "Tùy chỉnh riêng"
+
+msgid "Custom Admin Footer Text"
+msgstr "Nội dung chân trang Admin tùy biến"
+
+msgid "Custom Code & CSS"
+msgstr "Chèn mã & CSS tùy chỉnh"
+
+msgid "Custom Login URL"
+msgstr "Địa chỉ đăng nhập bảo mật (Login URL)"
+
+msgid "Custom Notice Widgets"
+msgstr "Widget Thông Báo Quản Trị"
+
+msgid "Custom Responsive CSS"
+msgstr "Tùy chỉnh CSS theo Thiết bị"
+
+msgid "Custom Widgets List"
+msgstr "Danh sách Widget tùy chỉnh"
+
+msgid "Custom Width"
+msgstr "Độ rộng tùy chỉnh"
+
+msgid "Custom login URL, themes, Turnstile captcha & security"
+msgstr "Đổi URL đăng nhập, giao diện, Turnstile & bảo mật"
+
+msgid "Custom title tag for the login page browser tab."
+msgstr "Tiêu đề xuất hiện trên tab trình duyệt khi mở trang đăng nhập."
+
+msgid "Customize"
+msgstr "Tùy biến"
+
+msgid "Daily Quota (emails/day, 0 = unlimited)"
+msgstr "Hạn mức ngày (0 = không giới hạn)"
+
+msgid "Dark Glass"
+msgstr "Kính tối hiện đại (Dark Glass)"
+
+msgid "Dark Modern"
+msgstr "Tối hiện đại"
+
+msgid "Dashboard"
+msgstr "Bảng tin"
+
+msgid "Dashboard Widgets & Cleanup"
+msgstr "Widget Bảng Tin & Dọn Dẹp"
+
+msgid "Dashed"
+msgstr "Nét đứt (Dashed)"
+
+msgid "Date / Time"
+msgstr "Ngày / Giờ"
+
+msgid "Date / Time:"
+msgstr "Ngày / Giờ:"
+
+msgid "Decimal"
+msgstr "Số tự nhiên (1, 1.1...)"
+
+msgid "Decimal Circle"
+msgstr "Số trong huy hiệu tròn"
+
+msgid "Default"
+msgstr "Mặc định"
+
 msgid "Default (Enabled)"
 msgstr "Mặc định (Bật)"
 
-#: src/Settings.php:193
-msgid "Default featured image"
-msgstr "Ảnh đại diện"
+msgid "Default Featured Image"
+msgstr "Ảnh đại diện mặc định"
 
-#: src/Settings.php:189
+msgid "Default Heading State"
+msgstr "Trạng thái hiển thị"
+
+msgid "Default color of counter numbers, bullet dots or checkmarks."
+msgstr "Màu của số thứ tự, chấm tròn hoặc dấu tích."
+
 msgid "Delete Attached Media"
-msgstr "Xoá ảnh khi xoá bài viết"
+msgstr "Tự xóa tệp đính kèm khi xóa bài"
 
-#: src/Settings.php:989
-msgid "Disable admin email notification when a new user is registered"
-msgstr "Tắt thông báo email quản trị viên khi có người dùng mới đăng ký"
+msgid "Delete log"
+msgstr "Xóa bản ghi"
 
-#: src/Settings.php:988
-msgid "Disable auto update email notification"
-msgstr "Tắt thông báo email cập nhật tự động"
+msgid "Delete this email log record?"
+msgstr "Bạn có chắc muốn xóa bản ghi nhật ký này?"
 
-#: src/Settings.php:990
-msgid "Disable email notification when users reset passwords"
-msgstr "Tắt thông báo email khi người dùng đặt lại mật khẩu"
+msgid "Delivered Successfully"
+msgstr "Đã gửi thành công"
 
-#: src/Settings.php:992
-msgid "Disable email notifications"
-msgstr "Tắt thông báo qua email"
+msgid "Delivery Failed"
+msgstr "Gửi thư thất bại"
 
-#: src/Settings.php:829
+msgid "Delivery Successful!"
+msgstr "Gửi thư thành công!"
+
+msgid "Delivery Time"
+msgstr "Thời gian phản hồi"
+
+msgid "Design Preset"
+msgstr "Giao diện mẫu"
+
+msgid "Directory %s is not writable by server."
+msgstr "Thư mục %s không có quyền ghi trên máy chủ."
+
+msgid "Disable All Comments"
+msgstr "Tắt toàn bộ bình luận"
+
+msgid "Disable Application Passwords"
+msgstr "Vô hiệu hóa Mật khẩu ứng dụng"
+
+msgid "Disable Automatic Core Updates"
+msgstr "Tắt tự động cập nhật Core"
+
+msgid "Disable Back Button"
+msgstr "Khóa nút quay lại (Back Button)"
+
+msgid "Disable Content Copy"
+msgstr "Chống sao chép nội dung & Khóa chuột phải"
+
+msgid "Disable Core Blocks Library"
+msgstr "Tắt thư viện khối Gutenberg mặc định"
+
+msgid "Disable Dashicons for Guests"
+msgstr "Tắt Dashicons cho khách"
+
+msgid "Disable Email Change in Profile"
+msgstr "Khóa tính năng đổi Email trong hồ sơ"
+
 msgid "Disable Everywhere"
-msgstr "Tắt tất cả mọi người"
+msgstr "Tắt toàn bộ"
 
-#: src/Settings.php:813
-msgid "Disable for Non-Admins"
-msgstr "Tắt trừ admin"
+msgid "Disable File Editors"
+msgstr "Khóa sửa tệp Theme & Plugin"
 
-#: src/Settings.php:807
-msgid ""
-"Disable Self Pingbacks (generated when linking to an article on your own "
-"blog)."
-msgstr ""
-"Vô hiệu hóa tự gửi pingback (xuất hiện khi liên kết đến một bài viết trên "
-"blog của bạn)."
+msgid "Disable Gutenberg Block CSS"
+msgstr "Tắt tệp CSS khối Gutenberg"
 
-#: src/Settings.php:972
-msgid "Disable SSL Verification"
-msgstr "Tắt xác minh SSL"
+msgid "Disable Large Image Threshold (2560px)"
+msgstr "Tắt giới hạn ảnh lớn của WordPress (2560px)"
 
-#: src/Settings.php:383
-msgid "Disable Threshold & EXIF"
-msgstr "Tắt Threshold & EXIF"
+msgid "Disable Media Comments"
+msgstr "Tắt bình luận trên trang đính kèm"
 
-#: src/Settings.php:378
-msgid ""
-"Disable thumbnail sizes, default WordPress sizes and theme/plugins image size"
-msgstr ""
-"Vô hiệu hóa kích thước hình thu nhỏ, kích thước mặc định của WordPress và "
-"kích thước hình ảnh của theme/plugins"
+msgid "Disable Password Change in Profile"
+msgstr "Khóa tính năng đổi Mật khẩu trong hồ sơ"
 
-#: src/Settings.php:377
-msgid "Disable Thumbnails"
-msgstr "Tắt tạo ảnh tự động"
+msgid "Disable RSS Feeds & Links"
+msgstr "Tắt nguồn cấp RSS Feeds"
 
-#: src/Settings.php:814
+msgid "Disable SSL Certificate Verification"
+msgstr "Bỏ qua xác thực SSL"
+
+msgid "Disable Sidebar Widgets"
+msgstr "Tắt các Widget mặc định không dùng"
+
+msgid "Disable Tags Globally"
+msgstr "Tắt thẻ Tags toàn hệ thống"
+
+msgid "Disable Unnecessary Thumbnails"
+msgstr "Tắt các kích thước ảnh thừa"
+
 msgid "Disable When Logged Out"
-msgstr "Tắt khi đăng xuất"
+msgstr "Tắt cho khách chưa đăng nhập"
 
-#: src/Settings.php:802
-msgid "Disable WordPress generated RSS feed link tags."
-msgstr "Vô hiệu hóa thẻ liên kết luồng RSS do WordPress tạo ra."
+msgid "Disable WordPress Embeds"
+msgstr "Tắt nhúng WordPress Embeds"
 
-#: src/Settings.php:797
-msgid "Disable WordPress generated RSS feeds and 301 redirect URL to parent."
-msgstr ""
-"Vô hiệu hóa các luồng RSS do WordPress tạo ra và chuyển hướng URL sang URL "
-"cha."
+msgid "Disable WordPress Emojis"
+msgstr "Tắt biểu tượng cảm xúc Emojis của WP"
 
-#: src/Settings.php:833
-msgid ""
-"Disable WordPress Heartbeat everywhere or in certain areas (used for auto "
-"saving and revision tracking)."
-msgstr ""
-"\"Vô hiệu hóa WordPress Heartbeat ở mọi nơi hoặc trong một số khu vực cụ thể "
-"(được sử dụng để tự động lưu và theo dõi bản sửa đổi)."
+msgid "Disable WordPress default 2560px image threshold auto-scaling."
+msgstr "Vô hiệu hóa tính năng tự động resize ảnh vượt quá 2560px mặc định của WordPress."
 
-#: src/Settings.php:1066
-msgid "Disables dashicons on the front end when not logged in."
-msgstr "Vô hiệu hóa Dashicons trên giao diện người dùng khi chưa đăng nhập."
+msgid "Disable XML-RPC"
+msgstr "Tắt XML-RPC"
 
-#: src/Settings.php:818
-msgid ""
-"Disables REST API requests and displays an error message if the requester "
-"does not have permission."
-msgstr ""
-"Vô hiệu hóa yêu cầu REST API và hiển thị thông báo lỗi nếu người yêu cầu "
-"không có quyền."
+msgid "Disable XML-RPC, REST API, file editors & update locks"
+msgstr "Tắt XML-RPC, REST API, khóa sửa file & chặn update"
 
-#: src/Settings.php:158
-msgid "Display a legacy widget."
-msgstr "Hiển thị widget cũ."
+msgid "Disable admin email address change confirmation"
+msgstr "Tắt email xác nhận đổi email quản trị"
 
-#: src/Settings.php:869
-msgid "Display Privacy Policy"
-msgstr "Hiển thị Trang Chính Sách"
+msgid "Disable comments globally & anti-spam link filter"
+msgstr "Tắt bình luận & lọc chống spam liên kết"
 
-#: src/Settings.php:706
-msgid "Do Not Copy"
-msgstr "Cấm sao chép nội dung"
+msgid "Disable core auto-update notification emails"
+msgstr "Tắt email thông báo cập nhật WordPress"
 
-#: wp-settings/vendor/wordpressvn/wp-settings/resources/views/options/license.php:52
+msgid "Disable emojis, block styles & strip query strings"
+msgstr "Tắt emojis, CSS block & xóa ?ver= tệp tĩnh"
+
+msgid "Disable for Non-Admins"
+msgstr "Tắt cho người dùng không phải Admin"
+
+msgid "Disable generated RSS feeds, 301 redirect visitors to parent URL, and remove RSS feed link tags from HTML head."
+msgstr "Tắt các nguồn cấp RSS feed, chuyển hướng 301 về trang gốc và xóa thẻ liên kết feed."
+
+msgid "Disable new user registration notification emails to admin"
+msgstr "Tắt email thông báo khi có thành viên mới"
+
+msgid "Disable password reset notification emails to admin"
+msgstr "Tắt email thông báo đặt lại mật khẩu"
+
+msgid "Disable right-click and text selection to protect your articles from copying."
+msgstr "Vô hiệu hóa chuột phải và bôi đen văn bản để bảo vệ bài viết chống copy."
+
+msgid "Disable the built-in Theme and Plugin code editors for security."
+msgstr "Khóa trình chỉnh sửa file mã nguồn Theme và Plugin trong admin để tăng cường bảo mật."
+
+msgid "Disc"
+msgstr "Dấu chấm tròn có đường gióng"
+
+msgid "Display For"
+msgstr "Hiển thị cho đối tượng"
+
+msgid "Display Privacy Policy Link"
+msgstr "Hiện liên kết Chính sách"
+
+msgid "Display a dashboard widget with live PHP, Memory, Upload Size, and Server stats (Visible to Administrators only)."
+msgstr "Hiển thị widget bảng tin với thông số thời gian thực: PHP, Bộ nhớ RAM, Giới hạn tải lên và Web Server (Chỉ dành cho Quản trị viên)."
+
+msgid "Display a sortable last modified date column in admin post lists."
+msgstr "Hiển thị thêm cột ngày chỉnh sửa cuối (có thể sắp xếp) trong danh sách bài."
+
+msgid "Display floating circular button when scrolling down, clicking opens table of contents drawer panel."
+msgstr "Hiện nút tròn nổi khi cuộn trang, nhấp vào để mở ngăn kéo trượt chứa mục lục."
+
+msgid "Display last login time column in the Users list table."
+msgstr "Hiển thị thời gian đăng nhập lần cuối của người dùng."
+
+msgid "Display registration date column in the Users list table."
+msgstr "Hiển thị cột ngày tạo tài khoản trong danh sách Thành viên."
+
 msgid "Don't have a license? Click here to purchase."
-msgstr "Bạn chưa có giấy phép? Nhấn vào đây để mua."
+msgstr "Chưa có khóa bản quyền? Bấm vào đây để mua."
 
-#: src/Core.php:29
 msgid "Donate"
 msgstr "Ủng hộ"
 
-#: src/Modules/Common/Posts.php:78
-#, php-format
+msgid "Donate via WPVNTeam Portal →"
+msgstr "Ủng hộ qua cổng WPVNTeam →"
+
+msgid "Dotted"
+msgstr "Chấm bi (Dotted)"
+
+msgid "Download .json File"
+msgstr "Tải về tệp .json"
+
+msgid "Download all your WP EXtra settings into a .json file to backup or transfer to another site."
+msgstr "Tải toàn bộ cấu hình WP EXtra thành tệp .json để sao lưu hoặc chuyển giao sang website khác."
+
 msgid "Download failed: %s"
 msgstr "Tải thất bại: %s"
 
-#: src/Settings.php:271
-msgid "Downloading automatically image from a post to gallery"
-msgstr ""
-"Tự động download ảnh trong nội dung bài viết của website khác vào thư viện "
-"hình ảnh"
+msgid "Duplicate Post Types"
+msgstr "Nhân bản Bài viết & Trang"
 
-#: src/Settings.php:243
-msgid "Duplicate Posts, Pages and Custom Post Type"
-msgstr "Nhân bản bài viết, trang và post type"
+msgid "Duplicate Taxonomies"
+msgstr "Nhân bản danh mục & thẻ tag"
 
-#: src/Settings.php:683
-msgid "Ectoplasm"
-msgstr "Kinh dị"
+msgid "Duplication"
+msgstr "Nhân bản"
 
-#: src/Settings.php:1204
-msgid "Enable WP_DEBUG mode. Warning: Please DISABLE this feature after use."
-msgstr ""
-"Bật chế độ WP_DEBUG. Cảnh báo: Vui lòng TẮT tính năng này sau khi sử dụng."
+msgid "Edit Post/Page"
+msgstr "Sửa bài viết / Trang"
 
-#: src/Settings.php:386
-msgid "Exif automatic rotation"
-msgstr "Tự động xoay hình ảnh dựa trên thông tin Exif"
+msgid "Editor & Writing"
+msgstr "Trình soạn thảo & Soạn thảo"
 
-#: src/Settings.php:1130
-msgid "Extension"
-msgstr "Mở rộng"
+msgid "Elementor"
+msgstr "Elementor"
 
-#: src/Settings.php:1056
-msgid ""
-"Faster subsequent page-loads by prefetching in-viewport links during idle "
-"time."
-msgstr ""
-"Tăng tốc độ tải trang tiếp theo bằng cách tải trước các liên kết trong khung "
-"nhìn trong thời gian chờ."
+msgid "Email Content Preview"
+msgstr "Xem trước nội dung email"
 
-#: src/Settings.php:534
-msgid "Field Email"
-msgstr "Trường Email"
+msgid "Email Delivery Logs"
+msgstr "Nhật ký gửi thư"
 
-#: src/Settings.php:540
-msgid "Field Password"
-msgstr "Trường mật khẩu"
+msgid "Email Logs"
+msgstr "Nhật ký gửi thư"
 
-#: src/Settings.php:349
-msgid "File Renamer"
-msgstr "Tên tập tin ảnh"
+msgid "Email Notifications & Domain Filter"
+msgstr "Thông báo Email & Bộ lọc Tên miền"
 
-#: src/Settings.php:295
-msgid "Flip horizontal"
-msgstr "Lật ảnh"
+msgid "Email log table is not yet initialized. Enable Email Logging in WP Extra Settings > SMTP to start tracking emails."
+msgstr "Bảng nhật ký gửi thư chưa được khởi tạo. Vui lòng bật Ghi nhật ký gửi email trong WP Extra Settings > SMTP."
 
-#: src/Settings.php:962
-msgid "Force from e-mail address"
-msgstr "Thay thế email gửi"
+msgid "Email logging is currently disabled or SMTP module is not active."
+msgstr "Chức năng ghi nhật ký gửi thư đang tắt hoặc module SMTP chưa kích hoạt."
 
-#: src/Settings.php:967
-msgid "Force from e-mail sender name"
-msgstr "Thay thế tên người gửi"
+msgid "Email resent successfully to %s!"
+msgstr "Đã gửi lại email thành công tới %s!"
 
-#: src/Settings.php:679
-msgid "Fresh"
-msgstr "Trẻ trung"
+msgid "Email resent successfully!"
+msgstr "Đã gửi lại email thành công!"
 
-#: src/Settings.php:366
-msgid "From Image Filename"
-msgstr "Thiết lập từ tên hình ảnh"
+msgid "Enable Debug Mode (WP_DEBUG)"
+msgstr "Bật chế độ gỡ lỗi (WP_DEBUG)"
 
-#: src/Settings.php:47
-msgid "Get WP EXtra PRO now"
-msgstr "Nhận WP EXtra PRO ngay bây giờ"
+msgid "Enable Email Logging"
+msgstr "Bật ghi nhật ký gửi email"
 
-#: src/Settings.php:629
-msgid "Hide Controls"
-msgstr "Tuỳ chọn ẩn"
+msgid "Enable HTTP Security Headers"
+msgstr "Bật HTTP Security Headers"
 
-#: src/Settings.php:508
-msgid "Hide Menu"
-msgstr "Ẩn Menu"
+msgid "Enable Sticky Floating Button (FAB)"
+msgstr "Bật nút nổi (FAB)"
 
-#: src/Settings.php:527
-msgid "Hide Plugin"
-msgstr "Ẩn Plugin"
+msgid "Enable Support"
+msgstr "Kích hoạt"
 
-#: src/Settings.php:432
-msgid "Hide Toolbar"
-msgstr "Ẩn Toolbar"
+msgid "Enable System Info Widget"
+msgstr "Bật Widget Thông tin Hệ thống"
 
-#: src/Settings.php:1188
-msgid "Hide Users"
-msgstr "Ẩn user"
+msgid "Enable Turnstile captcha on WooCommerce customer login, register forms, and Flatsome theme account popup/modal."
+msgstr "Kích hoạt Turnstile captcha trên form đăng nhập khách hàng WooCommerce và popup tài khoản Flatsome."
 
-#. URI of the plugin
-msgid "https://wordpress.org/plugins/wp-extra/"
-msgstr "https://wordpress.org/plugins/wp-extra/"
+msgid "Enable full toolbar tools: justify, unlinks, letter spacing, tables, visual blocks, search & replace, rel=nofollow & sponsored."
+msgstr "Kích hoạt đầy đủ công cụ soạn thảo: căn đều hai bên, hủy liên kết, khoảng cách chữ, bảng table, tìm & thay thế, rel=nofollow & sponsored."
 
-#. Author URI of the plugin
-msgid "https://wpvnteam.com"
-msgstr "https://wpvnteam.com"
+msgid "Enable secure SVG file uploads in WordPress Media Library."
+msgstr "Cho phép tải lên và xử lý tệp đồ họa vector SVG an toàn vào Thư viện."
 
-#: src/Settings.php:1221
-#, php-format
-msgid ""
-"If you need to create a backup, please install the <a class=\"thickbox open-"
-"plugin-details-modal\" href=\"%s\">All-in-One WP Migration and Backup</a>. "
-"It allows you to migrate your entire WordPress site by exporting or "
-"importing your database, media, plugins, and themes in just a few clicks."
-msgstr ""
-"Nếu bạn cần tạo bản sao lưu, vui lòng cài đặt plugin <a class=\"thickbox "
-"open-plugin-details-modal\" href=\"%s\">All-in-One WP Migration and "
-"Backup</a>. Plugin này cho phép bạn di chuyển toàn bộ website WordPress bằng "
-"cách xuất hoặc nhập cơ sở dữ liệu, media, plugin và giao diện chỉ với vài cú "
-"nhấp chuột.\n"
+msgid "Enable table of contents support for these post types."
+msgstr "Bật mục lục cho các loại bài viết này."
 
-#: src/Settings.php:910
-#, php-format
-msgid ""
-"If you want to check email logs, please install the <a class=\"thickbox open-"
-"plugin-details-modal\" href=\"%1$s\">WP Mail Logging</a> or <a "
-"class=\"thickbox open-plugin-details-modal\" href=\"%2$s\">WP Email Log – "
-"PostBox</a>"
-msgstr ""
-"Nếu bạn muốn kiểm tra nhật ký email, vui lòng cài đặt plugin <a "
-"class=\"thickbox open-plugin-details-modal\" href=\"%1$s\">WP Mail "
-"Logging</a> hoặc <a class=\"thickbox open-plugin-details-modal\" "
-"href=\"%2$s\">WP Email Log – PostBox</a>."
+msgid "Encryption"
+msgstr "Mã hóa kết nối"
 
-#: src/Settings.php:330
-msgid "Image Size in kilobytes"
-msgstr "Dung lượng ảnh cho phép"
+msgid "Enter CSS classes of headings to exclude, separated by comma."
+msgstr "Nhập CSS class muốn loại trừ, phân cách bằng dấu phẩy."
 
-#: src/Settings.php:127
-msgid ""
-"Including justify, unlinks, letter spacing, change case, table, visual "
-"blocks, search replace, add rel=nofollow & sponsored, clean HTML, convert UL "
-"to table, get image ..."
-msgstr ""
-"Bao gồm căn đều (justify), bỏ liên kết, giãn cách chữ, đổi kiểu chữ "
-"hoa/thường, bảng, khối trực quan, tìm & thay thế, thêm rel=nofollow & "
-"sponsored, làm sạch HTML, chuyển UL thành bảng, lấy hình ảnh..."
+msgid "Enter category IDs to exclude from table of contents, separated by comma (,)."
+msgstr "Nhập ID danh mục không muốn tạo mục lục, phân cách bằng dấu phẩy (,)."
 
-#: src/Pro/Modules/Common/Branding.php:219
-msgid "Invalid two-factor authentication code"
-msgstr "Mã xác thực hai bước không đúng"
+msgid "Enter post/page IDs to exclude from table of contents, separated by comma (,)."
+msgstr "Nhập ID bài viết không muốn tạo mục lục, phân cách bằng dấu phẩy (,)."
 
-#: src/Modules/Backend/Control.php:74 src/Modules/Backend/Control.php:92
-#| msgid ""
-#| "WP_POST_REVISIONS is already enabled somewhere else on your site. We "
-#| "suggest only enabling this feature in one place."
-msgid ""
-"is already enabled somewhere else on your site. We suggest only enabling "
-"this feature in one place."
-msgstr "đã được sử dụng trong wp-config. Bạn nên xoá nó hoặc tắt cấu hình đi."
+msgid "Enter text, HTML, or shortcodes..."
+msgstr "Nhập văn bản, mã HTML hoặc Shortcode..."
 
-#: src/Settings.php:343
-msgid "JPEG compression level"
-msgstr "Độ nén JPEG"
+msgid "Error Details:"
+msgstr "Chi tiết lỗi:"
 
-#: src/Settings.php:385
-msgid "Large image threshold"
-msgstr "Ngưỡng hình ảnh lớn"
+msgid "Every single contribution — whether a donation, a positive review, or constructive feedback — is deeply appreciated and keeps WP EXtra moving forward. Thank you for your trust and partnership!"
+msgstr "Mọi đóng góp của bạn — dù là một khoản ủng hộ, đánh giá tích cực hay góp ý xây dựng — đều vô cùng trân quý và giúp WP EXtra ngày càng hoàn thiện. Cảm ơn sự tin tưởng và đồng hành của bạn!"
 
-#: src/Settings.php:680
-msgid "Light"
-msgstr "Sáng"
+msgid "Exclude Categories by ID"
+msgstr "Loại trừ theo danh mục (ID)"
 
-#: src/Settings.php:40
+msgid "Exclude Headings"
+msgstr "Loại trừ theo tiêu đề"
+
+msgid "Exclude Posts by ID"
+msgstr "Loại trừ theo bài viết (ID)"
+
+msgid "Exclude by CSS Class"
+msgstr "Loại trừ theo Class"
+
+msgid "Export Settings"
+msgstr "Xuất Cài đặt"
+
+msgid "Failed"
+msgstr "Thất bại"
+
+msgid "Failed to delete record."
+msgstr "Xóa bản ghi thất bại."
+
+msgid "Failed to establish connection to SMTP server."
+msgstr "Không thể thiết lập kết nối tới máy chủ SMTP."
+
+msgid "Failed to resend email."
+msgstr "Gửi lại email thất bại."
+
+msgid "Failed to resend email. Please check SMTP settings."
+msgstr "Gửi lại email thất bại. Vui lòng kiểm tra cài đặt SMTP."
+
+msgid "Failed to save file."
+msgstr "Lưu tệp tin thất bại."
+
+msgid "Fallback featured image used when a post has no thumbnail set."
+msgstr "Ảnh đại diện dự phòng sẽ hiển thị khi bài viết chưa được đặt ảnh."
+
+msgid "Featured Image Column"
+msgstr "Cột ảnh đại diện"
+
+msgid "File .htaccess does not exist."
+msgstr "File .htaccess không tồn tại."
+
+msgid "File does not exist on disk yet."
+msgstr "Tệp tin chưa tồn tại trên ổ đĩa."
+
+msgid "Flatsome Theme"
+msgstr "Flatsome Theme"
+
+msgid "Flip Horizontal"
+msgstr "Lật ảnh nằm ngang"
+
+msgid "Floating Button Position"
+msgstr "Vị trí nút nổi"
+
+msgid "Floating Button Text"
+msgstr "Chữ nút nổi"
+
+msgid "Floating button position (horizontal pill badge or vertical edge badge)."
+msgstr "Vị trí xuất hiện của nút mục lục nổi trên màn hình."
+
+msgid "Floating squircle button to quickly scroll back to the top of any admin page."
+msgstr "Nút cuộn lên đầu trang dạng squircle mượt mà, tiện lợi cho trang quản trị."
+
+msgid "Font Size"
+msgstr "Cỡ chữ nội dung"
+
+msgid "Footer Scripts (</body>)"
+msgstr "Mã chân trang (</body>)"
+
+msgid "Form Border Radius"
+msgstr "Bo góc khung đăng nhập"
+
+msgid "Format Converter"
+msgstr "Bộ chuyển đổi định dạng"
+
+msgid "Four dot matrix pattern"
+msgstr "Ma trận 4 điểm tròn"
+
+msgid "Frontend Asset Cleanup"
+msgstr "Dọn dẹp Tài nguyên Frontend"
+
+msgid "GDPR/CCPA cookie banner with modern presets"
+msgstr "Banner thông báo Cookie chuẩn GDPR/CCPA"
+
+msgid "Gear cog ⚙"
+msgstr "Icon bánh răng ⚙"
+
+msgid "Generate Alt/Title from cleaned filename instead of post title."
+msgstr "Tạo thẻ Alt/Title từ tên file đã làm sạch thay vì tiêu đề bài viết."
+
+msgid "Get Turnstile Keys"
+msgstr "Lấy mã khóa Turnstile"
+
+msgid "Global CSS (All Screens)"
+msgstr "CSS áp dụng cho Tất cả thiết bị"
+
+msgid "Global From Email Address"
+msgstr "Email người gửi mặc định (From Email)"
+
+msgid "Global From Sender Name"
+msgstr "Tên người gửi mặc định (From Name)"
+
+msgid "Grid Dots (☷)"
+msgstr "Lưới 4 chấm (☷)"
+
+msgid "Header Background"
+msgstr "Màu nền tiêu đề"
+
+msgid "Header Label"
+msgstr "Tiêu đề khung"
+
+msgid "Header Scripts (<head>)"
+msgstr "Mã đầu trang (<head>)"
+
+msgid "Header text displayed at the top of the table of contents."
+msgstr "Chữ tiêu đề ở đầu khung mục lục."
+
+msgid "Header/body/footer scripts & responsive custom CSS"
+msgstr "Chèn script Header/Body/Footer & CSS tùy chỉnh"
+
+msgid "Heading 1 (h1)"
+msgstr "Thẻ tiêu đề 1 (h1)"
+
+msgid "Heading 2 (h2)"
+msgstr "Thẻ tiêu đề 2 (h2)"
+
+msgid "Heading 3 (h3)"
+msgstr "Thẻ tiêu đề 3 (h3)"
+
+msgid "Heading 4 (h4)"
+msgstr "Thẻ tiêu đề 4 (h4)"
+
+msgid "Heading 5 (h5)"
+msgstr "Thẻ tiêu đề 5 (h5)"
+
+msgid "Heading 6 (h6)"
+msgstr "Thẻ tiêu đề 6 (h6)"
+
+msgid "Heading Levels"
+msgstr "Cấp tiêu đề"
+
+msgid "Headings & Rules"
+msgstr "Thẻ tiêu đề"
+
+msgid "Heartbeat API Control"
+msgstr "Kiểm soát Heartbeat API"
+
+msgid "Heartbeat Frequency"
+msgstr "Tần suất nhịp đập Heartbeat"
+
+msgid "Hide Admin Bar"
+msgstr "Ẩn thanh Admin Bar"
+
+msgid "Hide Admin Menu Items"
+msgstr "Ẩn menu thanh bên trái (Sidebar Menu)"
+
+msgid "Hide Admin Nags & Notices"
+msgstr "Ẩn thông báo phiền toái"
+
+msgid "Hide Help Tabs"
+msgstr "Ẩn Tab Trợ giúp (Help)"
+
+msgid "Hide Installed Plugins"
+msgstr "Ẩn Plugin khỏi danh sách Đã cài đặt"
+
+msgid "Hide Login Footer Links"
+msgstr "Ẩn liên kết chân trang đăng nhập"
+
+msgid "Hide Screen Options"
+msgstr "Ẩn Tùy chọn hiển thị (Screen Options)"
+
+msgid "Hide Specific Admin Bar Items"
+msgstr "Ẩn các mục cụ thể trên Admin Bar"
+
+msgid "Hide Specific Admins from User List"
+msgstr "Ẩn Admin khỏi danh sách"
+
+msgid "Hide WordPress Generator Version"
+msgstr "Ẩn phiên bản WordPress"
+
+msgid "Hide WordPress Logo"
+msgstr "Ẩn logo WordPress"
+
+msgid "Hide WordPress Version"
+msgstr "Ẩn phiên bản WordPress"
+
+msgid "Hide admin bar, menu restrictions & hide plugins"
+msgstr "Ẩn thanh admin bar, phân quyền menu & ẩn plugin"
+
+msgid "Hide all standard WordPress and plugin dashboard widgets including the Welcome Panel at once."
+msgstr "Ẩn toàn bộ các widget mặc định của WordPress và plugin cũng như Bảng chào mừng cùng lúc."
+
+msgid "Hide intrusive third-party plugin notices and review prompts in admin area."
+msgstr "Ẩn các thông báo quảng cáo, banner nhắc nhở từ plugin bên thứ ba trong admin."
+
+msgid "Hide password fields in user profile to prevent users from changing passwords."
+msgstr "Ẩn các ô đổi mật khẩu trong hồ sơ người dùng."
+
+msgid "Hide selected administrators from the /wp-admin/users.php user management table."
+msgstr "Ẩn các tài khoản Admin chỉ định khỏi bảng quản lý thành viên /wp-admin/users.php."
+
+msgid "Hide selected sidebar navigation items for non-super admins."
+msgstr "Ẩn bớt các mục menu không cần thiết với các tài khoản phụ."
+
+msgid "Hide specific plugins from appearing in the Plugins list."
+msgstr "Ẩn các plugin quan trọng khỏi danh sách Gói mở rộng (Plugins)."
+
+msgid "Hide the top admin bar on the frontend."
+msgstr "Ẩn thanh Admin Bar ở ngoài giao diện trang chủ cho tất cả người dùng."
+
+msgid "Hierarchical nested list tree"
+msgstr "Cây thư mục phân cấp"
+
+msgid "Hover & Active Accent Color"
+msgstr "Màu khi rê chuột & xem (Active)"
+
+msgid "Htaccess Rules"
+msgstr "Cấu hình tệp tin .htaccess"
+
+msgid "Icon color of toggle buttons."
+msgstr "Màu icon của nút đóng/mở."
+
+msgid "Image Optimization & Uploads"
+msgstr "Tối ưu hóa hình ảnh & Tải lên"
+
+msgid "Import .json File"
+msgstr "Nhập tệp .json"
+
+msgid "Import Settings"
+msgstr "Nhập Cài đặt"
+
+msgid "Index List"
+msgstr "Danh mục"
+
+msgid "Initial display state of nested sub-headings on page load."
+msgstr "Trạng thái hiển thị mục con khi tải trang."
+
+msgid "Initially Hide"
+msgstr "Mặc định thu gọn"
+
+msgid "Initially collapse the table of contents on page load."
+msgstr "Tự động thu gọn khi tải trang."
+
+msgid "Inject CSS inline to reduce HTTP requests."
+msgstr "Nhúng CSS trực tiếp vào HTML để giảm request tệp ngoài."
+
+msgid "Inline CSS"
+msgstr "Nhúng CSS nội tuyến"
+
+msgid "Insert signature into single posts using shortcode %1$s or automatically."
+msgstr "Chèn chữ ký vào bài viết bằng shortcode %1$s hoặc tự động."
+
+msgid "Invalid action."
+msgstr "Hành động không hợp lệ."
+
+msgid "Invalid or unauthorized file target."
+msgstr "Đích tệp tin không hợp lệ hoặc không được phép."
+
+msgid "Invalid request status."
+msgstr "Trạng thái yêu cầu không hợp lệ."
+
+msgid "JavaScript (Default - Full animation & smooth scroll)"
+msgstr "JavaScript (Mặc định - Đầy đủ hiệu ứng mượt)"
+
+msgid "KB (E.g: 2048 = 2MB). Prevent uploading overly large files."
+msgstr "KB (Ví dụ: 2048 = 2MB). Ngăn chặn người dùng tải ảnh quá nặng."
+
+msgid "Last Login"
+msgstr "Đăng nhập lần cuối"
+
+msgid "Layer stack ☷"
+msgstr "Icon xếp lớp ☷"
+
+msgid "Layers"
+msgstr "Xếp lớp"
+
+msgid "Leave blank to use layout default."
+msgstr "Để trống để dùng mặc định."
+
 msgid "Like this plugin? Check out our other WordPress products:"
-msgstr ""
-"Bạn thích plugin này? Hãy xem các sản phẩm WordPress khác của chúng tôi:"
+msgstr "Bạn thích plugin này? Khám phá thêm các sản phẩm khác của chúng tôi:"
 
-#: src/Settings.php:640
 msgid "Limit Login Attempts"
-msgstr "Giới hạn đăng nhập sai"
+msgstr "Giới hạn số lần đăng nhập sai"
 
-#: src/Settings.php:73
+msgid "Link Color"
+msgstr "Màu liên kết"
+
+msgid "List Menu (☰)"
+msgstr "Menu danh sách (☰)"
+
 msgid "List Module"
-msgstr "Danh sách chức năng"
+msgstr "Danh sách Module"
 
-#: src/Settings.php:1038
-msgid ""
-"List of JavaScript file IDs. Example: id=\"wp-extra-js\" should only use wp-"
-"extra. One data field per line."
-msgstr ""
-"Danh sách ID của tập tin Javascript. Ví dụ: id=\"wp-extra-js\" thì chỉ sử "
-"dụng wp-extra. Mỗi dòng 1 trường dữ liệu."
+msgid "LiteSpeed Cache"
+msgstr "LiteSpeed Cache"
 
-#: src/Settings.php:213
-msgid "Lock Last Modified Date"
-msgstr "Khóa ngày chỉnh sửa cuối cùng"
+msgid "Loading Method"
+msgstr "Phương thức tải"
 
-#: src/Settings.php:566
-msgid "Login Title"
-msgstr "Tiêu đề Trang Đăng Nhập"
+msgid "Loading details..."
+msgstr "Đang tải thông tin..."
 
-#: src/Settings.php:583
-msgid "Logo URL"
-msgstr "Đường dẫn Logo"
+msgid "Lock Modified Date"
+msgstr "Khóa ngày cập nhật"
 
-#: src/Settings.php:177
-msgid "Making it stick to the bottom of the page when scrolling down the page"
-msgstr "Xuất hiện phía dưới khi cuộn xuống trang"
+msgid "Lock and prevent users from changing their email address on the profile screen."
+msgstr "Ngăn thành viên tự ý thay đổi địa chỉ email trong trang hồ sơ cá nhân."
 
-#: src/Settings.php:859
-msgid "Message"
-msgstr "Lời nhắn"
+msgid "Log Retention (Days)"
+msgstr "Thời gian lưu nhật ký (ngày)"
 
-#: src/Settings.php:684
-msgid "Midnight"
-msgstr "Đêm khuya"
+msgid "Log record not found."
+msgstr "Không tìm thấy bản ghi nhật ký."
 
-#: src/Settings.php:1044
-msgid "Minify HTML output for clean looking markup and faster downloading."
-msgstr "Tối ưu hoá mã HTML của bạn"
+msgid "Login Design Preset"
+msgstr "Giao diện đăng nhập mẫu"
 
-#: src/Modules/Common/Posts.php:69
-msgid "Missing data."
-msgstr "Thiếu dữ liệu."
+msgid "Login Page Title"
+msgstr "Tiêu đề trang đăng nhập"
 
-#: src/Settings.php:1109
-msgid "Mobile only"
-msgstr "Điện thoại"
+msgid "Login Screen Customization"
+msgstr "Tùy biến Trang đăng nhập"
 
-#: src/Settings.php:217
-msgid "Modified Date In Admin Lists"
-msgstr "Thêm ngày chỉnh sửa trong danh sách bài"
+msgid "Login Security & Protection"
+msgstr "Bảo mật Đăng nhập"
 
-#: src/Settings.php:1215
-msgid "Nags & Notices"
-msgstr "Thông báo bản quyền & hệ thống"
+msgid "Logo Link URL"
+msgstr "Đường dẫn liên kết Logo"
 
-#: src/Settings.php:634
-msgid "New private window"
-msgstr "Mở chế độ ẩn danh"
+msgid "Mailer Account"
+msgstr "Tài khoản gửi"
 
-#: src/Settings.php:1151 src/Settings.php:1161
-msgid "Not compatible with WooCommerce"
-msgstr "Không tương thích với WooCommerce."
+msgid "Mailer Account:"
+msgstr "Tài khoản gửi:"
 
-#: src/Settings.php:1003
-msgid ""
-"Note: Please combine with any Cache plugin for faster performance. Only "
-"works for visitors."
-msgstr ""
-"Ghi chú: Vui lòng nén tất cả các file Cache. Chỉ hoạt động với khách truy "
-"cập."
+msgid "Manage SMTP Settings &rarr;"
+msgstr "Quản lý cài đặt SMTP &rarr;"
 
-#: src/Settings.php:685
-msgid "Ocean"
-msgstr "Đại dương"
+msgid "Manage your search engine crawler directives file."
+msgstr "Quản lý tập tin chỉ thị thu thập dữ liệu của công cụ tìm kiếm."
 
-#: src/Settings.php:830
+msgid "Max File Size Limit"
+msgstr "Giới hạn dung lượng tải lên"
+
+msgid "Max Image Height"
+msgstr "Chiều cao tối đa"
+
+msgid "Max Image Width"
+msgstr "Chiều rộng ảnh tối đa"
+
+msgid "Max Upload Size"
+msgstr "Dung lượng tải lên tối đa"
+
+msgid "Max allowed failed login attempts before IP temporary lockout."
+msgstr "Số lần tối đa được phép nhập sai mật khẩu trước khi tạm thời khóa địa chỉ IP."
+
+msgid "Maximum revisions to keep per post. Enter 0 to disable revisions completely, or leave empty to use WordPress default."
+msgstr "Số lượng bản sửa đổi tối đa lưu lại cho mỗi bài viết. Nhập 0 để tắt hoàn toàn bản nháp, hoặc để trống để dùng mặc định."
+
+msgid "Media & SVG"
+msgstr "Thư viện & SVG"
+
+msgid "Media SEO & Filenames"
+msgstr "SEO Hình ảnh & Tên tệp tin"
+
+msgid "Minimal pure text (Default)"
+msgstr "Chữ tối giản (Mặc định)"
+
+msgid "Minimalist Clean"
+msgstr "Trắng tối giản (Minimalist Clean)"
+
+msgid "Missing or invalid data."
+msgstr "Dữ liệu bị thiếu hoặc không hợp lệ."
+
+msgid "Mobile CSS (<= 767px)"
+msgstr "CSS riêng cho Điện thoại di động (Mobile)"
+
+msgid "Modern folding chevron (Default)"
+msgstr "Mũi tên gấp (Mặc định)"
+
+msgid "Modern star sparkle ✦"
+msgstr "Icon ngôi sao ✦"
+
+msgid "Multi-account rotation, provider presets & email logs"
+msgstr "Gửi thư đa tài khoản, luân chuyển & nhật ký"
+
+msgid "Mute System Emails"
+msgstr "Tắt email hệ thống"
+
+msgid "MySQL / MariaDB"
+msgstr "Cơ sở dữ liệu MySQL / MariaDB"
+
+msgid "Nav Padding"
+msgstr "Khoảng đệm trong"
+
+msgid "Never"
+msgstr "Chưa bao giờ"
+
+msgid "New Content Menu (+ New)"
+msgstr "Menu thêm mới (+ Mới)"
+
+msgid "No backup file found."
+msgstr "Không tìm thấy tệp sao lưu."
+
+msgid "No email log entries found."
+msgstr "Không tìm thấy bản ghi nhật ký gửi thư nào."
+
+msgid "No feed available, please visit the <a href='%s'>homepage</a>!"
+msgstr "Nguồn cấp dữ liệu không khả dụng, vui lòng truy cập <a href='%s'>trang chủ</a>!"
+
+msgid "No icon before title (Default)"
+msgstr "Không dùng (Mặc định)"
+
+msgid "No posts found."
+msgstr "Không tìm thấy bài viết nào."
+
+msgid "None"
+msgstr "Không"
+
+msgid "Not Protected"
+msgstr "Chưa bảo vệ"
+
+msgid "Note: Combine with a caching plugin for best performance."
+msgstr "Lưu ý: Kết hợp cùng một plugin tạo bộ nhớ đệm (Cache) để đạt tốc độ tối đa."
+
+msgid "Notice"
+msgstr "Thông báo"
+
+msgid "Notice Message"
+msgstr "Nội dung thông báo"
+
+msgid "Notice message displayed to website visitors."
+msgstr "Thông báo hiển thị cho khách truy cập website."
+
+msgid "Numbered 1, 1.1, 1.2..."
+msgstr "Đánh số 1, 1.1, 1.2..."
+
+msgid "Numbers in rounded badge"
+msgstr "Số trong huy hiệu tròn"
+
 msgid "Only Allow When Editing Posts/Pages"
-msgstr "Chỉ cho phép khi đang chỉnh sửa bài viết/trang"
+msgstr "Chỉ bật khi đang soạn thảo bài viết/trang"
 
-#: src/Settings.php:68 src/Settings.php:1002 src/Settings.php:1003
+msgid "Only allow user registration from specified email domains (e.g. gmail.com, yahoo.com). One per line."
+msgstr "Chỉ cho phép đăng ký tài khoản bằng các đuôi email hợp lệ (như gmail.com, yahoo.com). Mỗi đuôi một dòng."
+
+msgid "Only selected administrator accounts can view and edit WP EXtra settings."
+msgstr "Chỉ những tài khoản Admin được chọn mới có quyền xem và sửa cài đặt WP Extra."
+
+msgid "Oops, we could not retrieve the sidebar widgets! Maybe there is another plugin already managing them?"
+msgstr "Rất tiếc, không thể lấy danh sách widget thanh bên! Có thể đã có một plugin khác đang quản lý chúng."
+
+msgid "Open Book"
+msgstr "Trang sách mở"
+
+msgid "Open book 📖 pages"
+msgstr "Icon cuốn sách 📖"
+
+msgid "Open table of contents"
+msgstr "Mở mục lục"
+
 msgid "Optimize"
 msgstr "Tăng tốc"
 
-#: src/Settings.php:360
-msgid "Optimize image SEO"
-msgstr "Tối ưu SEO hình ảnh"
+msgid "Other Custom SMTP Server"
+msgstr "Máy chủ SMTP tùy chỉnh khác"
 
-#: src/Settings.php:44
 msgid "Our WordPress Products"
-msgstr "Các sản phẩm của chúng tôi"
+msgstr "Sản phẩm WordPress của chúng tôi"
 
-#: src/Settings.php:61 src/Settings.php:428
+msgid "PHP Memory Limit"
+msgstr "Giới hạn bộ nhớ PHP"
+
+msgid "PHP Version"
+msgstr "Phiên bản PHP"
+
+msgid "Padding for list wrapper (#wptoc-container nav). Enter CSS values like 12px 16px."
+msgstr "Khoảng đệm danh sách (#wptoc-container nav). Nhập giá trị CSS như 12px 16px."
+
+msgid "Padding for outer container (#wptoc-container). Enter CSS values like 16px or 14px 18px."
+msgstr "Khoảng đệm ngoài (#wptoc-container). Nhập giá trị CSS như 16px hoặc 14px 18px."
+
+msgid "Password / App Key"
+msgstr "Mật khẩu / App Key"
+
+msgid "Permalinks & SEO"
+msgstr "Đường dẫn tĩnh & SEO"
+
 msgid "Permission"
 msgstr "Phân quyền"
 
-#. %1$s: Plugin name, %2$s: Link start, %3$s: Link end
-#: src/Pro/WPEXtraPro.php:94
-#, php-format
-msgid ""
-"Please %2$sactivate%3$s your copy of the %1$s to get update notifications, "
-"access to support features & other resources!"
-msgstr ""
-"Vui lòng %2$skích hoạt%3$s bản quyền của %1$s để nhận thông báo cập nhật, "
-"truy cập các tính năng hỗ trợ & các tài nguyên khác!"
+msgid "Permission & Roles"
+msgstr "Menu & Phân quyền"
 
-#: src/Settings.php:730
-msgid "Please backup before making any changes."
-msgstr "Vui lòng backup trước khi thực hiện thay đổi."
+msgid "Permission denied."
+msgstr "Không có quyền truy cập."
 
-#: src/Pro/Modules/Common/Branding.php:222
-msgid "Please enter the two-factor authentication code"
-msgstr "Vui lòng nhập mã xác thực hai bước"
+msgid "Please enter a recipient email address."
+msgstr "Vui lòng nhập địa chỉ email người nhận."
 
-#: src/Modules/Common/Posts.php:50
+msgid "Please enter a valid recipient email address."
+msgstr "Vui lòng nhập địa chỉ email hợp lệ."
+
 msgid "Please select an image in the editor."
-msgstr ""
-"Vui lòng chọn một hình ảnh trong trình soạn thảo.\n"
+msgstr "Vui lòng chọn một hình ảnh trong trình soạn thảo."
 
-#: src/Settings.php:47
-msgid "Please upgrade to the PRO plan to unlock more awesome features."
-msgstr "Vui lòng nâng cấp lên bản PRO để mở khoá các tính năng tuyệt vời hơn."
+msgid "Plugins"
+msgstr "Plugins"
 
-#: src/Settings.php:1012
-msgid "Prevent Gutenberg Block Library CSS from Loading on the Frontend."
-msgstr "Xoá các CSS trong Gutenberg."
+msgid "Plus / Minus (+ / −)"
+msgstr "Dấu cộng / trừ (+ / −)"
 
-#: src/Settings.php:175
-msgid "Publish Button"
-msgstr "Button đăng bài"
+msgid "Port"
+msgstr "Cổng kết nối (Port)"
 
-#: src/Settings.php:651
-msgid "Question"
-msgstr "Câu hỏi"
+msgid "Position"
+msgstr "Vị trí"
 
-#: src/Core.php:30
+msgid "Post Revisions Limit"
+msgstr "Giới hạn số bản lưu nháp (Revisions)"
+
+msgid "Post Signature"
+msgstr "Chữ ký bài viết"
+
+msgid "Post not found."
+msgstr "Không tìm thấy bài viết."
+
+msgid "Posts & Writing"
+msgstr "Bài viết & Soạn thảo"
+
+msgid "Preconnect Google Fonts & CDNs"
+msgstr "Preconnect Google Fonts & CDNs"
+
+msgid "Prevent Gutenberg Block Library CSS from loading on the frontend."
+msgstr "Ngăn chặn tải tệp CSS khối Gutenberg ở ngoài giao diện trang chủ."
+
+msgid "Prevent WordPress core from automatically applying updates."
+msgstr "Ngăn WordPress tự động nâng cấp phiên bản để bạn chủ động kiểm soát."
+
+msgid "Prevent generating unused image sizes to save disk storage and CDN bandwidth."
+msgstr "Ngăn WordPress tự tạo ra hàng loạt kích thước ảnh rác, tiết kiệm dung lượng hosting."
+
+msgid "Prevent non-admin user roles from accessing /wp-admin and redirect them to homepage."
+msgstr "Chặn các nhóm vai trò không phải Admin truy cập /wp-admin và tự động chuyển hướng về trang chủ."
+
+msgid "Prevent updating the modified date when editing existing posts."
+msgstr "Giữ nguyên ngày đăng ban đầu, không tự động đổi ngày khi chỉnh sửa bài."
+
+msgid "Prevent visitors from navigating back in history."
+msgstr "Ngăn chặn người dùng bấm nút Back quay lại trên trình duyệt."
+
+msgid "Preview Login URL"
+msgstr "Xem trước liên kết đăng nhập"
+
+msgid "Processing..."
+msgstr "Đang xử lý..."
+
+msgid "Profile / Account"
+msgstr "Hồ sơ / Tài khoản"
+
+msgid "Protect WP-Content Folder"
+msgstr "Bảo vệ thư mục WP-Content"
+
+msgid "Protect WP-Includes Folder"
+msgstr "Bảo vệ thư mục WP-Includes"
+
+msgid "Protected"
+msgstr "Đã bảo vệ"
+
+msgid "Protected file .htaccess created successfully."
+msgstr "Đã tạo file .htaccess bảo vệ thành công."
+
+msgid "Protected file .htaccess has been removed."
+msgstr "Đã gỡ bỏ file .htaccess bảo vệ."
+
+msgid "Publishing & List Views"
+msgstr "Xuất bản & Danh sách hiển thị"
+
+msgid "Pure CSS (Super lightweight, no JS)"
+msgstr "Thuần CSS (Siêu nhẹ, không dùng JS)"
+
+msgid "Query Monitor"
+msgstr "Query Monitor"
+
+msgid "REST API & Heartbeat"
+msgstr "Kiểm soát REST API & Heartbeat"
+
+msgid "REST API Access"
+msgstr "Quyền truy cập REST API"
+
+msgid "Rank Math"
+msgstr "Rank Math"
+
 msgid "Rate WP EXtra on WordPress.org"
-msgstr "Đánh giá WP EXtra trên WordPress.org"
+msgstr "Đánh giá 5 sao WP EXtra trên WordPress.org"
 
-#: src/Settings.php:222
-msgid "Redirect Single Post"
-msgstr "Chuyển hướng bài viết"
+msgid "Reading bookmark 🔖 ribbon"
+msgstr "Icon ruy băng 🔖"
 
-#: src/Settings.php:408
-msgid "Redirect to link"
-msgstr "Chuyển hướng đến liên kết"
+msgid "Recipient"
+msgstr "Người nhận"
 
-#: src/Settings.php:223
-msgid "Redirect to the post if the search results return only one post."
-msgstr "Chuyển hướng đến bài viết nếu kết quả chỉ có một bài viết."
+msgid "Recipient (To)"
+msgstr "Người nhận (To)"
 
-#: src/Settings.php:1140
-msgid "Redirecting Attachment Pages"
-msgstr "Chuyển hướng Trang tập tin đính kèm"
+msgid "Recipient Email Address"
+msgstr "Địa chỉ Email người nhận"
 
-#: src/Settings.php:987
-msgid "Remove admin email confirmation"
-msgstr "Xóa xác nhận email quản trị viên"
+msgid "Recipient, subject, error..."
+msgstr "Người nhận, tiêu đề, lỗi..."
 
-#: src/Settings.php:849
-msgid "Remove all core blocks"
-msgstr "Xoá tất cả các block"
+msgid "Record all outgoing emails sent through WordPress. View your logs in the <a href=\"%s\"><strong>Email Logs</strong></a> menu."
+msgstr "Ghi lại tất cả email gửi đi từ WordPress. Xem danh sách trong menu <a href=\"%s\"><strong>Nhật ký Email</strong></a>."
 
-#: src/Settings.php:1071
-msgid "Remove global-styles-inline-css & SVG Duotone Filter"
-msgstr "Gỡ bỏ global-styles-inline-css & bộ lọc SVG Duotone"
+msgid "Redirect Attachment Pages"
+msgstr "Chuyển hướng trang tệp đính kèm"
 
-#: src/Settings.php:229
-msgid "Remove link in the tags from all post"
-msgstr "Xoá các liên kết của thẻ tag"
+msgid "Redirect Site Title to Admin Dashboard"
+msgstr "Nhấp vào Tên Website mở thẳng Bảng tin"
 
-#: src/Settings.php:1007
-msgid "Remove query strings from static resources (CSS, JS)."
-msgstr "Xoá các version sau tên tập tin CSS, JS."
+msgid "Redirect destination when clicking the login logo (default: homepage)."
+msgstr "Địa chỉ liên kết khi người dùng bấm vào logo đăng nhập."
 
-#: src/Settings.php:787
-msgid "Remove RSD (Real Simple Discovery) link tag."
-msgstr "Loại bỏ thẻ liên kết RSD (Real Simple Discovery)."
+msgid "Redirect detected spammers to a custom URL (e.g. 127.0.0.1 or honeypot)."
+msgstr "Chuyển hướng IP spam đến một liên kết tùy chọn (như 127.0.0.1 hoặc bẫy spam)."
 
-#: src/Settings.php:792
-msgid "Remove Shortlink link tag."
-msgstr "Loại bỏ thẻ liên kết Shortlink."
+msgid "Redirect directly to post if a search query returns exactly one match."
+msgstr "Tự động chuyển hướng thẳng vào bài viết nếu kết quả tìm kiếm chỉ có 1 bài."
 
-#: src/Settings.php:782
-msgid "Remove wlwmanifest (Windows Live Writer) link tag."
-msgstr "Xóa thẻ liên kết wlwmanifest (Windows Live Writer)."
+msgid "Redirect media attachment URLs to the parent post or media file."
+msgstr "Chuyển hướng trang đính kèm ảnh về thẳng bài viết gốc hoặc tệp tin ảnh."
 
-#: src/Settings.php:772
-msgid "Removes jQuery Migrate JavaScript file (jquery-migrate.min.js)."
-msgstr "Xóa JavaScript nhúng của jQuery Migrate (jquery-migrate.min.js)."
+msgid "Reload from Disk"
+msgstr "Tải lại từ tệp gốc"
 
-#: src/Settings.php:823
-msgid ""
-"Removes REST API link tag from the front end and the REST API header link "
-"from page requests."
-msgstr ""
-"Loại bỏ thẻ liên kết REST API từ phía trước và thẻ liên kết tiêu đề REST API "
-"từ các yêu cầu trang."
+msgid "Remote Images & Featured Thumbnails"
+msgstr "Tự động lưu ảnh ngoài & Ảnh đại diện"
 
-#: src/Settings.php:762
-#| msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js)."
-msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js). "
-msgstr "Xóa JavaScript nhúng của WordPress (wp-embed.min.js). "
+msgid "Remove Global Styles & SVG Filters"
+msgstr "Xóa Global Styles & Bộ lọc SVG rác"
 
-#: src/Settings.php:1061
-msgid "Removes WordPress Emojis JavaScript file (wp-emoji-release.min.js)."
-msgstr ""
-"Xóa JavaScript biểu tượng cảm xúc của WordPress (wp-emoji-release.min.js)."
+msgid "Remove Post Type Slugs"
+msgstr "Xóa slug Post Type khỏi liên kết"
 
-#: src/Settings.php:777
-msgid "Removes WordPress version meta tag."
-msgstr "Loại bỏ thẻ meta phiên bản của WordPress."
+msgid "Remove Protection"
+msgstr "Gỡ bỏ bảo vệ"
 
-#: src/Settings.php:356
-msgid ""
-"Rename uploaded files available in wordpress media and change the postname "
-"or slug name."
-msgstr "Khi đăng tải ảnh sẽ tự động đặt tên tập tin theo cấu hình"
+msgid "Remove Query Strings from Static Resources"
+msgstr "Xóa chuỗi truy vấn (?ver=) khỏi tệp tĩnh"
 
-#: src/Settings.php:578
-msgid "Replace the default WordPress logo. Max width: 320px."
-msgstr "Thay thế logo mặc định. Chiều rộng tối đa: 320px."
+msgid "Remove REST API Header Links"
+msgstr "Xóa liên kết REST API trong Header"
 
-#: src/Settings.php:724
-msgid "Restrict user from clicking the back button."
-msgstr "Cấm khách truy cập quay trở về trang Web"
+msgid "Remove REST API link tags from HTML head and HTTP response headers."
+msgstr "Xóa thẻ link REST API khỏi mã nguồn HTML và HTTP Header."
 
-#: src/Settings.php:707
-msgid "Restrict user to copy content & disable mouse right click."
-msgstr "Hạn chế người dùng sao chép nội dung và vô hiệu hóa chuột phải."
+msgid "Remove Taxonomy Slugs"
+msgstr "Xóa slug Danh mục Taxonomy"
 
-#: src/Settings.php:1175
-msgid "Restricted backend access for non-admins."
-msgstr "Cấm truy cập trang quản trị nếu không phải là admin"
+msgid "Remove WordPress Embed script (wp-embed.min.js) and oEmbed discovery links."
+msgstr "Gỡ bỏ script wp-embed.min.js và các liên kết oEmbed trên trang."
 
-#: src/Settings.php:980
-msgid "Sends a simple test email to check your settings."
-msgstr "Gửi một email để kiểm tra cài đặt của bạn."
+msgid "Remove WordPress Emoji JavaScript and styles from frontend."
+msgstr "Loại bỏ tệp mã nguồn wp-emoji-release.min.js để giảm dung lượng trang."
 
-#: src/Settings.php:218
-msgid "Shows a new, sortable, column with the modified date in the lists"
-msgstr ""
-"Hiển thị một cột mới (có thể sắp xếp) chứa ngày chỉnh sửa trong danh sách"
+msgid "Remove WordPress version number from admin footer."
+msgstr "Ẩn thông tin phiên bản WordPress ở góc dưới chân trang admin."
 
-#: src/Settings.php:132
-msgid "Signature"
-msgstr "Chữ ký"
+msgid "Remove category base prefix from archive URLs."
+msgstr "Xóa tiền tố /category/ khỏi đường dẫn chuyên mục."
 
-#: src/Modules/Common/Security.php:190
+msgid "Remove category slugs, external links SEO & robots.txt"
+msgstr "Xóa slug danh mục, SEO link ngoài & robots.txt"
+
+msgid "Remove generator meta tag containing WordPress version from HTML source."
+msgstr "Xóa thẻ meta generator chứa phiên bản WordPress khỏi mã nguồn HTML."
+
+msgid "Remove jQuery Migrate"
+msgstr "Gỡ jQuery Migrate"
+
+msgid "Remove legacy RSD, WLWmanifest, Shortlink tags and self-pingbacks."
+msgstr "Gỡ bỏ các thẻ RSD, WLWmanifest, Shortlink thừa và chặn tự động pingback."
+
+msgid "Remove post type base prefix from URLs for clean single post links."
+msgstr "Xóa tiền tố của Custom Post Type để tạo đường dẫn ngắn gọn chuẩn SEO."
+
+msgid "Remove the Help dropdown tab from the top right of admin screens."
+msgstr "Xóa nút dropdown Trợ giúp ở góc phải trên cùng các trang admin."
+
+msgid "Remove the Screen Options dropdown tab from the top right of admin screens."
+msgstr "Xóa nút Tùy chọn hiển thị ở góc phải trên cùng các trang admin."
+
+msgid "Remove version query strings from CSS/JS files to improve CDN cacheability."
+msgstr "Xóa tham số phiên bản ver= khỏi tệp CSS/JS để CDN và trình duyệt lưu cache tốt hơn."
+
+msgid "Replace default WordPress logo. Max recommended width: 320px."
+msgstr "Thay thế logo WordPress mặc định. Chiều rộng khuyến nghị tối đa: 320px."
+
+msgid "Request failed."
+msgstr "Yêu cầu thất bại."
+
+msgid "Resend Email"
+msgstr "Gửi lại email"
+
+msgid "Resend email"
+msgstr "Gửi lại email"
+
+msgid "Restore Backup"
+msgstr "Khôi phục bản sao lưu"
+
+msgid "Restore classic widget management screens."
+msgstr "Khôi phục giao diện quản lý widget dạng khối truyền thống."
+
+msgid "Restrict REST API access to authenticated users or administrators."
+msgstr "Giới hạn quyền truy vấn REST API cho người dùng đã xác thực."
+
+msgid "Robots.txt"
+msgstr "Robots.txt"
+
+msgid "Robots.txt Editor"
+msgstr "Trình chỉnh sửa Robots.txt"
+
+msgid "Root .htaccess"
+msgstr "Tệp .htaccess tại thư mục gốc"
+
+msgid "SEO & Link Redirection"
+msgstr "SEO & Điều hướng Liên kết"
+
+msgid "SEO File Renamer"
+msgstr "Tự động đổi tên tệp tin chuẩn SEO"
+
+msgid "SMTP"
+msgstr "Gửi thư SMTP"
+
+msgid "SMTP Accounts"
+msgstr "Danh sách tài khoản SMTP"
+
+msgid "SMTP Connection Successful"
+msgstr "Kết nối SMTP thành công"
+
+msgid "SMTP Error: %s"
+msgstr "Lỗi SMTP: %s"
+
+msgid "SMTP Host"
+msgstr "Máy chủ SMTP Host"
+
+msgid "SMTP Mail Service"
+msgstr "Dịch vụ / Nhà cung cấp SMTP"
+
+msgid "SMTP Mailer"
+msgstr "Gửi thư SMTP"
+
+msgid "SMTP Mailer Configuration"
+msgstr "Cấu hình gửi thư SMTP"
+
+msgid "SMTP Options"
+msgstr "Tùy chọn nâng cao SMTP"
+
+msgid "SVG uploads, auto WebP/JPG conversion & SEO rename"
+msgstr "Tải SVG, đổi ảnh WebP/JPG & đổi tên SEO"
+
+msgid "Save to File"
+msgstr "Lưu vào tệp"
+
+msgid "Saved successfully to file."
+msgstr "Đã lưu tệp tin thành công."
+
+msgid "Saved successfully."
+msgstr "Đã lưu cài đặt thành công."
+
+msgid "Scroll To Top"
+msgstr "Cuộn lên đầu trang"
+
+msgid "Scroll smoothly to anchor targets when clicking TOC links."
+msgstr "Tạo hiệu ứng cuộn mượt khi nhấp vào liên kết mục lục."
+
+msgid "Scroll to top"
+msgstr "Cuộn lên đầu trang"
+
+msgid "Search"
+msgstr "Tìm kiếm"
+
+msgid "Search Logs"
+msgstr "Tìm kiếm"
+
+msgid "Search Logs:"
+msgstr "Tìm kiếm nhật ký:"
+
+msgid "Security"
+msgstr "Bảo mật"
+
+msgid "Security & Hardening"
+msgstr "Bảo mật & Gia cố hệ thống"
+
+msgid "Security Error: Uploaded SVG contains suspicious scripts or event handlers."
+msgstr "Lỗi bảo mật: Tệp SVG chứa mã script đáng ngờ hoặc sự kiện không an toàn."
+
+msgid "Security check failed."
+msgstr "Kiểm tra bảo mật thất bại."
+
+msgid "Select heading levels to include in the table of contents."
+msgstr "Chọn các cấp thẻ tiêu đề (H1 - H6) muốn đưa vào mục lục."
+
+msgid "Select specific items to remove from the top Admin Bar."
+msgstr "Chọn các mục muốn ẩn khỏi thanh Admin Bar trên cùng."
+
+msgid "Send Test Email"
+msgstr "Gửi thư thử nghiệm"
+
+msgid "Send modern security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)."
+msgstr "Gửi các HTTP header bảo mật hiện đại chống tấn công Clickjacking và MIME-sniffing."
+
+msgid "Sender (From)"
+msgstr "Người gửi (From)"
+
+msgid "Sent"
+msgstr "Đã gửi"
+
+msgid "Sent via WP EXtra SMTP Mailer | WordPress %s"
+msgstr "Gửi qua WP EXtra SMTP Mailer | WordPress %s"
+
+msgid "Server Error"
+msgstr "Lỗi máy chủ"
+
+msgid "Set interval frequency for Heartbeat requests."
+msgstr "Chọn khoảng thời gian giữa các lần gửi yêu cầu Heartbeat."
+
+msgid "Settings"
+msgstr "Cài đặt"
+
+msgid "Show Modified Date"
+msgstr "Hiện ngày cập nhật cuối"
+
+msgid "Show User Last Login"
+msgstr "Hiện lần đăng nhập cuối cùng"
+
+msgid "Show User Registration Date"
+msgstr "Hiện ngày đăng ký tài khoản"
+
+msgid "Show Username and Password inside input fields."
+msgstr "Hiển thị chữ Tên đăng nhập và Mật khẩu bên trong ô nhập liệu."
+
+msgid "Show When"
+msgstr "Điều kiện hiển thị"
+
+msgid "Show a thumbnail preview column in post admin list tables."
+msgstr "Hiển thị cột ảnh thu nhỏ xem trước trong danh sách bài viết quản trị."
+
+msgid "Show a thumbnail preview column in post and page admin list tables."
+msgstr "Hiển thị cột ảnh thu nhỏ trong danh sách bài viết & trang quản trị."
+
+msgid "Show in WooCommerce Product Categories"
+msgstr "Hiện trên Danh mục sản phẩm"
+
+msgid "Show on Category Pages"
+msgstr "Hiện trên Trang danh mục"
+
+msgid "Show on Homepage"
+msgstr "Hiện trên Trang chủ"
+
+msgid "Show table of contents on homepage if eligible headings exist."
+msgstr "Hiện mục lục ngoài trang chủ nếu có đủ số lượng tiêu đề."
+
+msgid "Show/Hide password"
+msgstr "Hiện/Ẩn mật khẩu"
+
+msgid "Signature Content"
+msgstr "Nội dung chữ ký"
+
+msgid "Site Title"
+msgstr "Tên Website"
+
+msgid "Smart Anti-Spam Filter"
+msgstr "Bộ lọc chống Spam thông minh"
+
+msgid "Smooth Scroll"
+msgstr "Cuộn mượt"
+
+msgid "Smooth Scroll Offset"
+msgstr "Khoảng cách dừng"
+
+msgid "Soft Warm"
+msgstr "Ấm áp nhẹ nhàng"
+
+msgid "Solid"
+msgstr "Nét liền (Solid)"
+
+msgid "Solid arrow caret"
+msgstr "Mũi tên tam giác"
+
+msgid "Solid circle dot ●"
+msgstr "Dấu chấm tròn đặc ●"
+
+msgid "Sorry, you are not allowed to edit this taxonomy."
+msgstr "Xin lỗi, bạn không có quyền chỉnh sửa phân loại này."
+
 msgid "Sorry, you do not have permission to make REST API requests."
 msgstr "Xin lỗi, bạn không có quyền thực hiện các yêu cầu REST API."
 
-#: src/Settings.php:686
-msgid "Sunrise"
-msgstr ""
+msgid "Spam Redirect URL"
+msgstr "Đường dẫn chuyển hướng Spam"
 
-#: src/Settings.php:1104
-msgid "Tablets and down"
-msgstr "Máy tính bảng"
+msgid "Sparkle"
+msgstr "Ngôi sao lấp lánh"
 
-#: src/Settings.php:228
-msgid "Tag links"
-msgstr "Liên kết thẻ tags"
+msgid "Specify headings to exclude separated by pipe | (supports wildcard *)."
+msgstr "Nhập tiêu đề muốn loại trừ, phân cách bằng dấu gạch đứng | (hỗ trợ *)."
 
-#: src/Settings.php:979
-msgid "Test Email"
-msgstr "Gửi thử Email"
+msgid "Speed & Optimize"
+msgstr "Tăng tốc & Tối ưu"
 
-#: src/Settings.php:53
+msgid "Spread the Word"
+msgstr "Lan tỏa yêu thương"
+
+msgid "Status"
+msgstr "Trạng thái"
+
+msgid "Stick the Publish/Save button to the bottom of the screen when scrolling long posts."
+msgstr "Ghim cố định nút Đăng/Cập nhật ở cạnh dưới màn hình khi cuộn trang dài."
+
+msgid "Sticky Max Height"
+msgstr "Chiều cao khung nổi"
+
+msgid "Sticky Mobile Max Height"
+msgstr "Chiều cao mobile"
+
+msgid "Sticky Mobile Width"
+msgstr "Độ rộng mobile"
+
+msgid "Sticky Publish Button"
+msgstr "Ghim nút Xuất bản / Lưu"
+
+msgid "Sticky Scale"
+msgstr "Tỷ lệ thu phóng"
+
+msgid "Sticky TOC"
+msgstr "Mục lục nổi"
+
+msgid "Sticky Width"
+msgstr "Độ rộng khung nổi"
+
+msgid "Strip global-styles-inline-css and SVG Duotone Filters."
+msgstr "Xóa sạch các đoạn mã CSS nội dòng global-styles và bộ lọc màu SVG rác."
+
+msgid "Sub-heading Font Size"
+msgstr "Cỡ chữ mục con"
+
+msgid "Sub-heading Indent"
+msgstr "Khoảng lùi mục con"
+
+msgid "Subject"
+msgstr "Tiêu đề"
+
+msgid "Subject:"
+msgstr "Tiêu đề:"
+
+msgid "Successfully restored backup from %s and removed the backup file."
+msgstr "Đã khôi phục thành công bản sao lưu từ %s và xóa tệp dự phòng."
+
+msgid "Support WP EXtra"
+msgstr "Ủng hộ WP EXtra"
+
+msgid "System & Environment Overview"
+msgstr "Tổng Quan Hệ Thống & Máy Chủ"
+
+msgid "System & Maintenance Controls"
+msgstr "Hệ thống & Bảo trì"
+
+msgid "TOC Tree"
+msgstr "Cây phân cấp"
+
+msgid "Table of Contents"
+msgstr "Mục lục"
+
+msgid "Table of Contents Sticky Navigation"
+msgstr "Điều hướng mục lục nổi"
+
+msgid "Tablet CSS (<= 1024px)"
+msgstr "CSS riêng cho Máy tính bảng (Tablet)"
+
+msgid "Take 1 minute to leave an honest 5-star rating on WordPress.org. It helps more webmasters discover WP EXtra and gives us tremendous motivation to keep improving."
+msgstr "Dành 1 phút để lại đánh giá 5 sao trên WordPress.org. Đánh giá của bạn giúp nhiều người biết đến WP EXtra hơn và tạo động lực to lớn cho đội ngũ phát triển."
+
+msgid "Term duplicated successfully."
+msgstr "Đã nhân bản danh mục thành công."
+
+msgid "Term not found."
+msgstr "Không tìm thấy danh mục."
+
+msgid "Test email sent successfully to %s in %sms! Please check your inbox or spam folder."
+msgstr "Email thử nghiệm đã gửi thành công tới %s trong %sms! Vui lòng kiểm tra hộp thư đến hoặc thư rác."
+
+msgid "Text label displayed on the floating sticky badge (e.g. \"Contents\"). Leave empty to display icon only."
+msgstr "Nhãn chữ hiển thị trên nút mục lục nổi (ví dụ: \"Mục lục\"). Để trống nếu chỉ muốn hiện biểu tượng icon."
+
+msgid "The following account(s) reached their daily quota today: %s. Outgoing emails are automatically routed to your next available SMTP account."
+msgstr "Các tài khoản sau đã đạt hạn mức hôm nay: %s. Email gửi đi đã được tự động chuyển sang tài khoản SMTP khả dụng tiếp theo."
+
 msgid "The module operates independently. Please enable it as needed."
-msgstr ""
-"Module hoạt động độc lập, hãy bật chúng tuỳ theo nhu cầu sử dụng của bạn."
+msgstr "Các module hoạt động độc lập. Vui lòng kích hoạt khi cần sử dụng."
 
-#. 1. days; 2. link to donate; 3. link to review
-#: src/Settings.php:35
-#, php-format
-msgid ""
-"The plugin developer has dedicated <strong>%1$s</strong> days to this "
-"project. If you like it, you can support the author with <a href=\"%2$s\" "
-"target=\"_blank\">a beer 🍻 / coffee ☕️</a> ! Please <a href=\"%3$s\" "
-"target=\"_blank\">rate us on WordPress.org</a>"
-msgstr ""
-"Nhà phát triển plugin đã cống hiến <strong>%1$s</strong> ngày cho dự án này. "
-"Nếu bạn thích nó, bạn có thể <a href=\"%2$s\" target=\"_blank\">ủng hộ tác "
-"giả 1 ly bia 🍻 / cà phê ☕️</a> ! Hãy giúp chúng tôi <a href=\"%3$s\" "
-"target=\"_blank\">đánh giá plugin trên WordPress.org</a>"
+msgid "The plugin developer has dedicated <strong>%1$s</strong> days to this project. If you like it, you can support the author with <a href=\"%2$s\" target=\"_blank\">a beer 🍻 / coffee ☕️</a> ! Please <a href=\"%3$s\" target=\"_blank\">rate us on WordPress.org</a>"
+msgstr "Tác giả đã dành <strong>%1$s</strong> ngày phát triển dự án này. Nếu bạn thấy hữu ích, hãy ủng hộ tác giả <a href=\"%2$s\" target=\"_blank\">một ly bia 🍻 / cà phê ☕️</a> ! Đừng quên <a href=\"%3$s\" target=\"_blank\">đánh giá 5 sao trên WordPress.org ⭐⭐⭐⭐⭐</a>"
 
-#: src/Settings.php:930
-msgid ""
-"The port which will be used when sending an email (587/465/25). If you "
-"choose TLS it should be set to 587. For SSL use port 465 instead."
-msgstr ""
-"Port sử dụng gửi email (587/465/25). Nếu bạn chọn TLS là 587. Đối với SSL là "
-"465."
+msgid "This comment is already marked as spam."
+msgstr "Bình luận này đã được đánh dấu là spam."
 
-#: src/Settings.php:923
-#, php-format
-msgid "The SMTP server which will be used to send email. %s"
-msgstr "SMTP server sẽ được sử dụng để gửi email. %s"
-
-#: src/Settings.php:1050
-msgid ""
-"The speed of a single-page web application without having to write any "
-"JavaScript"
-msgstr "Tăng tốc độ cho trang không phải viết thêm JavaScript"
-
-#: src/Settings.php:1192
-msgid "Theme & Plugin Editors"
-msgstr "Chỉnh sửa Theme & Plugin"
-
-#: src/Settings.php:194
-msgid "This featured image will show up if no featured image is set"
-msgstr "Hiển thị hình ảnh này nếu không có ảnh đại diện nào được thiết lập."
-
-#: src/Modules/Common/Posts.php:51
 msgid "This image is already in your Media Library."
-msgstr ""
-"Hình ảnh này đã có trong Thư viện Media của bạn.\n"
+msgstr "Hình ảnh này đã tồn tại trong Thư viện Media."
 
-#. Description of the plugin
-#| msgid ""
-#| "❤ This is a simple and perfect tool to use as your website’s "
-#| "functionality plugin. Awesome !!!"
-msgid ""
-"This is a simple and perfect tool to use as your website’s functionality "
-"plugin. Awesome !!!"
-msgstr ""
-"Đây là bộ công cụ đơn giản và tốt nhất mà website nào cũng cần phải có. Thật "
-"tuyệt vời !!!"
+msgid "This site uses cookies to improve your online experience, allow you to share content on social media, measure traffic to this website and display customised ads based on your browsing activity."
+msgstr "Website này sử dụng cookie để nâng cao trải nghiệm, cho phép chia sẻ mạng xã hội và phân tích lưu lượng truy cập."
 
-#: src/Modules/Frontend/Cookie.php:29
-msgid ""
-"This site uses cookies to improve your online experience, allow you to share "
-"content on social media, measure traffic to this website and display "
-"customised ads based on your browsing activity."
-msgstr ""
-"Trang web này sử dụng cookies để cải thiện trải nghiệm trực tuyến của bạn, "
-"cho phép bạn chia sẻ nội dung trên mạng xã hội, đo lường lưu lượng truy cập "
-"vào trang web này và hiển thị quảng cáo tùy chỉnh dựa trên hoạt động duyệt "
-"web của bạn."
+msgid "Thumbnail"
+msgstr "Ảnh đại diện"
 
-#. Author of the plugin
-msgid "TienCOP"
-msgstr "Tiến CỌP"
+msgid "TinyMCE Power Tools"
+msgstr "Bộ công cụ TinyMCE nâng cao"
 
-#: src/Settings.php:1224
+msgid "Title Color"
+msgstr "Màu chữ tiêu đề"
+
+msgid "Title Font Size"
+msgstr "Cỡ chữ tiêu đề"
+
+msgid "Title Icon Type"
+msgstr "Biểu tượng tiêu đề"
+
+msgid "Title Prefix Icon Color"
+msgstr "Màu biểu tượng tiêu đề"
+
+msgid "To:"
+msgstr "Gửi tới:"
+
+msgid "Toggle Button Icon"
+msgstr "Biểu tượng nút bấm"
+
+msgid "Toggle Visibility"
+msgstr "Nút ẩn / hiện"
+
+msgid "Toggle subheadings"
+msgstr "Đóng/mở mục con"
+
+msgid "Toggle table of contents"
+msgstr "Ẩn/hiện mục lục"
+
+msgid "Too many failed login attempts. Please wait %d minutes before trying again."
+msgstr "Đã nhập sai mật khẩu quá nhiều lần. Vui lòng đợi %d phút trước khi thử lại."
+
+msgid "Top Admin Bar"
+msgstr "Thanh Admin Bar trên cùng"
+
+msgid "Top of content"
+msgstr "Đầu bài viết"
+
+msgid "Track outgoing emails, check delivery status, inspect email content, and resend failed messages."
+msgstr "Theo dõi email gửi đi, kiểm tra trạng thái, xem nội dung thư và gửi lại các email thất bại."
+
+msgid "Tracking & Custom Scripts"
+msgstr "Mã theo dõi & Scripts tùy chỉnh"
+
+msgid "Transfer Options (.json)"
+msgstr "Truyền tệp Cài đặt (.json)"
+
 msgid "Transfer Plugin"
-msgstr "Chuyển cấu hình"
+msgstr "Sao lưu & Khôi phục"
 
-#: src/Settings.php:1131
-msgid ""
-"Type in the extension you would like to use e.g. .html, .htm, .jsp, .cop, or "
-"any other. (Default: .html)"
-msgstr ""
-"Nhập phần mở rộng bạn muốn sử dụng, ví dụ: .html, .htm, .jsp, .cop, hoặc bất "
-"kỳ phần mở rộng nào khác. (Mặc định: .html)"
+msgid "Troubleshooting hint: Check your username and App Password. If using Gmail, make sure 2-Factor Authentication is on and use a 16-character Google App Password."
+msgstr "Gợi ý xử lý: Kiểm tra tên đăng nhập và Mật khẩu ứng dụng. Nếu dùng Gmail, đảm bảo đã bật Bảo mật 2 lớp và tạo Mật khẩu ứng dụng 16 ký tự."
 
-#: src/Core.php:15
-msgid "Upgrade"
-msgstr "Nâng cấp"
+msgid "Troubleshooting hint: Connection timed out. Make sure your server allows outgoing connections on Port 587 (TLS) or Port 465 (SSL)."
+msgstr "Gợi ý xử lý: Quá thời gian kết nối (Timeout). Đảm bảo máy chủ cho phép kết nối ra ngoài qua Cổng 587 (TLS) hoặc Cổng 465 (SSL)."
 
-#: src/Settings.php:48
-msgid "Upgrade to WP EXtra PRO"
-msgstr "Nâng cấp lên WP EXtra PRO"
+msgid "Turn off WordPress Application Passwords feature for security."
+msgstr "Tắt tính năng Mật khẩu ứng dụng của WordPress để tăng cường bảo mật."
 
-#: src/Settings.php:305
-msgid "Upload Converter"
-msgstr "Chuyển đổi khi tải lên"
+msgid "Turn on WP_DEBUG logging. Remember to disable this in production."
+msgstr "Bật ghi log lỗi WP_DEBUG. Lưu ý nên tắt trên website thực tế."
 
-#: src/Settings.php:122
-msgid "Use the classic WordPress editor."
-msgstr "Sử dụng công cụ soạn thảo cơ bản trước đây của WordPress."
+msgid "Turnstile Secret Key"
+msgstr "Turnstile Secret Key (Khóa bí mật)"
 
-#: src/Settings.php:133
-#, php-format
-msgid "Used %1$s or %2$s"
-msgstr "Sử dụng %1$s hoặc %2$s"
+msgid "Turnstile Site Key"
+msgstr "Turnstile Site Key (Khóa công khai)"
 
-#: src/Settings.php:996
-msgid "Valid Email Domain"
-msgstr "Cho phép các đuôi tên miền"
+msgid "URL Structure & Slugs"
+msgstr "Cấu trúc URL & Tiền tố Slug"
 
-#: src/Settings.php:997
-msgid ""
-"Validates that the email domain of users registering is either gmail.com or "
-"yahoo.com"
-msgstr ""
-"Xác thực tên miền email của người dùng đăng ký phải là gmail.com hoặc yahoo."
-"com. Mỗi dòng 1 tên miền"
+msgid "Unauthorized"
+msgstr "Không được phép truy cập"
 
-#: src/Settings.php:634
-msgid ""
-"When configured, this feature modifies your WordPress login URL (slug) to "
-"the specified string and prevents direct access to the wp-admin and wp-login "
-"endpoints."
-msgstr ""
-"Tên đường dẫn định dạng slug (Vd: wp-extra). Khi cấu hình xong sẽ chặn đăng "
-"nhập wp-admin và wp-login."
+msgid "Unauthorized permission."
+msgstr "Bạn không có quyền thực hiện hành động này."
 
-#: src/Settings.php:584
-msgid "When login logo is clicked, the user will be redirected to this url."
-msgstr "Khi click vào logo sẽ dẫn sang liên kết này."
+msgid "Unauthorized to duplicate this item."
+msgstr "Bạn không có quyền nhân bản mục này."
 
-#: src/Settings.php:1181
-msgid "WP EXtra Permission"
-msgstr "Ai có thể cấu hình WP EXtra"
+msgid "Unload Dashicons CSS for visitors who are not logged in."
+msgstr "Không nạp tệp CSS Dashicons đối với khách vãng lai chưa đăng nhập."
 
-#. Name of the plugin
-msgid "WP EXtra Pro"
-msgstr "WP EXtra Pro"
+msgid "Unload legacy jQuery Migrate script on frontend to save HTTP request."
+msgstr "Tắt tải script jquery-migrate.min.js ở ngoài trang chủ để tiết kiệm tài nguyên."
 
-#: src/Settings.php:43
+msgid "Unregister all standard Gutenberg core block types."
+msgstr "Hủy đăng ký toàn bộ các khối block Gutenberg mặc định của WordPress."
+
+msgid "Updates"
+msgstr "Cập nhật"
+
+msgid "Upload a .json backup file previously exported from WP EXtra to restore configurations."
+msgstr "Tải lên tệp sao lưu .json đã xuất từ WP EXtra để khôi phục cấu hình."
+
+msgid "Use Original Filename"
+msgstr "Dùng tên tệp gốc làm Alt/Title"
+
+msgid "Use the classic WordPress editor instead of block editor."
+msgstr "Sử dụng trình soạn thảo WordPress Classic Editor thay cho Gutenberg."
+
+msgid "User Account Enhancements"
+msgstr "Quản lý Tài khoản người dùng"
+
+msgid "User Registration Date"
+msgstr "Ngày đăng ký thành viên"
+
+msgid "Username / Email"
+msgstr "Tên đăng nhập / Email"
+
+msgid "Verify your SMTP mail configuration by sending a test message."
+msgstr "Kiểm tra hoạt động gửi email SMTP bằng cách gửi một thư mẫu thử nghiệm."
+
+msgid "Vertical Left Badge (Edge attached)"
+msgstr "Cạnh Trái (Dọc)"
+
+msgid "Vertical Right Badge (Edge attached)"
+msgstr "Cạnh Phải (Dọc)"
+
+msgid "Vibrant Gradient"
+msgstr "Gradient sắc màu (Vibrant Gradient)"
+
+msgid "View email preview"
+msgstr "Xem trước email"
+
+msgid "WP EXtra"
+msgstr "WP EXtra"
+
+msgid "WP EXtra - SMTP Limit Reached:"
+msgstr "WP EXtra - Đã đạt hạn mức gửi SMTP:"
+
+msgid "WP EXtra - SMTP Quota Alert:"
+msgstr "WP EXtra - Cảnh báo hạn mức SMTP:"
+
+msgid "WP EXtra Super Admins"
+msgstr "Super Admins quản lý WP EXtra"
+
+msgid "WP EXtra is an open-source project dedicated to delivering lightweight, clean, and reliable WordPress optimizations for everyone. Over %s days of continuous development and maintenance, our mission has always been keeping your website fast, secure, and hassle-free."
+msgstr "WP EXtra là dự án mã nguồn mở chuyên cung cấp giải pháp tối ưu hóa WordPress nhẹ, sạch và đáng tin cậy. Trải qua hơn %s ngày phát triển không ngừng, sứ mệnh của chúng tôi là luôn giữ cho website của bạn nhanh, an toàn và ổn định."
+
+msgid "WP Extra"
+msgstr "WP Extra"
+
+msgid "WP Memory Limit"
+msgstr "Bộ nhớ WordPress"
+
+msgid "WP Rocket"
+msgstr "WP Rocket"
+
+msgid "WPForms"
+msgstr "WPForms"
+
+msgid "Warning:"
+msgstr "Cảnh báo:"
+
+msgid "Web Server"
+msgstr "Phần mềm Web Server"
+
+msgid "WebP (Recommended)"
+msgstr "WebP (Khuyên dùng)"
+
+msgid "Website"
+msgstr "Website"
+
+msgid "When enabled, clicking the Site Title on the top Admin Bar opens the Admin Dashboard instead of viewing the website."
+msgstr "Khi bật, nhấp vào tên website trên thanh Admin Bar sẽ mở trang quản trị thay vì chuyển ra trang chủ."
+
+msgid "Widget Title"
+msgstr "Tên Widget"
+
+msgid "Widgets cleanup, system info cards & custom notice"
+msgstr "Dọn dẹp widget, thông tin máy chủ & thông báo"
+
+msgid "WooCommerce"
+msgstr "Tối ưu WooCommerce"
+
+msgid "WooCommerce My-Account & Flatsome Popup Turnstile"
+msgstr "Bật Turnstile trên WooCommerce & Flatsome Popup"
+
+msgid "WordPress"
+msgstr "WordPress"
+
+msgid "WordPress Logo"
+msgstr "Logo WordPress"
+
+msgid "Write a 5-Star Review ★★★★★"
+msgstr "Viết đánh giá 5 sao ★★★★★"
+
 msgid "Write a review for WP EXtra"
-msgstr "Viết một đánh giá cho WP EXtra"
+msgstr "Viết đánh giá cho WP EXtra"
 
-#: src/Settings.php:1221
-msgid ""
-"You can transfer the saved options data between different installs by "
-"copying the text inside the text box. To import data from another install, "
-"replace the data in the text box with the one from another install and click "
-"\"Import\"."
-msgstr ""
-"Bạn có thể chuyển dữ liệu tùy chọn đã lưu giữa các cài đặt khác nhau bằng "
-"cách sao chép văn bản bên trong hộp văn bản. Để nhập dữ liệu từ một cài đặt "
-"khác, hãy thay thế dữ liệu trong hộp văn bản bằng dữ liệu từ cài đặt khác và "
-"nhấp vào \"Nhập\"."
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
 
-#: wp-settings/vendor/wordpressvn/wp-settings/src/WPSettings.php:279
-msgid "Your license key has expired."
-msgstr ""
-"Khóa giấy phép của bạn đã hết hạn.\n"
+msgid "You do not have permission to access WP EXtra settings."
+msgstr "Bạn không có quyền truy cập cài đặt WP EXtra."
 
-#: src/Modules/Backend/Media.php:489
-msgid "Your picture is too large. It has to be smaller than "
-msgstr "Hình ảnh của bạn quá lớn. Nó phải nhỏ hơn "
+msgid "You do not have permission to edit this post."
+msgstr "Bạn không có quyền chỉnh sửa bài viết này."
 
-#: src/Modules/Common/Posts.php:52
+msgid "You do not have sufficient permissions to perform this action."
+msgstr "Bạn không có đủ quyền để thực hiện hành động này."
+
+msgid "Your email delivery system is functioning perfectly!"
+msgstr "Hệ thống gửi thư của bạn đang hoạt động hoàn hảo!"
+
+msgid "Your financial support directly covers server costs, testing devices, and research into new optimization features to keep the plugin 100% free and actively maintained."
+msgstr "Sự ủng hộ tài chính của bạn trực tiếp hỗ trợ chi phí máy chủ, thiết bị thử nghiệm và nghiên cứu tính năng mới để duy trì plugin hoàn toàn miễn phí."
+
+msgid "Your picture is too large. It has to be smaller than %dKB."
+msgstr "Hình ảnh quá lớn. Dung lượng phải nhỏ hơn %dKB."
+
+msgid "[%s] WP EXtra - SMTP Test Email Delivery"
+msgstr "[%s] WP EXtra - Thử nghiệm gửi thư SMTP"
+
+msgid "e.g. Admin Guidelines / System Notice"
+msgstr "Ví dụ: Hướng Dẫn Quản Trị / Thông Báo Kỹ Thuật"
+
+msgid "headings or more are present."
+msgstr "tiêu đề trở lên."
+
+msgid "is already enabled somewhere else on your site. We suggest only enabling this feature in one place."
+msgstr "đã được kích hoạt ở một vị trí khác trên website. Bạn chỉ nên bật tính năng này ở một nơi duy nhất."
+
+msgid "px (E.g: 1080). Larger images are scaled down automatically."
+msgstr "px (Ví dụ: 1080). Ảnh lớn hơn kích thước này sẽ tự động thu nhỏ."
+
+msgid "px (E.g: 1920). Larger images are scaled down automatically."
+msgstr "px (Ví dụ: 1920). Các ảnh lớn hơn sẽ tự động được thu nhỏ lại."
+
+msgid "px (border thickness, leave blank for default)"
+msgstr "px (độ dày viền, để trống để dùng mặc định)"
+
+msgid "px (indentation distance for nested headings H3, H4, H5... Set 0 for flat list)."
+msgstr "px (khoảng cách lùi vào của H3, H4, H5... Đặt 0 nếu muốn thẳng hàng)."
+
+msgid "px (leave blank for auto 100%)"
+msgstr "px (để trống để tự động 100%)"
+
+msgid "px (leave blank for default 270px)"
+msgstr "px (để trống để dùng mặc định 270px)"
+
+msgid "px (leave blank for default auto responsive)"
+msgstr "px (để trống để tự động co giãn responsive)"
+
+msgid "px (leave blank for default auto)"
+msgstr "px (để trống để tự động co giãn)"
+
+msgid "px (rounded corners radius, leave blank for default)"
+msgstr "px (bán kính bo góc, để trống để dùng mặc định)"
+
 msgid "✅ Image successfully downloaded and replaced."
 msgstr "✅ Hình ảnh đã được tải xuống và thay thế thành công."
 
-#: src/Modules/Common/Posts.php:54
 msgid "❌ Connection error."
-msgstr ""
-"❌ Lỗi kết nối.\n"
+msgstr "❌ Lỗi kết nối."
 
-#: src/Modules/Common/Posts.php:53
 msgid "❌ Failed to download the image."
 msgstr "❌ Không thể tải xuống hình ảnh."
+

@@ -17,6 +17,11 @@ use WPVNTeam\WPSettings\Options\Textarea;
 use WPVNTeam\WPSettings\Options\Video;
 use WPVNTeam\WPSettings\Options\WPEditor;
 use WPVNTeam\WPSettings\Options\License;
+use WPVNTeam\WPSettings\Options\Repeater;
+use WPVNTeam\WPSettings\Options\Module;
+use WPVNTeam\WPSettings\Options\Restore;
+use WPVNTeam\WPSettings\Options\Widget;
+use WPVNTeam\WPSettings\Options\Import;
 
 class Option
 {
@@ -51,6 +56,14 @@ class Option
             'image' => Image::class,
             'video' => Video::class,
             'license' => License::class,
+            'repeater' => Repeater::class,
+            'module' => Module::class,
+            'modules-grid' => Module::class,
+            'restore' => Restore::class,
+            'backup' => Restore::class,
+            'widget' => Widget::class,
+            'import' => Import::class,
+            'file-editor' => Import::class,
         ]);
 
         $this->implementation = new $type_map[$this->type]($section, $args);

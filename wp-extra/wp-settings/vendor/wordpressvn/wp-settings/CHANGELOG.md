@@ -4,7 +4,18 @@ All notable changes to `wp-settings` will be documented in this file
 
 ## Unreleased
 
-## 2.6.0 - 2025-11-21
+## 2.8.2 - 2026-08-26
+
+- [FEATURE] Native `Module` / `modules-grid` option with iOS switch toggle cards.
+- [FEATURE] Native `Restore` / `backup` option with JSON export & AJAX import.
+- [FEATURE] Native `Widget` checkbox list option with select-all & deselect helpers.
+- [FEATURE] Native `Import` / `file-editor` option with CodeMirror and safe disk file auto-backup.
+- [SECURITY] Canonical path traversal protection and dual-nonce validation for disk file operations.
+- [SECURITY] Strict recursive sanitization and file size limits (5MB) for backup imports.
+- [PERFORMANCE] Centralized, cacheable static CSS & JS assets in `wp-settings.css` and `wp-settings.js`.
+
+- [IMPROVE] Relative media paths & attachment ID auto-resolution to prevent site migration breakage
+- [IMPROVE] Dynamic preview URL rendering for relative/ID/external media values
 
 - [FIX] Change core
 

@@ -1,903 +1,2194 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WP EXtra\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 13:21+0000\n"
+"Project-Id-Version: WP EXtra 8.7.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-extra/\n"
+"POT-Creation-Date: 2026-08-26 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.3.1\n"
-"X-Domain: wp-extra"
+"X-Domain: wp-extra\n"
 
-#: src/Modules/Frontend/Cookie.php:30
+msgid "% (e.g. 90 for 90%, leave blank for 100%)"
+msgstr ""
+
+msgid "%1$s (%2$d)"
+msgstr ""
+
+msgid "%s ago"
+msgstr ""
+
+msgid "(Copy)"
+msgstr ""
+
+msgid "(No Subject)"
+msgstr ""
+
+msgid "+ Add SMTP Account"
+msgstr ""
+
+msgid "1-click duplicate posts, pages & taxonomies"
+msgstr ""
+
+msgid "1. Open First Item Only (Default)"
+msgstr ""
+
+msgid "2. Open All"
+msgstr ""
+
+msgid "3. Collapse All"
+msgstr ""
+
+msgid "<strong>ERROR</strong>: Captcha verification failed."
+msgstr ""
+
+msgid "<strong>ERROR</strong>: Please complete the security captcha."
+msgstr ""
+
+msgid "<strong>ERROR</strong>: Unable to verify captcha."
+msgstr ""
+
+msgid "<strong>ERROR</strong>: you can only register using allowed email domains"
+msgstr ""
+
+msgid "Accent Color"
+msgstr ""
+
+msgid "Accent color when hovering or active scrollspy heading."
+msgstr ""
+
+msgid "Accept Button Text"
+msgstr ""
+
 msgid "Accept Cookies"
 msgstr ""
 
-#. 1. link to plugin site; 2. link to plugin name
-#: wp-settings/vendor/wordpressvn/wp-settings/src/WPSettings.php:286
-#, php-format
-msgid ""
-"Activate <a href=\"%1$s\">your license</a> to enable access to updates, "
-"support & PRO features for <strong>%2$s</strong>."
+msgid "Access & Security Restrictions"
 msgstr ""
 
-#: src/Settings.php:1124
-msgid "Add Any Extension to Pages"
+msgid "Accordion expandable + / −"
 msgstr ""
 
-#: src/Settings.php:1100
-msgid "Add custom CSS here"
+msgid "Account Label"
 msgstr ""
 
-#: src/Settings.php:1110
-msgid "Add custom CSS here for mobile view"
+msgid "Actions"
 msgstr ""
 
-#: src/Settings.php:1105
-msgid "Add custom CSS here for tablets and mobile"
+msgid "Active Background Color"
 msgstr ""
 
-#: src/Settings.php:1081
-msgid ""
-"Add custom scripts inside HEAD tag. You need to have a SCRIPT tag around "
-"scripts."
+msgid "Active Plugins"
 msgstr ""
 
-#: src/Settings.php:1087
-msgid ""
-"Add custom scripts just after the BODY tag opened. You need to have a SCRIPT "
-"tag around scripts."
+msgid "Active Text Color"
 msgstr ""
 
-#: src/Settings.php:1093
-msgid ""
-"Add custom scripts you might want to be loaded in the footer of your website."
-" You need to have a SCRIPT tag around scripts."
+msgid "Add Google Analytics, Tag Manager, or tracking scripts inside the HEAD tag."
 msgstr ""
 
-#: src/Settings.php:1135
-msgid "Add nofollow to external links"
+msgid "Add Input Placeholders"
 msgstr ""
 
-#: src/Settings.php:171
-msgid "Add tinymce editor to the excerpt"
+msgid "Add New Widget"
 msgstr ""
 
-#: src/Settings.php:86
-msgid "Admin Notice"
+msgid "Add a 1-click Clone action to Posts, Pages, and Custom Post Types."
 msgstr ""
 
-#: src/Settings.php:1197
-msgid "All Core Updates"
+msgid "Add a Clone action to Categories, Tags, and Custom Taxonomies."
 msgstr ""
 
-#: src/Settings.php:81
-msgid "All Dashboard"
+msgid "Add custom notice widgets to the dashboard screen."
 msgstr ""
 
-#: src/Settings.php:1099
-msgid "All screens"
+msgid "Add preconnect link hints for Google Fonts and common CDNs to speed up font loading."
 msgstr ""
 
-#: src/Settings.php:1125
-msgid "Allows you to specify an extension for pages"
+msgid "Add scripts immediately following opening BODY tag."
 msgstr ""
 
-#: src/Settings.php:657
-msgid "Answer"
+msgid "Add tracking pixels or chat widgets loaded at page footer."
 msgstr ""
 
-#: src/Settings.php:401
-msgid "Anti-Spam Comments"
+msgid "Admin Menu & Plugin Management"
 msgstr ""
 
-#: src/Settings.php:973
-msgid "Anti-spam forms"
+msgid "Admin Panel Branding"
 msgstr ""
 
-#: src/Settings.php:936
-msgid "Authenticate connection with username and password"
+msgid "Advanced"
 msgstr ""
 
-#: src/Settings.php:652 src/Pro/Modules/Common/Branding.php:209
-msgid "Authentication Code"
+msgid "Advanced & Performance"
 msgstr ""
 
-#: src/Settings.php:276
-msgid "Auto Crop"
+msgid "Advanced Control"
 msgstr ""
 
-#: src/Settings.php:270
-msgid "Auto Save Images"
+msgid "After first heading"
 msgstr ""
 
-#: src/Settings.php:265
+msgid "After first image"
+msgstr ""
+
+msgid "After first paragraph"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "All %d configured SMTP accounts have reached their daily sending limit for today (%s). Outgoing WordPress emails may fail or be delayed."
+msgstr ""
+
+msgid "All User Roles"
+msgstr ""
+
+msgid "All email logs have been cleared."
+msgstr ""
+
+msgid "Allow SVG Uploads"
+msgstr ""
+
+msgid "Allow Text Selection"
+msgstr ""
+
+msgid "Allow readers to toggle table of contents visibility."
+msgstr ""
+
+msgid "Allow text selection but append copyright notice on copy."
+msgstr ""
+
+msgid "Allowed Registration Email Domains"
+msgstr ""
+
+msgid "An error occurred."
+msgstr ""
+
+msgid "Anti-spam contact form filtering"
+msgstr ""
+
+msgid "Appearance & Customization"
+msgstr ""
+
+msgid "Applies to Apache, LiteSpeed, and OpenLiteSpeed web servers. Please backup your server configuration before editing."
+msgstr ""
+
+msgid "Are you sure you want to delete ALL email log records? This cannot be undone."
+msgstr ""
+
+msgid "Are you sure you want to load the previous backup into the editor?"
+msgstr ""
+
+msgid "Are you sure you want to remove the .htaccess protection file?"
+msgstr ""
+
+msgid "Are you sure you want to resend this email?"
+msgstr ""
+
+msgid "Auto Crop Downloaded Images"
+msgstr ""
+
+msgid "Auto Image Alt & Titles"
+msgstr ""
+
+msgid "Auto Insert"
+msgstr ""
+
+msgid "Auto Insert & Positioning"
+msgstr ""
+
+msgid "Auto Insert Position"
+msgstr ""
+
+msgid "Auto Nofollow & Open External Links in New Tab"
+msgstr ""
+
+msgid "Auto Optimize Uploads"
+msgstr ""
+
+msgid "Auto Redirect Single Search Result"
+msgstr ""
+
+msgid "Auto Save External Images"
+msgstr ""
+
 msgid "Auto Set Featured Image"
 msgstr ""
 
-#: src/Settings.php:361
-msgid ""
-"Auto Set The Image Title, Alt-Text, Caption & Description. Default to using "
-"the post title."
+msgid "Auto Table of Contents, headings numbering & sticky badge"
 msgstr ""
 
-#: src/Settings.php:475
-msgid "Auto-hide"
+msgid "Auto-Check Remember Me"
 msgstr ""
 
-#: src/Settings.php:402
-msgid ""
-"Automatically checks all comments and filters out the ones that look like "
-"spam."
+msgid "Auto-Hide Admin Bar"
 msgstr ""
 
-#: src/Settings.php:266
-msgid "Automatically find and set post images as featured images"
+msgid "Automatically add rel=\"nofollow noopener noreferrer\" and target=\"_blank\" to all external links."
 msgstr ""
 
-#: src/Settings.php:300
-msgid ""
-"Automatically resizes, speed up your website using our ease image optimizer "
-"by serving JPG / WebP"
+msgid "Automatically create .htaccess inside wp-content to block direct execution of PHP files."
 msgstr ""
 
-#: src/Settings.php:917
-msgid "Automatically uses Gmail SMTP"
+msgid "Automatically create .htaccess inside wp-includes to block direct execution of PHP scripts."
 msgstr ""
 
-#: src/Settings.php:183
-msgid "Back To Top In WP Admin Area"
+msgid "Automatically delete logs older than this number of days (e.g. 30)."
 msgstr ""
 
-#: src/Settings.php:1210
-msgid ""
-"Block all requests from this domain, one domain per line. E.g: domain. com"
+msgid "Automatically download remote images in post content to local Media Library upon publishing."
 msgstr ""
 
-#: src/Settings.php:641
-msgid ""
-"Block excessive login attempts and protect your site against brute force "
-"attacks."
+msgid "Automatically filter out spam comments containing malicious keywords or links."
 msgstr ""
 
-#: src/Settings.php:681
-msgid "Blue"
+msgid "Automatically insert table of contents without manual shortcode."
 msgstr ""
 
-#: src/Settings.php:62 src/Settings.php:561
+msgid "Automatically populate Title, Alt-Text, and Caption for images from post title."
+msgstr ""
+
+msgid "Automatically remove images attached to a post when the post is permanently deleted."
+msgstr ""
+
+msgid "Automatically rename uploaded media files based on post slug for better Google Image SEO."
+msgstr ""
+
+msgid "Automatically resize and convert uploaded images to modern formats (WebP/JPG)."
+msgstr ""
+
+msgid "Automatically set the first post image as the featured image if none is selected."
+msgstr ""
+
+msgid "Automatically slide up admin bar until hovered."
+msgstr ""
+
+msgid "Autoptimize"
+msgstr ""
+
+msgid "Back to Main Settings"
+msgstr ""
+
+msgid "Backend role restrictions, debug switch & HTTP blocker"
+msgstr ""
+
+msgid "Background Color"
+msgstr ""
+
+msgid "Background Image"
+msgstr ""
+
+msgid "Background color for toggle buttons (transparent by default)."
+msgstr ""
+
+msgid "Background color of the entire container (leave blank for default)."
+msgstr ""
+
+msgid "Background color of the header bar (leave blank for default)."
+msgstr ""
+
+msgid "Background color when hovering over buttons."
+msgstr ""
+
+msgid "Backup & Transfer Settings"
+msgstr ""
+
+msgid "Banner Background Color"
+msgstr ""
+
+msgid "Banner Position"
+msgstr ""
+
+msgid "Banner Text Color"
+msgstr ""
+
+msgid "Before first heading (Recommended)"
+msgstr ""
+
+msgid "Block Backend Access by Role"
+msgstr ""
+
+msgid "Block External HTTP API Calls"
+msgstr ""
+
+msgid "Block URL scanner (?author=N) and REST API user queries to protect admin usernames from bots."
+msgstr ""
+
+msgid "Block User / Author Enumeration"
+msgstr ""
+
+msgid "Block XML-RPC pingbacks and brute-force attacks."
+msgstr ""
+
+msgid "Block outgoing remote HTTP requests to specified domains (one per line)."
+msgstr ""
+
+msgid "Blocked by WP EXtra"
+msgstr ""
+
+msgid "Body Scripts (<body>)"
+msgstr ""
+
+msgid "Bookmark"
+msgstr ""
+
+msgid "Border Color"
+msgstr ""
+
+msgid "Border Radius"
+msgstr ""
+
+msgid "Border Style"
+msgstr ""
+
+msgid "Border Width"
+msgstr ""
+
+msgid "Border color of the container (leave blank for default)."
+msgstr ""
+
+msgid "Bottom Center Badge (Edge attached)"
+msgstr ""
+
+msgid "Bottom Left (Default)"
+msgstr ""
+
+msgid "Bottom Right"
+msgstr ""
+
+msgid "Bottom of content"
+msgstr ""
+
 msgid "Branding"
 msgstr ""
 
-#: src/Settings.php:723
-msgid "Button Back"
+msgid "Branding & Login"
 msgstr ""
 
-#: src/Settings.php:567
-msgid "Change the title tag content used on the login page."
+msgid "Bullet"
 msgstr ""
 
-#: src/Settings.php:423
-msgid ""
-"Choose the sidebar widgets you would like to disable. Note that developers "
-"can still display widgets using PHP."
+msgid "Bullet dot • with guide line"
 msgstr ""
 
-#: src/Settings.php:157
+msgid "Button Background"
+msgstr ""
+
+msgid "Button Background Color"
+msgstr ""
+
+msgid "Button Hover Background"
+msgstr ""
+
+msgid "Button Icon Color"
+msgstr ""
+
+msgid "Button Text Color"
+msgstr ""
+
+msgid "Buy Us a Coffee / Beer"
+msgstr ""
+
+msgid "Caret (▼ / ▲)"
+msgstr ""
+
+msgid "Change your login URL slug to block brute-force bots from finding wp-login.php."
+msgstr ""
+
+msgid "Checkmark"
+msgstr ""
+
+msgid "Chevron (⌄ / ⌃)"
+msgstr ""
+
+msgid "Choose a pre-built login style or select \"Custom\" to reveal custom colors, background, and logo options."
+msgstr ""
+
+msgid "Choose a pre-styled color scheme or select \"Custom\" to customize colors."
+msgstr ""
+
+msgid "Circle checkmark ✔ badge"
+msgstr ""
+
+msgid "Classic Editor, featured image column & cleanup"
+msgstr ""
+
+msgid "Classic Light"
+msgstr ""
+
 msgid "Classic Widgets"
 msgstr ""
 
-#: src/Settings.php:682
-msgid "Coffee"
+msgid "Classic hamburger menu icon"
 msgstr ""
 
-#: src/Settings.php:844
-msgid "Controls how often the WordPress Heartbeat API is allowed to run."
+msgid "Classic index ☰ list icon"
 msgstr ""
 
-#: src/Settings.php:886
-msgid "Cookie expire time"
+msgid "Clean All Default Widgets & Welcome Panel"
 msgstr ""
 
-#: src/Settings.php:252
-msgid "Copy Category, Tags and Custom Taxonomy"
+msgid "Clean Head & Pingbacks"
 msgstr ""
 
-#: src/Settings.php:712
-msgid "Copying Content"
+msgid "Clear All Logs"
 msgstr ""
 
-#: src/Settings.php:718
-msgid "Copyright WP EXtra"
+msgid "Clone"
 msgstr ""
 
-#: src/Modules/Common/Posts.php:102
+msgid "Clone Content"
+msgstr ""
+
+msgid "Close comments on media attachment pages."
+msgstr ""
+
+msgid "Close table of contents"
+msgstr ""
+
+msgid "Cloudflare Turnstile Captcha"
+msgstr ""
+
+msgid "Color of the icon before table of contents title."
+msgstr ""
+
+msgid "Comment Blocked"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Comments & Anti-Spam Control"
+msgstr ""
+
+msgid "Comments & Spam"
+msgstr ""
+
+msgid "Comments are closed."
+msgstr ""
+
+msgid "Comments containing links or URLs are not allowed."
+msgstr ""
+
+msgid "Completely close comments across all posts, pages, and post types."
+msgstr ""
+
+msgid "Completely disable post tags, remove tag admin menus & metaboxes, and block tag archives."
+msgstr ""
+
+msgid "Compression Quality"
+msgstr ""
+
+msgid "Configure one or multiple SMTP accounts with daily send limits and automatic rotation."
+msgstr ""
+
+msgid "Congratulations! This test message confirms that %s is properly connected to your configured SMTP mail service and is ready to deliver notifications, order confirmations, and passwords directly to customer inboxes."
+msgstr ""
+
+msgid "Connecting & Sending..."
+msgstr ""
+
+msgid "Container Background"
+msgstr ""
+
+msgid "Container Padding"
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Content Protection"
+msgstr ""
+
+msgid "Control WordPress Heartbeat API execution to reduce server CPU load."
+msgstr ""
+
+msgid "Cookie"
+msgstr ""
+
+msgid "Cookie Banner"
+msgstr ""
+
+msgid "Cookie Consent"
+msgstr ""
+
+msgid "Cookie Expiry (Days)"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Copy and paste the configuration code below to backup or transfer settings to another site."
+msgstr ""
+
+msgid "Copyright Notice Text"
+msgstr ""
+
+msgid "Core Hardening"
+msgstr ""
+
+msgid "Could not delete .htaccess file. Please check file permissions."
+msgstr ""
+
 msgid "Could not import image."
 msgstr ""
 
-#: src/Settings.php:40
+msgid "Could not write .htaccess file. Please check server permissions."
+msgstr ""
+
+msgid "Could not write to file. Please check server permissions."
+msgstr ""
+
+msgid "Counter & Bullet Color"
+msgstr ""
+
+msgid "Counter Style"
+msgstr ""
+
+msgid "Create Protection File"
+msgstr ""
+
 msgid "Create new elements for Flatsome"
 msgstr ""
 
-#: src/Settings.php:1077
-msgid "Custom Scripts"
+msgid "Creates .htaccess inside wp-content to block direct execution of PHP files."
 msgstr ""
 
-#: src/Settings.php:812
+msgid "Creates .htaccess inside wp-includes to block direct execution of PHP scripts."
+msgstr ""
+
+msgid "Crop Height"
+msgstr ""
+
+msgid "Crop Width"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Custom Admin Footer Text"
+msgstr ""
+
+msgid "Custom Code & CSS"
+msgstr ""
+
+msgid "Custom Login URL"
+msgstr ""
+
+msgid "Custom Notice Widgets"
+msgstr ""
+
+msgid "Custom Responsive CSS"
+msgstr ""
+
+msgid "Custom Widgets List"
+msgstr ""
+
+msgid "Custom Width"
+msgstr ""
+
+msgid "Custom login URL, themes, Turnstile captcha & security"
+msgstr ""
+
+msgid "Custom title tag for the login page browser tab."
+msgstr ""
+
+msgid "Customize"
+msgstr ""
+
+msgid "Daily Quota (emails/day, 0 = unlimited)"
+msgstr ""
+
+msgid "Dark Glass"
+msgstr ""
+
+msgid "Dark Modern"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Dashboard Widgets & Cleanup"
+msgstr ""
+
+msgid "Dashed"
+msgstr ""
+
+msgid "Date / Time"
+msgstr ""
+
+msgid "Date / Time:"
+msgstr ""
+
+msgid "Decimal"
+msgstr ""
+
+msgid "Decimal Circle"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
 msgid "Default (Enabled)"
 msgstr ""
 
-#: src/Settings.php:193
-msgid "Default featured image"
+msgid "Default Featured Image"
 msgstr ""
 
-#: src/Settings.php:189
+msgid "Default Heading State"
+msgstr ""
+
+msgid "Default color of counter numbers, bullet dots or checkmarks."
+msgstr ""
+
 msgid "Delete Attached Media"
 msgstr ""
 
-#: src/Settings.php:989
-msgid "Disable admin email notification when a new user is registered"
+msgid "Delete log"
 msgstr ""
 
-#: src/Settings.php:988
-msgid "Disable auto update email notification"
+msgid "Delete this email log record?"
 msgstr ""
 
-#: src/Settings.php:990
-msgid "Disable email notification when users reset passwords"
+msgid "Delivered Successfully"
 msgstr ""
 
-#: src/Settings.php:992
-msgid "Disable email notifications"
+msgid "Delivery Failed"
 msgstr ""
 
-#: src/Settings.php:829
+msgid "Delivery Successful!"
+msgstr ""
+
+msgid "Delivery Time"
+msgstr ""
+
+msgid "Design Preset"
+msgstr ""
+
+msgid "Directory %s is not writable by server."
+msgstr ""
+
+msgid "Disable All Comments"
+msgstr ""
+
+msgid "Disable Application Passwords"
+msgstr ""
+
+msgid "Disable Automatic Core Updates"
+msgstr ""
+
+msgid "Disable Back Button"
+msgstr ""
+
+msgid "Disable Content Copy"
+msgstr ""
+
+msgid "Disable Core Blocks Library"
+msgstr ""
+
+msgid "Disable Dashicons for Guests"
+msgstr ""
+
+msgid "Disable Email Change in Profile"
+msgstr ""
+
 msgid "Disable Everywhere"
 msgstr ""
 
-#: src/Settings.php:813
-msgid "Disable for Non-Admins"
+msgid "Disable File Editors"
 msgstr ""
 
-#: src/Settings.php:807
-msgid ""
-"Disable Self Pingbacks (generated when linking to an article on your own "
-"blog)."
+msgid "Disable Gutenberg Block CSS"
 msgstr ""
 
-#: src/Settings.php:972
-msgid "Disable SSL Verification"
+msgid "Disable Large Image Threshold (2560px)"
 msgstr ""
 
-#: src/Settings.php:383
-msgid "Disable Threshold & EXIF"
+msgid "Disable Media Comments"
 msgstr ""
 
-#: src/Settings.php:378
-msgid ""
-"Disable thumbnail sizes, default WordPress sizes and theme/plugins image size"
+msgid "Disable Password Change in Profile"
 msgstr ""
 
-#: src/Settings.php:377
-msgid "Disable Thumbnails"
+msgid "Disable RSS Feeds & Links"
 msgstr ""
 
-#: src/Settings.php:814
+msgid "Disable SSL Certificate Verification"
+msgstr ""
+
+msgid "Disable Sidebar Widgets"
+msgstr ""
+
+msgid "Disable Tags Globally"
+msgstr ""
+
+msgid "Disable Unnecessary Thumbnails"
+msgstr ""
+
 msgid "Disable When Logged Out"
 msgstr ""
 
-#: src/Settings.php:802
-msgid "Disable WordPress generated RSS feed link tags."
+msgid "Disable WordPress Embeds"
 msgstr ""
 
-#: src/Settings.php:797
-msgid "Disable WordPress generated RSS feeds and 301 redirect URL to parent."
+msgid "Disable WordPress Emojis"
 msgstr ""
 
-#: src/Settings.php:833
-msgid ""
-"Disable WordPress Heartbeat everywhere or in certain areas (used for auto "
-"saving and revision tracking)."
+msgid "Disable WordPress default 2560px image threshold auto-scaling."
 msgstr ""
 
-#: src/Settings.php:1066
-msgid "Disables dashicons on the front end when not logged in."
+msgid "Disable XML-RPC"
 msgstr ""
 
-#: src/Settings.php:818
-msgid ""
-"Disables REST API requests and displays an error message if the requester "
-"does not have permission."
+msgid "Disable XML-RPC, REST API, file editors & update locks"
 msgstr ""
 
-#: src/Settings.php:158
-msgid "Display a legacy widget."
+msgid "Disable admin email address change confirmation"
 msgstr ""
 
-#: src/Settings.php:869
-msgid "Display Privacy Policy"
+msgid "Disable comments globally & anti-spam link filter"
 msgstr ""
 
-#: src/Settings.php:706
-msgid "Do Not Copy"
+msgid "Disable core auto-update notification emails"
 msgstr ""
 
-#: wp-settings/vendor/wordpressvn/wp-settings/resources/views/options/license.php:52
+msgid "Disable emojis, block styles & strip query strings"
+msgstr ""
+
+msgid "Disable for Non-Admins"
+msgstr ""
+
+msgid "Disable generated RSS feeds, 301 redirect visitors to parent URL, and remove RSS feed link tags from HTML head."
+msgstr ""
+
+msgid "Disable new user registration notification emails to admin"
+msgstr ""
+
+msgid "Disable password reset notification emails to admin"
+msgstr ""
+
+msgid "Disable right-click and text selection to protect your articles from copying."
+msgstr ""
+
+msgid "Disable the built-in Theme and Plugin code editors for security."
+msgstr ""
+
+msgid "Disc"
+msgstr ""
+
+msgid "Display For"
+msgstr ""
+
+msgid "Display Privacy Policy Link"
+msgstr ""
+
+msgid "Display a dashboard widget with live PHP, Memory, Upload Size, and Server stats (Visible to Administrators only)."
+msgstr ""
+
+msgid "Display a sortable last modified date column in admin post lists."
+msgstr ""
+
+msgid "Display floating circular button when scrolling down, clicking opens table of contents drawer panel."
+msgstr ""
+
+msgid "Display last login time column in the Users list table."
+msgstr ""
+
+msgid "Display registration date column in the Users list table."
+msgstr ""
+
 msgid "Don't have a license? Click here to purchase."
 msgstr ""
 
-#: src/Core.php:29
 msgid "Donate"
 msgstr ""
 
-#: src/Modules/Common/Posts.php:78
-#, php-format
+msgid "Donate via WPVNTeam Portal →"
+msgstr ""
+
+msgid "Dotted"
+msgstr ""
+
+msgid "Download .json File"
+msgstr ""
+
+msgid "Download all your WP EXtra settings into a .json file to backup or transfer to another site."
+msgstr ""
+
 msgid "Download failed: %s"
 msgstr ""
 
-#: src/Settings.php:271
-msgid "Downloading automatically image from a post to gallery"
+msgid "Duplicate Post Types"
 msgstr ""
 
-#: src/Settings.php:243
-msgid "Duplicate Posts, Pages and Custom Post Type"
+msgid "Duplicate Taxonomies"
 msgstr ""
 
-#: src/Settings.php:683
-msgid "Ectoplasm"
+msgid "Duplication"
 msgstr ""
 
-#: src/Settings.php:1204
-msgid "Enable WP_DEBUG mode. Warning: Please DISABLE this feature after use."
+msgid "Edit Post/Page"
 msgstr ""
 
-#: src/Settings.php:386
-msgid "Exif automatic rotation"
+msgid "Editor & Writing"
 msgstr ""
 
-#: src/Settings.php:1130
-msgid "Extension"
+msgid "Elementor"
 msgstr ""
 
-#: src/Settings.php:1056
-msgid ""
-"Faster subsequent page-loads by prefetching in-viewport links during idle "
-"time."
+msgid "Email Content Preview"
 msgstr ""
 
-#: src/Settings.php:534
-msgid "Field Email"
+msgid "Email Delivery Logs"
 msgstr ""
 
-#: src/Settings.php:540
-msgid "Field Password"
+msgid "Email Logs"
 msgstr ""
 
-#: src/Settings.php:349
-msgid "File Renamer"
+msgid "Email Notifications & Domain Filter"
 msgstr ""
 
-#: src/Settings.php:295
-msgid "Flip horizontal"
+msgid "Email log table is not yet initialized. Enable Email Logging in WP Extra Settings > SMTP to start tracking emails."
 msgstr ""
 
-#: src/Settings.php:962
-msgid "Force from e-mail address"
+msgid "Email logging is currently disabled or SMTP module is not active."
 msgstr ""
 
-#: src/Settings.php:967
-msgid "Force from e-mail sender name"
+msgid "Email resent successfully to %s!"
 msgstr ""
 
-#: src/Settings.php:679
-msgid "Fresh"
+msgid "Email resent successfully!"
 msgstr ""
 
-#: src/Settings.php:366
-msgid "From Image Filename"
+msgid "Enable Debug Mode (WP_DEBUG)"
 msgstr ""
 
-#: src/Settings.php:47
-msgid "Get WP EXtra PRO now"
+msgid "Enable Email Logging"
 msgstr ""
 
-#: src/Settings.php:629
-msgid "Hide Controls"
+msgid "Enable HTTP Security Headers"
 msgstr ""
 
-#: src/Settings.php:508
-msgid "Hide Menu"
+msgid "Enable Sticky Floating Button (FAB)"
 msgstr ""
 
-#: src/Settings.php:527
-msgid "Hide Plugin"
+msgid "Enable Support"
 msgstr ""
 
-#: src/Settings.php:432
-msgid "Hide Toolbar"
+msgid "Enable System Info Widget"
 msgstr ""
 
-#: src/Settings.php:1188
-msgid "Hide Users"
+msgid "Enable Turnstile captcha on WooCommerce customer login, register forms, and Flatsome theme account popup/modal."
 msgstr ""
 
-#. URI of the plugin
-msgid "https://wordpress.org/plugins/wp-extra/"
+msgid "Enable full toolbar tools: justify, unlinks, letter spacing, tables, visual blocks, search & replace, rel=nofollow & sponsored."
 msgstr ""
 
-#. Author URI of the plugin
-msgid "https://wpvnteam.com"
+msgid "Enable secure SVG file uploads in WordPress Media Library."
 msgstr ""
 
-#: src/Settings.php:1221
-#, php-format
-msgid ""
-"If you need to create a backup, please install the <a class=\"thickbox open-"
-"plugin-details-modal\" href=\"%s\">All-in-One WP Migration and Backup</a>. "
-"It allows you to migrate your entire WordPress site by exporting or "
-"importing your database, media, plugins, and themes in just a few clicks."
+msgid "Enable table of contents support for these post types."
 msgstr ""
 
-#: src/Settings.php:910
-#, php-format
-msgid ""
-"If you want to check email logs, please install the <a class=\"thickbox open-"
-"plugin-details-modal\" href=\"%1$s\">WP Mail Logging</a> or <a "
-"class=\"thickbox open-plugin-details-modal\" href=\"%2$s\">WP Email Log – "
-"PostBox</a>"
+msgid "Encryption"
 msgstr ""
 
-#: src/Settings.php:330
-msgid "Image Size in kilobytes"
+msgid "Enter CSS classes of headings to exclude, separated by comma."
 msgstr ""
 
-#: src/Settings.php:127
-msgid ""
-"Including justify, unlinks, letter spacing, change case, table, visual "
-"blocks, search replace, add rel=nofollow & sponsored, clean HTML, convert UL "
-"to table, get image ..."
+msgid "Enter category IDs to exclude from table of contents, separated by comma (,)."
 msgstr ""
 
-#: src/Pro/Modules/Common/Branding.php:219
-msgid "Invalid two-factor authentication code"
+msgid "Enter post/page IDs to exclude from table of contents, separated by comma (,)."
 msgstr ""
 
-#: src/Modules/Backend/Control.php:74 src/Modules/Backend/Control.php:92
-msgid ""
-"is already enabled somewhere else on your site. We suggest only enabling "
-"this feature in one place."
+msgid "Enter text, HTML, or shortcodes..."
 msgstr ""
 
-#: src/Settings.php:343
-msgid "JPEG compression level"
+msgid "Error Details:"
 msgstr ""
 
-#: src/Settings.php:385
-msgid "Large image threshold"
+msgid "Every single contribution — whether a donation, a positive review, or constructive feedback — is deeply appreciated and keeps WP EXtra moving forward. Thank you for your trust and partnership!"
 msgstr ""
 
-#: src/Settings.php:680
-msgid "Light"
+msgid "Exclude Categories by ID"
 msgstr ""
 
-#: src/Settings.php:40
+msgid "Exclude Headings"
+msgstr ""
+
+msgid "Exclude Posts by ID"
+msgstr ""
+
+msgid "Exclude by CSS Class"
+msgstr ""
+
+msgid "Export Settings"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "Failed to delete record."
+msgstr ""
+
+msgid "Failed to establish connection to SMTP server."
+msgstr ""
+
+msgid "Failed to resend email."
+msgstr ""
+
+msgid "Failed to resend email. Please check SMTP settings."
+msgstr ""
+
+msgid "Failed to save file."
+msgstr ""
+
+msgid "Fallback featured image used when a post has no thumbnail set."
+msgstr ""
+
+msgid "Featured Image Column"
+msgstr ""
+
+msgid "File .htaccess does not exist."
+msgstr ""
+
+msgid "File does not exist on disk yet."
+msgstr ""
+
+msgid "Flatsome Theme"
+msgstr ""
+
+msgid "Flip Horizontal"
+msgstr ""
+
+msgid "Floating Button Position"
+msgstr ""
+
+msgid "Floating Button Text"
+msgstr ""
+
+msgid "Floating button position (horizontal pill badge or vertical edge badge)."
+msgstr ""
+
+msgid "Floating squircle button to quickly scroll back to the top of any admin page."
+msgstr ""
+
+msgid "Font Size"
+msgstr ""
+
+msgid "Footer Scripts (</body>)"
+msgstr ""
+
+msgid "Form Border Radius"
+msgstr ""
+
+msgid "Format Converter"
+msgstr ""
+
+msgid "Four dot matrix pattern"
+msgstr ""
+
+msgid "Frontend Asset Cleanup"
+msgstr ""
+
+msgid "GDPR/CCPA cookie banner with modern presets"
+msgstr ""
+
+msgid "Gear cog ⚙"
+msgstr ""
+
+msgid "Generate Alt/Title from cleaned filename instead of post title."
+msgstr ""
+
+msgid "Get Turnstile Keys"
+msgstr ""
+
+msgid "Global CSS (All Screens)"
+msgstr ""
+
+msgid "Global From Email Address"
+msgstr ""
+
+msgid "Global From Sender Name"
+msgstr ""
+
+msgid "Grid Dots (☷)"
+msgstr ""
+
+msgid "Header Background"
+msgstr ""
+
+msgid "Header Label"
+msgstr ""
+
+msgid "Header Scripts (<head>)"
+msgstr ""
+
+msgid "Header text displayed at the top of the table of contents."
+msgstr ""
+
+msgid "Header/body/footer scripts & responsive custom CSS"
+msgstr ""
+
+msgid "Heading 1 (h1)"
+msgstr ""
+
+msgid "Heading 2 (h2)"
+msgstr ""
+
+msgid "Heading 3 (h3)"
+msgstr ""
+
+msgid "Heading 4 (h4)"
+msgstr ""
+
+msgid "Heading 5 (h5)"
+msgstr ""
+
+msgid "Heading 6 (h6)"
+msgstr ""
+
+msgid "Heading Levels"
+msgstr ""
+
+msgid "Headings & Rules"
+msgstr ""
+
+msgid "Heartbeat API Control"
+msgstr ""
+
+msgid "Heartbeat Frequency"
+msgstr ""
+
+msgid "Hide Admin Bar"
+msgstr ""
+
+msgid "Hide Admin Menu Items"
+msgstr ""
+
+msgid "Hide Admin Nags & Notices"
+msgstr ""
+
+msgid "Hide Help Tabs"
+msgstr ""
+
+msgid "Hide Installed Plugins"
+msgstr ""
+
+msgid "Hide Login Footer Links"
+msgstr ""
+
+msgid "Hide Screen Options"
+msgstr ""
+
+msgid "Hide Specific Admin Bar Items"
+msgstr ""
+
+msgid "Hide Specific Admins from User List"
+msgstr ""
+
+msgid "Hide WordPress Generator Version"
+msgstr ""
+
+msgid "Hide WordPress Logo"
+msgstr ""
+
+msgid "Hide WordPress Version"
+msgstr ""
+
+msgid "Hide admin bar, menu restrictions & hide plugins"
+msgstr ""
+
+msgid "Hide all standard WordPress and plugin dashboard widgets including the Welcome Panel at once."
+msgstr ""
+
+msgid "Hide intrusive third-party plugin notices and review prompts in admin area."
+msgstr ""
+
+msgid "Hide password fields in user profile to prevent users from changing passwords."
+msgstr ""
+
+msgid "Hide selected administrators from the /wp-admin/users.php user management table."
+msgstr ""
+
+msgid "Hide selected sidebar navigation items for non-super admins."
+msgstr ""
+
+msgid "Hide specific plugins from appearing in the Plugins list."
+msgstr ""
+
+msgid "Hide the top admin bar on the frontend."
+msgstr ""
+
+msgid "Hierarchical nested list tree"
+msgstr ""
+
+msgid "Hover & Active Accent Color"
+msgstr ""
+
+msgid "Htaccess Rules"
+msgstr ""
+
+msgid "Icon color of toggle buttons."
+msgstr ""
+
+msgid "Image Optimization & Uploads"
+msgstr ""
+
+msgid "Import .json File"
+msgstr ""
+
+msgid "Import Settings"
+msgstr ""
+
+msgid "Index List"
+msgstr ""
+
+msgid "Initial display state of nested sub-headings on page load."
+msgstr ""
+
+msgid "Initially Hide"
+msgstr ""
+
+msgid "Initially collapse the table of contents on page load."
+msgstr ""
+
+msgid "Inject CSS inline to reduce HTTP requests."
+msgstr ""
+
+msgid "Inline CSS"
+msgstr ""
+
+msgid "Insert signature into single posts using shortcode %1$s or automatically."
+msgstr ""
+
+msgid "Invalid action."
+msgstr ""
+
+msgid "Invalid or unauthorized file target."
+msgstr ""
+
+msgid "Invalid request status."
+msgstr ""
+
+msgid "JavaScript (Default - Full animation & smooth scroll)"
+msgstr ""
+
+msgid "KB (E.g: 2048 = 2MB). Prevent uploading overly large files."
+msgstr ""
+
+msgid "Last Login"
+msgstr ""
+
+msgid "Layer stack ☷"
+msgstr ""
+
+msgid "Layers"
+msgstr ""
+
+msgid "Leave blank to use layout default."
+msgstr ""
+
 msgid "Like this plugin? Check out our other WordPress products:"
 msgstr ""
 
-#: src/Settings.php:640
 msgid "Limit Login Attempts"
 msgstr ""
 
-#: src/Settings.php:73
+msgid "Link Color"
+msgstr ""
+
+msgid "List Menu (☰)"
+msgstr ""
+
 msgid "List Module"
 msgstr ""
 
-#: src/Settings.php:1038
-msgid ""
-"List of JavaScript file IDs. Example: id=\"wp-extra-js\" should only use wp-"
-"extra. One data field per line."
+msgid "LiteSpeed Cache"
 msgstr ""
 
-#: src/Settings.php:213
-msgid "Lock Last Modified Date"
+msgid "Loading Method"
 msgstr ""
 
-#: src/Settings.php:566
-msgid "Login Title"
+msgid "Loading details..."
 msgstr ""
 
-#: src/Settings.php:583
-msgid "Logo URL"
+msgid "Lock Modified Date"
 msgstr ""
 
-#: src/Settings.php:177
-msgid "Making it stick to the bottom of the page when scrolling down the page"
+msgid "Lock and prevent users from changing their email address on the profile screen."
 msgstr ""
 
-#: src/Settings.php:859
-msgid "Message"
+msgid "Log Retention (Days)"
 msgstr ""
 
-#: src/Settings.php:684
-msgid "Midnight"
+msgid "Log record not found."
 msgstr ""
 
-#: src/Settings.php:1044
-msgid "Minify HTML output for clean looking markup and faster downloading."
+msgid "Login Design Preset"
 msgstr ""
 
-#: src/Modules/Common/Posts.php:69
-msgid "Missing data."
+msgid "Login Page Title"
 msgstr ""
 
-#: src/Settings.php:1109
-msgid "Mobile only"
+msgid "Login Screen Customization"
 msgstr ""
 
-#: src/Settings.php:217
-msgid "Modified Date In Admin Lists"
+msgid "Login Security & Protection"
 msgstr ""
 
-#: src/Settings.php:1215
-msgid "Nags & Notices"
+msgid "Logo Link URL"
 msgstr ""
 
-#: src/Settings.php:634
-msgid "New private window"
+msgid "Mailer Account"
 msgstr ""
 
-#: src/Settings.php:1151 src/Settings.php:1161
-msgid "Not compatible with WooCommerce"
+msgid "Mailer Account:"
 msgstr ""
 
-#: src/Settings.php:1003
-msgid ""
-"Note: Please combine with any Cache plugin for faster performance. Only "
-"works for visitors."
+msgid "Manage SMTP Settings &rarr;"
 msgstr ""
 
-#: src/Settings.php:685
-msgid "Ocean"
+msgid "Manage your search engine crawler directives file."
 msgstr ""
 
-#: src/Settings.php:830
+msgid "Max File Size Limit"
+msgstr ""
+
+msgid "Max Image Height"
+msgstr ""
+
+msgid "Max Image Width"
+msgstr ""
+
+msgid "Max Upload Size"
+msgstr ""
+
+msgid "Max allowed failed login attempts before IP temporary lockout."
+msgstr ""
+
+msgid "Maximum revisions to keep per post. Enter 0 to disable revisions completely, or leave empty to use WordPress default."
+msgstr ""
+
+msgid "Media & SVG"
+msgstr ""
+
+msgid "Media SEO & Filenames"
+msgstr ""
+
+msgid "Minimal pure text (Default)"
+msgstr ""
+
+msgid "Minimalist Clean"
+msgstr ""
+
+msgid "Missing or invalid data."
+msgstr ""
+
+msgid "Mobile CSS (<= 767px)"
+msgstr ""
+
+msgid "Modern folding chevron (Default)"
+msgstr ""
+
+msgid "Modern star sparkle ✦"
+msgstr ""
+
+msgid "Multi-account rotation, provider presets & email logs"
+msgstr ""
+
+msgid "Mute System Emails"
+msgstr ""
+
+msgid "MySQL / MariaDB"
+msgstr ""
+
+msgid "Nav Padding"
+msgstr ""
+
+msgid "Never"
+msgstr ""
+
+msgid "New Content Menu (+ New)"
+msgstr ""
+
+msgid "No backup file found."
+msgstr ""
+
+msgid "No email log entries found."
+msgstr ""
+
+msgid "No feed available, please visit the <a href='%s'>homepage</a>!"
+msgstr ""
+
+msgid "No icon before title (Default)"
+msgstr ""
+
+msgid "No posts found."
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Not Protected"
+msgstr ""
+
+msgid "Note: Combine with a caching plugin for best performance."
+msgstr ""
+
+msgid "Notice"
+msgstr ""
+
+msgid "Notice Message"
+msgstr ""
+
+msgid "Notice message displayed to website visitors."
+msgstr ""
+
+msgid "Numbered 1, 1.1, 1.2..."
+msgstr ""
+
+msgid "Numbers in rounded badge"
+msgstr ""
+
 msgid "Only Allow When Editing Posts/Pages"
 msgstr ""
 
-#: src/Settings.php:68 src/Settings.php:1002 src/Settings.php:1003
+msgid "Only allow user registration from specified email domains (e.g. gmail.com, yahoo.com). One per line."
+msgstr ""
+
+msgid "Only selected administrator accounts can view and edit WP EXtra settings."
+msgstr ""
+
+msgid "Oops, we could not retrieve the sidebar widgets! Maybe there is another plugin already managing them?"
+msgstr ""
+
+msgid "Open Book"
+msgstr ""
+
+msgid "Open book 📖 pages"
+msgstr ""
+
+msgid "Open table of contents"
+msgstr ""
+
 msgid "Optimize"
 msgstr ""
 
-#: src/Settings.php:360
-msgid "Optimize image SEO"
+msgid "Other Custom SMTP Server"
 msgstr ""
 
-#: src/Settings.php:44
 msgid "Our WordPress Products"
 msgstr ""
 
-#: src/Settings.php:61 src/Settings.php:428
+msgid "PHP Memory Limit"
+msgstr ""
+
+msgid "PHP Version"
+msgstr ""
+
+msgid "Padding for list wrapper (#wptoc-container nav). Enter CSS values like 12px 16px."
+msgstr ""
+
+msgid "Padding for outer container (#wptoc-container). Enter CSS values like 16px or 14px 18px."
+msgstr ""
+
+msgid "Password / App Key"
+msgstr ""
+
+msgid "Permalinks & SEO"
+msgstr ""
+
 msgid "Permission"
 msgstr ""
 
-#. %1$s: Plugin name, %2$s: Link start, %3$s: Link end
-#: src/Pro/WPEXtraPro.php:94
-#, php-format
-msgid ""
-"Please %2$sactivate%3$s your copy of the %1$s to get update notifications, "
-"access to support features & other resources!"
+msgid "Permission & Roles"
 msgstr ""
 
-#: src/Settings.php:730
-msgid "Please backup before making any changes."
+msgid "Permission denied."
 msgstr ""
 
-#: src/Pro/Modules/Common/Branding.php:222
-msgid "Please enter the two-factor authentication code"
+msgid "Please enter a recipient email address."
 msgstr ""
 
-#: src/Modules/Common/Posts.php:50
+msgid "Please enter a valid recipient email address."
+msgstr ""
+
 msgid "Please select an image in the editor."
 msgstr ""
 
-#: src/Settings.php:47
-msgid "Please upgrade to the PRO plan to unlock more awesome features."
+msgid "Plugins"
 msgstr ""
 
-#: src/Settings.php:1012
-msgid "Prevent Gutenberg Block Library CSS from Loading on the Frontend."
+msgid "Plus / Minus (+ / −)"
 msgstr ""
 
-#: src/Settings.php:175
-msgid "Publish Button"
+msgid "Port"
 msgstr ""
 
-#: src/Settings.php:651
-msgid "Question"
+msgid "Position"
 msgstr ""
 
-#: src/Core.php:30
+msgid "Post Revisions Limit"
+msgstr ""
+
+msgid "Post Signature"
+msgstr ""
+
+msgid "Post not found."
+msgstr ""
+
+msgid "Posts & Writing"
+msgstr ""
+
+msgid "Preconnect Google Fonts & CDNs"
+msgstr ""
+
+msgid "Prevent Gutenberg Block Library CSS from loading on the frontend."
+msgstr ""
+
+msgid "Prevent WordPress core from automatically applying updates."
+msgstr ""
+
+msgid "Prevent generating unused image sizes to save disk storage and CDN bandwidth."
+msgstr ""
+
+msgid "Prevent non-admin user roles from accessing /wp-admin and redirect them to homepage."
+msgstr ""
+
+msgid "Prevent updating the modified date when editing existing posts."
+msgstr ""
+
+msgid "Prevent visitors from navigating back in history."
+msgstr ""
+
+msgid "Preview Login URL"
+msgstr ""
+
+msgid "Processing..."
+msgstr ""
+
+msgid "Profile / Account"
+msgstr ""
+
+msgid "Protect WP-Content Folder"
+msgstr ""
+
+msgid "Protect WP-Includes Folder"
+msgstr ""
+
+msgid "Protected"
+msgstr ""
+
+msgid "Protected file .htaccess created successfully."
+msgstr ""
+
+msgid "Protected file .htaccess has been removed."
+msgstr ""
+
+msgid "Publishing & List Views"
+msgstr ""
+
+msgid "Pure CSS (Super lightweight, no JS)"
+msgstr ""
+
+msgid "Query Monitor"
+msgstr ""
+
+msgid "REST API & Heartbeat"
+msgstr ""
+
+msgid "REST API Access"
+msgstr ""
+
+msgid "Rank Math"
+msgstr ""
+
 msgid "Rate WP EXtra on WordPress.org"
 msgstr ""
 
-#: src/Settings.php:222
-msgid "Redirect Single Post"
+msgid "Reading bookmark 🔖 ribbon"
 msgstr ""
 
-#: src/Settings.php:408
-msgid "Redirect to link"
+msgid "Recipient"
 msgstr ""
 
-#: src/Settings.php:223
-msgid "Redirect to the post if the search results return only one post."
+msgid "Recipient (To)"
 msgstr ""
 
-#: src/Settings.php:1140
-msgid "Redirecting Attachment Pages"
+msgid "Recipient Email Address"
 msgstr ""
 
-#: src/Settings.php:987
-msgid "Remove admin email confirmation"
+msgid "Recipient, subject, error..."
 msgstr ""
 
-#: src/Settings.php:849
-msgid "Remove all core blocks"
+msgid "Record all outgoing emails sent through WordPress. View your logs in the <a href=\"%s\"><strong>Email Logs</strong></a> menu."
 msgstr ""
 
-#: src/Settings.php:1071
-msgid "Remove global-styles-inline-css & SVG Duotone Filter"
+msgid "Redirect Attachment Pages"
 msgstr ""
 
-#: src/Settings.php:229
-msgid "Remove link in the tags from all post"
+msgid "Redirect Site Title to Admin Dashboard"
 msgstr ""
 
-#: src/Settings.php:1007
-msgid "Remove query strings from static resources (CSS, JS)."
+msgid "Redirect destination when clicking the login logo (default: homepage)."
 msgstr ""
 
-#: src/Settings.php:787
-msgid "Remove RSD (Real Simple Discovery) link tag."
+msgid "Redirect detected spammers to a custom URL (e.g. 127.0.0.1 or honeypot)."
 msgstr ""
 
-#: src/Settings.php:792
-msgid "Remove Shortlink link tag."
+msgid "Redirect directly to post if a search query returns exactly one match."
 msgstr ""
 
-#: src/Settings.php:782
-msgid "Remove wlwmanifest (Windows Live Writer) link tag."
+msgid "Redirect media attachment URLs to the parent post or media file."
 msgstr ""
 
-#: src/Settings.php:772
-msgid "Removes jQuery Migrate JavaScript file (jquery-migrate.min.js)."
+msgid "Reload from Disk"
 msgstr ""
 
-#: src/Settings.php:823
-msgid ""
-"Removes REST API link tag from the front end and the REST API header link "
-"from page requests."
+msgid "Remote Images & Featured Thumbnails"
 msgstr ""
 
-#: src/Settings.php:762
-msgid "Removes WordPress Embed JavaScript file (wp-embed.min.js). "
+msgid "Remove Global Styles & SVG Filters"
 msgstr ""
 
-#: src/Settings.php:1061
-msgid "Removes WordPress Emojis JavaScript file (wp-emoji-release.min.js)."
+msgid "Remove Post Type Slugs"
 msgstr ""
 
-#: src/Settings.php:777
-msgid "Removes WordPress version meta tag."
+msgid "Remove Protection"
 msgstr ""
 
-#: src/Settings.php:356
-msgid ""
-"Rename uploaded files available in wordpress media and change the postname "
-"or slug name."
+msgid "Remove Query Strings from Static Resources"
 msgstr ""
 
-#: src/Settings.php:578
-msgid "Replace the default WordPress logo. Max width: 320px."
+msgid "Remove REST API Header Links"
 msgstr ""
 
-#: src/Settings.php:724
-msgid "Restrict user from clicking the back button."
+msgid "Remove REST API link tags from HTML head and HTTP response headers."
 msgstr ""
 
-#: src/Settings.php:707
-msgid "Restrict user to copy content & disable mouse right click."
+msgid "Remove Taxonomy Slugs"
 msgstr ""
 
-#: src/Settings.php:1175
-msgid "Restricted backend access for non-admins."
+msgid "Remove WordPress Embed script (wp-embed.min.js) and oEmbed discovery links."
 msgstr ""
 
-#: src/Settings.php:980
-msgid "Sends a simple test email to check your settings."
+msgid "Remove WordPress Emoji JavaScript and styles from frontend."
 msgstr ""
 
-#: src/Settings.php:218
-msgid "Shows a new, sortable, column with the modified date in the lists"
+msgid "Remove WordPress version number from admin footer."
 msgstr ""
 
-#: src/Settings.php:132
-msgid "Signature"
+msgid "Remove category base prefix from archive URLs."
 msgstr ""
 
-#: src/Modules/Common/Security.php:190
+msgid "Remove category slugs, external links SEO & robots.txt"
+msgstr ""
+
+msgid "Remove generator meta tag containing WordPress version from HTML source."
+msgstr ""
+
+msgid "Remove jQuery Migrate"
+msgstr ""
+
+msgid "Remove legacy RSD, WLWmanifest, Shortlink tags and self-pingbacks."
+msgstr ""
+
+msgid "Remove post type base prefix from URLs for clean single post links."
+msgstr ""
+
+msgid "Remove the Help dropdown tab from the top right of admin screens."
+msgstr ""
+
+msgid "Remove the Screen Options dropdown tab from the top right of admin screens."
+msgstr ""
+
+msgid "Remove version query strings from CSS/JS files to improve CDN cacheability."
+msgstr ""
+
+msgid "Replace default WordPress logo. Max recommended width: 320px."
+msgstr ""
+
+msgid "Request failed."
+msgstr ""
+
+msgid "Resend Email"
+msgstr ""
+
+msgid "Resend email"
+msgstr ""
+
+msgid "Restore Backup"
+msgstr ""
+
+msgid "Restore classic widget management screens."
+msgstr ""
+
+msgid "Restrict REST API access to authenticated users or administrators."
+msgstr ""
+
+msgid "Robots.txt"
+msgstr ""
+
+msgid "Robots.txt Editor"
+msgstr ""
+
+msgid "Root .htaccess"
+msgstr ""
+
+msgid "SEO & Link Redirection"
+msgstr ""
+
+msgid "SEO File Renamer"
+msgstr ""
+
+msgid "SMTP"
+msgstr ""
+
+msgid "SMTP Accounts"
+msgstr ""
+
+msgid "SMTP Connection Successful"
+msgstr ""
+
+msgid "SMTP Error: %s"
+msgstr ""
+
+msgid "SMTP Host"
+msgstr ""
+
+msgid "SMTP Mail Service"
+msgstr ""
+
+msgid "SMTP Mailer"
+msgstr ""
+
+msgid "SMTP Mailer Configuration"
+msgstr ""
+
+msgid "SMTP Options"
+msgstr ""
+
+msgid "SVG uploads, auto WebP/JPG conversion & SEO rename"
+msgstr ""
+
+msgid "Save to File"
+msgstr ""
+
+msgid "Saved successfully to file."
+msgstr ""
+
+msgid "Saved successfully."
+msgstr ""
+
+msgid "Scroll To Top"
+msgstr ""
+
+msgid "Scroll smoothly to anchor targets when clicking TOC links."
+msgstr ""
+
+msgid "Scroll to top"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search Logs"
+msgstr ""
+
+msgid "Search Logs:"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Security & Hardening"
+msgstr ""
+
+msgid "Security Error: Uploaded SVG contains suspicious scripts or event handlers."
+msgstr ""
+
+msgid "Security check failed."
+msgstr ""
+
+msgid "Select heading levels to include in the table of contents."
+msgstr ""
+
+msgid "Select specific items to remove from the top Admin Bar."
+msgstr ""
+
+msgid "Send Test Email"
+msgstr ""
+
+msgid "Send modern security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)."
+msgstr ""
+
+msgid "Sender (From)"
+msgstr ""
+
+msgid "Sent"
+msgstr ""
+
+msgid "Sent via WP EXtra SMTP Mailer | WordPress %s"
+msgstr ""
+
+msgid "Server Error"
+msgstr ""
+
+msgid "Set interval frequency for Heartbeat requests."
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Show Modified Date"
+msgstr ""
+
+msgid "Show User Last Login"
+msgstr ""
+
+msgid "Show User Registration Date"
+msgstr ""
+
+msgid "Show Username and Password inside input fields."
+msgstr ""
+
+msgid "Show When"
+msgstr ""
+
+msgid "Show a thumbnail preview column in post admin list tables."
+msgstr ""
+
+msgid "Show a thumbnail preview column in post and page admin list tables."
+msgstr ""
+
+msgid "Show in WooCommerce Product Categories"
+msgstr ""
+
+msgid "Show on Category Pages"
+msgstr ""
+
+msgid "Show on Homepage"
+msgstr ""
+
+msgid "Show table of contents on homepage if eligible headings exist."
+msgstr ""
+
+msgid "Show/Hide password"
+msgstr ""
+
+msgid "Signature Content"
+msgstr ""
+
+msgid "Site Title"
+msgstr ""
+
+msgid "Smart Anti-Spam Filter"
+msgstr ""
+
+msgid "Smooth Scroll"
+msgstr ""
+
+msgid "Smooth Scroll Offset"
+msgstr ""
+
+msgid "Soft Warm"
+msgstr ""
+
+msgid "Solid"
+msgstr ""
+
+msgid "Solid arrow caret"
+msgstr ""
+
+msgid "Solid circle dot ●"
+msgstr ""
+
+msgid "Sorry, you are not allowed to edit this taxonomy."
+msgstr ""
+
 msgid "Sorry, you do not have permission to make REST API requests."
 msgstr ""
 
-#: src/Settings.php:686
-msgid "Sunrise"
+msgid "Spam Redirect URL"
 msgstr ""
 
-#: src/Settings.php:1104
-msgid "Tablets and down"
+msgid "Sparkle"
 msgstr ""
 
-#: src/Settings.php:228
-msgid "Tag links"
+msgid "Specify headings to exclude separated by pipe | (supports wildcard *)."
 msgstr ""
 
-#: src/Settings.php:979
-msgid "Test Email"
+msgid "Speed & Optimize"
 msgstr ""
 
-#: src/Settings.php:53
+msgid "Spread the Word"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Stick the Publish/Save button to the bottom of the screen when scrolling long posts."
+msgstr ""
+
+msgid "Sticky Max Height"
+msgstr ""
+
+msgid "Sticky Mobile Max Height"
+msgstr ""
+
+msgid "Sticky Mobile Width"
+msgstr ""
+
+msgid "Sticky Publish Button"
+msgstr ""
+
+msgid "Sticky Scale"
+msgstr ""
+
+msgid "Sticky TOC"
+msgstr ""
+
+msgid "Sticky Width"
+msgstr ""
+
+msgid "Strip global-styles-inline-css and SVG Duotone Filters."
+msgstr ""
+
+msgid "Sub-heading Font Size"
+msgstr ""
+
+msgid "Sub-heading Indent"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Subject:"
+msgstr ""
+
+msgid "Successfully restored backup from %s and removed the backup file."
+msgstr ""
+
+msgid "Support WP EXtra"
+msgstr ""
+
+msgid "System & Environment Overview"
+msgstr ""
+
+msgid "System & Maintenance Controls"
+msgstr ""
+
+msgid "TOC Tree"
+msgstr ""
+
+msgid "Table of Contents"
+msgstr ""
+
+msgid "Table of Contents Sticky Navigation"
+msgstr ""
+
+msgid "Tablet CSS (<= 1024px)"
+msgstr ""
+
+msgid "Take 1 minute to leave an honest 5-star rating on WordPress.org. It helps more webmasters discover WP EXtra and gives us tremendous motivation to keep improving."
+msgstr ""
+
+msgid "Term duplicated successfully."
+msgstr ""
+
+msgid "Term not found."
+msgstr ""
+
+msgid "Test email sent successfully to %s in %sms! Please check your inbox or spam folder."
+msgstr ""
+
+msgid "Text label displayed on the floating sticky badge (e.g. \"Contents\"). Leave empty to display icon only."
+msgstr ""
+
+msgid "The following account(s) reached their daily quota today: %s. Outgoing emails are automatically routed to your next available SMTP account."
+msgstr ""
+
 msgid "The module operates independently. Please enable it as needed."
 msgstr ""
 
-#. 1. days; 2. link to donate; 3. link to review
-#: src/Settings.php:35
-#, php-format
-msgid ""
-"The plugin developer has dedicated <strong>%1$s</strong> days to this "
-"project. If you like it, you can support the author with <a href=\"%2$s\" "
-"target=\"_blank\">a beer 🍻 / coffee ☕️</a> ! Please <a href=\"%3$s\" "
-"target=\"_blank\">rate us on WordPress.org</a>"
+msgid "The plugin developer has dedicated <strong>%1$s</strong> days to this project. If you like it, you can support the author with <a href=\"%2$s\" target=\"_blank\">a beer 🍻 / coffee ☕️</a> ! Please <a href=\"%3$s\" target=\"_blank\">rate us on WordPress.org</a>"
 msgstr ""
 
-#: src/Settings.php:930
-msgid ""
-"The port which will be used when sending an email (587/465/25). If you "
-"choose TLS it should be set to 587. For SSL use port 465 instead."
+msgid "This comment is already marked as spam."
 msgstr ""
 
-#: src/Settings.php:923
-#, php-format
-msgid "The SMTP server which will be used to send email. %s"
-msgstr ""
-
-#: src/Settings.php:1050
-msgid ""
-"The speed of a single-page web application without having to write any "
-"JavaScript"
-msgstr ""
-
-#: src/Settings.php:1192
-msgid "Theme & Plugin Editors"
-msgstr ""
-
-#: src/Settings.php:194
-msgid "This featured image will show up if no featured image is set"
-msgstr ""
-
-#: src/Modules/Common/Posts.php:51
 msgid "This image is already in your Media Library."
 msgstr ""
 
-#. Description of the plugin
-msgid ""
-"This is a simple and perfect tool to use as your website’s functionality "
-"plugin. Awesome !!!"
+msgid "This site uses cookies to improve your online experience, allow you to share content on social media, measure traffic to this website and display customised ads based on your browsing activity."
 msgstr ""
 
-#: src/Modules/Frontend/Cookie.php:29
-msgid ""
-"This site uses cookies to improve your online experience, allow you to share "
-"content on social media, measure traffic to this website and display "
-"customised ads based on your browsing activity."
+msgid "Thumbnail"
 msgstr ""
 
-#. Author of the plugin
-msgid "TienCOP"
+msgid "TinyMCE Power Tools"
 msgstr ""
 
-#: src/Settings.php:1224
+msgid "Title Color"
+msgstr ""
+
+msgid "Title Font Size"
+msgstr ""
+
+msgid "Title Icon Type"
+msgstr ""
+
+msgid "Title Prefix Icon Color"
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
+msgid "Toggle Button Icon"
+msgstr ""
+
+msgid "Toggle Visibility"
+msgstr ""
+
+msgid "Toggle subheadings"
+msgstr ""
+
+msgid "Toggle table of contents"
+msgstr ""
+
+msgid "Too many failed login attempts. Please wait %d minutes before trying again."
+msgstr ""
+
+msgid "Top Admin Bar"
+msgstr ""
+
+msgid "Top of content"
+msgstr ""
+
+msgid "Track outgoing emails, check delivery status, inspect email content, and resend failed messages."
+msgstr ""
+
+msgid "Tracking & Custom Scripts"
+msgstr ""
+
+msgid "Transfer Options (.json)"
+msgstr ""
+
 msgid "Transfer Plugin"
 msgstr ""
 
-#: src/Settings.php:1131
-msgid ""
-"Type in the extension you would like to use e.g. .html, .htm, .jsp, .cop, or "
-"any other. (Default: .html)"
+msgid "Troubleshooting hint: Check your username and App Password. If using Gmail, make sure 2-Factor Authentication is on and use a 16-character Google App Password."
 msgstr ""
 
-#: src/Core.php:15
-msgid "Upgrade"
+msgid "Troubleshooting hint: Connection timed out. Make sure your server allows outgoing connections on Port 587 (TLS) or Port 465 (SSL)."
 msgstr ""
 
-#: src/Settings.php:48
-msgid "Upgrade to WP EXtra PRO"
+msgid "Turn off WordPress Application Passwords feature for security."
 msgstr ""
 
-#: src/Settings.php:305
-msgid "Upload Converter"
+msgid "Turn on WP_DEBUG logging. Remember to disable this in production."
 msgstr ""
 
-#: src/Settings.php:122
-msgid "Use the classic WordPress editor."
+msgid "Turnstile Secret Key"
 msgstr ""
 
-#: src/Settings.php:133
-#, php-format
-msgid "Used %1$s or %2$s"
+msgid "Turnstile Site Key"
 msgstr ""
 
-#: src/Settings.php:996
-msgid "Valid Email Domain"
+msgid "URL Structure & Slugs"
 msgstr ""
 
-#: src/Settings.php:997
-msgid ""
-"Validates that the email domain of users registering is either gmail.com or "
-"yahoo.com"
+msgid "Unauthorized"
 msgstr ""
 
-#: src/Settings.php:634
-msgid ""
-"When configured, this feature modifies your WordPress login URL (slug) to "
-"the specified string and prevents direct access to the wp-admin and wp-login "
-"endpoints."
+msgid "Unauthorized permission."
 msgstr ""
 
-#: src/Settings.php:584
-msgid "When login logo is clicked, the user will be redirected to this url."
+msgid "Unauthorized to duplicate this item."
 msgstr ""
 
-#: src/Settings.php:1181
-msgid "WP EXtra Permission"
+msgid "Unload Dashicons CSS for visitors who are not logged in."
 msgstr ""
 
-#. Name of the plugin
-msgid "WP EXtra Pro"
+msgid "Unload legacy jQuery Migrate script on frontend to save HTTP request."
 msgstr ""
 
-#: src/Settings.php:43
+msgid "Unregister all standard Gutenberg core block types."
+msgstr ""
+
+msgid "Updates"
+msgstr ""
+
+msgid "Upload a .json backup file previously exported from WP EXtra to restore configurations."
+msgstr ""
+
+msgid "Use Original Filename"
+msgstr ""
+
+msgid "Use the classic WordPress editor instead of block editor."
+msgstr ""
+
+msgid "User Account Enhancements"
+msgstr ""
+
+msgid "User Registration Date"
+msgstr ""
+
+msgid "Username / Email"
+msgstr ""
+
+msgid "Verify your SMTP mail configuration by sending a test message."
+msgstr ""
+
+msgid "Vertical Left Badge (Edge attached)"
+msgstr ""
+
+msgid "Vertical Right Badge (Edge attached)"
+msgstr ""
+
+msgid "Vibrant Gradient"
+msgstr ""
+
+msgid "View email preview"
+msgstr ""
+
+msgid "WP EXtra"
+msgstr ""
+
+msgid "WP EXtra - SMTP Limit Reached:"
+msgstr ""
+
+msgid "WP EXtra - SMTP Quota Alert:"
+msgstr ""
+
+msgid "WP EXtra Super Admins"
+msgstr ""
+
+msgid "WP EXtra is an open-source project dedicated to delivering lightweight, clean, and reliable WordPress optimizations for everyone. Over %s days of continuous development and maintenance, our mission has always been keeping your website fast, secure, and hassle-free."
+msgstr ""
+
+msgid "WP Extra"
+msgstr ""
+
+msgid "WP Memory Limit"
+msgstr ""
+
+msgid "WP Rocket"
+msgstr ""
+
+msgid "WPForms"
+msgstr ""
+
+msgid "Warning:"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
+msgid "WebP (Recommended)"
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
+msgid "When enabled, clicking the Site Title on the top Admin Bar opens the Admin Dashboard instead of viewing the website."
+msgstr ""
+
+msgid "Widget Title"
+msgstr ""
+
+msgid "Widgets cleanup, system info cards & custom notice"
+msgstr ""
+
+msgid "WooCommerce"
+msgstr ""
+
+msgid "WooCommerce My-Account & Flatsome Popup Turnstile"
+msgstr ""
+
+msgid "WordPress"
+msgstr ""
+
+msgid "WordPress Logo"
+msgstr ""
+
+msgid "Write a 5-Star Review ★★★★★"
+msgstr ""
+
 msgid "Write a review for WP EXtra"
 msgstr ""
 
-#: src/Settings.php:1221
-msgid ""
-"You can transfer the saved options data between different installs by "
-"copying the text inside the text box. To import data from another install, "
-"replace the data in the text box with the one from another install and click "
-"\"Import\"."
+msgid "Yoast SEO"
 msgstr ""
 
-#: wp-settings/vendor/wordpressvn/wp-settings/src/WPSettings.php:279
-msgid "Your license key has expired."
+msgid "You do not have permission to access WP EXtra settings."
 msgstr ""
 
-#: src/Modules/Backend/Media.php:489
-msgid "Your picture is too large. It has to be smaller than "
+msgid "You do not have permission to edit this post."
 msgstr ""
 
-#: src/Modules/Common/Posts.php:52
+msgid "You do not have sufficient permissions to perform this action."
+msgstr ""
+
+msgid "Your email delivery system is functioning perfectly!"
+msgstr ""
+
+msgid "Your financial support directly covers server costs, testing devices, and research into new optimization features to keep the plugin 100% free and actively maintained."
+msgstr ""
+
+msgid "Your picture is too large. It has to be smaller than %dKB."
+msgstr ""
+
+msgid "[%s] WP EXtra - SMTP Test Email Delivery"
+msgstr ""
+
+msgid "e.g. Admin Guidelines / System Notice"
+msgstr ""
+
+msgid "headings or more are present."
+msgstr ""
+
+msgid "is already enabled somewhere else on your site. We suggest only enabling this feature in one place."
+msgstr ""
+
+msgid "px (E.g: 1080). Larger images are scaled down automatically."
+msgstr ""
+
+msgid "px (E.g: 1920). Larger images are scaled down automatically."
+msgstr ""
+
+msgid "px (border thickness, leave blank for default)"
+msgstr ""
+
+msgid "px (indentation distance for nested headings H3, H4, H5... Set 0 for flat list)."
+msgstr ""
+
+msgid "px (leave blank for auto 100%)"
+msgstr ""
+
+msgid "px (leave blank for default 270px)"
+msgstr ""
+
+msgid "px (leave blank for default auto responsive)"
+msgstr ""
+
+msgid "px (leave blank for default auto)"
+msgstr ""
+
+msgid "px (rounded corners radius, leave blank for default)"
+msgstr ""
+
 msgid "✅ Image successfully downloaded and replaced."
 msgstr ""
 
-#: src/Modules/Common/Posts.php:54
 msgid "❌ Connection error."
 msgstr ""
 
-#: src/Modules/Common/Posts.php:53
 msgid "❌ Failed to download the image."
 msgstr ""
+

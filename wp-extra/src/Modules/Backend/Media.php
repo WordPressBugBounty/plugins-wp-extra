@@ -1,7 +1,11 @@
 <?php
 namespace WPEXtra\Modules\Backend;
 
-use WPEXtra\Settings;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+use WPEXtra\Helper;
 use WPEXtra\Base;
 
 class Media extends Base {
@@ -17,9 +21,12 @@ class Media extends Base {
 		'image_quality',
 		'media_thumbnails',
 		'media_functions',
+		'big_image_threshold',
 		'save_images',
 		'autoset',
 		'allow_filetype',
+		'rename_images',
+		'media_default',
 	];
     
     public function meta_images() {
@@ -36,44 +43,164 @@ class Media extends Base {
     
     public function image_quality() {
         add_filter('jpeg_quality', [$this, 'jpeg_quality']);
+        add_filter('wp_editor_set_quality', [$this, 'jpeg_quality']);
     }
     
     public function media_thumbnails() {
-        add_filter( 'intermediate_image_sizes_advanced', [$this, 'remove_image_sizes']);
+        add_filter('intermediate_image_sizes_advanced', [$this, 'remove_image_sizes']);
     }
     
     public function media_functions() {
-        if (in_array('threshold',  Settings::get_option('media_functions'))) {
-			add_filter( 'big_image_size_threshold', '__return_false' );
+        $functions = (array) Helper::get_option('media_functions', []);
+        if (in_array('threshold', $functions, true) || Helper::is_feature_active('big_image_threshold')) {
+			add_filter('big_image_size_threshold', '__return_false');
 		}
-        if (in_array('exif',  Settings::get_option('media_functions'))) {
-			add_filter( 'wp_image_maybe_exif_rotate', '__return_false' );
-		}
+    }
+
+    public function big_image_threshold() {
+        add_filter('big_image_size_threshold', '__return_false');
     }
     
     public function save_images() {
-        add_action( 'save_post', [$this, 'save_post_images'], 10, 3 );
+        add_action('save_post', [$this, 'save_post_images'], 10, 3);
     }
     
     public function autoset() {
-        add_action( 'save_post', [$this, 'auto_featured_image'] );
+        add_action('save_post', [$this, 'auto_featured_image']);
     }
     
     public function allow_filetype() {
-        add_filter('wp_check_filetype_and_ext', [$this, 'ignore_upload_ext'], 10, 4);
-        add_filter('mime_types', [$this, 'webp_upload_mimes']);
-        add_filter('file_is_displayable_image', [$this, 'webp_is_displayable'], 10, 2);
+        add_filter('wp_check_filetype_and_ext', [$this, 'allow_svg_filetype'], 10, 4);
+        add_filter('upload_mimes', [$this, 'allow_svg_mimes']);
+        add_filter('mime_types', [$this, 'allow_svg_mimes']);
+        add_filter('wp_handle_upload_prefilter', [$this, 'sanitize_svg_upload']);
+        add_action('admin_head', [$this, 'svg_admin_css']);
+    }
+
+    public function allow_svg_mimes($mimes) {
+        $mimes['svg']  = 'image/svg+xml';
+        $mimes['svgz'] = 'image/svg+xml';
+        $mimes['webp'] = 'image/webp';
+        $mimes['ico']  = 'image/x-icon';
+        return $mimes;
+    }
+
+    public function allow_svg_filetype($checked, $file, $filename, $mimes) {
+        if (!$checked['type']) {
+            $check = wp_check_filetype($filename, $mimes);
+            $ext   = $check['ext'];
+            $type  = $check['type'];
+            if ($ext === 'svg' || $ext === 'svgz') {
+                $checked = [
+                    'ext'             => $ext,
+                    'type'            => 'image/svg+xml',
+                    'proper_filename' => $filename,
+                ];
+            }
+        }
+        return $checked;
+    }
+
+    public function sanitize_svg_upload($file) {
+        $ext = strtolower(pathinfo($file['name'] ?? '', PATHINFO_EXTENSION));
+        if ($ext === 'svg' || (isset($file['type']) && $file['type'] === 'image/svg+xml')) {
+            if (!current_user_can('upload_files')) {
+                $file['error'] = esc_html__('Permission denied.', 'wp-extra');
+                return $file;
+            }
+
+            if (!empty($file['tmp_name']) && file_exists($file['tmp_name'])) {
+                $content = @file_get_contents($file['tmp_name']);
+                if ($content !== false) {
+                    // Check for XXE (XML External Entity Injection)
+                    if (preg_match('/<!ENTITY|<!DOCTYPE|SYSTEM\s*["\']|PUBLIC\s*["\']/i', $content)) {
+                        $file['error'] = esc_html__('Security Error: Uploaded SVG contains suspicious scripts or event handlers.', 'wp-extra');
+                        return $file;
+                    }
+
+                    // Check for dangerous tags (script, foreignObject, iframe, embed, object, meta, link, applet)
+                    if (preg_match('/<\s*(?:script|foreignObject|iframe|embed|object|meta|link|applet)\b/i', $content)) {
+                        $file['error'] = esc_html__('Security Error: Uploaded SVG contains suspicious scripts or event handlers.', 'wp-extra');
+                        return $file;
+                    }
+
+                    // Check for dangerous protocols and data URIs in attributes
+                    if (preg_match('/(?:href|src|xlink:href)\s*=\s*["\']?\s*(?:javascript|vbscript|data:\s*text\/html|data:\s*application\/javascript):/i', $content)) {
+                        $file['error'] = esc_html__('Security Error: Uploaded SVG contains suspicious scripts or event handlers.', 'wp-extra');
+                        return $file;
+                    }
+
+                    // Check for all inline JavaScript event handlers (e.g. onload, onerror, onclick, onmouseover, onbegin, etc.)
+                    if (preg_match('/\bon[a-z0-9_-]+\s*=/i', $content)) {
+                        $file['error'] = esc_html__('Security Error: Uploaded SVG contains suspicious scripts or event handlers.', 'wp-extra');
+                        return $file;
+                    }
+                }
+            }
+        }
+        return $file;
+    }
+
+    public function svg_admin_css() {
+        echo '<style>
+            .media-icon img[src$=".svg"],
+            .attachment-preview img[src$=".svg"],
+            .thumbnail img[src$=".svg"] {
+                width: 100% !important;
+                height: auto !important;
+            }
+        </style>';
+    }
+
+    public function media_default() {
+        add_filter('get_post_metadata', [$this, 'set_media_default'], 10, 4);
+    }
+
+    public function set_media_default($null, $object_id, $meta_key, $single) {
+        if (is_admin() || (defined('DOING_AJAX') && DOING_AJAX) || (defined('REST_REQUEST') && REST_REQUEST)) {
+            return $null;
+        }
+        
+        if ($meta_key !== '_thumbnail_id') {
+            return $null;
+        }
+
+        $post_type = get_post_type($object_id);
+        if (!$post_type || !post_type_supports($post_type, 'thumbnail')) {
+            return $null;
+        }
+
+        $meta_cache = wp_cache_get($object_id, 'post_meta');
+        if (!$meta_cache) {
+            $meta_cache = update_meta_cache('post', [$object_id]);
+            $meta_cache = $meta_cache[$object_id] ?? [];
+        }
+
+        if (!empty($meta_cache['_thumbnail_id'][0])) {
+            return $null;
+        }
+
+        $default_thumbnail_id = Helper::get_option('media_default');
+        if (empty($default_thumbnail_id)) {
+            return $null;
+        }
+
+        $meta_cache['_thumbnail_id'][0] = $default_thumbnail_id;
+        wp_cache_set($object_id, $meta_cache, 'post_meta');
+
+        return $default_thumbnail_id;
     }
     
     public function save_post_images($post_id, $post, $update) {
-        $flip        = Settings::get_option('autoflip') ? true : false;
-        $crop_w      = Settings::get_option('crop_width') ?: '';
-        $crop_h      = Settings::get_option('crop_height') ?: '';
-        $set_quality = intval(Settings::get_option('image_quality', 90));
+        $flip        = (bool) Helper::get_option('autoflip');
+        $crop_w      = Helper::get_option('crop_width', '');
+        $crop_h      = Helper::get_option('crop_height', '');
+        $set_quality = intval(Helper::get_option('image_quality', 90));
 
-        if (!Settings::get_option('save_images')) return;
+        if (!Helper::get_option('save_images')) return;
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
         if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) return;
+        if (!is_object($post) || $post->post_status !== 'publish') return;
 
         $post_content = $post->post_content;
 
@@ -91,7 +218,6 @@ class Media extends Base {
 
         foreach ($matches as $m) {
             $raw = trim($m[1]);
-
             if (strpos($raw, ',') !== false) {
                 $raw = trim(explode(',', $raw)[0]);
             }
@@ -117,7 +243,6 @@ class Media extends Base {
         $index = 0;
 
         foreach ($unique_map as $url => $alt_text) {
-            
             $url_clean = strtok($url, '?');
             $url_clean = strtok($url_clean, '#');
 
@@ -125,11 +250,10 @@ class Media extends Base {
             $site_host = wp_parse_url(home_url(), PHP_URL_HOST);
 
             if (!$img_host || strcasecmp($img_host, $site_host) === 0) continue;
-
             if (attachment_url_to_postid($url_clean)) continue;
 
             $index++;
-            if ($index > 50) break;
+            if ($index > 20) break; // Limit to 20 images per save to avoid timeouts
 
             $parsed = wp_parse_url($url);
             if (empty($parsed['path'])) continue;
@@ -144,9 +268,9 @@ class Media extends Base {
             }
             $try_urls = array_unique($try_urls);
 
-            if (Settings::get_option('rename_images')) {
+            if (Helper::get_option('rename_images')) {
                 $base_slug = sanitize_title($post->post_name ?: $post->post_title);
-                $img_slug = $base_slug . '-' . $index;
+                $img_slug  = $base_slug . '-' . $index;
             } else {
                 $filename = pathinfo(basename($parsed['path']), PATHINFO_FILENAME);
                 $img_slug = $filename ?: 'image-' . $index;
@@ -225,7 +349,6 @@ class Media extends Base {
     }
 
     public function create_img($url, $file_name, $flip = false, $crop_w = '', $crop_h = '', $set_quality = 90) {
-
         $allowed = ['jpg','jpeg','jpe','png','gif','webp','bmp','tif','tiff','jfif'];
         $allowed = array_map('preg_quote', $allowed);
 
@@ -240,10 +363,10 @@ class Media extends Base {
             require_once ABSPATH . 'wp-admin/includes/file.php';
         }
 
-        $tmp = download_url($url);
+        $tmp = download_url($url, 10);
 
         if (is_wp_error($tmp)) {
-            $response = wp_remote_get($url, ['timeout' => 20]);
+            $response = wp_safe_remote_get($url, ['timeout' => 10]);
             if (is_wp_error($response)) return false;
 
             $mime = wp_remote_retrieve_header($response, 'content-type');
@@ -275,67 +398,68 @@ class Media extends Base {
         wp_delete_file($tmp);
 
         if ($flip || ($crop_w && $crop_h)) {
-
-            switch ($ext) {
-                case 'png':  $img = imagecreatefrompng($path); break;
-                case 'gif':  $img = imagecreatefromgif($path); break;
-                case 'webp': $img = imagecreatefromwebp($path); break;
-                default:     $img = imagecreatefromjpeg($path); break;
+            $editor = wp_get_image_editor($path);
+            if (!is_wp_error($editor)) {
+                $editor->set_quality($set_quality);
+                if ($flip) {
+                    $editor->flip(true, false);
+                }
+                if ($crop_w >= 100 && $crop_h >= 100) {
+                    $editor->resize((int)$crop_w, (int)$crop_h, true);
+                }
+                $editor->save($path);
             }
-
-            if (!$img) return false;
-
-            $w = imagesx($img);
-            $h = imagesy($img);
-
-            $tw = ($crop_w >= 100) ? $crop_w : $w;
-            $th = ($crop_h >= 100) ? $crop_h : $h;
-
-            $thumb = imagecreatetruecolor($tw, $th);
-            imagefill($thumb, 0, 0, imagecolorallocate($thumb, 255, 255, 255));
-
-            if ($flip) {
-                imagecopyresampled($thumb, $img, 0, 0, $w - 1, 0, $tw, $th, -$w, $h);
-            } else {
-                imagecopyresampled($thumb, $img, 0, 0, 0, 0, $tw, $th, $w, $h);
-            }
-
-            imagejpeg($thumb, $path, $set_quality);
-            imagedestroy($thumb);
-            imagedestroy($img);
         }
 
         return $path;
     }
 		
-    public function auto_featured_image() {
-        global $post;
-        if ($post && !has_post_thumbnail($post->ID)) {
-            $attached_image = get_children( "post_parent=$post->ID&amp;post_type=attachment&amp;post_mime_type=image&amp;numberposts=1" );
-            if ($attached_image) {
-                  foreach ($attached_image as $attachment_id => $attachment) {
-                       set_post_thumbnail($post->ID, $attachment_id);
-                  }
-             }
+    public function auto_featured_image($post_id) {
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+        if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) return;
+        if (!has_post_thumbnail($post_id)) {
+            $attached_images = get_children([
+                'post_parent'    => $post_id,
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'image',
+                'posts_per_page' => 1,
+            ]);
+            if (!empty($attached_images)) {
+                $first_image = reset($attached_images);
+                set_post_thumbnail($post_id, $first_image->ID);
+                return;
+            }
+
+            // Fallback: Check first <img> src embedded inside post_content
+            $post = get_post($post_id);
+            if ($post && !empty($post->post_content)) {
+                if (preg_match('/<img[^>]+src=["\']([^"\']+)["\']/i', $post->post_content, $match)) {
+                    $img_url = strtok($match[1], '?');
+                    $attachment_id = attachment_url_to_postid($img_url);
+                    if ($attachment_id) {
+                        set_post_thumbnail($post_id, $attachment_id);
+                    }
+                }
+            }
         }
     }
 
-    public function remove_image_sizes( $sizes ) {
+    public function remove_image_sizes($sizes) {
 		$list_thumbnails = get_intermediate_image_sizes();
-		$disablethumbnails = Settings::get_option('media_thumbnails');
-		foreach ( $list_thumbnails as $value ) {
-			if ( in_array( $value, $disablethumbnails ) ) {
-				unset( $sizes[ $value ] );
+		$disablethumbnails = (array) Helper::get_option('media_thumbnails', []);
+		foreach ($list_thumbnails as $value) {
+			if (in_array($value, $disablethumbnails, true)) {
+				unset($sizes[$value]);
 			}
 		}
 		return $sizes;
-
 	}
 
     public function auto_upload_images($image_data) {
-        $autoconverter = Settings::get_option('autoconverter');
-        $max_width     = intval(Settings::get_option('image_max_width', 0));
-        $max_height    = intval(Settings::get_option('image_max_height', 0));
+        $autoconverter = Helper::get_option('autoconverter');
+        $max_width     = intval(Helper::get_option('image_max_width', 0));
+        $max_height    = intval(Helper::get_option('image_max_height', 0));
+        $quality       = intval(Helper::get_option('image_quality', 90));
 
         if (
             $image_data['type'] === 'image/gif'
@@ -344,21 +468,10 @@ class Media extends Base {
             return $image_data;
         }
 
-        if ($image_data['type'] === 'image/png') {
-            if ($autoconverter === 'jpg') {
-                $image_data = $this->convert_png_to_jpg($image_data);
-            } elseif ($autoconverter === 'webp') {
-                $image_data = $this->convert_png_to_webp($image_data);
-            }
-        }
-
-        if ($image_data['type'] === 'image/jpeg' && $autoconverter === 'webp') {
-            $image_data = $this->convert_jpg_to_webp($image_data);
-        }
-
         $image_editor = wp_get_image_editor($image_data['file']);
 
         if (!is_wp_error($image_editor)) {
+            $image_editor->set_quality($quality);
             $sizes = $image_editor->get_size();
 
             if (
@@ -366,85 +479,32 @@ class Media extends Base {
                 ($max_height && $sizes['height'] > $max_height)
             ) {
                 $image_editor->resize($max_width, $max_height, false);
+            }
+
+            if ($autoconverter === 'webp' && $image_data['type'] !== 'image/webp') {
+                [$newPath, $newUrl] = $this->generate_new_path($image_data, 'webp');
+                $saved = $image_editor->save($newPath, 'image/webp');
+                if (!is_wp_error($saved)) {
+                    wp_delete_file($image_data['file']);
+                    $image_data['file'] = $saved['path'];
+                    $image_data['url']  = $newUrl;
+                    $image_data['type'] = 'image/webp';
+                }
+            } elseif ($autoconverter === 'jpg' && $image_data['type'] === 'image/png') {
+                [$newPath, $newUrl] = $this->generate_new_path($image_data, 'jpg');
+                $saved = $image_editor->save($newPath, 'image/jpeg');
+                if (!is_wp_error($saved)) {
+                    wp_delete_file($image_data['file']);
+                    $image_data['file'] = $saved['path'];
+                    $image_data['url']  = $newUrl;
+                    $image_data['type'] = 'image/jpeg';
+                }
+            } else {
                 $image_editor->save($image_data['file']);
             }
         }
 
         return $image_data;
-    }
-
-    private function convert_png_to_jpg($params) {
-        $img = imagecreatefrompng($params['file']);
-        if (!$img) {
-            return $params;
-        }
-
-        $bg = imagecreatetruecolor(imagesx($img), imagesy($img));
-        imagefill($bg, 0, 0, imagecolorallocate($bg, 255, 255, 255));
-        imagealphablending($bg, true);
-        imagecopy($bg, $img, 0, 0, 0, 0, imagesx($img), imagesy($img));
-
-        [$newPath, $newUrl] = $this->generate_new_path($params, 'jpg');
-
-        if (imagejpeg($bg, $newPath)) {
-            wp_delete_file($params['file']);
-            $params['file'] = $newPath;
-            $params['url']  = $newUrl;
-            $params['type'] = 'image/jpeg';
-        }
-
-        return $params;
-    }
-
-    private function convert_png_to_webp($params) {
-        if (!function_exists('imagewebp')) {
-            return $params;
-        }
-
-        $img = imagecreatefrompng($params['file']);
-        if (!$img) {
-            return $params;
-        }
-
-        imagepalettetotruecolor($img);
-        imagealphablending($img, true);
-        imagesavealpha($img, true);
-
-        [$newPath, $newUrl] = $this->generate_new_path($params, 'webp');
-
-        if (imagewebp($img, $newPath)) {
-            wp_delete_file($params['file']);
-            $params['file'] = $newPath;
-            $params['url']  = $newUrl;
-            $params['type'] = 'image/webp';
-        }
-
-        return $params;
-    }
-
-    private function convert_jpg_to_webp($params) {
-        if (!function_exists('imagewebp')) {
-            return $params;
-        }
-
-        $img = imagecreatefromjpeg($params['file']);
-        if (!$img) {
-            return $params;
-        }
-
-        imagepalettetotruecolor($img);
-        imagealphablending($img, true);
-
-        [$newPath, $newUrl] = $this->generate_new_path($params, 'webp');
-
-        if (imagewebp($img, $newPath)) {
-            wp_delete_file($params['file']);
-            $params['file'] = $newPath;
-            $params['url']  = $newUrl;
-            $params['type'] = 'image/webp';
-        }
-
-        return $params;
     }
 
     private function generate_new_path($params, $ext) {
@@ -479,90 +539,90 @@ class Media extends Base {
     }
 
     public function validate_image_limit($file) {
-        $limit = intval(Settings::get_option('image_limit'));
+        $limit = intval(Helper::get_option('image_limit'));
         if (!$limit) {
-            return;
+            return $file;
         }
-        $image_size = $file['size'] / 1024;
-        $is_image = strpos($file['type'], 'image');
-        if ($image_size > $limit && $is_image !== false) {
-            $file['error'] = __('Your picture is too large. It has to be smaller than ', 'wp-extra') . '' . $limit . 'KB';
+        $image_size = ($file['size'] ?? 0) / 1024;
+        $is_image   = isset($file['type']) && strpos($file['type'], 'image') !== false;
+        if ($image_size > $limit && $is_image) {
+            $file['error'] = sprintf(
+                __('Your picture is too large. It has to be smaller than %dKB.', 'wp-extra'),
+                $limit
+            );
         }
         return $file;
     }
     
     public function jpeg_quality($quality) {
-        return intval(Settings::get_option('image_quality', 90));
+        return intval(Helper::get_option('image_quality', 90));
     }
 
     public function update_image_metadata($attachment_ID) {
-        if (Settings::get_option('meta_images')) {
+        if (Helper::get_option('meta_images')) {
             if (!current_user_can('edit_post', $attachment_ID)) {
                 return;
             }
             if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], home_url()) !== 0) {
                 return;
             }
-            if (!empty($_REQUEST['post_id']) && !Settings::get_option('meta_images_filename')) {
+            if (!empty($_REQUEST['post_id']) && !Helper::get_option('meta_images_filename')) {
                 $post_id = (int)$_REQUEST['post_id'];
             } else {
                 $post_id = $attachment_ID;
             }
             $post_object = get_post($post_id);
-            $post_title = isset($post_object->post_title) ? $post_object->post_title : '';
+            $post_title  = isset($post_object->post_title) ? $post_object->post_title : '';
             if (!empty($post_title)) {
                 $post_title = preg_replace('/\s*[-_\s]+\s*/', ' ', $post_title);
                 $post_title = ucwords(strtolower($post_title));
-                $post_data = array(
-                    'ID' => $attachment_ID, 
-                    'post_title' => $post_title,
+                $post_data = [
+                    'ID'           => $attachment_ID, 
+                    'post_title'   => $post_title,
                     'post_content' => $post_title,
                     'post_excerpt' => $post_title,
-                );
+                ];
                 update_post_meta($attachment_ID, '_wp_attachment_image_alt', $post_title);
                 wp_update_post($post_data);
             }
         }
     }
-    
-    function ignore_upload_ext($checked, $file, $filename, $mimes){
-		if(!$checked['type']){
-			$wp_filetype = wp_check_filetype( $filename, $mimes );
-			$ext = $wp_filetype['ext'];
-			$type = $wp_filetype['type'];
-			$proper_filename = $filename;
-            if ($type && 0 === strpos($type, 'image/')) {
-                if ($ext === 'ico' && $type === 'image/x-icon') {
-                    $checked = compact('ext', 'type', 'proper_filename');
-                }
-                elseif ($ext !== 'svg') {
-                    $ext = $type = false;
-                }
-            }
-			$checked = compact('ext','type','proper_filename');
-		}
-		return $checked;
-	}
-    
-    function webp_upload_mimes($existing_mimes) {
-        $existing_mimes['webp'] = 'image/webp';
-        $existing_mimes['ico'] = 'image/x-icon';
-        return $existing_mimes;
+
+    public function rename_images() {
+        add_filter('sanitize_file_name', [$this, 'update_image_filename_from_post_slug'], 10, 1);
     }
-    
-    function webp_is_displayable($result, $path) {
-        if ($result === false) {
-            $displayable_image_types = array( IMAGETYPE_WEBP );
-            $info = @getimagesize( $path );
-            if (empty($info)) {
-                $result = false;
-            } elseif (!in_array($info[2], $displayable_image_types)) {
-                $result = false;
-            } else {
-                $result = true;
+
+    public function update_image_filename_from_post_slug($filename) {
+        $filename = Helper::normalizeString($filename);
+
+        if (!empty($_REQUEST['post_id'])) {
+            $post_id = (int)$_REQUEST['post_id'];
+            $exists  = get_post_status($post_id);
+            $info    = pathinfo($filename);
+
+            if (isset($exists) && !empty($info['extension']) && in_array(strtolower($info['extension']), ['jpg', 'jpeg', 'jpe', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff'], true)) {
+                $post_object = get_post($post_id);
+                $ext  = empty($info['extension']) ? '' : '.' . $info['extension'];
+                $name = '';
+                $opt = Helper::get_option('rename_images');
+                if ($opt === 'date') {
+                    $name = '-' . date('Y-m-d');
+                } elseif ($opt === 'filename') {
+                    $name = '-' . basename($filename, $ext);
+                }
+
+                $post_name  = isset($post_object->post_name) ? $post_object->post_name : '';
+                $post_title = isset($post_object->post_title) ? $post_object->post_title : '';
+
+                if (!empty($post_name)) {
+                    $filename = strtolower($post_name . $name . $ext);
+                } elseif (!empty($post_title)) {
+                    $normalized_post_title = Helper::normalizeString($post_title);
+                    $filename = strtolower($normalized_post_title . $name . $ext);
+                }
             }
         }
-        return $result;
+
+        return $filename;
     }
-    
 }
