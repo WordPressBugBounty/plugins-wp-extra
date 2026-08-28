@@ -55,6 +55,9 @@ class Posts extends Base {
         if ( isset( $_GET['classic-editor'] )) {
             add_filter( 'use_block_editor_for_post_type', '__return_false', 100 );
             add_filter( 'tiny_mce_before_init', [$this, 'disable_wpautop_for_page_classic'] );
+            add_action( 'edit_form_top', [$this, 'render_block_editor_switch_button'] );
+        } else {
+            add_action( 'enqueue_block_editor_assets', [$this, 'register_classic_editor_gutenberg_plugin'] );
         }
         add_filter( 'redirect_post_location', [$this, 'classic_editor_redirect' ]);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
@@ -196,6 +199,108 @@ class Posts extends Base {
 		}
 		return $location;
 	}
+
+    public function register_classic_editor_gutenberg_plugin() {
+        $screen = get_current_screen();
+        if ( ! $screen || $screen->post_type !== 'page' || isset( $_GET['classic-editor'] ) ) {
+            return;
+        }
+        global $post;
+        $post_id = $post->ID ?? 0;
+        if ( $post_id ) {
+            $classic_url = add_query_arg( [ 'post' => $post_id, 'action' => 'edit', 'classic-editor' => '' ], admin_url( 'post.php' ) );
+        } else {
+            $classic_url = add_query_arg( [ 'post_type' => 'page', 'classic-editor' => '' ], admin_url( 'post-new.php' ) );
+        }
+
+        $script = sprintf(
+            "(function(wp) {
+                'use strict';
+                if (!wp || !wp.domReady || !wp.data) return;
+
+                var ClassicSwitch = {
+                    headerToolbar: null,
+                    btn: null,
+                    editUrl: %s,
+                    btnText: %s,
+                    icon: '<span class=\"dashicons dashicons-edit\" style=\"font-size:16px;width:16px;height:16px;line-height:16px;margin-right:4px;\"></span>',
+                    
+                    init: function() {
+                        if (document.getElementById('wpex-classic-edit-btn')) return;
+                        
+                        this.headerToolbar = document.querySelector('.block-editor .edit-post-header__toolbar') || document.querySelector('.block-editor .editor-header__toolbar');
+                        if (!this.headerToolbar) return;
+
+                        var btn = document.createElement('a');
+                        btn.id = 'wpex-classic-edit-btn';
+                        btn.className = 'components-button is-button is-secondary is-large';
+                        btn.href = this.editUrl;
+                        btn.title = this.btnText;
+                        btn.style.cssText = 'margin-left:6px;margin-right:6px;display:inline-flex;align-items:center;height:32px;line-height:30px;padding:0 10px;vertical-align:middle;';
+                        btn.innerHTML = this.icon + this.btnText;
+
+                        var uxBtn = this.headerToolbar.querySelector('#uxbuilder-edit-button, a[href*=\"uxbuilder\"], .uxbuilder-button');
+                        if (uxBtn && uxBtn.parentNode) {
+                            uxBtn.parentNode.insertBefore(btn, uxBtn.nextSibling);
+                        } else {
+                            this.headerToolbar.appendChild(btn);
+                        }
+
+                        this.btn = btn;
+                    }
+                };
+
+                wp.domReady(function() {
+                    wp.data.subscribe(function() {
+                        ClassicSwitch.init();
+                    });
+                });
+            })(window.wp);",
+            wp_json_encode( esc_url_raw( $classic_url ) ),
+            wp_json_encode( __( 'Classic Editor', 'wp-extra' ) )
+        );
+
+        wp_add_inline_script( 'wp-edit-post', $script );
+    }
+
+    public function render_block_editor_switch_button( $post ) {
+        if ( ! $post || $post->post_type !== 'page' || ! isset( $_GET['classic-editor'] ) ) {
+            return;
+        }
+        $block_url = remove_query_arg( 'classic-editor' );
+        $block_text = __( 'Block Editor', 'wp-extra' );
+        ?>
+        <script type="text/javascript">
+        (function() {
+            function attachBlockEditorTab() {
+                var uxWrapper = document.getElementById('uxbuilder-enable-disable');
+                if (!uxWrapper || document.getElementById('wpex-block-editor-tab')) return;
+
+                var tab = document.createElement('a');
+                tab.id = 'wpex-block-editor-tab';
+                tab.href = <?php echo json_encode( esc_url_raw( $block_url ) ); ?>;
+                tab.className = 'nav-tab';
+                tab.innerHTML = '<span class="dashicons dashicons-block-default" style="font-size:16px;width:16px;height:16px;margin-right:4px;vertical-align:text-bottom;"></span>' + <?php echo json_encode( $block_text ); ?>;
+
+                var uxBtn = uxWrapper.querySelector('a[href*="uxbuilder"], a[href*="app=uxbuilder"]');
+                if (uxBtn) {
+                    uxBtn.parentNode.insertBefore(tab, uxBtn);
+                } else {
+                    uxWrapper.appendChild(tab);
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', attachBlockEditorTab);
+            } else {
+                attachBlockEditorTab();
+            }
+            setTimeout(attachBlockEditorTab, 200);
+            setTimeout(attachBlockEditorTab, 800);
+        })();
+        </script>
+        <?php
+    }
     
     public function mce_plugins() {
 		if ( 'flatsome' === wp_get_theme()->template )  {
@@ -617,9 +722,40 @@ class Posts extends Base {
     }
 
     public function disable_tags() {
-        add_action('init', [$this, 'unregister_post_tags']);
-        add_action('admin_menu', [$this, 'remove_tags_admin_menu']);
-        add_action('template_redirect', [$this, 'block_tag_archives']);
+        $mode = Helper::get_option('disable_tags', '');
+        if ($mode === 'disable_link') {
+            add_filter('term_links-post_tag', [$this, 'remove_tag_links']);
+            add_filter('the_tags', [$this, 'filter_the_tags']);
+            add_filter('term_link', [$this, 'filter_tag_term_link'], 10, 3);
+            add_action('template_redirect', [$this, 'block_tag_archives']);
+        } elseif ($mode === 'disable_tag' || $mode === '1' || $mode === true) {
+            add_action('init', [$this, 'unregister_post_tags']);
+            add_action('admin_menu', [$this, 'remove_tags_admin_menu']);
+            add_action('template_redirect', [$this, 'block_tag_archives']);
+        }
+    }
+
+    public function remove_tag_links($links) {
+        if (is_array($links)) {
+            return array_map(function($link) {
+                return preg_replace('/<a\b[^>]*>(.*?)<\/a>/i', '<span class="tag-no-link">$1</span>', $link);
+            }, $links);
+        }
+        return $links;
+    }
+
+    public function filter_the_tags($tag_list) {
+        if (!empty($tag_list)) {
+            return preg_replace('/<a\b[^>]*>(.*?)<\/a>/i', '<span class="tag-no-link">$1</span>', $tag_list);
+        }
+        return $tag_list;
+    }
+
+    public function filter_tag_term_link($termlink, $term, $taxonomy) {
+        if ($taxonomy === 'post_tag') {
+            return 'javascript:void(0);';
+        }
+        return $termlink;
     }
 
     public function unregister_post_tags() {

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP EXtra 8.7.0\n"
+"Project-Id-Version: WP EXtra 8.7.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-extra/\n"
 "POT-Creation-Date: 2026-08-26 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"

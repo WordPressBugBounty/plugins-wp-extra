@@ -1,23 +1,26 @@
 <?php
 namespace WPEXtra\Modules\Common;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (!defined('ABSPATH')) {
+    exit;
 }
 
 use WPEXtra\Settings;
 use WPEXtra\Helper;
 use WPEXtra\Base;
 
-class Permalinks extends Base {
-    
-    public function __construct() {
-		parent::__construct();
+class Permalinks extends Base
+{
+
+    public function __construct()
+    {
+        parent::__construct();
         add_action('update_option_wp_extra', [$this, 'sync_rewrite_rules'], 10, 2);
     }
 
-    public function sync_rewrite_rules($old_value, $value) {
-        $keys = ['slug_post_type', 'slug_taxonomy'];
+    public function sync_rewrite_rules($old_value, $value)
+    {
+        $keys = ['slug_post_type', 'slug_taxonomy', 'slug_category_post', 'slug_hierarchical_page'];
         $needs_flush = false;
         foreach ($keys as $key) {
             if (($old_value[$key] ?? null) !== ($value[$key] ?? null)) {
@@ -29,21 +32,25 @@ class Permalinks extends Base {
             flush_rewrite_rules(false);
         }
     }
-    
-	protected $features = [
-		'external_links',
-		'redirect_attachment',
-		'redirect_single_post',
-		'slug_post_type',
-		'slug_taxonomy',
-		'robots_txt',
-	];
 
-    public function external_links() {
+    protected $features = [
+        'external_links',
+        'redirect_attachment',
+        'redirect_single_post',
+        'slug_post_type',
+        'slug_taxonomy',
+        'slug_category_post',
+        'slug_hierarchical_page',
+        'robots_txt',
+    ];
+
+    public function external_links()
+    {
         add_filter('the_content', [$this, 'filter_external_links'], 99);
     }
 
-    public function filter_external_links($content) {
+    public function filter_external_links($content)
+    {
         if (empty($content) || !is_string($content)) {
             return $content;
         }
@@ -82,7 +89,7 @@ class Permalinks extends Base {
         }
 
         // Regex fallback
-        return preg_replace_callback('/<a\s+([^>]+)>/i', function($matches) use ($site_host) {
+        return preg_replace_callback('/<a\s+([^>]+)>/i', function ($matches) use ($site_host) {
             $attrs = $matches[1];
             if (preg_match('/href=["\'](https?:\/\/[^"\']+)["\']/i', $attrs, $url_match)) {
                 $link_host = wp_parse_url($url_match[1], PHP_URL_HOST);
@@ -92,9 +99,12 @@ class Permalinks extends Base {
                     }
                     if (preg_match('/rel=["\']([^"\']*)["\']/i', $attrs, $rel_match)) {
                         $rel = $rel_match[1];
-                        if (strpos($rel, 'nofollow') === false) $rel .= ' nofollow';
-                        if (strpos($rel, 'noopener') === false) $rel .= ' noopener';
-                        if (strpos($rel, 'noreferrer') === false) $rel .= ' noreferrer';
+                        if (strpos($rel, 'nofollow') === false)
+                            $rel .= ' nofollow';
+                        if (strpos($rel, 'noopener') === false)
+                            $rel .= ' noopener';
+                        if (strpos($rel, 'noreferrer') === false)
+                            $rel .= ' noreferrer';
                         $attrs = preg_replace('/rel=["\'][^"\']*["\']/i', 'rel="' . trim($rel) . '"', $attrs);
                     } else {
                         $attrs .= ' rel="nofollow noopener noreferrer"';
@@ -105,11 +115,13 @@ class Permalinks extends Base {
         }, $content);
     }
 
-    public function redirect_attachment() {
+    public function redirect_attachment()
+    {
         add_action('template_redirect', [$this, 'redirect_attachment_page']);
     }
 
-    public function redirect_attachment_page() {
+    public function redirect_attachment_page()
+    {
         if (is_attachment()) {
             global $post;
             if ($post && !empty($post->post_parent)) {
@@ -122,11 +134,13 @@ class Permalinks extends Base {
         }
     }
 
-    public function redirect_single_post() {
+    public function redirect_single_post()
+    {
         add_action('template_redirect', [$this, 'search_results_return_one_post']);
     }
 
-    public function search_results_return_one_post() {
+    public function search_results_return_one_post()
+    {
         if (is_search()) {
             global $wp_query;
             if ($wp_query && $wp_query->post_count == 1 && $wp_query->max_num_pages == 1 && !empty($wp_query->posts[0])) {
@@ -136,11 +150,13 @@ class Permalinks extends Base {
         }
     }
 
-    public function robots_txt() {
+    public function robots_txt()
+    {
         add_filter('robots_txt', [$this, 'filter_robots_txt'], 99, 2);
     }
 
-    public function filter_robots_txt($output, $public) {
+    public function filter_robots_txt($output, $public)
+    {
         $custom = Helper::get_option('robots_txt');
         if (!empty($custom)) {
             return $custom;
@@ -148,14 +164,17 @@ class Permalinks extends Base {
         return $output;
     }
 
-    public function slug_post_type() {
+    public function slug_post_type()
+    {
+        add_filter('request', [$this, 'rempostslug_request_filter'], 15, 1);
         add_action('pre_get_posts', [$this, 'rempostslug_parse_request'], 1, 1);
         add_filter('post_type_link', [$this, 'rempostslug_fun'], 10, 3);
         add_filter('get_the_permalink', [$this, 'rempostslug_fun'], 10, 3);
         add_filter('the_permalink', [$this, 'rempostslug_fun'], 10, 3);
     }
 
-    public function slug_taxonomy() {
+    public function slug_taxonomy()
+    {
         add_filter('request', [$this, 'remtaxslug_change_term_request'], 1, 1);
         add_filter('term_link', [$this, 'remtaxslug_term_permalink'], 10, 2);
         add_filter('get_category_link', [$this, 'remtaxslug_term_permalink'], 10, 3);
@@ -163,28 +182,166 @@ class Permalinks extends Base {
         add_filter('category_link', [$this, 'remtaxslug_term_permalink'], 10, 3);
     }
 
-    public function rempostslug_fun($post_link, $post) {
+    public function rempostslug_fun($post_link, $post)
+    {
         $post_type_list = (array) Helper::get_option('slug_post_type', []);
         if (empty($post_type_list) || !($post instanceof \WP_Post)) {
             return $post_link;
         }
-        if (in_array(get_post_type($post), $post_type_list, true)) {
-            $post_link = trailingslashit(get_option('home')) . user_trailingslashit($post->post_name);
+        $post_type = get_post_type($post);
+        if (in_array($post_type, $post_type_list, true)) {
+            $uri = is_post_type_hierarchical($post_type) ? get_page_uri($post) : $post->post_name;
+            $post_link = home_url(user_trailingslashit($uri));
         }
         return $post_link;
     }
 
-    public function rempostslug_parse_request($query) {
+    public function rempostslug_request_filter($query_vars)
+    {
+        if (is_admin()) {
+            return $query_vars;
+        }
+
         $post_type_list = (array) Helper::get_option('slug_post_type', []);
-        if (!$query->is_main_query() || count($query->query) !== 2 || !isset($query->query['page'])) {
+        if (empty($post_type_list)) {
+            return $query_vars;
+        }
+
+        $uri_path = '';
+        if (!empty($query_vars['name'])) {
+            $uri_path = $query_vars['name'];
+        } elseif (!empty($query_vars['pagename'])) {
+            $uri_path = $query_vars['pagename'];
+        } elseif (!empty($query_vars['category_name']) && !empty($query_vars['name'])) {
+            $uri_path = $query_vars['category_name'] . '/' . $query_vars['name'];
+        } else {
+            $uri = strtok($_SERVER['REQUEST_URI'] ?? '', '?');
+            $uri_path = trim((string) $uri, '/');
+        }
+
+        if (!empty($uri_path)) {
+            $existing_page = get_page_by_path($uri_path, OBJECT, 'page');
+            if ($existing_page && 'publish' === $existing_page->post_status) {
+                return $query_vars;
+            }
+
+            $found_post = get_page_by_path($uri_path, OBJECT, $post_type_list);
+            if ($found_post && 'publish' === $found_post->post_status) {
+                unset($query_vars['error'], $query_vars['pagename'], $query_vars['category_name'], $query_vars['category']);
+                $query_vars['name'] = $found_post->post_name;
+                $query_vars['post_type'] = $found_post->post_type;
+                $query_vars[$found_post->post_type] = $uri_path;
+                return $query_vars;
+            }
+
+            if (strpos($uri_path, '/') === false) {
+                global $wpdb;
+                $escaped_types = "'" . implode("','", array_map('esc_sql', $post_type_list)) . "'";
+                $found_post_type = $wpdb->get_var($wpdb->prepare(
+                    "SELECT post_type FROM {$wpdb->posts} WHERE post_name = %s AND post_type IN ({$escaped_types}) AND post_status = 'publish' LIMIT 1",
+                    $uri_path
+                ));
+
+                if ($found_post_type) {
+                    unset($query_vars['error'], $query_vars['pagename'], $query_vars['category_name'], $query_vars['category']);
+                    $query_vars['name'] = $uri_path;
+                    $query_vars['post_type'] = $found_post_type;
+                    $query_vars[$found_post_type] = $uri_path;
+                }
+            }
+        }
+
+        return $query_vars;
+    }
+
+    public function rempostslug_parse_request($query)
+    {
+        if (!$query->is_main_query() || is_admin()) {
             return;
         }
-        if (!empty($query->query['name']) && !empty($post_type_list)) {
-            $query->set('post_type', $post_type_list);
+
+        $post_type_list = (array) Helper::get_option('slug_post_type', []);
+        if (empty($post_type_list)) {
+            return;
+        }
+
+        $name = $query->get('name');
+        if (!empty($name)) {
+            $current_post_type = $query->get('post_type');
+            if (empty($current_post_type) || $current_post_type === 'post') {
+                $query->set('post_type', array_unique(array_merge(['post', 'page'], $post_type_list)));
+            }
         }
     }
 
-    public function remtaxslug_change_term_request($query) {
+    public function slug_category_post()
+    {
+        add_filter('post_link', [$this, 'filter_category_post_link'], 10, 2);
+    }
+
+    public function filter_category_post_link($permalink, $post)
+    {
+        if (!($post instanceof \WP_Post) || $post->post_type !== 'post') {
+            return $permalink;
+        }
+
+        $cats = get_the_category($post->ID);
+        if (!empty($cats) && !is_wp_error($cats)) {
+            $cat_slug = $cats[0]->slug;
+            return home_url('/' . $cat_slug . '/' . $post->post_name . '/');
+        }
+
+        return $permalink;
+    }
+
+    public function slug_hierarchical_page()
+    {
+        add_filter('request', [$this, 'resolve_hierarchical_page_request'], 20);
+    }
+
+    public function resolve_hierarchical_page_request($query_vars)
+    {
+        if (is_admin()) {
+            return $query_vars;
+        }
+
+        $uri_path = '';
+        if (!empty($query_vars['category_name']) && !empty($query_vars['name'])) {
+            $uri_path = $query_vars['category_name'] . '/' . $query_vars['name'];
+        } elseif (!empty($query_vars['pagename'])) {
+            $uri_path = $query_vars['pagename'];
+        } else {
+            $uri = strtok($_SERVER['REQUEST_URI'] ?? '', '?');
+            $uri_path = trim((string) $uri, '/');
+        }
+
+        if (!empty($uri_path)) {
+            $page = get_page_by_path($uri_path, OBJECT, 'page');
+
+            if ($page && 'publish' === $page->post_status) {
+                unset($query_vars['error'], $query_vars['category_name'], $query_vars['name'], $query_vars['category']);
+                $query_vars['pagename'] = $uri_path;
+                $query_vars['post_type'] = 'page';
+                return $query_vars;
+            }
+
+            $slug = $query_vars['name'] ?? $query_vars['category_name'] ?? (strpos($uri_path, '/') === false ? $uri_path : '');
+            if (!empty($slug)) {
+                $blog_page = get_page_by_path('blog/' . $slug, OBJECT, 'page');
+                if ($blog_page && 'publish' === $blog_page->post_status) {
+                    unset($query_vars['error'], $query_vars['name'], $query_vars['category_name'], $query_vars['category']);
+                    $query_vars['pagename'] = 'blog/' . $slug;
+                    $query_vars['post_type'] = 'page';
+                    return $query_vars;
+                }
+            }
+        }
+
+        return $query_vars;
+    }
+
+    public function remtaxslug_change_term_request($query)
+    {
         $tax_names = (array) Helper::get_option('slug_taxonomy', []);
         foreach ($tax_names as $current_tax_name) {
             if (array_key_exists('attachment', $query) && $query['attachment']) {
@@ -231,7 +388,8 @@ class Permalinks extends Base {
         return $query;
     }
 
-    public function remtaxslug_term_permalink($url, $taxonomy) {
+    public function remtaxslug_term_permalink($url, $taxonomy)
+    {
         if (is_int($taxonomy)) {
             $taxonomy_term = get_term($taxonomy);
             if (!($taxonomy_term instanceof \WP_Term)) {

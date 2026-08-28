@@ -1,6 +1,6 @@
 <?php
 
-/** v2.8.2 **/
+/** v2.8.3 **/
 
 namespace WPVNTeam\WPSettings;
 
@@ -369,7 +369,7 @@ class WPSettings
 
     public function get_options()
     {
-        return get_option($this->option_name, []);
+        return Helper::get_all($this->option_name);
     }
 
     public function find_option($search_option)

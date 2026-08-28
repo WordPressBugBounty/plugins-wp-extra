@@ -2,7 +2,10 @@
 
 All notable changes to `wp-settings` will be documented in this file
 
-## Unreleased
+## 2.8.3 - 2026-08-28
+
+- [FIX] Auto-repair serialized database strings damaged by domain search-replace tools (e.g. All-in-One WP Migration).
+- [IMPROVE] Synchronize `WPSettings::get_options()` with `Helper::get_all()` for resilient RAM caching and auto-repair.
 
 ## 2.8.2 - 2026-08-26
 

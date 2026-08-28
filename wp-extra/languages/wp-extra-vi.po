@@ -68,7 +68,7 @@ msgid "Accept Cookies"
 msgstr "Chấp nhận Cookie"
 
 msgid "Access & Security Restrictions"
-msgstr "Kiểm soát truy cập & Phân quyền"
+msgstr "Kiểm soát truy cập"
 
 msgid "Accordion expandable + / −"
 msgstr "Dấu thu phóng + / −"
@@ -116,7 +116,7 @@ msgid "Add tracking pixels or chat widgets loaded at page footer."
 msgstr "Chèn mã Facebook Pixel, Zalo Chat, LiveChat ở chân trang website."
 
 msgid "Admin Menu & Plugin Management"
-msgstr "Quản lý Menu Admin & Danh sách Plugin"
+msgstr "Menu Admin & Plugin"
 
 msgid "Admin Panel Branding"
 msgstr "Thương hiệu Trang Quản trị"
@@ -1967,7 +1967,7 @@ msgid "Too many failed login attempts. Please wait %d minutes before trying agai
 msgstr "Đã nhập sai mật khẩu quá nhiều lần. Vui lòng đợi %d phút trước khi thử lại."
 
 msgid "Top Admin Bar"
-msgstr "Thanh Admin Bar trên cùng"
+msgstr "Thanh Admin Bar"
 
 msgid "Top of content"
 msgstr "Đầu bài viết"
@@ -2036,7 +2036,7 @@ msgid "Use the classic WordPress editor instead of block editor."
 msgstr "Sử dụng trình soạn thảo WordPress Classic Editor thay cho Gutenberg."
 
 msgid "User Account Enhancements"
-msgstr "Quản lý Tài khoản người dùng"
+msgstr "Tài khoản người dùng"
 
 msgid "User Registration Date"
 msgstr "Ngày đăng ký thành viên"
@@ -2193,4 +2193,58 @@ msgstr "❌ Lỗi kết nối."
 
 msgid "❌ Failed to download the image."
 msgstr "❌ Không thể tải xuống hình ảnh."
+
+msgid "Chunked Nav Menu Saver"
+msgstr "Lưu Menu theo gói (Chunk Saver)"
+
+msgid "Optimize saving WordPress menus by splitting requests into small AJAX chunks to prevent max_input_vars limits on large menus, with group collapse/expand controls."
+msgstr "Tối ưu lưu Menu WordPress bằng cách chia nhỏ thành các gói AJAX an toàn, chống lỗi max_input_vars khi menu nhiều mục, hỗ trợ nút Thu gọn/Mở rộng nhóm menu con."
+
+msgid "Collapse / Expand"
+msgstr "Thu gọn / Mở rộng"
+
+msgid "Collapse"
+msgstr "Thu gọn"
+
+msgid "Expand"
+msgstr "Mở rộng"
+
+msgid "Toggle group"
+msgstr "Đóng/mở nhóm con"
+
+msgid "Saving..."
+msgstr "Đang lưu..."
+
+msgid "Saved!"
+msgstr "Đã lưu!"
+
+msgid "Invalid menu."
+msgstr "Menu không hợp lệ."
+
+msgid "You do not have permission to edit menus."
+msgstr "Bạn không có quyền chỉnh sửa menu."
+
+msgid "Global Post Tags"
+msgstr "Tags toàn hệ thống"
+
+msgid "Manage post tags across the system: Default, disable tag links on frontend, or completely disable post tags."
+msgstr "Quản lý thẻ Tags bài viết toàn hệ thống: Mặc định, ẩn liên kết tag ngoài trang chủ/bài viết, hoặc ẩn hoàn toàn thẻ tag."
+
+msgid "Disable Tag Links"
+msgstr "Ẩn link tag"
+
+msgid "Disable Post Tags"
+msgstr "Ẩn thẻ tag"
+
+msgid "Disable Default Widgets"
+msgstr "Tắt widget mặc định"
+
+msgid "Remove all default WordPress core widgets (Archives, Calendar, Categories, Meta, Recent Posts/Comments, RSS, Search, Tag Cloud, etc.) from widgets list."
+msgstr "Xóa toàn bộ các widget mặc định của WordPress (Lưu trữ, Lịch, Chuyên mục, Meta, Bài viết/Bình luận mới, RSS, Tìm kiếm, Mây thẻ, v.v.) khỏi danh sách widget."
+
+msgid "This is a simple and perfect tool to use as your website’s functionality plugin. Awesome !!!"
+msgstr "Công cụ đơn giản và hoàn hảo để bổ sung tính năng và tối ưu cho website của bạn. Tuyệt vời !!!"
+
+
+
 

@@ -279,10 +279,16 @@ class Settings
                 'label' => __('Lock Modified Date', 'wp-extra'),
                 'description' => __('Prevent updating the modified date when editing existing posts.', 'wp-extra')
             ]);
-            $section->add_option('checkbox', [
+            $section->add_option('select', [
                 'name' => 'disable_tags',
-                'label' => __('Disable Tags Globally', 'wp-extra'),
-                'description' => __('Completely disable post tags, remove tag admin menus & metaboxes, and block tag archives.', 'wp-extra')
+                'label' => __('Global Post Tags', 'wp-extra'),
+                'description' => __('Manage post tags across the system: Default, disable tag links on frontend, or completely disable post tags.', 'wp-extra'),
+                'options' => [
+                    '' => __('Default', 'wp-extra'),
+                    'disable_link' => __('Disable Tag Links', 'wp-extra'),
+                    'disable_tag' => __('Disable Post Tags', 'wp-extra'),
+                ],
+                'default' => ''
             ]);
         }
 
@@ -1286,6 +1292,11 @@ class Settings
                 'label' => __('Hide Admin Menu Items', 'wp-extra'),
                 'description' => __('Hide selected sidebar navigation items for non-super admins.', 'wp-extra')
             ]);
+            $section->add_option('checkbox', [
+                'name' => 'menu_chunk_saver',
+                'label' => __('Chunked Nav Menu Saver', 'wp-extra'),
+                'description' => __('Optimize saving WordPress menus by splitting requests into small AJAX chunks to prevent max_input_vars limits on large menus, with group collapse/expand controls.', 'wp-extra')
+            ]);
             $section->add_option('checkbox-multiple', [
                 'name' => 'adminplugin_list',
                 'select' => true,
@@ -1310,6 +1321,11 @@ class Settings
                 },
                 'label' => __('Hide Installed Plugins', 'wp-extra'),
                 'description' => __('Hide specific plugins from appearing in the Plugins list.', 'wp-extra')
+            ]);
+            $section->add_option('checkbox', [
+                'name' => 'disable_widgets',
+                'label' => __('Disable Default Widgets', 'wp-extra'),
+                'description' => __('Remove all default WordPress core widgets (Archives, Calendar, Categories, Meta, Recent Posts/Comments, RSS, Search, Tag Cloud, etc.) from widgets list.', 'wp-extra')
             ]);
 
             $section = $tab->add_section(__('User Account Enhancements', 'wp-extra'));
@@ -1436,8 +1452,7 @@ class Settings
                 'options' => [
                     '' => __('Default (Enabled)', 'wp-extra'),
                     'non_admins' => __('Disable for Non-Admins', 'wp-extra'),
-                    'logged_out' => __('Disable When Logged Out', 'wp-extra'),
-                    'all' => __('All')
+                    'logged_out' => __('Disable When Logged Out', 'wp-extra')
                 ],
                 'label' => __('REST API Access', 'wp-extra'),
                 'description' => __('Restrict REST API access to authenticated users or administrators.', 'wp-extra')
@@ -1555,6 +1570,16 @@ class Settings
                 ),
                 'label' => __('Remove Taxonomy Slugs', 'wp-extra'),
                 'description' => __('Remove category base prefix from archive URLs.', 'wp-extra')
+            ]);
+            $section->add_option('checkbox', [
+                'name' => 'slug_category_post',
+                'label' => __('Category & Post Slug (/category/post/)', 'wp-extra'),
+                'description' => __('Support 2-level URL structure for categories and posts.', 'wp-extra')
+            ]);
+            $section->add_option('checkbox', [
+                'name' => 'slug_hierarchical_page',
+                'label' => __('Hierarchical Page Slug (/parent/child/)', 'wp-extra'),
+                'description' => __('Support 2-level URL structure for parent and child subpages.', 'wp-extra')
             ]);
 
             $section = $tab->add_section(__('SEO & Link Redirection', 'wp-extra'));

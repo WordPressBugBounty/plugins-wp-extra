@@ -2,9 +2,9 @@
 Contributors: wpvncom
 Donate link: https://www.paypal.me/copvn
 Tags: extra, functions, security, tweaks, optimizations
-Requires at least: 6.7
+Requires at least: 6.8
 Tested up to: 7.1
-Stable tag: 8.7.0
+Stable tag: 8.7.1
 Requires PHP: 8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,6 +31,7 @@ WP EXtra is built from the ground up with a modular architecture: features run w
 * **Featured Image Column**: View, set, or replace post featured thumbnails directly inside the admin post list.
 * **Extended TinyMCE Toolbar**: Enhanced editor buttons including Table generator, Checklist, Visual Blocks, Letter-spacing, Text Case, Underline, and Clean HTML formatting.
 * **Category Description Editor**: Rich WYSIWYG editor for category and taxonomy descriptions.
+* **Global Post Tags Control**: Manage post tags with 3 modes: Default, Disable Tag Links on frontend (converts tag links to text badges and blocks tag archives to prevent thin-content indexing), or completely Disable Post Tags.
 * **Writing Aids**: Post word counter, post ID columns in admin, and automatic revision cleanup.
 
 ### 3. 📑 Table of Contents
@@ -66,6 +67,8 @@ WP EXtra is built from the ground up with a modular architecture: features run w
 * **Hide Admin Bar**: Automatically hide the WordPress admin toolbar on frontend for non-admin user roles.
 * **Menu Restrictions**: Restrict access to specific admin sidebar menu items by user role.
 * **Hide Plugins**: Hide sensitive plugins from the `/wp-admin/plugins.php` list table for non-super admins.
+* **Chunked Nav Menu Saver**: Optimize saving large navigation menus with hundreds of items via sequential AJAX chunks to bypass PHP `max_input_vars` limits, with group collapse/expand controls.
+* **Disable Default Core Widgets**: Unregister all default WordPress core widgets (Archives, Calendar, Categories, Meta, Recent Posts/Comments, RSS, Search, Tag Cloud, etc.) while keeping custom and theme widgets intact.
 
 ### 9. 🔒 Security & Core Hardening
 * **Disable XML-RPC & REST API**: Block pingback spam, DDoS vectors, and lock down REST API endpoints for non-logged-in visitors.
@@ -147,6 +150,15 @@ You can install the WP EXtra from your WordPress Dashboard or manually via FTP.
 2. Easily enable function with a single click.
 
 == Changelog ==
+
+= 8.7.1 =
+* [NEW] Chunked Nav Menu Saver: Split large menu saves into small sequential AJAX chunks to bypass PHP max_input_vars server limits, with Collapse/Expand group toggles.
+* [NEW] Global Post Tags: Added 3-mode selector (Default, Disable Tag Links on frontend, or Disable Post Tags completely).
+* [NEW] Disable Default Widgets: Added option to unregister all default WordPress core widgets.
+* [FIX] Resolved early current_user_can() execution during plugin bootstrap causing fatal errors in WP-Cron and CLI environments.
+* [IMPROVE] MCE Clean HTML: Upgraded clean logic to remove AI copy-paste artifacts (Google Gemini, ChatGPT, Claude), zero-width characters, tracking data attributes, redundant wrapper tags, citation spans, and excessive <br> tags between block elements.
+* [IMPROVE] Classic Editor Integration: Added quick switcher buttons between Block Editor (Gutenberg) and Classic Editor matching Flatsome UX Builder toolbar and tab layouts.
+* [IMPROVE] Remove Slug: Optimized rewrite rules and URL parsing logic for custom post types, taxonomies, and category bases to improve resolution speed and prevent 404 conflicts.
 
 = 8.7.0 =
 * [PERFORMANCE] Removed legacy bottleneck features (quicklink, turbo, minify_html, sslfix) to eliminate server request queueing and output buffer delays.

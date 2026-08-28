@@ -244,7 +244,52 @@ class Helper
     }
 
     /**
-     * Repair serialized database strings corrupted during domain search-replace.
+     * Safely unserialize data with automatic string-length corruption fix.
+     *
+     * @param string $data
+     * @return mixed
+     */
+    public static function safe_unserialize($data)
+    {
+        if (!is_string($data) || empty($data)) {
+            return is_array($data) ? $data : false;
+        }
+
+        // 1. Direct standard unserialize
+        $unserialized = @unserialize($data);
+        if ($unserialized !== false || $data === 'b:0;') {
+            return $unserialized;
+        }
+
+        // 2. High-precision regex boundary fixer
+        $fixed = preg_replace_callback(
+            '/(?<=^|;)s:(\d+):\"(.*?)\";(?=;|\}|a:|s:|i:|b:|d:|N;)/s',
+            function ($matches) {
+                return 's:' . strlen($matches[2]) . ':"' . $matches[2] . '";';
+            },
+            $data
+        );
+
+        $unserialized = @unserialize($fixed);
+        if ($unserialized !== false || $fixed === 'b:0;') {
+            return $unserialized;
+        }
+
+        // 3. Fallback regex string length fixer
+        $fixed = preg_replace_callback('!s:(\d+):"(.*?)";!s', function ($m) {
+            return 's:' . strlen($m[2]) . ':"' . $m[2] . '";';
+        }, $data);
+
+        $unserialized = @unserialize($fixed);
+        if ($unserialized !== false || $fixed === 'b:0;') {
+            return $unserialized;
+        }
+
+        return false;
+    }
+
+    /**
+     * Repair serialized database strings corrupted during domain search-replace (e.g. All-in-One WP Migration).
      *
      * @param string $option_name
      * @return array|null
@@ -255,14 +300,11 @@ class Helper
         if (empty($wpdb) || !is_object($wpdb) || empty($wpdb->options)) {
             return null;
         }
+
         $raw = $wpdb->get_var($wpdb->prepare("SELECT option_value FROM {$wpdb->options} WHERE option_name = %s LIMIT 1", $option_name));
 
         if (!empty($raw) && is_string($raw)) {
-            $repaired = preg_replace_callback('!s:(\d+):"(.*?)";!s', function ($m) {
-                return 's:' . strlen($m[2]) . ':"' . $m[2] . '";';
-            }, $raw);
-
-            $unserialized = @unserialize($repaired);
+            $unserialized = self::safe_unserialize($raw);
             if (is_array($unserialized) && !empty($unserialized)) {
                 update_option($option_name, $unserialized);
                 return $unserialized;

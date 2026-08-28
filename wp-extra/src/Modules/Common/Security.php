@@ -270,9 +270,7 @@ class Security extends Base {
         $disableOption  = Helper::get_option('disable_rest_api', '');
         $disableOptions = is_array($disableOption) ? $disableOption : [$disableOption];
 
-        if (in_array('all', $disableOptions, true)) {
-            $disabled = true;
-        } elseif (in_array('non_admins', $disableOptions, true) && !current_user_can('manage_options')) {
+        if (in_array('non_admins', $disableOptions, true) && !current_user_can('manage_options')) {
             $disabled = true;
         } elseif (in_array('logged_out', $disableOptions, true) && !is_user_logged_in()) {
             $disabled = true;

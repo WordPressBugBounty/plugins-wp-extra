@@ -51,7 +51,7 @@ class Restore extends OptionAbstract
 
         $payload = [
             'generator'   => 'WPSettings',
-            'version'     => '2.8.2',
+            'version'     => '2.8.3',
             'option_name' => $option_name,
             'exported_at' => current_time('mysql'),
             'site_url'    => home_url(),
